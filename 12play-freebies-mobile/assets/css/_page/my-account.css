@@ -1,0 +1,165 @@
+.my-account-page .navbar.fixed-top .title {
+  text-transform: capitalize; }
+
+.my-account-page__content {
+  padding-top: 10px; }
+  .my-account-page__content #myAccountNav {
+    border-bottom: none;
+    background: rgba(255, 255, 255, 0.13);
+    border-radius: 4px;
+    padding: 4px; }
+    .my-account-page__content #myAccountNav .nav-item .nav-link {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 14px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.5);
+      border: none;
+      padding-top: 3px;
+      padding-bottom: 3px;
+      height: 100%; }
+      .my-account-page__content #myAccountNav .nav-item .nav-link.active {
+        background: #FDBB2C;
+        border-radius: 2px;
+        color: #000000; }
+  .my-account-page__content #myAccountContent {
+    padding: 20px 0; }
+    .my-account-page__content #myAccountContent .form__action .btn {
+      width: 100%;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 22px;
+      text-align: center;
+      min-height: 50px;
+      display: flex;
+      place-content: center;
+      place-items: center;
+      margin-bottom: 5px; }
+      .my-account-page__content #myAccountContent .form__action .btn-warning {
+        background: #FDBB2C;
+        border-radius: 4px; }
+      .my-account-page__content #myAccountContent .form__action .btn-link {
+        color: #FFFFFF;
+        text-decoration: none; }
+      .my-account-page__content #myAccountContent .form__action .btn:focus {
+        box-shadow: none; }
+    .my-account-page__content #myAccountContent .form__container {
+      margin-bottom: 20px;
+      position: relative; }
+      .my-account-page__content #myAccountContent .form__container .error {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        color: #FF1A1A;
+        margin-bottom: 5px;
+        display: block; }
+      .my-account-page__content #myAccountContent .form__container .help-text {
+        font-weight: 400;
+        font-size: 11px;
+        line-height: 16px;
+        color: #FDBB2C; }
+      .my-account-page__content #myAccountContent .form__container .form-label {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+        color: #FFFFFF; }
+      .my-account-page__content #myAccountContent .form__container .form-select,
+      .my-account-page__content #myAccountContent .form__container .form-control {
+        background: rgba(255, 255, 255, 0.13);
+        border: none;
+        border-radius: 4px;
+        min-height: 50px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+        color: #FDBB2C;
+        margin-bottom: 10px; }
+        .my-account-page__content #myAccountContent .form__container .form-select::placeholder,
+        .my-account-page__content #myAccountContent .form__container .form-control::placeholder {
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 19px;
+          color: rgba(255, 255, 255, 0.4); }
+        .my-account-page__content #myAccountContent .form__container .form-select:disabled,
+        .my-account-page__content #myAccountContent .form__container .form-control:disabled {
+          background: rgba(255, 255, 255, 0.13);
+          border-color: transparent; }
+
+#addBankDetailModal .modal-dialog .modal-content {
+  padding: 25px; }
+  #addBankDetailModal .modal-dialog .modal-content .modal-header {
+    border-bottom: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0; }
+    #addBankDetailModal .modal-dialog .modal-content .modal-header button {
+      background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+      opacity: 1; }
+  #addBankDetailModal .modal-dialog .modal-content .modal-body .title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    color: #FDBB2C;
+    margin-bottom: 20px; }
+  #addBankDetailModal .modal-dialog .modal-content .modal-body .btn-submit {
+    min-height: 40px;
+    width: 50%;
+    margin: auto;
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+    color: #000000; }
+  #addBankDetailModal .modal-dialog .modal-content .modal-body .add-bank-form__container {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column; }
+    #addBankDetailModal .modal-dialog .modal-content .modal-body .add-bank-form__container .form-select,
+    #addBankDetailModal .modal-dialog .modal-content .modal-body .add-bank-form__container .form-control {
+      background: transparent;
+      border-radius: 4px;
+      min-height: 45px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 19px;
+      color: #FDBB2C;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      padding: 12px 13px;
+      width: 100%; }
+      #addBankDetailModal .modal-dialog .modal-content .modal-body .add-bank-form__container .form-select::placeholder,
+      #addBankDetailModal .modal-dialog .modal-content .modal-body .add-bank-form__container .form-control::placeholder {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+        color: rgba(255, 255, 255, 0.4); }
+      #addBankDetailModal .modal-dialog .modal-content .modal-body .add-bank-form__container .form-select:invalid,
+      #addBankDetailModal .modal-dialog .modal-content .modal-body .add-bank-form__container .form-control:invalid {
+        color: rgba(255, 255, 255, 0.4); }
+      #addBankDetailModal .modal-dialog .modal-content .modal-body .add-bank-form__container .form-select:disabled,
+      #addBankDetailModal .modal-dialog .modal-content .modal-body .add-bank-form__container .form-control:disabled {
+        background: rgba(255, 255, 255, 0.13);
+        border: none; }
+    #addBankDetailModal .modal-dialog .modal-content .modal-body .add-bank-form__container .form-select {
+      background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      background-size: 16px 12px; }
+    #addBankDetailModal .modal-dialog .modal-content .modal-body .add-bank-form__container .form-text {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px; }
+      #addBankDetailModal .modal-dialog .modal-content .modal-body .add-bank-form__container .form-text.warning {
+        color: #FDBB2C; }
+      #addBankDetailModal .modal-dialog .modal-content .modal-body .add-bank-form__container .form-text.danger {
+        color: #FF1A1A; }
+      #addBankDetailModal .modal-dialog .modal-content .modal-body .add-bank-form__container .form-text ul {
+        margin-bottom: 0; }
+    #addBankDetailModal .modal-dialog .modal-content .modal-body .add-bank-form__container .error {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      margin-top: 4px;
+      color: #FF1A1A; }

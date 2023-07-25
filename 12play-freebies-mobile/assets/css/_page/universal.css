@@ -1,0 +1,111 @@
+.universal {
+  min-height: 100vh;
+  max-width: var(--max-with-mobile);
+  text-align: center;
+  overflow: hidden; }
+  .universal video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    object-fit: cover;
+    z-index: -1; }
+  .universal__content {
+    display: flex;
+    place-content: center;
+    place-items: center;
+    align-items: stretch;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    max-width: var(--max-with-mobile);
+    left: 0; }
+    .universal__content__logo img {
+      max-width: 310px; }
+    .universal__content .play-now .btn {
+      width: 100%;
+      background: #597EF7;
+      border-radius: 10px;
+      height: 50px;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 16px;
+      text-align: center;
+      color: #FFFFFF;
+      display: flex;
+      place-content: center;
+      place-items: center;
+      margin-top: 20px; }
+    .universal__content #selectLanguage {
+      padding: 20px 0; }
+      .universal__content #selectLanguage .slick-arrow {
+        top: 60%;
+        width: 22px;
+        height: 22px; }
+        .universal__content #selectLanguage .slick-arrow::before {
+          content: "";
+          background-repeat: no-repeat;
+          width: 22px;
+          height: 22px;
+          font-family: initial;
+          display: block; }
+        .universal__content #selectLanguage .slick-arrow.slick-prev {
+          left: -8px; }
+          .universal__content #selectLanguage .slick-arrow.slick-prev::before {
+            background-image: url(../images/language/left.png); }
+        .universal__content #selectLanguage .slick-arrow.slick-next {
+          right: -8px; }
+          .universal__content #selectLanguage .slick-arrow.slick-next::before {
+            background-image: url(../images/language/right.png); }
+      .universal__content #selectLanguage .slick-list {
+        padding: 0 !important; }
+        .universal__content #selectLanguage .slick-list .slick-track {
+          display: flex;
+          left: -5px; }
+          .universal__content #selectLanguage .slick-list .slick-track .slick-slide {
+            display: flex;
+            place-content: flex-end;
+            place-items: center;
+            flex-direction: column;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 16px;
+            text-align: center;
+            color: #FFFFFF;
+            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+            min-height: 120px;
+            transition: all 0.3s;
+            opacity: 0.5; }
+            .universal__content #selectLanguage .slick-list .slick-track .slick-slide .title {
+              margin-top: 5px; }
+            .universal__content #selectLanguage .slick-list .slick-track .slick-slide.slick-current {
+              min-width: 150px !important;
+              position: relative;
+              opacity: 1; }
+              .universal__content #selectLanguage .slick-list .slick-track .slick-slide.slick-current img {
+                margin-bottom: 10px; }
+              .universal__content #selectLanguage .slick-list .slick-track .slick-slide.slick-current .title {
+                margin-bottom: 15px; }
+              .universal__content #selectLanguage .slick-list .slick-track .slick-slide.slick-current .bg {
+                position: absolute;
+                height: 80px;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.5);
+                border: 1px solid #FFFFFF;
+                box-sizing: border-box;
+                border-radius: 10px;
+                z-index: -1; }
+    .universal__content__language {
+      margin-top: 40px; }
+      .universal__content__language__title {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 14px;
+        text-align: center;
+        color: #FFFFFF;
+        text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+        margin-top: 20px; }

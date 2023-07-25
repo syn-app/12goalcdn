@@ -1,0 +1,97 @@
+.add-bank-account {
+  background-color: #f2f2f2; }
+  .add-bank-account__content {
+    padding-left: 0;
+    padding-right: 0; }
+    .add-bank-account__content__input {
+      background: #FFFFFF;
+      padding: 15px; }
+      .add-bank-account__content__input__select-bank {
+        display: flex;
+        place-content: space-between;
+        place-items: center;
+        border-bottom: 2px solid #EEEEEE;
+        padding: 10px 0;
+        margin-bottom: 30px;
+        cursor: pointer; }
+        .add-bank-account__content__input__select-bank__input__label {
+          font-weight: 300;
+          font-size: 14px;
+          line-height: 14px;
+          color: #000000;
+          padding-bottom: 10px;
+          text-align: left; }
+        .add-bank-account__content__input__select-bank__input__placeholder {
+          font-weight: 300;
+          font-size: 16px;
+          line-height: 14px;
+          color: #A5A9B3; }
+      .add-bank-account__content__input .items {
+        padding-bottom: 30px; }
+        .add-bank-account__content__input .items:last-child {
+          padding-bottom: 0; }
+        .add-bank-account__content__input .items .form-label {
+          font-weight: 300;
+          font-size: 14px;
+          line-height: 14px;
+          color: #000000;
+          margin-bottom: 0; }
+        .add-bank-account__content__input .items .form-control {
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 14px;
+          color: #A5A9B3;
+          padding: 10px 0;
+          border: 0;
+          border-bottom: 2px solid #EEEEEE;
+          border-radius: 0; }
+          .add-bank-account__content__input .items .form-control:focus, .add-bank-account__content__input .items .form-control:active {
+            box-shadow: none; }
+          .add-bank-account__content__input .items .form-control:disabled {
+            border-bottom: 0;
+            padding-bottom: 0;
+            background: #fff; }
+          .add-bank-account__content__input .items .form-control::placeholder {
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 14px;
+            color: #A5A9B3; }
+        .add-bank-account__content__input .items .input-group {
+          border-bottom: 2px solid #EEEEEE; }
+          .add-bank-account__content__input .items .input-group .input-group-text {
+            background: transparent;
+            border: 0;
+            height: 30px; }
+          .add-bank-account__content__input .items .input-group .form-control {
+            border-bottom: none; }
+          .add-bank-account__content__input .items .input-group .btn {
+            background-color: #4E7FFF;
+            border: none;
+            border-radius: 5px !important;
+            height: 30px;
+            display: flex;
+            place-items: center; }
+            .add-bank-account__content__input .items .input-group .btn.disabled, .add-bank-account__content__input .items .input-group .btn:disabled {
+              background-color: rgba(78, 127, 255, 0.5);
+              pointer-events: none; }
+    .add-bank-account__content__description {
+      font-weight: 300;
+      font-size: 10px;
+      line-height: 14px;
+      color: #A5A9B3;
+      padding: 15px; }
+    .add-bank-account__content__submit {
+      padding: 15px; }
+      .add-bank-account__content__submit .btn {
+        width: 100%;
+        min-height: 50px;
+        display: flex;
+        place-items: center;
+        place-content: center; }
+    .add-bank-account__content__help {
+      font-weight: 400;
+      font-size: 10px;
+      line-height: 12px;
+      text-align: center;
+      color: #000000;
+      padding: 15px; }

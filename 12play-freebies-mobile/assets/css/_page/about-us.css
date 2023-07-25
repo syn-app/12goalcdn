@@ -1,0 +1,87 @@
+.about-us {
+  background-color: #f2f2f2;
+  padding-top: 45px; }
+  .about-us__content__bottom {
+    padding: 15px;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: justify;
+    color: #7E8796; }
+  .about-us__content__legal-content {
+    display: flex;
+    place-content: space-between;
+    place-items: flex-start;
+    text-align: center;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #7E8796;
+    padding: 30px 15px; }
+    .about-us__content__legal-content__item__img {
+      padding-top: 75px;
+      position: relative; }
+      .about-us__content__legal-content__item__img::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: 0 auto;
+        height: 100px;
+        width: 100px;
+        background-image: url(../images/about-us/about-logo.png);
+        background-repeat: no-repeat;
+        background-size: cover; }
+      .about-us__content__legal-content__item__img.img-1::after {
+        background-position: left; }
+      .about-us__content__legal-content__item__img.img-2::after {
+        background-position: center; }
+      .about-us__content__legal-content__item__img.img-3::after {
+        background-position: right;
+        left: -35px; }
+  .about-us__content__legal {
+    text-align: center;
+    margin-top: 30px; }
+    .about-us__content__legal span {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 14px;
+      color: #4E7FFF;
+      position: relative; }
+      .about-us__content__legal span::before {
+        position: absolute;
+        content: "";
+        width: 100px;
+        height: 17px;
+        background-image: url(../images/about-us/left.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        right: calc(100% + 15px); }
+      .about-us__content__legal span::after {
+        position: absolute;
+        content: "";
+        width: 100px;
+        height: 17px;
+        background-image: url(../images/about-us/right.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: left;
+        left: calc(100% + 15px); }
+  .about-us__content__logo {
+    position: relative; }
+    .about-us__content__logo img {
+      width: 100%; }
+    .about-us__content__logo__name {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 14px;
+      text-align: center;
+      color: #4E7FFF;
+      position: absolute;
+      bottom: 15px;
+      left: 0;
+      right: 0; }

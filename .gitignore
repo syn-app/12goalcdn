@@ -1,0 +1,12 @@
+.vscode
+.idea
+.DS_Store
+*.esm.json
+*.log
+/dbbackup
+/freebiesapi
+/freebiesapi-admin
+/freebiesapi-admin-bak
+/freebiesapi-bak
+/sources-backup
+/staging

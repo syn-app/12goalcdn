@@ -1,0 +1,399 @@
+.home__content {
+  margin-bottom: 100px; }
+  .home__content #myHomeTab {
+    border-bottom: none;
+    flex-wrap: nowrap; }
+    .home__content #myHomeTab > .nav-item {
+      width: 100%; }
+      .home__content #myHomeTab > .nav-item > .nav-link {
+        background: #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        min-height: 50px;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 16px;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.5);
+        border: none;
+        border-radius: 0;
+        width: 100%;
+        transition: 0.3s; }
+        .home__content #myHomeTab > .nav-item > .nav-link.active {
+          font-weight: 700;
+          font-size: 13px;
+          line-height: 16px;
+          text-align: center;
+          color: #FFFFFF;
+          border: none;
+          background: linear-gradient(180deg, #86080C 0%, #86080C 100%); }
+  .home__content #myHomeTabContent > .tab-pane#goal-home .top-home {
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    place-content: flex-end;
+    place-items: center;
+    padding-bottom: 11px;
+    background-image: url(../images/home/top-bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 17px;
+    text-align: center;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5); }
+    .home__content #myHomeTabContent > .tab-pane#goal-home .top-home__title {
+      font-weight: 900;
+      font-size: 26px;
+      line-height: 28px;
+      text-align: center;
+      color: #FF0000;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5); }
+  .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTab {
+    border-bottom: none;
+    background: linear-gradient(180deg, #980000 0%, #6C0000 100%);
+    mix-blend-mode: normal;
+    min-height: 43px; }
+    .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTab > .nav-item > .nav-link {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 15px;
+      color: #FFFFFF;
+      padding-left: 2px;
+      padding-right: 2px;
+      height: 100%;
+      border: none;
+      border-radius: 0;
+      transition: 0.3s; }
+      .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTab > .nav-item > .nav-link span {
+        position: relative; }
+      .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTab > .nav-item > .nav-link.active {
+        background: transparent;
+        border: none;
+        font-weight: 800;
+        font-size: 14px;
+        line-height: 15px;
+        color: #FFFFFF; }
+        .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTab > .nav-item > .nav-link.active span::after {
+          content: "";
+          position: absolute;
+          bottom: -7px;
+          left: 0;
+          width: 21px;
+          height: 2px;
+          background: #FFFFFF;
+          border-radius: 1px; }
+      .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTab > .nav-item > .nav-link.nav-disabled {
+        background: #9D9D9D;
+        mix-blend-mode: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 13px;
+        color: #FFFFFF;
+        width: 110px; }
+    .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTab > .nav-item.disabled {
+      flex: initial; }
+  .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-leaderboard {
+    padding-top: 20px; }
+    .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-leaderboard .score {
+      margin-top: 10px;
+      background: linear-gradient(180deg, #6C0000 0%, #580000 100%);
+      box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
+      border-radius: 6px;
+      padding: 0 8px 8px; }
+      .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-leaderboard .score .table-responsive {
+        overflow: auto;
+        height: 500px; }
+        .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-leaderboard .score .table-responsive .table {
+          margin-bottom: 0; }
+          .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-leaderboard .score .table-responsive .table > :not(:first-child) {
+            border-top: 2px solid transparent; }
+          .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-leaderboard .score .table-responsive .table thead tr th {
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 13px;
+            text-align: center;
+            color: #FFFFFF;
+            padding-top: 17px;
+            padding-bottom: 12px;
+            background: linear-gradient(180deg, #6C0000 0%, #580000 100%); }
+          .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-leaderboard .score .table-responsive .table tbody {
+            background: #F3F5F6;
+            box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.63); }
+            .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-leaderboard .score .table-responsive .table tbody tr td {
+              border-bottom-width: 0;
+              padding-top: 15px;
+              padding-bottom: 15px;
+              font-weight: 800;
+              font-size: 14px;
+              line-height: 15px;
+              text-align: center;
+              color: #9D9D9D;
+              z-index: 0; }
+    .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-leaderboard .rank {
+      min-height: 83px;
+      background-image: url(../images/leaderboard-rank-bg.png?ref=wc2022);
+      background-repeat: no-repeat;
+      background-position: left;
+      background-size: cover;
+      mix-blend-mode: normal;
+      backdrop-filter: blur(2px);
+      border-radius: 6px;
+      box-shadow: 0px 2px 4px rgba(55, 0, 60, 0.51);
+      display: flex;
+      place-content: flex-start;
+      place-items: center;
+      padding: 10px 20px; }
+      .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-leaderboard .rank__number {
+        width: 40%; }
+        .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-leaderboard .rank__number div {
+          font-weight: 800;
+          font-size: 38px;
+          line-height: 41px;
+          color: #FFFFFF; }
+        .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-leaderboard .rank__number span {
+          font-weight: 700;
+          font-size: 16px;
+          line-height: 17px;
+          color: #FFFFFF; }
+      .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-leaderboard .rank__total-point {
+        text-align: center;
+        width: 100%;
+        font-weight: 800;
+        font-size: 20px;
+        line-height: 22px;
+        color: #FFFFFF;
+        text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5); }
+  .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-previous .show-more {
+    margin-top: 20px; }
+    .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-previous .show-more .btn {
+      background: linear-gradient(180deg, #980000 0%, #4C0000 100%);
+      border-radius: 6px;
+      width: 100%;
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 18px;
+      text-align: center;
+      color: #FFFFFF;
+      min-height: 40px; }
+  .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-previous .matchs__items {
+    margin-bottom: 10px;
+    mix-blend-mode: normal;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    min-height: 112px;
+    overflow: hidden;
+    background: #F3F5F6; }
+    .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-previous .matchs__items__top {
+      background: linear-gradient(270deg, #FFFFFF -14.71%, #D9D9D9 100%);
+      background-image: url(../images/home/match-bg.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover; }
+      .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-previous .matchs__items__top__info {
+        display: flex;
+        place-content: flex-start;
+        place-items: center;
+        gap: 8px; }
+        .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-previous .matchs__items__top__info__currency {
+          backdrop-filter: blur(4px);
+          /* Note: backdrop-filter has minimal browser support */
+          border-radius: 6px 0;
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 13px;
+          text-align: center;
+          color: #FFFFFF;
+          padding: 5px 20px; }
+          .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-previous .matchs__items__top__info__currency.success {
+            background: #12CB59; }
+          .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-previous .matchs__items__top__info__currency.warning {
+            background: #FF8A00; }
+        .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-previous .matchs__items__top__info__time {
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 13px;
+          color: #001E28; }
+      .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-previous .matchs__items__top__vs {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 20px;
+        color: #980000;
+        padding: 20px 10px 15px 10px;
+        display: flex;
+        place-content: space-between;
+        place-items: center;
+        gap: 2px; }
+        .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-previous .matchs__items__top__vs .btn-danger {
+          min-width: 96px; }
+          .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-previous .matchs__items__top__vs .btn-danger:focus {
+            box-shadow: none; }
+          .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-previous .matchs__items__top__vs .btn-danger:disabled {
+            background: #D9D9D9;
+            color: #9D9D9D; }
+    .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-previous .matchs__items .matchs-questions {
+      border-radius: 0;
+      list-style: none;
+      padding: 0;
+      margin-bottom: 0; }
+      .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-previous .matchs__items .matchs-questions-item {
+        border-radius: 0;
+        background-color: #F3F5F6 !important;
+        border-top: 1px solid #E1E1E1 !important;
+        padding: 15px;
+        display: flex;
+        place-content: flex-start;
+        place-items: center;
+        width: 100%;
+        gap: 13px; }
+        .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-previous .matchs__items .matchs-questions-item__content__question {
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 13px;
+          color: #9D9D9D;
+          margin-bottom: 3px; }
+        .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-previous .matchs__items .matchs-questions-item__content__answer {
+          font-weight: 800;
+          font-size: 12px;
+          line-height: 13px;
+          color: #505050; }
+    .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-previous .matchs__items .btn-showhide {
+      border-top: 1px solid #D9D9D9;
+      width: 100%;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 13px;
+      text-align: center;
+      color: #505050;
+      min-height: 30px;
+      display: flex;
+      place-content: center;
+      place-items: center;
+      border-radius: 0; }
+      .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-previous .matchs__items .btn-showhide .hide-answer {
+        display: none; }
+      .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-previous .matchs__items .btn-showhide[aria-expanded="true"] .show-answer {
+        display: none; }
+      .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-previous .matchs__items .btn-showhide[aria-expanded="true"] .hide-answer {
+        display: initial; }
+      .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-previous .matchs__items .btn-showhide:focus {
+        box-shadow: none; }
+  .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-previous .your-predicted {
+    padding-top: 20px;
+    padding-bottom: 25px;
+    display: flex;
+    place-content: flex-start;
+    place-items: center; }
+    .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-previous .your-predicted span {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 15px;
+      color: #9D9D9D;
+      margin-right: 15px;
+      min-width: 100px; }
+  .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-current .partner {
+    padding-top: 20px;
+    display: flex;
+    place-content: space-between;
+    place-items: center; }
+    .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-current .partner span {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 13px;
+      color: #9D9D9D;
+      margin-right: 15px;
+      min-width: 100px; }
+    .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-current .partner img {
+      width: 100%; }
+  .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-current .correct {
+    display: flex;
+    place-content: space-between;
+    place-items: center;
+    gap: 6px;
+    margin-top: 30px; }
+    .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-current .correct__item {
+      border-radius: 6px;
+      background-image: url(../images/home/correct-bg.png?ref=wc2022);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      width: 50%;
+      min-height: 75px;
+      padding: 16px 10px;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 20px;
+      color: #FFFFFF;
+      text-shadow: 0px 2px 4px #000000; }
+      .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-current .correct__item span {
+        font-weight: 900;
+        font-size: 16px;
+        line-height: 16px;
+        color: #FF8A00;
+        text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.7); }
+        .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-current .correct__item span strong {
+          font-weight: 900;
+          font-size: 28px;
+          line-height: 20px;
+          color: #FF8A00;
+          text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.7); }
+  .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-current .match {
+    margin-top: 20px; }
+    .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-current .match__item {
+      background: linear-gradient(270deg, #FFFFFF -14.71%, #D9D9D9 100%);
+      background-image: url(../images/home/match-bg.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      margin-bottom: 10px;
+      mix-blend-mode: normal;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 6px;
+      padding: 18px 15px 15px 15px;
+      min-height: 83px; }
+      .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-current .match__item__time {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 13px;
+        color: #001E28; }
+      .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-current .match__item__title {
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 20px;
+        color: #980000;
+        margin-top: 10px;
+        display: flex;
+        place-content: space-between;
+        place-items: center;
+        gap: 2px; }
+        .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-current .match__item__title .btn-danger {
+          min-width: 89px; }
+  .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-current #accordionHome {
+    margin-top: 20px; }
+    .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-current #accordionHome .accordion-item {
+      margin-bottom: 12px;
+      border: none; }
+      .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-current #accordionHome .accordion-item .accordion-header .accordion-button {
+        background: linear-gradient(180deg, #9D9D9D 0%, #505050 100%);
+        border-radius: 6px;
+        min-height: 40px;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 15px;
+        color: #FFFFFF;
+        padding-top: 10px;
+        padding-bottom: 10px; }
+        .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-current #accordionHome .accordion-item .accordion-header .accordion-button::after {
+          background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e"); }
+        .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-current #accordionHome .accordion-item .accordion-header .accordion-button:focus {
+          box-shadow: none; }
+      .home__content #myHomeTabContent > .tab-pane#goal-home #myHomeGoalTabContent > .tab-pane#goal-home-current #accordionHome .accordion-item .accordion-collapse .accordion-body {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 13px;
+        color: #9D9D9D;
+        padding: 10px 0 0; }

@@ -1,0 +1,114 @@
+.play-now-page__content #brandlogoTab {
+  flex-wrap: nowrap;
+  overflow: auto;
+  gap: 10px;
+  background: #131D39;
+  padding: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+  .play-now-page__content #brandlogoTab > .nav-item > .nav-link {
+    height: 100%;
+    width: 60px;
+    background: #000A25;
+    border-radius: 6px;
+    padding: 3px 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 11px;
+    text-align: center;
+    color: #FFFFFF; }
+    .play-now-page__content #brandlogoTab > .nav-item > .nav-link div {
+      margin-top: -5px; }
+    .play-now-page__content #brandlogoTab > .nav-item > .nav-link img {
+      max-width: 55px;
+      height: 55px; }
+      .play-now-page__content #brandlogoTab > .nav-item > .nav-link img.active {
+        display: none; }
+    .play-now-page__content #brandlogoTab > .nav-item > .nav-link.active {
+      border-color: #FDBB2C; }
+      .play-now-page__content #brandlogoTab > .nav-item > .nav-link.active img {
+        display: none; }
+        .play-now-page__content #brandlogoTab > .nav-item > .nav-link.active img.active {
+          display: initial; }
+
+.play-now-page__content #brandlogoTabContent > .tab-pane .brandlogo-nav-tab {
+  padding: 0 15px;
+  place-content: space-between;
+  background: #131D39;
+  border-bottom: none; }
+  .play-now-page__content #brandlogoTabContent > .tab-pane .brandlogo-nav-tab .nav-item .nav-link {
+    border-radius: 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+    color: #FFFFFF;
+    border: none;
+    transition: 0.3; }
+    .play-now-page__content #brandlogoTabContent > .tab-pane .brandlogo-nav-tab .nav-item .nav-link.active {
+      border-bottom: 3px solid #FDBB2C;
+      background: transparent;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 19px;
+      text-align: center;
+      color: #FDBB2C; }
+
+.play-now-page__content #brandlogoTabContent > .tab-pane .brandlogo-tab-content {
+  padding: 15px; }
+  .play-now-page__content #brandlogoTabContent > .tab-pane .brandlogo-tab-content .play-now-item {
+    margin-left: -8px;
+    margin-right: -8px; }
+    .play-now-page__content #brandlogoTabContent > .tab-pane .brandlogo-tab-content .play-now-item__container {
+      padding-left: 8px;
+      padding-right: 8px; }
+      .play-now-page__content #brandlogoTabContent > .tab-pane .brandlogo-tab-content .play-now-item__container__item {
+        background: #131D39;
+        border-radius: 8px;
+        text-align: center;
+        padding: 15px;
+        margin-bottom: 15px;
+        position: relative; }
+        .play-now-page__content #brandlogoTabContent > .tab-pane .brandlogo-tab-content .play-now-item__container__item img {
+          max-width: 75px; }
+        .play-now-page__content #brandlogoTabContent > .tab-pane .brandlogo-tab-content .play-now-item__container__item .text {
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 19px;
+          text-align: center;
+          color: #FFFFFF;
+          margin-top: 8px; }
+        .play-now-page__content #brandlogoTabContent > .tab-pane .brandlogo-tab-content .play-now-item__container__item .action {
+          padding: 10px;
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.7);
+          border: 2px solid #FDBB2C;
+          backdrop-filter: blur(4px);
+          border-radius: 8px;
+          display: flex;
+          flex-direction: column;
+          place-content: center;
+          place-items: center;
+          gap: 10px;
+          transition: all 0.2s;
+          opacity: 0;
+          z-index: -1; }
+          .play-now-page__content #brandlogoTabContent > .tab-pane .brandlogo-tab-content .play-now-item__container__item .action .btn {
+            width: 100%;
+            height: 30px;
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 16px;
+            text-align: center;
+            display: flex;
+            place-content: center;
+            place-items: center;
+            min-width: auto;
+            padding: 0; }
+        .play-now-page__content #brandlogoTabContent > .tab-pane .brandlogo-tab-content .play-now-item__container__item.active .action {
+          opacity: 1;
+          z-index: 1; }

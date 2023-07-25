@@ -1,0 +1,135 @@
+.referral-program {
+  padding-top: 50px; }
+  .referral-program__content__img img {
+    width: 100%; }
+  .referral-program__content__items {
+    background: #FFFFFF;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    margin: 15px 15px 30px;
+    padding: 15px; }
+    .referral-program__content__items__title {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      text-align: center;
+      color: #000000;
+      position: relative;
+      display: flex;
+      place-content: center;
+      place-items: center; }
+      .referral-program__content__items__title::before {
+        content: "";
+        position: absolute;
+        width: 56px;
+        height: 10px;
+        background-image: url(../images/referral-program/referral-program-left.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        left: 15px; }
+      .referral-program__content__items__title::after {
+        content: "";
+        position: absolute;
+        width: 56px;
+        height: 10px;
+        background-image: url(../images/referral-program/referral-program-right.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        right: 15px; }
+    .referral-program__content__items__steps {
+      text-align: center;
+      margin: 0;
+      margin-top: 30px; }
+      .referral-program__content__items__steps__item {
+        position: relative; }
+        .referral-program__content__items__steps__item__img {
+          max-width: 45px; }
+        .referral-program__content__items__steps__item__title {
+          font-weight: 300;
+          font-size: 12px;
+          line-height: 14px;
+          text-align: center;
+          color: #000000;
+          margin-top: 10px; }
+        .referral-program__content__items__steps__item:nth-child(2)::before {
+          content: "";
+          position: absolute;
+          width: 20px;
+          height: 13px;
+          background-image: url(../images/referral-program/right.png);
+          background-repeat: no-repeat;
+          background-position: center;
+          left: -10px;
+          top: 15px; }
+        .referral-program__content__items__steps__item:nth-child(2)::after {
+          content: "";
+          position: absolute;
+          width: 20px;
+          height: 13px;
+          background-image: url(../images/referral-program/right.png);
+          background-repeat: no-repeat;
+          background-position: center;
+          right: -10px;
+          top: 15px; }
+    .referral-program__content__items__table {
+      margin-top: 30px;
+      padding: 0; }
+      .referral-program__content__items__table .table {
+        margin-bottom: 0;
+        border-collapse: collapse;
+        border-radius: 10px;
+        overflow: hidden; }
+        .referral-program__content__items__table .table > :not(:first-child) {
+          border-top: 1px solid #EEEEEE; }
+        .referral-program__content__items__table .table thead tr {
+          background: linear-gradient(90deg, #7696FF 0%, #557BF7 100%); }
+          .referral-program__content__items__table .table thead tr th {
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 14px;
+            text-align: center;
+            color: #fff;
+            vertical-align: middle;
+            border: 1px solid #EEEEEE;
+            height: 50px;
+            width: 50%; }
+        .referral-program__content__items__table .table tbody tr th {
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 14px;
+          color: #C1AB77;
+          height: 50px;
+          vertical-align: middle;
+          text-align: center; }
+        .referral-program__content__items__table .table tbody tr td {
+          font-weight: 300;
+          font-size: 12px;
+          line-height: 14px;
+          text-align: center;
+          color: #98A5B3;
+          border: 1px solid #EEEEEE;
+          height: 50px;
+          vertical-align: middle;
+          text-align: center; }
+      .referral-program__content__items__table__note {
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 14px;
+        color: #FF0000;
+        text-align: left;
+        margin-top: 15px; }
+    .referral-program__content__items__term {
+      margin-top: 15px; }
+      .referral-program__content__items__term__items {
+        list-style: decimal;
+        padding-left: 15px;
+        margin-bottom: 0; }
+        .referral-program__content__items__term__items li {
+          padding-bottom: 15px;
+          font-weight: 300;
+          font-size: 14px;
+          line-height: 16px;
+          text-align: justify;
+          color: #000000; }
+          .referral-program__content__items__term__items li:last-child {
+            padding-bottom: 0; }

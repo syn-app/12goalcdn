@@ -1,0 +1,182 @@
+.exclusive-event-page__content__play-now {
+  margin: 20px 0 100px;
+  display: flex;
+  place-content: center; }
+  .exclusive-event-page__content__play-now a {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    border-radius: 4px;
+    min-height: 40px;
+    display: flex;
+    place-content: center;
+    place-items: center;
+    width: 135px; }
+
+.exclusive-event-page__content__winner_list {
+  background: #131D39;
+  border-radius: 18px;
+  padding: 25px 15px;
+  overflow: hidden;
+  margin-top: 50px; }
+  .exclusive-event-page__content__winner_list__header {
+    position: relative;
+    padding-bottom: 20px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.13); }
+    .exclusive-event-page__content__winner_list__header__title {
+      font-weight: 700;
+      font-size: 26px;
+      line-height: 35px;
+      background: linear-gradient(90deg, #FCA20D 0%, #FFCD0C 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      margin-bottom: 3px; }
+      .exclusive-event-page__content__winner_list__header__title.how-to-win {
+        font-style: normal;
+        font-weight: 800;
+        font-size: 26px;
+        line-height: 32px;
+        /* or 123% */
+        background: linear-gradient(90deg, #FCA20D 0%, #FFCD0C 50%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent; }
+    .exclusive-event-page__content__winner_list__header__last_update {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 19px;
+      color: #FFFFFF; }
+    .exclusive-event-page__content__winner_list__header__icon {
+      position: absolute;
+      top: -50px;
+      right: -30px;
+      max-width: 170px; }
+    .exclusive-event-page__content__winner_list__header__description {
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 18px;
+      color: #FFFFFF; }
+      .exclusive-event-page__content__winner_list__header__description span {
+        color: #FDBB2C; }
+      .exclusive-event-page__content__winner_list__header__description a {
+        text-decoration-line: underline;
+        color: #FFFFFF; }
+  .exclusive-event-page__content__winner_list__games__title {
+    display: flex;
+    place-content: space-between;
+    place-items: center;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 19px;
+    color: #FFFFFF;
+    margin-bottom: 15px; }
+    .exclusive-event-page__content__winner_list__games__title a {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      text-align: right;
+      color: rgba(255, 255, 255, 0.5); }
+  .exclusive-event-page__content__winner_list__games__container {
+    display: flex;
+    place-content: space-between;
+    place-items: center;
+    flex-wrap: wrap;
+    gap: 7px 15px; }
+    .exclusive-event-page__content__winner_list__games__container__item img {
+      max-height: 50px; }
+    .exclusive-event-page__content__winner_list__games__container__item div {
+      font-weight: 400;
+      font-size: 9px;
+      line-height: 12px;
+      text-align: center;
+      color: #FFFFFF;
+      margin-top: 5px; }
+  .exclusive-event-page__content__winner_list__container {
+    height: 315px;
+    overflow: auto; }
+    .exclusive-event-page__content__winner_list__container__item {
+      display: flex;
+      place-content: space-between;
+      place-items: center;
+      padding: 8px 0; }
+      .exclusive-event-page__content__winner_list__container__item .username {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 22px;
+        color: #FFFFFF;
+        margin-bottom: 2px; }
+      .exclusive-event-page__content__winner_list__container__item .name {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        color: rgba(255, 255, 255, 0.3); }
+      .exclusive-event-page__content__winner_list__container__item .price {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 22px;
+        text-align: right;
+        background: linear-gradient(89.95deg, #FCA20D 50%, #FFCD0C 99.96%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        margin-bottom: 2px; }
+      .exclusive-event-page__content__winner_list__container__item .date {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: right;
+        color: rgba(255, 255, 255, 0.3); }
+
+.exclusive-event-page__top {
+  background-image: url(../images/exclusive-event/bg.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 245px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  position: relative; }
+  .exclusive-event-page__top__title {
+    max-width: 215px; }
+  .exclusive-event-page__top__prize {
+    position: relative; }
+    .exclusive-event-page__top__prize__text {
+      position: absolute;
+      top: 11px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      text-align: center;
+      color: #FDBB2C; }
+    .exclusive-event-page__top__prize__img {
+      max-width: 340px; }
+  .exclusive-event-page__top__action {
+    display: flex;
+    place-content: center;
+    place-items: center;
+    gap: 10px;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0; }
+    .exclusive-event-page__top__action .btn {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 22px;
+      text-align: center;
+      border-radius: 4px;
+      min-height: 40px;
+      display: flex;
+      place-content: center;
+      place-items: center;
+      min-width: 135px; }

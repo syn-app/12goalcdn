@@ -1,0 +1,135 @@
+.withdrawal {
+  background-color: #f2f2f2; }
+  .withdrawal__content {
+    padding-left: 0;
+    padding-right: 0; }
+    .withdrawal__content__wallet {
+      background: #FFFFFF;
+      padding: 15px;
+      display: flex;
+      place-content: space-between;
+      place-items: center;
+      font-weight: 300;
+      font-size: 12px;
+      line-height: 14px;
+      color: #333333; }
+      .withdrawal__content__wallet h3 {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 14px;
+        color: #000000;
+        margin-bottom: 0; }
+      .withdrawal__content__wallet p {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 14px;
+        text-align: right;
+        color: #597EF7;
+        margin-top: 5px;
+        margin-bottom: 0;
+        display: block; }
+      .withdrawal__content__wallet img {
+        margin-left: 5px;
+        margin-right: 5px; }
+    .withdrawal__content__bank-account {
+      background: #fff;
+      margin-top: 15px;
+      padding: 15px; }
+      .withdrawal__content__bank-account__title {
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 14px;
+        color: #000000;
+        border-bottom: 2px solid #EEEEEE;
+        padding-bottom: 5px;
+        margin-bottom: 10px; }
+      .withdrawal__content__bank-account__items__label {
+        background: #FFFFFF;
+        border-bottom: 1px solid #EEEEEE;
+        width: 100%;
+        text-align: center;
+        position: relative;
+        padding: 10px 15px;
+        display: flex;
+        place-content: space-between;
+        place-items: center; }
+        .withdrawal__content__bank-account__items__label__content {
+          display: flex;
+          place-items: center;
+          gap: 15px; }
+          .withdrawal__content__bank-account__items__label__content__img {
+            min-height: 30px; }
+            .withdrawal__content__bank-account__items__label__content__img img {
+              max-width: 30px; }
+          .withdrawal__content__bank-account__items__label__content__title {
+            font-size: 12px;
+            line-height: 12px;
+            text-align: center;
+            color: #000000; }
+        .withdrawal__content__bank-account__items__label .checkmark {
+          width: 16px;
+          height: 16px;
+          background-image: url(../images/wallet/deposit/check-none.png);
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover; }
+        .withdrawal__content__bank-account__items__label__checkbox {
+          display: none; }
+          .withdrawal__content__bank-account__items__label__checkbox:checked ~ .checkmark {
+            background-image: url(../images/wallet/deposit/checked.png); }
+      .withdrawal__content__bank-account__add-bank {
+        display: flex;
+        place-content: center;
+        place-items: center;
+        gap: 10px;
+        padding: 15px;
+        padding-bottom: 0; }
+    .withdrawal__content__description {
+      font-weight: 300;
+      font-size: 10px;
+      line-height: 14px;
+      color: #A5A9B3;
+      padding: 15px; }
+    .withdrawal__content__input {
+      padding: 15px;
+      background: #fff; }
+      .withdrawal__content__input .input-group-text {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 14px;
+        color: #000000;
+        background: transparent;
+        border: none; }
+        .withdrawal__content__input .input-group-text.left {
+          padding-left: 0;
+          padding-right: 20px; }
+        .withdrawal__content__input .input-group-text.right {
+          font-weight: 300;
+          font-size: 14px;
+          line-height: 14px;
+          color: #000000;
+          padding-right: 0;
+          padding-left: 20px; }
+          .withdrawal__content__input .input-group-text.right img {
+            margin-right: 5px; }
+      .withdrawal__content__input .form-control {
+        border: 1px solid #A5A9B3;
+        box-sizing: border-box;
+        border-radius: 10px !important;
+        min-height: 40px; }
+        .withdrawal__content__input .form-control::placeholder {
+          font-size: 12px;
+          line-height: 14px;
+          color: #A5A9B3; }
+    .withdrawal__content__submit {
+      padding: 15px; }
+      .withdrawal__content__submit .btn {
+        width: 100%;
+        min-height: 50px; }
+    .withdrawal__content__help {
+      font-weight: 400;
+      font-size: 10px;
+      line-height: 12px;
+      text-align: center;
+      color: #000000;
+      padding: 15px; }

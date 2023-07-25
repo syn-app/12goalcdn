@@ -1,0 +1,205 @@
+.transaction-history {
+  background-color: #f2f2f2;
+  position: relative;
+  transition: .3s; }
+  .transaction-history.backdrop .transaction-history__content::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(133, 133, 133, 0.5); }
+  .transaction-history .nav-expand {
+    display: flex;
+    place-content: flex-start;
+    place-items: center;
+    padding: 5px 15px 10px;
+    gap: 15px;
+    width: 100%; }
+    .transaction-history .nav-expand .dropdown {
+      position: initial; }
+      .transaction-history .nav-expand .dropdown > .btn {
+        background: #F7F8FC;
+        border-radius: 20px;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 16px;
+        text-align: center;
+        color: #7E8796;
+        border: none;
+        padding: 10px 20px; }
+        .transaction-history .nav-expand .dropdown > .btn.show::after {
+          transform: rotate(180deg); }
+        .transaction-history .nav-expand .dropdown > .btn:focus {
+          box-shadow: none; }
+      .transaction-history .nav-expand .dropdown .dropdown-menu.show {
+        top: calc(100% + 1px);
+        margin: 0;
+        border: none;
+        border-radius: 0;
+        left: 0;
+        right: 0;
+        padding: 15px;
+        padding-bottom: 0;
+        display: flex;
+        place-content: space-between;
+        place-items: center;
+        flex-wrap: wrap;
+        gap: 10px; }
+        .transaction-history .nav-expand .dropdown .dropdown-menu.show .description {
+          font-weight: 300;
+          font-size: 12px;
+          line-height: 16px;
+          color: #A5A9B3;
+          width: 100%; }
+        .transaction-history .nav-expand .dropdown .dropdown-menu.show .btn {
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 18px;
+          text-align: center;
+          color: #A5A9B3;
+          padding-left: 5px;
+          padding-right: 5px; }
+          .transaction-history .nav-expand .dropdown .dropdown-menu.show .btn-outline-secondary {
+            border-color: #A5A9B3; }
+            .transaction-history .nav-expand .dropdown .dropdown-menu.show .btn-outline-secondary:hover, .transaction-history .nav-expand .dropdown .dropdown-menu.show .btn-outline-secondary:active {
+              background-color: #597EF7;
+              border-color: #597EF7;
+              color: #FFFFFF;
+              box-shadow: none; }
+          .transaction-history .nav-expand .dropdown .dropdown-menu.show .btn.active {
+            background-color: #597EF7;
+            border-color: #597EF7;
+            color: #FFFFFF; }
+        .transaction-history .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate {
+          width: 100%; }
+          .transaction-history .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate > div {
+            margin-left: 0;
+            margin-right: 0;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 16px;
+            color: #000000;
+            place-items: center;
+            margin-top: 5px;
+            padding: 0; }
+            .transaction-history .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate > div:first-child {
+              border-bottom: 2px solid #EEEEEE; }
+            .transaction-history .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate > div .form-control {
+              border: none;
+              text-align: right; }
+              .transaction-history .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate > div .form-control[readonly] {
+                background-color: transparent; }
+            .transaction-history .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate > div.action {
+              margin-left: -15px !important;
+              margin-right: -15px !important;
+              display: flex;
+              place-content: space-between;
+              place-items: center;
+              margin-top: 5px; }
+              .transaction-history .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate > div.action .btn {
+                min-height: 50px;
+                width: 50%;
+                border-radius: 0; }
+                .transaction-history .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate > div.action .btn-cancel {
+                  background-color: #E9F6FF;
+                  color: #597EF7; }
+                .transaction-history .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate > div.action .btn-confirm {
+                  background-color: #597EF7;
+                  color: #fff; }
+  .transaction-history__content {
+    padding-left: 15px;
+    padding-right: 15px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    place-content: center;
+    place-items: center;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center; }
+    .transaction-history__content__add-btn {
+      background: #FFFFFF;
+      border-radius: 20px;
+      padding: 30px;
+      width: 100%;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 19px;
+      text-align: center;
+      color: #A1A2A7; }
+    .transaction-history__content__description {
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 16px;
+      text-align: center;
+      color: #A1A2A7; }
+    .transaction-history__content.history-items {
+      padding: 60px 15px 100px 15px;
+      position: initial;
+      width: 100%;
+      flex-direction: column; }
+      .transaction-history__content.history-items .items {
+        width: 100%;
+        display: flex;
+        place-items: center;
+        gap: 12px;
+        padding: 15px;
+        filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.15));
+        background: #FFFFFF;
+        text-align: left; }
+        .transaction-history__content.history-items .items_img {
+          min-width: 30px; }
+          .transaction-history__content.history-items .items_img img {
+            max-width: 30px; }
+        .transaction-history__content.history-items .items__content {
+          width: 100%; }
+          .transaction-history__content.history-items .items__content__title {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 16px;
+            color: #000000; }
+            .transaction-history__content.history-items .items__content__title span {
+              font-style: normal;
+              font-weight: 300;
+              font-size: 12px;
+              line-height: 16px;
+              color: #000000; }
+          .transaction-history__content.history-items .items__content__subtitle {
+            display: flex;
+            place-content: space-between;
+            place-items: center;
+            border-bottom: 1px solid #000000;
+            padding-bottom: 6px;
+            margin-bottom: 8px; }
+            .transaction-history__content.history-items .items__content__subtitle__time {
+              font-weight: 300;
+              font-size: 12px;
+              line-height: 16px;
+              color: #000000; }
+            .transaction-history__content.history-items .items__content__subtitle__status {
+              font-style: normal;
+              font-weight: 500;
+              font-size: 16px;
+              line-height: 16px;
+              text-align: right;
+              color: #0F9214; }
+              .transaction-history__content.history-items .items__content__subtitle__status.rejected {
+                color: #AE1B1B; }
+          .transaction-history__content.history-items .items__content__description {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 12px;
+            color: #000000; }
+  .transaction-history .withdrawal__content__bank-account__title {
+    display: flex;
+    place-content: space-between;
+    place-items: center; }

@@ -1,0 +1,203 @@
+.bonus-history {
+  background-color: #f2f2f2;
+  position: relative;
+  transition: .3s; }
+  .bonus-history.backdrop .bonus-history__items::after,
+  .bonus-history.backdrop .bonus-history__content::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(133, 133, 133, 0.5); }
+  .bonus-history .total-nav {
+    width: 100%;
+    text-align: center;
+    border-bottom: 2px solid #EEEEEE;
+    margin: 5px 20px;
+    padding-bottom: 10px; }
+    .bonus-history .total-nav__items {
+      position: relative;
+      font-weight: 300;
+      font-size: 12px;
+      line-height: 16px;
+      text-align: center;
+      color: #333333; }
+      .bonus-history .total-nav__items:first-child::after {
+        position: absolute;
+        content: '';
+        right: 0;
+        top: 8px;
+        bottom: 0;
+        width: 1px;
+        height: 50%;
+        background-color: #eee; }
+      .bonus-history .total-nav__items span {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        color: #597EF7; }
+  .bonus-history .nav-expand {
+    display: flex;
+    place-content: flex-start;
+    place-items: center;
+    padding: 5px 15px 10px;
+    gap: 15px;
+    width: 100%; }
+    .bonus-history .nav-expand .dropdown {
+      position: initial; }
+      .bonus-history .nav-expand .dropdown > .btn {
+        background: #F7F8FC;
+        border-radius: 20px;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 16px;
+        text-align: center;
+        color: #7E8796;
+        border: none;
+        padding: 10px 20px; }
+        .bonus-history .nav-expand .dropdown > .btn.show::after {
+          transform: rotate(180deg); }
+        .bonus-history .nav-expand .dropdown > .btn:focus {
+          box-shadow: none; }
+      .bonus-history .nav-expand .dropdown .dropdown-menu.show {
+        top: calc(100% + 1px);
+        margin: 0;
+        border: none;
+        border-radius: 0;
+        left: 0;
+        right: 0;
+        padding: 15px;
+        padding-bottom: 0;
+        display: flex;
+        place-content: flex-start;
+        place-items: center;
+        flex-wrap: wrap;
+        gap: 10px; }
+        .bonus-history .nav-expand .dropdown .dropdown-menu.show .description {
+          font-weight: 300;
+          font-size: 12px;
+          line-height: 16px;
+          color: #A5A9B3;
+          width: 100%; }
+        .bonus-history .nav-expand .dropdown .dropdown-menu.show .btn {
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 18px;
+          text-align: center;
+          color: #A5A9B3;
+          padding-left: 5px;
+          padding-right: 5px; }
+          .bonus-history .nav-expand .dropdown .dropdown-menu.show .btn-outline-secondary {
+            border-color: #A5A9B3; }
+            .bonus-history .nav-expand .dropdown .dropdown-menu.show .btn-outline-secondary:hover, .bonus-history .nav-expand .dropdown .dropdown-menu.show .btn-outline-secondary:active {
+              background-color: #597EF7;
+              border-color: #597EF7;
+              color: #FFFFFF;
+              box-shadow: none; }
+          .bonus-history .nav-expand .dropdown .dropdown-menu.show .btn.active {
+            background-color: #597EF7;
+            border-color: #597EF7;
+            color: #FFFFFF; }
+        .bonus-history .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate {
+          width: 100%; }
+          .bonus-history .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate > div {
+            margin-left: 0;
+            margin-right: 0;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 16px;
+            color: #000000;
+            place-items: center;
+            margin-top: 5px;
+            padding: 0; }
+            .bonus-history .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate > div:first-child {
+              border-bottom: 2px solid #EEEEEE; }
+            .bonus-history .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate > div .form-control {
+              border: none;
+              text-align: right; }
+              .bonus-history .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate > div .form-control[readonly] {
+                background-color: transparent; }
+            .bonus-history .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate > div.action {
+              margin-left: -15px !important;
+              margin-right: -15px !important;
+              display: flex;
+              place-content: space-between;
+              place-items: center;
+              margin-top: 5px; }
+              .bonus-history .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate > div.action .btn {
+                min-height: 50px;
+                width: 50%;
+                border-radius: 0; }
+                .bonus-history .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate > div.action .btn-cancel {
+                  background-color: #E9F6FF;
+                  color: #597EF7; }
+                .bonus-history .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate > div.action .btn-confirm {
+                  background-color: #597EF7;
+                  color: #fff; }
+  .bonus-history__items {
+    padding: 110px 15px 15px; }
+    .bonus-history__items__item {
+      background: #FFFFFF;
+      margin: 0;
+      padding: 15px;
+      place-items: center;
+      margin-bottom: 15px; }
+      .bonus-history__items__item__left {
+        padding: 0; }
+        .bonus-history__items__item__left__title {
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 16px;
+          color: #000000; }
+        .bonus-history__items__item__left__price {
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 22px;
+          color: #000000;
+          margin-bottom: 8px; }
+        .bonus-history__items__item__left__description {
+          font-weight: 300;
+          font-size: 12px;
+          line-height: 16px;
+          color: #A5A9B3; }
+      .bonus-history__items__item__right {
+        text-align: center; }
+        .bonus-history__items__item__right .btn {
+          background: #4E7FFF;
+          border-radius: 5px;
+          height: 30px;
+          display: flex;
+          place-content: center;
+          place-items: center;
+          margin: auto;
+          margin-bottom: 8px;
+          min-width: 95px !important; }
+        .bonus-history__items__item__right__description {
+          font-weight: 300;
+          font-size: 12px;
+          line-height: 16px;
+          text-align: center;
+          color: #A5A9B3; }
+  .bonus-history__content {
+    padding-left: 15px;
+    padding-right: 15px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    place-content: center;
+    place-items: center;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center; }
+  .bonus-history .withdrawal__content__bank-account__title {
+    display: flex;
+    place-content: space-between;
+    place-items: center; }

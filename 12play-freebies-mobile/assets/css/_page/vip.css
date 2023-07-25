@@ -1,0 +1,574 @@
+.vip {
+  background: #fff; }
+  .vip#vipPage {
+    padding-top: 50px; }
+  .vip .navbar.fixed-top .content {
+    background: #0D1A26; }
+    .vip .navbar.fixed-top .content #vipTab {
+      border-bottom: none; }
+      .vip .navbar.fixed-top .content #vipTab .nav-item .nav-link {
+        padding-left: 0;
+        padding-right: 0;
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 21px;
+        text-align: center;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.5);
+        margin-left: 10px;
+        margin-right: 10px;
+        border: none;
+        border-bottom: 1px solid transparent;
+        padding-bottom: 5px; }
+        .vip .navbar.fixed-top .content #vipTab .nav-item .nav-link.active {
+          background: transparent;
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 21px;
+          color: #FFFFFF;
+          border-color: #fff; }
+  .vip__content .vip-info-content__head img {
+    width: 100%; }
+  .vip__content .vip-info-content .vip-terms {
+    padding: 15px 0; }
+    .vip__content .vip-info-content .vip-terms__head {
+      padding: 15px;
+      display: flex;
+      place-content: center;
+      border-bottom: 1px solid #F2F2F2; }
+      .vip__content .vip-info-content .vip-terms__head span {
+        position: relative;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 19px;
+        text-transform: capitalize;
+        color: #000000; }
+        .vip__content .vip-info-content .vip-terms__head span::after {
+          position: absolute;
+          content: "";
+          width: 3px;
+          left: -15px;
+          top: 0;
+          bottom: 0;
+          background: #597EF7; }
+    .vip__content .vip-info-content .vip-terms__description {
+      font-weight: 300;
+      font-size: 10px;
+      line-height: 12px;
+      text-align: center;
+      color: #000000; }
+    .vip__content .vip-info-content .vip-terms__items {
+      padding: 30px 15px; }
+      .vip__content .vip-info-content .vip-terms__items__content {
+        margin-bottom: 30px;
+        position: relative;
+        padding-left: 30px; }
+        .vip__content .vip-info-content .vip-terms__items__content::after {
+          content: "1";
+          position: absolute;
+          left: 0;
+          top: -5px;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background: #597EF7;
+          font-weight: 300;
+          font-size: 14px;
+          line-height: 16px;
+          text-align: center;
+          text-transform: uppercase;
+          color: #FFFFFF;
+          display: flex;
+          place-content: center;
+          place-items: center; }
+        .vip__content .vip-info-content .vip-terms__items__content:nth-child(2)::after {
+          content: "2"; }
+        .vip__content .vip-info-content .vip-terms__items__content:nth-child(3)::after {
+          content: "3"; }
+        .vip__content .vip-info-content .vip-terms__items__content:nth-child(4)::after {
+          content: "4"; }
+        .vip__content .vip-info-content .vip-terms__items__content:nth-child(5)::after {
+          content: "5"; }
+        .vip__content .vip-info-content .vip-terms__items__content:nth-child(6)::after {
+          content: "6"; }
+        .vip__content .vip-info-content .vip-terms__items__content:nth-child(7)::after {
+          content: "7"; }
+        .vip__content .vip-info-content .vip-terms__items__content:nth-child(8)::after {
+          content: "8"; }
+        .vip__content .vip-info-content .vip-terms__items__content__title {
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 16px;
+          color: #000000;
+          margin-bottom: 15px; }
+        .vip__content .vip-info-content .vip-terms__items__content__description {
+          font-weight: 300;
+          font-size: 14px;
+          line-height: 16px;
+          text-align: justify;
+          color: #98A5B3; }
+  .vip__content .vip-info-content #vipDescriptionTab {
+    background: #F2F2F2;
+    padding: 15px;
+    padding-bottom: 0;
+    border-bottom: none; }
+    .vip__content .vip-info-content #vipDescriptionTab .nav-item {
+      flex-basis: initial; }
+      .vip__content .vip-info-content #vipDescriptionTab .nav-item .nav-link {
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 21px;
+        text-align: center;
+        text-transform: uppercase;
+        color: #697B8C;
+        padding: 0 1px;
+        padding-bottom: 10px;
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid transparent; }
+        .vip__content .vip-info-content #vipDescriptionTab .nav-item .nav-link.active {
+          border-color: #597EF7;
+          font-weight: 500;
+          color: #597EF7; }
+  .vip__content .vip-info-content #vipDescriptionTabContent .vip-description-items__head {
+    background: linear-gradient(90deg, #F8FAFA 0%, #E9F4FA 100%);
+    text-align: center;
+    padding: 15px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    text-transform: uppercase;
+    color: #000000;
+    place-content: center;
+    place-items: center;
+    gap: 10px; }
+  .vip__content .vip-info-content #vipDescriptionTabContent .vip-description-items__link {
+    padding: 15px; }
+    .vip__content .vip-info-content #vipDescriptionTabContent .vip-description-items__link a {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+      text-decoration-line: underline;
+      color: #C2AC79; }
+  .vip__content .vip-info-content #vipDescriptionTabContent .vip-description-items__table {
+    margin-bottom: 0; }
+    .vip__content .vip-info-content #vipDescriptionTabContent .vip-description-items__table .text-warning {
+      color: #C1AB77 !important; }
+    .vip__content .vip-info-content #vipDescriptionTabContent .vip-description-items__table > :not(:first-child) {
+      border-top: 1px solid #EEEEEE; }
+    .vip__content .vip-info-content #vipDescriptionTabContent .vip-description-items__table thead tr th {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+      text-align: center;
+      color: #000000;
+      vertical-align: middle;
+      border: 1px solid #EEEEEE;
+      height: 50px; }
+    .vip__content .vip-info-content #vipDescriptionTabContent .vip-description-items__table tbody tr th {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+      color: #C1AB77;
+      height: 50px;
+      vertical-align: middle;
+      text-align: center; }
+    .vip__content .vip-info-content #vipDescriptionTabContent .vip-description-items__table tbody tr td {
+      font-weight: 300;
+      font-size: 12px;
+      line-height: 14px;
+      text-align: center;
+      color: #98A5B3;
+      border: 1px solid #EEEEEE;
+      height: 50px;
+      vertical-align: middle;
+      text-align: center; }
+  .vip__content .vip-info-content #vipContentTab {
+    background: #F2F2F2;
+    padding: 15px;
+    place-content: space-between;
+    place-items: center;
+    border: none;
+    gap: 10px; }
+    .vip__content .vip-info-content #vipContentTab .nav-item {
+      width: 18%; }
+      .vip__content .vip-info-content #vipContentTab .nav-item .nav-link {
+        background: #FFFFFF;
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 14px;
+        text-align: center;
+        color: #9AA7B5;
+        text-transform: uppercase;
+        padding: 0;
+        width: 70px;
+        height: 40px;
+        overflow: hidden;
+        border: none;
+        display: flex;
+        place-items: center;
+        place-content: center; }
+        .vip__content .vip-info-content #vipContentTab .nav-item .nav-link img {
+          margin-left: -5px;
+          filter: grayscale(200%); }
+        .vip__content .vip-info-content #vipContentTab .nav-item .nav-link span {
+          margin-left: -5px; }
+        .vip__content .vip-info-content #vipContentTab .nav-item .nav-link.active {
+          color: #000; }
+          .vip__content .vip-info-content #vipContentTab .nav-item .nav-link.active img {
+            filter: grayscale(0); }
+    @media only screen and (max-width: 430px) {
+      .vip__content .vip-info-content #vipContentTab .nav-item {
+        width: 16%; }
+        .vip__content .vip-info-content #vipContentTab .nav-item .nav-link {
+          width: 68px; }
+          .vip__content .vip-info-content #vipContentTab .nav-item .nav-link img {
+            width: 35px;
+            margin-left: -10px; }
+          .vip__content .vip-info-content #vipContentTab .nav-item .nav-link span {
+            margin-left: -3px; } }
+  .vip__content .vip-info-content #vipContentTabContent {
+    background: #fff;
+    padding: 15px; }
+    .vip__content .vip-info-content #vipContentTabContent .vip-tab-content__card {
+      position: relative; }
+      .vip__content .vip-info-content #vipContentTabContent .vip-tab-content__card__head {
+        width: 100%; }
+      .vip__content .vip-info-content #vipContentTabContent .vip-tab-content__card__content {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        padding: 30px 15px;
+        display: flex;
+        place-content: space-between;
+        place-items: flex-start;
+        flex-direction: column;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 16px;
+        color: #FFFFFF; }
+        .vip__content .vip-info-content #vipContentTabContent .vip-tab-content__card__content__title {
+          font-style: italic;
+          font-weight: 500;
+          font-size: 26px;
+          line-height: 30px;
+          color: #FFFFFF; }
+        .vip__content .vip-info-content #vipContentTabContent .vip-tab-content__card__content__items {
+          width: 88%; }
+          .vip__content .vip-info-content #vipContentTabContent .vip-tab-content__card__content__items__item {
+            display: flex;
+            place-items: center;
+            place-content: space-between;
+            margin-top: 12px; }
+            .vip__content .vip-info-content #vipContentTabContent .vip-tab-content__card__content__items__item span:last-child {
+              width: 50px;
+              text-align: left; }
+    .vip__content .vip-info-content #vipContentTabContent .vip-tab-content__bottom {
+      padding: 15px 0;
+      margin-left: -5px;
+      margin-right: -5px; }
+      .vip__content .vip-info-content #vipContentTabContent .vip-tab-content__bottom__items {
+        margin-bottom: 10px;
+        padding-left: 5px;
+        padding-right: 5px; }
+        .vip__content .vip-info-content #vipContentTabContent .vip-tab-content__bottom__items:last-child {
+          display: flex;
+          place-items: center;
+          place-content: center; }
+          .vip__content .vip-info-content #vipContentTabContent .vip-tab-content__bottom__items:last-child > div {
+            width: 100%;
+            display: flex;
+            place-content: center;
+            place-items: center;
+            flex-direction: column; }
+        .vip__content .vip-info-content #vipContentTabContent .vip-tab-content__bottom__items__item {
+          background: #EEEEEE;
+          border-radius: 10px;
+          padding: 10px;
+          min-height: 90px; }
+          .vip__content .vip-info-content #vipContentTabContent .vip-tab-content__bottom__items__item__title {
+            font-weight: 300;
+            font-size: 12px;
+            line-height: 14px;
+            color: #000000;
+            margin-bottom: 5px; }
+          .vip__content .vip-info-content #vipContentTabContent .vip-tab-content__bottom__items__item__price {
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 14px;
+            color: #597EF7;
+            margin-bottom: 15px; }
+            .vip__content .vip-info-content #vipContentTabContent .vip-tab-content__bottom__items__item__price span {
+              font-weight: 500;
+              font-size: 18px;
+              line-height: 21px;
+              color: #597EF7; }
+          .vip__content .vip-info-content #vipContentTabContent .vip-tab-content__bottom__items__item__description {
+            font-weight: 300;
+            font-size: 12px;
+            line-height: 14px;
+            color: #9AA7B5; }
+  .vip__content .privilege-content__head {
+    background: #0D1A26;
+    padding: 30px 50px;
+    position: relative; }
+    .vip__content .privilege-content__head__bg {
+      width: 100%; }
+    .vip__content .privilege-content__head__content {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 30px;
+      width: 100%;
+      display: flex;
+      place-content: flex-start;
+      place-items: center;
+      flex-direction: column;
+      gap: 7px;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14px;
+      text-align: center;
+      color: #597EF7; }
+      .vip__content .privilege-content__head__content img {
+        width: 30px; }
+      .vip__content .privilege-content__head__content__avatar {
+        height: 30px;
+        border-radius: 50%;
+        border: 1px solid #fff; }
+  .vip__content .privilege-content__card {
+    background: #0D1A26;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: #FFFFFF; }
+    .vip__content .privilege-content__card #privilegeVipCard {
+      padding: 15px;
+      overflow: hidden;
+      position: relative; }
+      .vip__content .privilege-content__card #privilegeVipCard .slick-arrow {
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        width: 50px;
+        -webkit-transform: translate(0, 0);
+        -ms-transform: translate(0, 0);
+        transform: translate(0, 0);
+        z-index: 99; }
+        .vip__content .privilege-content__card #privilegeVipCard .slick-arrow::before {
+          content: "" !important;
+          font-family: initial !important; }
+        .vip__content .privilege-content__card #privilegeVipCard .slick-arrow.slick-prev {
+          left: 0; }
+        .vip__content .privilege-content__card #privilegeVipCard .slick-arrow.slick-next {
+          right: 0; }
+      .vip__content .privilege-content__card #privilegeVipCard .slick-list {
+        padding: 0 25px !important; }
+        .vip__content .privilege-content__card #privilegeVipCard .slick-list .slick-track .slick-slide {
+          display: flex;
+          place-content: center;
+          place-items: center; }
+          .vip__content .privilege-content__card #privilegeVipCard .slick-list .slick-track .slick-slide .privilege-card {
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            min-height: 300px;
+            position: relative;
+            padding: 15px;
+            width: 100%;
+            margin-left: 10px;
+            margin-right: 10px;
+            border-radius: 10px;
+            overflow: hidden; }
+            .vip__content .privilege-content__card #privilegeVipCard .slick-list .slick-track .slick-slide .privilege-card.vip0 {
+              background-image: url(../images/vip/privilege/vip-0-bg.png); }
+            .vip__content .privilege-content__card #privilegeVipCard .slick-list .slick-track .slick-slide .privilege-card.vip1 {
+              background-image: url(../images/vip/privilege/vip-1-bg.png); }
+            .vip__content .privilege-content__card #privilegeVipCard .slick-list .slick-track .slick-slide .privilege-card.vip2 {
+              background-image: url(../images/vip/privilege/vip-2-bg.png); }
+            .vip__content .privilege-content__card #privilegeVipCard .slick-list .slick-track .slick-slide .privilege-card.vip3 {
+              background-image: url(../images/vip/privilege/vip-3-bg.png); }
+            .vip__content .privilege-content__card #privilegeVipCard .slick-list .slick-track .slick-slide .privilege-card.vip4 {
+              background-image: url(../images/vip/privilege/vip-4-bg.png); }
+            .vip__content .privilege-content__card #privilegeVipCard .slick-list .slick-track .slick-slide .privilege-card.vip5 {
+              background-image: url(../images/vip/privilege/vip-5-bg.png); }
+            .vip__content .privilege-content__card #privilegeVipCard .slick-list .slick-track .slick-slide .privilege-card.vip6 {
+              background-image: url(../images/vip/privilege/vip-6-bg.png); }
+            .vip__content .privilege-content__card #privilegeVipCard .slick-list .slick-track .slick-slide .privilege-card.vip7 {
+              background-image: url(../images/vip/privilege/vip-7-bg.png); }
+            .vip__content .privilege-content__card #privilegeVipCard .slick-list .slick-track .slick-slide .privilege-card.vip8 {
+              background-image: url(../images/vip/privilege/vip-8-bg.png); }
+            .vip__content .privilege-content__card #privilegeVipCard .slick-list .slick-track .slick-slide .privilege-card.vip9 {
+              background-image: url(../images/vip/privilege/vip-9-bg.png); }
+            .vip__content .privilege-content__card #privilegeVipCard .slick-list .slick-track .slick-slide .privilege-card.vip10 {
+              background-image: url(../images/vip/privilege/vip-10-bg.png); }
+            .vip__content .privilege-content__card #privilegeVipCard .slick-list .slick-track .slick-slide .privilege-card__current {
+              position: absolute;
+              top: 0;
+              left: 0;
+              background: #E0CDA1;
+              border-radius: 7px 0px;
+              padding: 3px 7px;
+              font-size: 12px;
+              line-height: 14px;
+              text-align: center;
+              color: #000000; }
+            .vip__content .privilege-content__card #privilegeVipCard .slick-list .slick-track .slick-slide .privilege-card__title {
+              font-style: italic;
+              font-weight: 500;
+              font-size: 26px;
+              line-height: 30px;
+              margin-top: 10px; }
+            .vip__content .privilege-content__card #privilegeVipCard .slick-list .slick-track .slick-slide .privilege-card__sub_title {
+              font-style: normal;
+              font-weight: 300;
+              font-size: 14px;
+              line-height: 18px;
+              margin-bottom: 145px; }
+      @media only screen and (max-width: 600px) {
+        .vip__content .privilege-content__card #privilegeVipCard .slick-list .slick-track .slick-slide .privilege-card {
+          min-height: 220px; }
+          .vip__content .privilege-content__card #privilegeVipCard .slick-list .slick-track .slick-slide .privilege-card__sub_title {
+            margin-bottom: 80px; } }
+      @media only screen and (max-width: 530px) {
+        .vip__content .privilege-content__card #privilegeVipCard .slick-list .slick-track .slick-slide .privilege-card {
+          min-height: 180px; }
+          .vip__content .privilege-content__card #privilegeVipCard .slick-list .slick-track .slick-slide .privilege-card__sub_title {
+            margin-bottom: 50px; } }
+      @media only screen and (max-width: 420px) {
+        .vip__content .privilege-content__card #privilegeVipCard .slick-list .slick-track .slick-slide .privilege-card {
+          min-height: 155px;
+          padding-bottom: 0; }
+          .vip__content .privilege-content__card #privilegeVipCard .slick-list .slick-track .slick-slide .privilege-card__current {
+            font-size: 10px;
+            line-height: 10px; }
+          .vip__content .privilege-content__card #privilegeVipCard .slick-list .slick-track .slick-slide .privilege-card__title {
+            font-size: 20px;
+            line-height: 25px; }
+          .vip__content .privilege-content__card #privilegeVipCard .slick-list .slick-track .slick-slide .privilege-card__sub_title {
+            font-size: 14px;
+            line-height: 18px;
+            margin-bottom: 30px; } }
+  .vip__content .privilege-content__info #privilegeInfo .slick-list .slick-track .slick-slide .my-vip-details {
+    padding: 15px;
+    border-top: 15px solid #F2F2F2; }
+    .vip__content .privilege-content__info #privilegeInfo .slick-list .slick-track .slick-slide .my-vip-details__header {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+      color: #000000;
+      padding-left: 15px;
+      background-image: url(../images/vip/privilege/my-privilege-title-bg.png);
+      background-repeat: no-repeat;
+      background-position: left;
+      margin-bottom: 15px; }
+    .vip__content .privilege-content__info #privilegeInfo .slick-list .slick-track .slick-slide .my-vip-details__content {
+      margin-left: -10px;
+      margin-right: -10px; }
+      .vip__content .privilege-content__info #privilegeInfo .slick-list .slick-track .slick-slide .my-vip-details__content__items {
+        position: relative; }
+        .vip__content .privilege-content__info #privilegeInfo .slick-list .slick-track .slick-slide .my-vip-details__content__items:after {
+          content: "";
+          position: absolute;
+          top: 10px;
+          bottom: 10px;
+          right: 0;
+          width: 1px;
+          background: #DAE0E8; }
+        .vip__content .privilege-content__info #privilegeInfo .slick-list .slick-track .slick-slide .my-vip-details__content__items:nth-child(6)::after, .vip__content .privilege-content__info #privilegeInfo .slick-list .slick-track .slick-slide .my-vip-details__content__items:nth-child(3)::after {
+          display: none; }
+        .vip__content .privilege-content__info #privilegeInfo .slick-list .slick-track .slick-slide .my-vip-details__content__items__child {
+          text-align: center;
+          border-bottom: 1px solid #DAE0E8;
+          padding: 10px 0;
+          position: relative; }
+          .vip__content .privilege-content__info #privilegeInfo .slick-list .slick-track .slick-slide .my-vip-details__content__items__child__title {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            text-align: center;
+            color: #BE9E55; }
+          .vip__content .privilege-content__info #privilegeInfo .slick-list .slick-track .slick-slide .my-vip-details__content__items__child__description {
+            font-weight: 300;
+            font-size: 10px;
+            line-height: 12px;
+            text-align: center;
+            color: #000000; }
+  .vip__content .privilege-content__info #privilegeInfo .slick-list .slick-track .slick-slide .privilege-info-items {
+    padding: 15px; }
+    .vip__content .privilege-content__info #privilegeInfo .slick-list .slick-track .slick-slide .privilege-info-items__header {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+      color: #000000;
+      padding-left: 15px;
+      background-image: url(../images/vip/privilege/my-privilege-title-bg.png);
+      background-repeat: no-repeat;
+      background-position: left;
+      margin-bottom: 15px; }
+    .vip__content .privilege-content__info #privilegeInfo .slick-list .slick-track .slick-slide .privilege-info-items__content {
+      margin-left: 0;
+      margin-right: 0; }
+      .vip__content .privilege-content__info #privilegeInfo .slick-list .slick-track .slick-slide .privilege-info-items__content__item {
+        position: relative; }
+        .vip__content .privilege-content__info #privilegeInfo .slick-list .slick-track .slick-slide .privilege-info-items__content__item:nth-child(odd) {
+          padding-left: 0; }
+          .vip__content .privilege-content__info #privilegeInfo .slick-list .slick-track .slick-slide .privilege-info-items__content__item:nth-child(odd):after {
+            content: "";
+            position: absolute;
+            top: 10px;
+            bottom: 10px;
+            right: 0;
+            width: 1px;
+            background: #DAE0E8; }
+        .vip__content .privilege-content__info #privilegeInfo .slick-list .slick-track .slick-slide .privilege-info-items__content__item:last-child:after {
+          display: none; }
+        .vip__content .privilege-content__info #privilegeInfo .slick-list .slick-track .slick-slide .privilege-info-items__content__item:nth-child(even) {
+          padding-right: 0; }
+        .vip__content .privilege-content__info #privilegeInfo .slick-list .slick-track .slick-slide .privilege-info-items__content__item__child {
+          display: flex;
+          place-content: flex-start;
+          place-items: center;
+          gap: 5px;
+          border-bottom: 1px solid #DAE0E8;
+          padding: 10px 0;
+          position: relative; }
+          .vip__content .privilege-content__info #privilegeInfo .slick-list .slick-track .slick-slide .privilege-info-items__content__item__child__img {
+            max-width: 40px; }
+          .vip__content .privilege-content__info #privilegeInfo .slick-list .slick-track .slick-slide .privilege-info-items__content__item__child__description__title {
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 14px;
+            display: flex;
+            place-items: center;
+            gap: 5px;
+            margin-bottom: 5px; }
+            .vip__content .privilege-content__info #privilegeInfo .slick-list .slick-track .slick-slide .privilege-info-items__content__item__child__description__title span {
+              font-size: 16px;
+              line-height: 19px; }
+          .vip__content .privilege-content__info #privilegeInfo .slick-list .slick-track .slick-slide .privilege-info-items__content__item__child__description__info {
+            font-weight: 300;
+            font-size: 10px;
+            line-height: 12px;
+            color: #000000; }
+
+.vip-cash-rebate-rules {
+  background-color: #F2F2F2; }
+  .vip-cash-rebate-rules__content {
+    background-color: #fff;
+    padding: 15px 15px 15px 30px;
+    list-style: decimal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 18px;
+    text-align: justify;
+    color: #000000; }
+    .vip-cash-rebate-rules__content li {
+      padding-bottom: 20px; }
+      .vip-cash-rebate-rules__content li:last-child {
+        padding-bottom: 0; }

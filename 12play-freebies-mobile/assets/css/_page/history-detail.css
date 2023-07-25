@@ -1,0 +1,105 @@
+.history-detail-page .navbar.fixed-top .title {
+  text-transform: capitalize; }
+
+.history-detail-page__content__container {
+  background: #000B26;
+  margin-bottom: 15px; }
+  .history-detail-page__content__container__item {
+    border: none;
+    background: transparent; }
+    .history-detail-page__content__container__item .card-header {
+      background: #19264B;
+      border-radius: 4px 4px 0px 0px;
+      padding: 0;
+      display: flex;
+      place-content: space-between;
+      place-items: center;
+      height: 26px; }
+      .history-detail-page__content__container__item .card-header .title {
+        display: flex;
+        place-content: flex-start;
+        place-items: center;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        color: #FDBB2C;
+        height: 100%; }
+        .history-detail-page__content__container__item .card-header .title span {
+          background: #FDBB2C;
+          border-radius: 4px 0px 0px 0px;
+          display: flex;
+          place-content: center;
+          place-items: center;
+          padding: 0 8px;
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 16px;
+          text-align: center;
+          color: #000000;
+          height: 100%;
+          margin-right: 15px; }
+      .history-detail-page__content__container__item .card-header .date {
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 14px;
+        text-align: right;
+        color: rgba(255, 255, 255, 0.5);
+        padding-right: 20px; }
+    .history-detail-page__content__container__item .card-body {
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-top: 0;
+      border-radius: 0 0 4px 4px;
+      background: transparent;
+      padding: 7px 15px; }
+      .history-detail-page__content__container__item .card-body .content {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        color: #FFFFFF;
+        padding-bottom: 15px; }
+      .history-detail-page__content__container__item .card-body .btn-link {
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 14px;
+        text-align: center;
+        text-decoration-line: underline;
+        color: rgba(255, 255, 255, 0.5);
+        padding-top: 0;
+        padding-bottom: 0; }
+      .history-detail-page__content__container__item .card-body .table {
+        margin-bottom: 0; }
+        .history-detail-page__content__container__item .card-body .table thead tr th {
+          background: #19264B;
+          font-weight: 400;
+          font-size: 10px;
+          line-height: 14px;
+          text-align: center;
+          color: rgba(255, 255, 255, 0.5);
+          padding-top: 5px;
+          padding-bottom: 5px;
+          vertical-align: middle; }
+        .history-detail-page__content__container__item .card-body .table tbody {
+          border-color: transparent; }
+          .history-detail-page__content__container__item .card-body .table tbody tr td {
+            font-weight: 400;
+            font-size: 10px;
+            line-height: 14px;
+            text-align: center;
+            color: #FFFFFF;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            background: rgba(255, 255, 255, 0.1); }
+            .history-detail-page__content__container__item .card-body .table tbody tr td.warning {
+              color: #FDBB2C; }
+            .history-detail-page__content__container__item .card-body .table tbody tr td.danger {
+              color: #FF0000; }
+            .history-detail-page__content__container__item .card-body .table tbody tr td .show-detail {
+              font-weight: 700;
+              font-size: 12px;
+              line-height: 16px;
+              text-decoration-line: underline;
+              color: #FFFFFF; }
+          .history-detail-page__content__container__item .card-body .table tbody tr:first-child td {
+            background: rgba(255, 255, 255, 0.06); }
+          .history-detail-page__content__container__item .card-body .table tbody tr:nth-child(4n) td {
+            background: rgba(255, 255, 255, 0.06); }
