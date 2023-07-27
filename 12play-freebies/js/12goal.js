@@ -46,30 +46,30 @@ englishQuestion = [
 ];
 
 getSiteDomain = async () => {
-  SITE_COUNTRY = location.pathname.startsWith('/my') ? 'MY' : 'SG';
-  SITE_DOMAIN = window.location.origin;
+  // SITE_COUNTRY = location.pathname.startsWith('/my') ? 'MY' : 'SG';
+  // SITE_DOMAIN = window.location.origin;
 
-  // const response = await fetch(`${API_URL}/api/user/http-referral?country=${country}&t=${new Date().getTime()}`, getRequestHeaders());
-  // const res = await response.json();
-  // if (!res || !res.httpReferral) {
-  //   if (country === 'MY') {
-  //     let previousURL = 'https://www.12play15.com/my';
-  //     SITE_DOMAIN = new URL(previousURL).origin;
-  //     SITE_COUNTRY = "MY";
-  //   } else {
-  //     let previousURL = 'https://www.12play14.com/sg';
-  //     SITE_DOMAIN = new URL(previousURL).origin;
-  //     SITE_COUNTRY = "SG";
-  //   }
-  // } else {
-  //   let previousURL = res.httpReferral;
-  //   SITE_DOMAIN = new URL(previousURL).origin;
-  //   if (previousURL.includes("/my")) {
-  //     SITE_COUNTRY = "MY";
-  //   } else {
-  //     SITE_COUNTRY = "SG";
-  //   }
-  // }
+  const response = await fetch(`${API_URL}/api/user/http-referral?country=${country}&t=${new Date().getTime()}`, getRequestHeaders());
+  const res = await response.json();
+  if (!res || !res.httpReferral) {
+    if (country === 'MY') {
+      let previousURL = 'https://www.12play15.com/my';
+      SITE_DOMAIN = new URL(previousURL).origin;
+      SITE_COUNTRY = "MY";
+    } else {
+      let previousURL = 'https://www.12play14.com/sg';
+      SITE_DOMAIN = new URL(previousURL).origin;
+      SITE_COUNTRY = "SG";
+    }
+  } else {
+    let previousURL = res.httpReferral;
+    SITE_DOMAIN = new URL(previousURL).origin;
+    if (previousURL.includes("/my")) {
+      SITE_COUNTRY = "MY";
+    } else {
+      SITE_COUNTRY = "SG";
+    }
+  }
 }
 
 getRequestHeaders = (additonalHeaders) => {
