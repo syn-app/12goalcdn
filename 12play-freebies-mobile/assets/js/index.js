@@ -1,6 +1,6 @@
 const USER_KEY = "userData";
 const KEY_TS = "timestamp";
-const API_URL = location.hostname === "127.0.0.1" ? "https://localhost:7293" : `${location.origin}:2083`;
+const API_URL = location.hostname === "127.0.0.1" ? "https://localhost:7293" : `${location.origin}`;
 
 var SITE_COUNTRY = "MY";
 var SITE_DOMAIN = "";
@@ -22,31 +22,31 @@ loadHowToPlay = () => {
 }
 
 getSiteDomain = async () => {
-  // SITE_COUNTRY = location.pathname.startsWith('/my') ? 'MY' : 'SG';
-  // SITE_DOMAIN = window.location.origin;
+  SITE_COUNTRY = location.pathname.startsWith('/my') ? 'MY' : 'SG';
+  SITE_DOMAIN = window.location.origin;
 
-  let country = location.pathname.startsWith('/my') ? 'MY' : 'SG';
-  const response = await fetch(`${API_URL}/api/user/http-referral?country=${country}&t=${new Date().getTime()}`, getRequestHeaders());
-  const res = await response.json();
-  if (!res || !res.httpReferral) {
-    if (country === 'MY') {
-      let previousURL = 'https://www.12play15.com/my';
-      SITE_DOMAIN = new URL(previousURL).origin;
-      SITE_COUNTRY = "MY";
-    } else {
-      let previousURL = 'https://www.12play14.com/sg';
-      SITE_DOMAIN = new URL(previousURL).origin;
-      SITE_COUNTRY = "SG";
-    }
-  } else {
-    let previousURL = res.httpReferral;
-    SITE_DOMAIN = new URL(previousURL).origin;
-    if (previousURL.includes("/my")) {
-      SITE_COUNTRY = "MY";
-    } else {
-      SITE_COUNTRY = "SG";
-    }
-  }
+  // let country = location.pathname.startsWith('/my') ? 'MY' : 'SG';
+  // const response = await fetch(`${API_URL}/12goalapi/user/http-referral?country=${country}&t=${new Date().getTime()}`, getRequestHeaders());
+  // const res = await response.json();
+  // if (!res || !res.httpReferral) {
+  //   if (country === 'MY') {
+  //     let previousURL = 'https://www.12play15.com/my';
+  //     SITE_DOMAIN = new URL(previousURL).origin;
+  //     SITE_COUNTRY = "MY";
+  //   } else {
+  //     let previousURL = 'https://www.12play14.com/sg';
+  //     SITE_DOMAIN = new URL(previousURL).origin;
+  //     SITE_COUNTRY = "SG";
+  //   }
+  // } else {
+  //   let previousURL = res.httpReferral;
+  //   SITE_DOMAIN = new URL(previousURL).origin;
+  //   if (previousURL.includes("/my")) {
+  //     SITE_COUNTRY = "MY";
+  //   } else {
+  //     SITE_COUNTRY = "SG";
+  //   }
+  // }
 
   loadHowToPlay();
   $('.currencyText').text(SITE_COUNTRY === 'MY' ? 'MYR' : 'SGD');
@@ -59,8 +59,8 @@ setSiteBarMenu = () => {
   <div class="sidebarFunctionIcon">
     <img
       class="ls-is-cached lazyloaded"
-      data-src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/assets/images/menu-icon/home_menu_icon.png"
-      src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/assets/images/menu-icon/home_menu_icon.png"
+      data-src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/assets/images/menu-icon/home_menu_icon.png"
+      src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/assets/images/menu-icon/home_menu_icon.png"
     />
   </div>
   <div class="sidebarFunctionText">
@@ -73,7 +73,7 @@ setSiteBarMenu = () => {
   style="display: none"
 >
   <div class="sidebarFunctionIcon">
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/assets/images/menu-icon/login_join_menu_icon.png" />
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/assets/images/menu-icon/login_join_menu_icon.png" />
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold" key="sidebar-account">${translator.translateForKey("menu.account")}</span>
@@ -85,7 +85,7 @@ setSiteBarMenu = () => {
   style="display: none"
 >
   <div class="sidebarFunctionIcon">
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/assets/images/menu-icon/wallet_menu_button.png" />
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/assets/images/menu-icon/wallet_menu_button.png" />
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold" key="sidebar-wallet">${translator.translateForKey("menu.wallet")}</span>
@@ -97,7 +97,7 @@ setSiteBarMenu = () => {
   style="display: none"
 >
   <div class="sidebarFunctionIcon">
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/assets/images/menu-icon/inbox_menu_button.png" />
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/assets/images/menu-icon/inbox_menu_button.png" />
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold" key="sidebar-inbox">${translator.translateForKey("menu.inbox")}</span>
@@ -106,7 +106,7 @@ setSiteBarMenu = () => {
 
 <a href='${domain}promotion.html'">
   <div class="sidebarFunctionIcon">
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/assets/images/menu-icon/promo.png" />
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/assets/images/menu-icon/promo.png" />
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold" key="sidebar-promo">${translator.translateForKey("menu.promotion")}</span>
@@ -114,7 +114,7 @@ setSiteBarMenu = () => {
 </a>
 <a href='${domain}vip.html'">
   <div class="sidebarFunctionIcon">
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/assets/images/menu-icon/vip_menu_icon.png" />
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/assets/images/menu-icon/vip_menu_icon.png" />
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold" key="vip">VIP</span>
@@ -123,32 +123,32 @@ setSiteBarMenu = () => {
 <a href='${domain}fortune-spin.html'" class="">
   <div class="sidebarFunctionIcon">
     <img
-      src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/assets/images/menu-icon/12_slot_menu_icon.png"
+      src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/assets/images/menu-icon/12_slot_menu_icon.png"
       alt="Malaysia Casino Online Slot Menu Icon"
       style="width: 58%"
     />
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold" key="12slot">12Lottery</span>
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/assets/images/menu-icon/hot.png" alt="" class="menu-flag" style="height: 15px;">
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/assets/images/menu-icon/hot.png" alt="" class="menu-flag" style="height: 15px;">
   </div>
 </a>
 <a href='${domain}goal12.html'" class="">
   <div class="sidebarFunctionIcon">
     <img
-      src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/assets/images/menu-icon/12_goal_menu_icon.png"
+      src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/assets/images/menu-icon/12_goal_menu_icon.png"
       alt="Malaysia Casino Online Slot Menu Icon"
       style="width: 58%"
     />
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold" key="12slot">12Goal</span>
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/assets/images/menu-icon/new.png" alt="" class="menu-flag" style="height: 15px;">
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/assets/images/menu-icon/new.png" alt="" class="menu-flag" style="height: 15px;">
   </div>
 </a>
 <a onclick="window.location = 'https://12playlive.com/${SITE_COUNTRY.toLowerCase()}/'">
   <div class="sidebarFunctionIcon">
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/assets/images/menu-icon/live-icon.png" />
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/assets/images/menu-icon/live-icon.png" />
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold" key="e-sport-live"
@@ -159,7 +159,7 @@ setSiteBarMenu = () => {
 <a href='${domain}download-app.html'">
   <div class="sidebarFunctionIcon">
     <img
-      src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/assets/images/menu-icon/download_menu_icon.png"
+      src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/assets/images/menu-icon/download_menu_icon.png"
       alt="Malaysia Casino Online Slot Menu Icon"
       style="width: 65%"
     />
@@ -172,7 +172,7 @@ setSiteBarMenu = () => {
 </a>
 <a href='${domain}contact-us.html'">
   <div class="sidebarFunctionIcon">
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/assets/images/menu-icon/live_chat_menu_icon.png" />
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/assets/images/menu-icon/live_chat_menu_icon.png" />
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold" key="sidebar-contactus"
@@ -182,7 +182,7 @@ setSiteBarMenu = () => {
 </a>
 <a href='${domain}blog.html'">
   <div class="sidebarFunctionIcon">
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/assets/images/menu-icon/info_menu_icon.png" />
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/assets/images/menu-icon/info_menu_icon.png" />
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold" key="sidebar-blog">${translator.translateForKey("menu.info")}</span>
@@ -190,7 +190,7 @@ setSiteBarMenu = () => {
 </a>
 <div class="regionChg">
   <div class="sidebarFunctionIcon">
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/assets/images/menu-icon/language_menu_icon.png" />
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/assets/images/menu-icon/language_menu_icon.png" />
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold" key="sidebar-regionlang"
@@ -199,7 +199,7 @@ setSiteBarMenu = () => {
   </div>
 </div>`;
   $("#sidebardiv").append(menu);
-  $("#regionOverlay").load(`https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/region-language.html`);
+  $("#regionOverlay").load(`https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/region-language.html`);
   $(".regionChg").click(function () {
     $("#regionChangeModal").show();
   });
@@ -217,7 +217,7 @@ getRequestHeaders = (additonalHeaders) => {
 };
 
 fetchSiteInfo = () => {
-  fetch(`${API_URL}/api/site-info/detail-by-name?siteName=${SITE_COUNTRY === "MY" ? '12M' : '12S'}&t=${new Date().getTime()}`, getRequestHeaders())
+  fetch(`${API_URL}/12goalapi/site-info/detail-by-name?siteName=${SITE_COUNTRY === "MY" ? '12M' : '12S'}&t=${new Date().getTime()}`, getRequestHeaders())
     .then((response) => response.json())
     .then((res) => {
       if (res.currency && res.prizePool) {
@@ -279,7 +279,7 @@ fetchCurrentQuiz = () => {
     new Date().setDate(new Date().getDate() + 2),
   ).toISOString();
   fetch(
-    `${API_URL}/api/freebies-game?startTime=${now}&endTime=${endDate}&country=${SITE_COUNTRY}&sortName=MatchDate&ascend=true&t=${new Date().getTime()}`,
+    `${API_URL}/12goalapi/freebies-game?startTime=${now}&endTime=${endDate}&country=${SITE_COUNTRY}&sortName=MatchDate&ascend=true&t=${new Date().getTime()}`,
     getRequestHeaders(),
   )
     .then((response) => response.json())
@@ -402,7 +402,7 @@ fetchCurrentQuiz = () => {
               },
             ];
             fetch(
-              `${API_URL}/api/freebies-game-play/detail?freebiesGameId=${freebiesGameId}&t=${new Date().getTime()}`,
+              `${API_URL}/12goalapi/freebies-game-play/detail?freebiesGameId=${freebiesGameId}&t=${new Date().getTime()}`,
               getRequestHeaders(),
             )
               .then((response) => response.json())
@@ -534,7 +534,7 @@ fetchCurrentQuiz = () => {
         };
         $("#predictSubmit").removeClass("active");
         $("#currentPredictConfirm .confirmClaim").addClass('disabled');
-        fetch(`${API_URL}/api/freebies-game-play`, {
+        fetch(`${API_URL}/12goalapi/freebies-game-play`, {
           body: JSON.stringify(data),
           method: "POST",
           ...getRequestHeaders(),
@@ -570,7 +570,7 @@ claimedPrize = (freebiesGamePlayId) => {
   const data = {
     freebiesGamePlayId: +freebiesGamePlayId,
   };
-  fetch(`${API_URL}/api/claimed-prize`, {
+  fetch(`${API_URL}/12goalapi/claimed-prize`, {
     body: JSON.stringify(data),
     method: "POST",
     ...getRequestHeaders(),
@@ -605,7 +605,7 @@ fetchPrevQuiz = () => {
       options: ["0-6", "7-8", "9-10", "11-12", "13+"],
     },
   ];
-  fetch(`${API_URL}/api/freebies-game-play?t=${new Date().getTime()}`, getRequestHeaders())
+  fetch(`${API_URL}/12goalapi/freebies-game-play?t=${new Date().getTime()}`, getRequestHeaders())
     .then((response) => response.json())
     .then((res) => {
       let prevQuiz = res.map((item) => ({
@@ -678,8 +678,8 @@ fetchPrevQuiz = () => {
           <ul class="matchs-questions">
             <li class="matchs-questions-item">
               <img src=${prevQuiz[i].ansOneStatus === "Wrong"
-            ? "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/assets/icons/close.svg"
-            : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/assets/icons/check.svg"
+            ? "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/assets/icons/close.svg"
+            : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/assets/icons/check.svg"
           } />
               <div class="matchs-questions-item__content" style="text-align: left">
                 <div
@@ -698,8 +698,8 @@ fetchPrevQuiz = () => {
             </li>
             <li class="matchs-questions-item">
               <img src=${prevQuiz[i].ansTwoStatus === "Wrong"
-            ? "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/assets/icons/close.svg"
-            : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/assets/icons/check.svg"
+            ? "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/assets/icons/close.svg"
+            : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/assets/icons/check.svg"
           } />
               <div class="matchs-questions-item__content" style="text-align: left">
                 <div
@@ -716,8 +716,8 @@ fetchPrevQuiz = () => {
             </li>
             <li class="matchs-questions-item">
               <img src=${prevQuiz[i].ansThreeStatus === "Wrong"
-            ? "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/assets/icons/close.svg"
-            : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/assets/icons/check.svg"
+            ? "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/assets/icons/close.svg"
+            : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/assets/icons/check.svg"
           } />
               <div class="matchs-questions-item__content" style="text-align: left">
                 <div
@@ -735,8 +735,8 @@ fetchPrevQuiz = () => {
             </li>
             <li class="matchs-questions-item">
               <img src=${prevQuiz[i].ansFourStatus === "Wrong"
-            ? "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/assets/icons/close.svg"
-            : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies-mobile/assets/icons/check.svg"
+            ? "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/assets/icons/close.svg"
+            : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies-mobile/assets/icons/check.svg"
           } />
               <div class="matchs-questions-item__content" style="text-align: left">
                 <div
@@ -826,7 +826,7 @@ fetchPrevQuiz = () => {
 };
 
 fetchUserRankReport = () => {
-  fetch(`${API_URL}/api/user/ranking-report?t=${new Date().getTime()}`, getRequestHeaders())
+  fetch(`${API_URL}/12goalapi/user/ranking-report?t=${new Date().getTime()}`, getRequestHeaders())
     .then((response) => response.json())
     .then((res) => {
       $("#totalPoint").append(res.totalPoints);
@@ -835,7 +835,7 @@ fetchUserRankReport = () => {
 };
 
 fetchUserBalanceTickets = () => {
-  fetch(`${API_URL}/api/user/balance-tickets?t=${new Date().getTime()}`, getRequestHeaders())
+  fetch(`${API_URL}/12goalapi/user/balance-tickets?t=${new Date().getTime()}`, getRequestHeaders())
     .then((response) => response.json())
     .then((res) => {
       $("#ticketBalance").html(res.balanceTickets);
@@ -844,7 +844,7 @@ fetchUserBalanceTickets = () => {
 
 fetchLeaderBoardRanking = () => {
   fetch(
-    `${API_URL}/api/user/top-50-ranking-report?country=${SITE_COUNTRY}&t=${new Date().getTime()}`, getRequestHeaders()
+    `${API_URL}/12goalapi/user/top-50-ranking-report?country=${SITE_COUNTRY}&t=${new Date().getTime()}`, getRequestHeaders()
   )
     .then((response) => response.json())
     .then((res) => {

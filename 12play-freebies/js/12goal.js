@@ -1,6 +1,6 @@
 const USER_KEY = "userData";
 const KEY_TS = "timestamp";
-const API_URL = location.hostname === "127.0.0.1" ? "https://localhost:7293" : `${location.origin}:2083`;
+const API_URL = location.hostname === "127.0.0.1" ? "https://localhost:7293" : `${location.origin}`;
 
 var SITE_COUNTRY = "MY";
 var SITE_DOMAIN = "";
@@ -46,31 +46,31 @@ englishQuestion = [
 ];
 
 getSiteDomain = async () => {
-  // SITE_COUNTRY = location.pathname.startsWith('/my') ? 'MY' : 'SG';
-  // SITE_DOMAIN = window.location.origin;
+  SITE_COUNTRY = location.pathname.startsWith('/my') ? 'MY' : 'SG';
+  SITE_DOMAIN = window.location.origin;
 
-  let country = location.pathname.startsWith('/my') ? 'MY' : 'SG';
-  const response = await fetch(`${API_URL}/api/user/http-referral?country=${country}&t=${new Date().getTime()}`, getRequestHeaders());
-  const res = await response.json();
-  if (!res || !res.httpReferral) {
-    if (country === 'MY') {
-      let previousURL = 'https://www.12play15.com/my';
-      SITE_DOMAIN = new URL(previousURL).origin;
-      SITE_COUNTRY = "MY";
-    } else {
-      let previousURL = 'https://www.12play14.com/sg';
-      SITE_DOMAIN = new URL(previousURL).origin;
-      SITE_COUNTRY = "SG";
-    }
-  } else {
-    let previousURL = res.httpReferral;
-    SITE_DOMAIN = new URL(previousURL).origin;
-    if (previousURL.includes("/my")) {
-      SITE_COUNTRY = "MY";
-    } else {
-      SITE_COUNTRY = "SG";
-    }
-  }
+  // let country = location.pathname.startsWith('/my') ? 'MY' : 'SG';
+  // const response = await fetch(`${API_URL}/12goalapi/user/http-referral?country=${country}&t=${new Date().getTime()}`, getRequestHeaders());
+  // const res = await response.json();
+  // if (!res || !res.httpReferral) {
+  //   if (country === 'MY') {
+  //     let previousURL = 'https://www.12play15.com/my';
+  //     SITE_DOMAIN = new URL(previousURL).origin;
+  //     SITE_COUNTRY = "MY";
+  //   } else {
+  //     let previousURL = 'https://www.12play14.com/sg';
+  //     SITE_DOMAIN = new URL(previousURL).origin;
+  //     SITE_COUNTRY = "SG";
+  //   }
+  // } else {
+  //   let previousURL = res.httpReferral;
+  //   SITE_DOMAIN = new URL(previousURL).origin;
+  //   if (previousURL.includes("/my")) {
+  //     SITE_COUNTRY = "MY";
+  //   } else {
+  //     SITE_COUNTRY = "SG";
+  //   }
+  // }
 }
 
 getRequestHeaders = (additonalHeaders) => {
@@ -85,7 +85,7 @@ getRequestHeaders = (additonalHeaders) => {
 }
 
 fetchSiteInfo = () => {
-  fetch(`${API_URL}/api/site-info/detail-by-name?siteName=${SITE_COUNTRY === "MY" ? '12M' : '12S'}&t=${new Date().getTime()}`, getRequestHeaders())
+  fetch(`${API_URL}/12goalapi/site-info/detail-by-name?siteName=${SITE_COUNTRY === "MY" ? '12M' : '12S'}&t=${new Date().getTime()}`, getRequestHeaders())
     .then((response) => response.json())
     .then((res) => {
       if (res.currency && res.prizePool) {
@@ -152,7 +152,7 @@ getUserData = () => {
 fetchCurrentQuiz = () => {
   const now = new Date().toISOString();
   const endDate = new Date(new Date().setDate(new Date().getDate() + 2)).toISOString();
-  fetch(`${API_URL}/api/freebies-game?startTime=${now}&endTime=${endDate}&country=${SITE_COUNTRY}&sortName=MatchDate&ascend=true&t=${new Date().getTime()}`, getRequestHeaders())
+  fetch(`${API_URL}/12goalapi/freebies-game?startTime=${now}&endTime=${endDate}&country=${SITE_COUNTRY}&sortName=MatchDate&ascend=true&t=${new Date().getTime()}`, getRequestHeaders())
     .then((response) => response.json())
     .then((res) => {
       let currentQuiz = [];
@@ -247,7 +247,7 @@ fetchCurrentQuiz = () => {
             let option3 = freebiesGame.option3;
             freebiesGameId = freebiesGame.freebiesGameId;
             let current_quiz;
-            fetch(`${API_URL}/api/freebies-game-play/detail?freebiesGameId=${freebiesGameId}&t=${new Date().getTime()}`, getRequestHeaders())
+            fetch(`${API_URL}/12goalapi/freebies-game-play/detail?freebiesGameId=${freebiesGameId}&t=${new Date().getTime()}`, getRequestHeaders())
               .then((response) => response.json())
               .then((res) => {
                 answerOfQuestion1 = [option1, option2, option3];
@@ -354,7 +354,7 @@ fetchCurrentQuiz = () => {
           };
           $("#predictSubmit").removeClass("active");
           $("#currentPredictConfirm .confirmClaim").addClass('disabled');
-          fetch(`${API_URL}/api/freebies-game-play`, {
+          fetch(`${API_URL}/12goalapi/freebies-game-play`, {
             body: JSON.stringify(data),
             method: 'POST',
             ...getRequestHeaders()
@@ -392,7 +392,7 @@ claimedPrize = (freebiesGamePlayId) => {
   const data = {
     freebiesGamePlayId: +freebiesGamePlayId
   };
-  fetch(`${API_URL}/api/claimed-prize`, {
+  fetch(`${API_URL}/12goalapi/claimed-prize`, {
     body: JSON.stringify(data),
     method: "POST",
     ...getRequestHeaders()
@@ -409,7 +409,7 @@ claimedPrize = (freebiesGamePlayId) => {
 }
 
 fetchPrevQuiz = () => {
-  fetch(`${API_URL}/api/freebies-game-play?t=${new Date().getTime()}`, getRequestHeaders())
+  fetch(`${API_URL}/12goalapi/freebies-game-play?t=${new Date().getTime()}`, getRequestHeaders())
     .then((response) => response.json())
     .then((res) => {
       let prevQuiz = res.map((item) => ({
@@ -592,7 +592,7 @@ fetchPrevQuiz = () => {
 };
 
 fetchUserRankReport = () => {
-  fetch(`${API_URL}/api/user/ranking-report?t=${new Date().getTime()}`, getRequestHeaders())
+  fetch(`${API_URL}/12goalapi/user/ranking-report?t=${new Date().getTime()}`, getRequestHeaders())
     .then((response) => response.json())
     .then(res => {
       if (siteLang === 'en') {
@@ -605,7 +605,7 @@ fetchUserRankReport = () => {
 }
 
 fetchUserBalanceTickets = () => {
-  fetch(`${API_URL}/api/user/balance-tickets?t=${new Date().getTime()}`, getRequestHeaders())
+  fetch(`${API_URL}/12goalapi/user/balance-tickets?t=${new Date().getTime()}`, getRequestHeaders())
     .then((response) => response.json())
     .then(res => {
       $("#ticketbalance").html(res.balanceTickets);
@@ -666,7 +666,7 @@ setupClockCountDown = () => {
 
 fetchLeaderBoardRanking = () => {
   fetch(
-    `${API_URL}/api/user/top-50-ranking-report?country=${SITE_COUNTRY}&t=${new Date().getTime()}`, getRequestHeaders()
+    `${API_URL}/12goalapi/user/top-50-ranking-report?country=${SITE_COUNTRY}&t=${new Date().getTime()}`, getRequestHeaders()
   )
     .then((response) => response.json())
     .then((res) => {
@@ -705,13 +705,13 @@ fetchLeaderBoardRanking = () => {
 $(document).ready(async function () {
   getSiteLanguage();
   await getSiteDomain();
-  $("#header").load(`https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${siteLang}/header.html`, function () {
+  $("#header").load(`https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${siteLang}/header.html`, function () {
     $("#4dBtn").addClass("active"); //highlight the nav item
   });
-  $("#footer").load(`https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${siteLang}/footer.html`, function () {
+  $("#footer").load(`https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${siteLang}/footer.html`, function () {
     // $("#4dFooterBtn").addClass("active"); //highlight the nav item
   });
-  $("#stickySideBtn").load(`https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.4/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${siteLang}/sticky-side-button.html`);
+  $("#stickySideBtn").load(`https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${siteLang}/sticky-side-button.html`);
   if (siteLang === 'en') {
     listQuestion = structuredClone(englishQuestion);
   } else {
