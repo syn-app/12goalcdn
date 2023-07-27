@@ -705,13 +705,14 @@ fetchLeaderBoardRanking = () => {
 $(document).ready(async function () {
   getSiteLanguage();
   await getSiteDomain();
-  $("#header").load(`https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${siteLang}/header.html`, function () {
+  const folder = siteLang === 'en' ? 'en' : 'chs';
+  $("#header").load(`https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.6/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${folder}/header.html`, function () {
     $("#4dBtn").addClass("active"); //highlight the nav item
   });
-  $("#footer").load(`https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${siteLang}/footer.html`, function () {
+  $("#footer").load(`https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.6/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${folder}/footer.html`, function () {
     // $("#4dFooterBtn").addClass("active"); //highlight the nav item
   });
-  $("#stickySideBtn").load(`https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.5/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${siteLang}/sticky-side-button.html`);
+  $("#stickySideBtn").load(`https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.6/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${folder}/sticky-side-button.html`);
   if (siteLang === 'en') {
     listQuestion = structuredClone(englishQuestion);
   } else {
