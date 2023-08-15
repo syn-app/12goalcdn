@@ -942,7 +942,6 @@ $(document).ready(async function () {
   }
   getUserData();
   await getSiteDomain();
-  setSiteBarMenu();
   const userData = localStorage.getItem(USER_KEY);
   if (!userData) {
     $("#previous-tab").css("display", "none");
@@ -954,4 +953,8 @@ $(document).ready(async function () {
   fetchLeaderBoardRanking();
   fetchPrevQuiz();
   fetchSiteInfo();
+
+  setTimeout(() => {
+    setSiteBarMenu();
+  })
 });
