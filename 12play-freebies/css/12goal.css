@@ -647,3 +647,7 @@ padding: 8px;
     opacity: .5;
     pointer-events: none;
 }
+
+.navbar-brand-logo {
+    margin: auto!important;
+}
