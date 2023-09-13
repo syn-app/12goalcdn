@@ -14,7 +14,7 @@ var translator = new Translator({
   registerGlobally: "__",
   persist: true,
   persistKey: "preferred_language",
-  filesLocation: "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.8/12play-freebies-mobile/assets/i18n",
+  filesLocation: "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.9/12play-freebies-mobile/assets/i18n",
 });
 
 const PREFERED_REGION = 'preferred_region';
@@ -127,17 +127,17 @@ function changeLanguageColor () {
 
 
 
-$(document).ready(function () {
-  $(".top-slider").slick({
-    dots: true,
-    infinite: true,
-    arrows: false,
-    speed: 500,
-    lazyLoad: 'ondemand',
-    fade: true,
-    // cssEase: "linear",
-  });
-});
+// $(document).ready(function () {
+//   $(".top-slider").slick({
+//     dots: true,
+//     infinite: true,
+//     arrows: false,
+//     speed: 500,
+//     lazyLoad: 'ondemand',
+//     fade: true,
+//     // cssEase: "linear",
+//   });
+// });
 
 
 
@@ -159,29 +159,31 @@ function initialize () {
     var outOfTicketsModal = new bootstrap.Modal(outOfTicketsModalElm, {});
   }
 
+  if (typeof $("#predictForm").validate === 'function')
+  {
+    $("#predictForm").validate({
+      rules: {
+        // answer1: "required",
+        // answer2: "required",
+        // answer3: "required",
+        // answer4: "required",
+      },
+      messages: {
+      //   amount_SGD: {
+      //     required: translator.translateForKey('deposit_page.Amount_SGD_required', _get_language),
+      //     min: translator.translateForKey('deposit_page.Amount_SGD_required_min', _get_language)
+      //   },
+      //   select_bank: translator.translateForKey('deposit_page.Please_select_one', _get_language),
+      },
+      submitHandler: function(form) {
+        console.log('==-=-', form)
+        predictConfirmModal.show()
+        // window.location.href = '/thank-you.html'
 
-  $("#predictForm").validate({
-    rules: {
-      // answer1: "required",
-      // answer2: "required",
-      // answer3: "required",
-      // answer4: "required",
-    },
-    messages: {
-    //   amount_SGD: {
-    //     required: translator.translateForKey('deposit_page.Amount_SGD_required', _get_language),
-    //     min: translator.translateForKey('deposit_page.Amount_SGD_required_min', _get_language)
-    //   },
-    //   select_bank: translator.translateForKey('deposit_page.Please_select_one', _get_language),
-    },
-    submitHandler: function(form) {
-      console.log('==-=-', form)
-      predictConfirmModal.show()
-      // window.location.href = '/thank-you.html'
-
-      // depositSuccessModal.show()
-    }
-  });
+        // depositSuccessModal.show()
+      }
+    });
+  }
 
   $('#predictForm input').on('change', function() {
     const predictForm = $("#predictForm").serializeArray();

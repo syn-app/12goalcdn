@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $("#regionOverlay").load("https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.8/12play-freebies-mobile/region-language.html");
+  $("#regionOverlay").load("https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.9/12play-freebies-mobile/region-language.html");
   $(".regionChg").click(function () {
     $("#regionChangeModal").show();
   });
@@ -9,7 +9,7 @@ $(document).ready(function () {
       localStorage.getItem("lang") != "cn")
   )
     localStorage.lang = "en";
-  changeText(localStorage["lang"], false);
+  // changeText(localStorage["lang"], false);
   if (localStorage["login"] == "true") {
     $(".sidebar-Logout").each(function () {
       $(this).hide();
@@ -19,24 +19,24 @@ $(document).ready(function () {
       $(this).hide();
     });
   }
-  $(".chgLang").click(function () {
-    var lang = "en";
-    if (localStorage["lang"] == "en") lang = "cn";
-    localStorage["lang"] = lang;
-    changeText(lang);
-  });
+  // $(".chgLang").click(function () {
+  //   var lang = "en";
+  //   if (localStorage["lang"] == "en") lang = "cn";
+  //   localStorage["lang"] = lang;
+  //   changeText(lang);
+  // });
   // switch night mode / light mode text on sidebar
-  if (localStorage.mode == "light") {
-    document.getElementById("night-mode").style.display = "inline-block";
-    document.getElementById("light-mode").style.display = "none";
-    document.getElementById("light-mode-img").style.display = "none";
-    document.getElementById("night-mode-img").style.display = "inline-block";
-  } else {
-    document.getElementById("night-mode").style.display = "none";
-    document.getElementById("light-mode").style.display = "inline-block";
-    document.getElementById("light-mode-img").style.display = "inline-block";
-    document.getElementById("night-mode-img").style.display = "none";
-  }
+  // if (localStorage.mode == "light") {
+  //   document.getElementById("night-mode").style.display = "inline-block";
+  //   document.getElementById("light-mode").style.display = "none";
+  //   document.getElementById("light-mode-img").style.display = "none";
+  //   document.getElementById("night-mode-img").style.display = "inline-block";
+  // } else {
+  //   document.getElementById("night-mode").style.display = "none";
+  //   document.getElementById("light-mode").style.display = "inline-block";
+  //   document.getElementById("light-mode-img").style.display = "inline-block";
+  //   document.getElementById("night-mode-img").style.display = "none";
+  // }
   // toggle light/dark mode
   $(".chgMode").click(function (e) {
     var mode = "light";
