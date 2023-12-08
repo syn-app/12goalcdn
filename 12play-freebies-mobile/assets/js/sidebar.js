@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $("#regionOverlay").load("https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/region-language.html");
+  $("#regionOverlay").load("https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.13/12play-freebies-mobile/region-language.html");
   $(".regionChg").click(function () {
     $("#regionChangeModal").show();
   });
