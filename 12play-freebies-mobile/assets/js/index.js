@@ -79,7 +79,7 @@ setSiteBarMenu = () => {
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold ${textClass}" key="12slot">12Ranking</span>
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/images/menu-icon/new.png" alt="" class="menu-flag" style="height: 15px;">
+    <img src="https://93hdy12py.cloudcdnetw.com/12pv2/m/images/hot.png" alt="" class="menu-flag" style="height: 15px;">
   </div>
 </a>
 <a href='${domain}fortune-spin.html'" class="">
@@ -92,7 +92,7 @@ setSiteBarMenu = () => {
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold ${textClass}" key="12slot">12Lottery</span>
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/images/menu-icon/new.png" alt="" class="menu-flag" style="height: 15px;">
+    <img src="https://93hdy12py.cloudcdnetw.com/12pv2/m/images/hot.png" alt="" class="menu-flag" style="height: 15px;">
   </div>
 </a>
 <a href='${domain}goal12.html'" class="">
@@ -105,7 +105,7 @@ setSiteBarMenu = () => {
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold ${textClass}" key="12slot">12Goal</span>
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/images/menu-icon/new.png" alt="" class="menu-flag" style="height: 15px;">
+    <img src="https://93hdy12py.cloudcdnetw.com/12pv2/m/images/hot.png" alt="" class="menu-flag" style="height: 15px;">
   </div>
 </a>
 <a href='${domain}index.html'">
