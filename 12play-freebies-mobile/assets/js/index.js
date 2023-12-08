@@ -56,6 +56,19 @@ setSiteBarMenu = () => {
   const domain = `${SITE_DOMAIN}/${SITE_COUNTRY.toLowerCase()}/`;
   const textClass = localStorage["preferred_language"] === "en"? "" : "lang-cn-bold";
   const menu = `
+<a href='${domain}minigame.html'" class="">
+  <div class="sidebarFunctionIcon">
+    <img
+      src="https://93hdy12py.cloudcdnetw.com/12pv2/m/images/minigames/anniversary2023/ann-icon.png"
+      alt="12 ANNIVERSARY"
+      style="width: 58%"
+    />
+  </div>
+  <div class="sidebarFunctionText">
+    <span class="lang-bold ${textClass}" key="12slot">12ANNIVERSARY</span>
+    <img src="https://93hdy12py.cloudcdnetw.com/12pv2/m/images/new.png" alt="Hot Game-12Lottery" class="menu-flag" style="height: 15px;">
+  </div>
+</a>
 <a href='${domain}12ranking.html'" class="">
   <div class="sidebarFunctionIcon">
     <img
