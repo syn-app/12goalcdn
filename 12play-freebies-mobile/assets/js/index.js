@@ -59,48 +59,48 @@ setSiteBarMenu = () => {
 <a href='${domain}12ranking.html'" class="">
   <div class="sidebarFunctionIcon">
     <img
-      src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/images/menu-icon/12ranking-icon.png"
+      src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/images/menu-icon/12ranking-icon.png"
       alt="Malaysia Casino Online Slot Menu Icon"
       style="width: 58%"
     />
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold ${textClass}" key="12slot">12Ranking</span>
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/images/menu-icon/new.png" alt="" class="menu-flag" style="height: 15px;">
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/images/menu-icon/new.png" alt="" class="menu-flag" style="height: 15px;">
   </div>
 </a>
 <a href='${domain}fortune-spin.html'" class="">
   <div class="sidebarFunctionIcon">
     <img
-      src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/images/menu-icon/12_slot_menu_icon.png"
+      src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/images/menu-icon/12_slot_menu_icon.png"
       alt="Malaysia Casino Online Slot Menu Icon"
       style="width: 58%"
     />
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold ${textClass}" key="12slot">12Lottery</span>
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/images/menu-icon/new.png" alt="" class="menu-flag" style="height: 15px;">
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/images/menu-icon/new.png" alt="" class="menu-flag" style="height: 15px;">
   </div>
 </a>
 <a href='${domain}goal12.html'" class="">
   <div class="sidebarFunctionIcon">
     <img
-      src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/images/menu-icon/12_goal_menu_icon.png"
+      src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/images/menu-icon/12_goal_menu_icon.png"
       alt="Malaysia Casino Online Slot Menu Icon"
       style="width: 58%"
     />
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold ${textClass}" key="12slot">12Goal</span>
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/images/menu-icon/new.png" alt="" class="menu-flag" style="height: 15px;">
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/images/menu-icon/new.png" alt="" class="menu-flag" style="height: 15px;">
   </div>
 </a>
 <a href='${domain}index.html'">
   <div class="sidebarFunctionIcon">
     <img
       class="ls-is-cached lazyloaded"
-      data-src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/images/menu-icon/home_menu_icon.png"
-      src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/images/menu-icon/home_menu_icon.png"
+      data-src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/images/menu-icon/home_menu_icon.png"
+      src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/images/menu-icon/home_menu_icon.png"
     />
   </div>
   <div class="sidebarFunctionText">
@@ -113,7 +113,7 @@ setSiteBarMenu = () => {
   style="display: none"
 >
   <div class="sidebarFunctionIcon">
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/images/menu-icon/login_join_menu_icon.png" />
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/images/menu-icon/login_join_menu_icon.png" />
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold ${textClass}" key="sidebar-account">${translator.translateForKey("menu.account")}</span>
@@ -125,7 +125,7 @@ setSiteBarMenu = () => {
   style="display: none"
 >
   <div class="sidebarFunctionIcon">
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/images/menu-icon/wallet_menu_button.png" />
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/images/menu-icon/wallet_menu_button.png" />
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold ${textClass}" key="sidebar-wallet">${translator.translateForKey("menu.wallet")}</span>
@@ -137,7 +137,7 @@ setSiteBarMenu = () => {
   style="display: none"
 >
   <div class="sidebarFunctionIcon">
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/images/menu-icon/inbox_menu_button.png" />
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/images/menu-icon/inbox_menu_button.png" />
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold ${textClass}" key="sidebar-inbox">${translator.translateForKey("menu.inbox")}</span>
@@ -146,7 +146,7 @@ setSiteBarMenu = () => {
 
 <a href='${domain}promotion.html'">
   <div class="sidebarFunctionIcon">
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/images/menu-icon/promo.png" />
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/images/menu-icon/promo.png" />
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold ${textClass}" key="sidebar-promo">${translator.translateForKey("menu.promotion")}</span>
@@ -154,7 +154,7 @@ setSiteBarMenu = () => {
 </a>
 <a href='${domain}vip.html'">
   <div class="sidebarFunctionIcon">
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/images/menu-icon/vip_menu_icon.png" />
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/images/menu-icon/vip_menu_icon.png" />
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold ${textClass}" key="vip">VIP</span>
@@ -162,7 +162,7 @@ setSiteBarMenu = () => {
 </a>
 <a onclick="window.location = 'https://12playlive.com/${SITE_COUNTRY.toLowerCase()}/'">
   <div class="sidebarFunctionIcon">
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/images/menu-icon/live-icon.png" />
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/images/menu-icon/live-icon.png" />
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold ${textClass}" key="e-sport-live"
@@ -173,7 +173,7 @@ setSiteBarMenu = () => {
 <a href='${domain}download-app.html'">
   <div class="sidebarFunctionIcon">
     <img
-      src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/images/menu-icon/download_menu_icon.png"
+      src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/images/menu-icon/download_menu_icon.png"
       alt="Malaysia Casino Online Slot Menu Icon"
       style="width: 65%"
     />
@@ -186,7 +186,7 @@ setSiteBarMenu = () => {
 </a>
 <div class="regionChg">
   <div class="sidebarFunctionIcon">
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/images/menu-icon/language_menu_icon.png" />
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/images/menu-icon/language_menu_icon.png" />
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold ${textClass}" key="sidebar-regionlang"
@@ -196,7 +196,7 @@ setSiteBarMenu = () => {
 </div>
 <a href='${domain}contact-us.html'">
   <div class="sidebarFunctionIcon">
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/images/menu-icon/live_chat_menu_icon.png" />
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/images/menu-icon/live_chat_menu_icon.png" />
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold ${textClass}" key="sidebar-contactus"
@@ -206,7 +206,7 @@ setSiteBarMenu = () => {
 </a>
 <a href='${domain}blog.html'">
   <div class="sidebarFunctionIcon">
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/images/menu-icon/info_menu_icon.png" />
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/images/menu-icon/info_menu_icon.png" />
   </div>
   <div class="sidebarFunctionText">
     <span class="lang-bold ${textClass}" key="sidebar-blog">${translator.translateForKey("menu.info")}</span>
@@ -214,7 +214,7 @@ setSiteBarMenu = () => {
 </a>
 `;
   $("#sidebardiv").append(menu);
-  $("#regionOverlay").load(`https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/region-language.html`);
+  $("#regionOverlay").load(`https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/region-language.html`);
   $(".regionChg").click(function () {
     $("#regionChangeModal").show();
   });
@@ -693,8 +693,8 @@ fetchPrevQuiz = () => {
           <ul class="matchs-questions">
             <li class="matchs-questions-item">
               <img src=${prevQuiz[i].ansOneStatus === "Wrong"
-            ? "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/icons/close.svg"
-            : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/icons/check.svg"
+            ? "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/icons/close.svg"
+            : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/icons/check.svg"
           } />
               <div class="matchs-questions-item__content" style="text-align: left">
                 <div
@@ -713,8 +713,8 @@ fetchPrevQuiz = () => {
             </li>
             <li class="matchs-questions-item">
               <img src=${prevQuiz[i].ansTwoStatus === "Wrong"
-            ? "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/icons/close.svg"
-            : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/icons/check.svg"
+            ? "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/icons/close.svg"
+            : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/icons/check.svg"
           } />
               <div class="matchs-questions-item__content" style="text-align: left">
                 <div
@@ -731,8 +731,8 @@ fetchPrevQuiz = () => {
             </li>
             <li class="matchs-questions-item">
               <img src=${prevQuiz[i].ansThreeStatus === "Wrong"
-            ? "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/icons/close.svg"
-            : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/icons/check.svg"
+            ? "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/icons/close.svg"
+            : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/icons/check.svg"
           } />
               <div class="matchs-questions-item__content" style="text-align: left">
                 <div
@@ -750,8 +750,8 @@ fetchPrevQuiz = () => {
             </li>
             <li class="matchs-questions-item">
               <img src=${prevQuiz[i].ansFourStatus === "Wrong"
-            ? "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/icons/close.svg"
-            : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.12/12play-freebies-mobile/assets/icons/check.svg"
+            ? "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/icons/close.svg"
+            : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/icons/check.svg"
           } />
               <div class="matchs-questions-item__content" style="text-align: left">
                 <div

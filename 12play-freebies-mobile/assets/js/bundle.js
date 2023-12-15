@@ -14,7 +14,7 @@ var translator = new Translator({
   registerGlobally: "__",
   persist: true,
   persistKey: "preferred_language",
-  filesLocation: "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.13/12play-freebies-mobile/assets/i18n",
+  filesLocation: "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies-mobile/assets/i18n",
 });
 
 const PREFERED_REGION = 'preferred_region';
