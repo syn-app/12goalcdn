@@ -422,7 +422,7 @@ cursor: pointer;
     display: flex;
 }
 
-[data-theme="dark"] .clockdiv {
+[data-theme="dark"] .timeleftRow {
     color: black;
 }
 
