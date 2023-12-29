@@ -228,6 +228,10 @@ iframe {
     padding: 0 10px;
 }
 
+[data-theme="dark"] .prizeTime {
+    color: black;
+}
+
 .correct {
     width: 35px;
     height: 35px;
@@ -545,6 +549,11 @@ padding: 8px;
     cursor: pointer;
     font-size: 12px;
     font-weight: 500;
+}
+
+[data-theme="dark"] .showAns,
+[data-theme="dark"] .hideAns{
+    color: black;
 }
 
 .prevQ{
