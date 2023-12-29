@@ -706,13 +706,14 @@ $(document).ready(async function () {
   getSiteLanguage();
   await getSiteDomain();
   const folder = siteLang === 'en' ? 'en' : 'chs';
-  $("#header").load(`https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${folder}/header.html`, function () {
+  const folderPath = location.hostname === "127.0.0.1" ? '' : 'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.15';
+  $("#header").load(`${folderPath}/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${folder}/header.html`, function () {
     $("#4dBtn").addClass("active"); //highlight the nav item
   });
-  $("#footer").load(`https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${folder}/footer.html`, function () {
+  $("#footer").load(`${folderPath}/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${folder}/footer.html`, function () {
     // $("#4dFooterBtn").addClass("active"); //highlight the nav item
   });
-  $("#stickySideBtn").load(`https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.14/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${folder}/sticky-side-button.html`);
+  $("#stickySideBtn").load(`${folderPath}/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${folder}/sticky-side-button.html`);
   if (siteLang === 'en') {
     listQuestion = structuredClone(englishQuestion);
   } else {

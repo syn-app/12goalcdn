@@ -418,10 +418,13 @@ cursor: pointer;
     font-weight: 500;
     padding-bottom: 10px;
 }
-  .clockdiv{
+.clockdiv{
     display: flex;
- 
-  }
+}
+
+[data-theme="dark"] .clockdiv {
+    color: black;
+}
 
   .currentList{
     background-image: url(../images/worldcup/prev-bg.png);
@@ -525,6 +528,10 @@ padding: 8px;
 .card-block{
     color: #505050;
     font-size: 14px;
+}
+
+[data-theme="dark"] .card-block {
+    color: #c0c0c0;
 }
 
 .resultContainer{
@@ -650,4 +657,17 @@ padding: 8px;
 
 .navbar-brand-logo {
     margin: auto!important;
+}
+
+[data-theme="dark"] .navigation a {
+    color: black;
+}
+
+[data-theme="dark"] .navigation a.active,
+[data-theme="dark"] .navigation a:hover {
+    color: #980000;
+}
+
+#currentQuiz {
+    color: black;
 }
