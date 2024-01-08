@@ -56,19 +56,6 @@ setSiteBarMenu = () => {
   const domain = `${SITE_DOMAIN}/${SITE_COUNTRY.toLowerCase()}/`;
   const textClass = localStorage["preferred_language"] === "en"? "" : "lang-cn-bold";
   const menu = `
-<a href='${domain}12ranking.html'" class="">
-  <div class="sidebarFunctionIcon">
-    <img
-      src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.17/12play-freebies-mobile/assets/images/menu-icon/12ranking-icon.png"
-      alt="Malaysia Casino Online Slot Menu Icon"
-      style="width: 58%"
-    />
-  </div>
-  <div class="sidebarFunctionText">
-    <span class="lang-bold ${textClass}" key="12slot">12Ranking</span>
-    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.17/12play-freebies-mobile/assets/images/menu-icon/new.png" alt="" class="menu-flag" style="height: 15px;">
-  </div>
-</a>
 <a href='${domain}fortune-spin.html'" class="">
   <div class="sidebarFunctionIcon">
     <img
