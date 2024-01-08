@@ -706,7 +706,7 @@ $(document).ready(async function () {
   getSiteLanguage();
   await getSiteDomain();
   const folder = siteLang === 'en' ? 'en' : 'chs';
-  const folderPath = location.hostname === "127.0.0.1" ? '' : 'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.17';
+  const folderPath = location.hostname === "127.0.0.1" ? '' : 'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18';
   $("#header").load(`${folderPath}/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${folder}/header.html`, function () {
     $("#4dBtn").addClass("active"); //highlight the nav item
   });
