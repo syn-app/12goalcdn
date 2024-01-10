@@ -1,0 +1,116 @@
+.footer {
+    vertical-align: bottom;
+}
+
+.bottom-footer,
+.footer-vendor,
+.footer-info {
+    display: flex;
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+    min-width: 1070px;
+    width: 100%;
+    padding: 0px;
+}
+
+.bottom-footer {
+    background-color: #868686;
+    height: 63px;
+}
+
+.footer-vendor {
+    background-color: #363636;
+    height: 63px;
+}
+
+.footer-info {
+    background: linear-gradient(180deg, rgba(140, 140, 140, 1) 0%, rgba(70, 70, 70, 1) 100%);
+    text-align: left;
+    color: white;
+}
+
+.footer-info h3 {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.bottom-footer li {
+    list-style: none;
+    color: white;
+    font-weight: 500;
+}
+
+.bottom-footer li.active a {
+    color: #980000;
+}
+
+.sitemap-container div,
+.licenses img {
+    border-bottom: 1px dashed white;
+    width: 100%;
+}
+
+.payment-method-footer {
+    border-bottom: 1px dashed white;
+    width: 70%;
+    height: 50px;
+}
+
+.payment-method-footer img {
+    cursor: pointer;
+    width: fit-content;
+    height: 30px;
+    object-fit: contain;
+}
+
+.follow-us-footer {
+    border-bottom: 1px dashed white;
+    width: 66%;
+    height: 50px;
+}
+
+.follow-us-footer div img {
+    width: 65%;
+    cursor: pointer;
+}
+
+.sitemap-container div {
+    padding: 5px 0;
+}
+
+.sitemap-container a {
+    color: white;
+    font-size: 14px;
+    font-weight: 300;
+    text-decoration: none;
+}
+
+.bottom-footer li a {
+    padding: 20px;
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+}
+
+.bottom-container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.vendor-logo {
+    height: 30px;
+    /* width: 100%; */
+    margin-top: 7px;
+}
+
+.footer-copyright {
+    font-size: 14px;
+}
+
+.licenses img {
+    padding: 10px 0;
+    width: 88%;
+}

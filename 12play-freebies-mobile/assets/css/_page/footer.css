@@ -1,0 +1,39 @@
+.footer {
+  background: rgba(19, 29, 57, 0.5);
+  padding: 25px 15px 40px;
+  margin-top: 40px; }
+  .footer__logo {
+    max-width: 100px; }
+  .footer__copy_right {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 30px;
+    margin-top: 5px; }
+  .footer__items {
+    margin-bottom: 30px; }
+    .footer__items__title {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      color: #FFFFFF; }
+    .footer__items__item {
+      padding-top: 10px;
+      display: flex;
+      place-content: flex-start;
+      place-items: center;
+      gap: 10px; }
+      .footer__items__item.social img {
+        width: 36px; }
+      .footer__items__item.question img {
+        width: 28px; }
+      .footer__items__item.responsible-gaming img {
+        max-height: 26px; }
+      .footer__items__item.security-trust img {
+        max-width: 83px; }
+      .footer__items__item.certification img {
+        max-width: 70%; }
+      .footer__items__item.payment-method img {
+        max-width: 80%; }

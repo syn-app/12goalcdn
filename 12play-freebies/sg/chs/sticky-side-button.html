@@ -1,0 +1,30 @@
+
+<!-- LIVE CHAT API SCRIPT -->
+<script type="text/javascript">
+    var __lc = {};
+    __lc.license = 12231957;
+    __lc.group = 1;
+    __lc.chat_between_groups = false;
+
+    (function() {
+        var lc = document.createElement('script');
+        lc.type = 'text/javascript';
+        lc.async = true;
+        lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') +
+            'cdn.livechatinc.com/tracking.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(lc, s);
+    })();
+</script>
+<script>
+    $(document).ready(function() {
+        if (localStorage['12p_sg_login'] == 'true') {
+            $(".before-login").hide();
+            $(".after-login").show();
+        } else {
+            $(".after-login").hide();
+        }
+        if (localStorage['12p_sg_inbox'] > 0) {
+            $("#inbox-notif").text("(" + localStorage['12p_sg_inbox'] + ")");
+        }
+    });

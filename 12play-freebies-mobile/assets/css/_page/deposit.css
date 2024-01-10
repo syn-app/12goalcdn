@@ -1,0 +1,851 @@
+.deposit-page__content #mainTab {
+  border: none !important;
+  padding-top: 20px;
+  place-items: baseline;
+  gap: 25px; }
+  .deposit-page__content #mainTab > .nav-item > .nav-link {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 27px;
+    color: rgba(255, 255, 255, 0.4);
+    height: 100%;
+    padding: 0;
+    padding-bottom: 11px;
+    position: relative; }
+    .deposit-page__content #mainTab > .nav-item > .nav-link.active {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 27px;
+      color: #FFFFFF;
+      background: transparent;
+      border-color: transparent;
+      pointer-events: none; }
+      .deposit-page__content #mainTab > .nav-item > .nav-link.active::after {
+        position: absolute;
+        content: "";
+        left: 0;
+        bottom: 0;
+        width: 40px;
+        height: 4px;
+        background: #FDBB2C;
+        border-radius: 3px; }
+    .deposit-page__content #mainTab > .nav-item > .nav-link:focus, .deposit-page__content #mainTab > .nav-item > .nav-link:hover {
+      border-color: transparent; }
+  @media only screen and (max-width: 390px) {
+    .deposit-page__content #mainTab {
+      gap: 5px;
+      place-content: space-between; } }
+
+.deposit-page__content #mainContent {
+  min-height: 300px;
+  padding-top: 17px; }
+  .deposit-page__content #mainContent > .tab-pane {
+    background-image: url(../images/deposit-bg.png);
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: contain; }
+    .deposit-page__content #mainContent > .tab-pane#history-section {
+      background-image: none !important; }
+      .deposit-page__content #mainContent > .tab-pane#history-section #historyTab {
+        background: rgba(255, 255, 255, 0.06);
+        place-content: center;
+        border-bottom: none; }
+        .deposit-page__content #mainContent > .tab-pane#history-section #historyTab .nav-item .nav-link {
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 19px;
+          text-align: center;
+          color: rgba(255, 255, 255, 0.4);
+          padding-top: 13px;
+          padding-bottom: 13px;
+          position: relative; }
+          .deposit-page__content #mainContent > .tab-pane#history-section #historyTab .nav-item .nav-link::after {
+            position: absolute;
+            content: "";
+            right: 0;
+            height: 18px;
+            width: 1px;
+            background-color: #fff; }
+          .deposit-page__content #mainContent > .tab-pane#history-section #historyTab .nav-item .nav-link.active {
+            background-color: transparent;
+            border-color: transparent;
+            color: #FDBB2C; }
+        .deposit-page__content #mainContent > .tab-pane#history-section #historyTab .nav-item:last-child .nav-link::after {
+          content: none; }
+      .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .betting-record-table-collapse {
+        padding: 15px 11px;
+        background: #000B26; }
+        .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .betting-record-table-collapse__content {
+          border: none;
+          background: transparent; }
+          .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .betting-record-table-collapse__content .card-header {
+            background: #19264B;
+            border-radius: 4px 4px 0px 0px;
+            padding: 0;
+            display: flex;
+            place-content: space-between;
+            place-items: center;
+            height: 26px; }
+            .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .betting-record-table-collapse__content .card-header .title {
+              display: flex;
+              place-content: flex-start;
+              place-items: center;
+              font-weight: 700;
+              font-size: 12px;
+              line-height: 16px;
+              color: #FDBB2C;
+              height: 100%; }
+              .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .betting-record-table-collapse__content .card-header .title span {
+                background: #FDBB2C;
+                border-radius: 4px 0px 0px 0px;
+                display: flex;
+                place-content: center;
+                place-items: center;
+                padding: 0 8px;
+                font-weight: 700;
+                font-size: 12px;
+                line-height: 16px;
+                text-align: center;
+                color: #000000;
+                height: 100%;
+                margin-right: 15px; }
+            .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .betting-record-table-collapse__content .card-header .date {
+              font-weight: 400;
+              font-size: 10px;
+              line-height: 14px;
+              text-align: right;
+              color: rgba(255, 255, 255, 0.5);
+              padding-right: 20px; }
+          .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .betting-record-table-collapse__content .card-body {
+            border: 1px solid rgba(255, 255, 255, 0.13);
+            border-top: 0;
+            border-radius: 0 0 4px 4px;
+            background: transparent;
+            padding: 7px 15px; }
+            .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .betting-record-table-collapse__content .card-body .btn-link {
+              font-weight: 400;
+              font-size: 10px;
+              line-height: 14px;
+              text-align: center;
+              text-decoration-line: underline;
+              color: rgba(255, 255, 255, 0.5);
+              padding-top: 0;
+              padding-bottom: 0; }
+            .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .betting-record-table-collapse__content .card-body .table {
+              margin-bottom: 5px; }
+              .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .betting-record-table-collapse__content .card-body .table thead tr th {
+                font-weight: 400;
+                font-size: 10px;
+                line-height: 14px;
+                text-align: center;
+                color: rgba(255, 255, 255, 0.5);
+                padding-top: 1px;
+                padding-bottom: 1px; }
+              .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .betting-record-table-collapse__content .card-body .table tbody tr td {
+                font-weight: 400;
+                font-size: 10px;
+                line-height: 14px;
+                text-align: center;
+                color: #FFFFFF;
+                padding-top: 5px;
+                padding-bottom: 5px; }
+      .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .betting-record-table {
+        margin-top: 10px; }
+        .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .betting-record-table .table thead tr th {
+          background: #19264B;
+          font-weight: 400;
+          font-size: 10px;
+          line-height: 14px;
+          color: rgba(255, 255, 255, 0.5);
+          vertical-align: middle;
+          text-align: center; }
+        .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .betting-record-table .table tbody {
+          border-color: transparent; }
+          .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .betting-record-table .table tbody tr td {
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 16px;
+            color: #FFFFFF;
+            text-align: center;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background: rgba(255, 255, 255, 0.1); }
+            .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .betting-record-table .table tbody tr td.warning {
+              color: #FDBB2C; }
+            .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .betting-record-table .table tbody tr td.danger {
+              color: #FF0000; }
+            .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .betting-record-table .table tbody tr td .show-detail {
+              font-weight: 700;
+              font-size: 12px;
+              line-height: 16px;
+              text-decoration-line: underline;
+              color: #FFFFFF; }
+          .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .betting-record-table .table tbody tr:first-child td {
+            background: rgba(255, 255, 255, 0.06); }
+          .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .betting-record-table .table tbody tr:nth-child(4n) td {
+            background: rgba(255, 255, 255, 0.06); }
+      .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .history-transaction-pagination {
+        padding: 15px 25px 50px 25px;
+        display: flex;
+        place-content: flex-end;
+        place-items: center; }
+        .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .history-transaction-pagination .btn {
+          width: 24px;
+          height: 24px;
+          border-radius: 4px;
+          min-width: initial;
+          display: flex;
+          place-content: center;
+          place-items: center; }
+          .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .history-transaction-pagination .btn-secondary {
+            background: rgba(255, 255, 255, 0.13);
+            border: none; }
+          .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .history-transaction-pagination .btn-link {
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 16px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none; }
+            .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .history-transaction-pagination .btn-link.active {
+              font-weight: 700;
+              font-size: 12px;
+              line-height: 16px;
+              text-align: center;
+              color: #FFFFFF; }
+            .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .history-transaction-pagination .btn-link.disabled {
+              pointer-events: none; }
+      .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .history-transaction-container {
+        margin: 10px 0; }
+        .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .history-transaction-container__item {
+          display: flex;
+          place-content: space-between;
+          place-items: center;
+          padding: 15px 25px;
+          margin-bottom: 5px;
+          background: rgba(255, 255, 255, 0.06); }
+          .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .history-transaction-container__item__left .title {
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 19px;
+            color: #FFFFFF;
+            margin-bottom: 3px; }
+          .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .history-transaction-container__item__left .currency {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 19px;
+            color: rgba(255, 255, 255, 0.5); }
+          .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .history-transaction-container__item__right .status {
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 16px;
+            text-align: right;
+            margin-bottom: 5px; }
+            .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .history-transaction-container__item__right .status.danger {
+              color: #FF1A1A; }
+            .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .history-transaction-container__item__right .status.success {
+              color: #49BF00; }
+            .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .history-transaction-container__item__right .status.warning {
+              color: #FCA20D; }
+          .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .history-transaction-container__item__right .date {
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 16px;
+            text-align: right;
+            color: rgba(255, 255, 255, 0.5); }
+      .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .filter {
+        padding: 5px 25px 20px 25px;
+        background: rgba(255, 255, 255, 0.06); }
+        .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .filter__container .form-select {
+          background: #19264B;
+          border-radius: 4px;
+          min-height: 30px;
+          border-color: transparent;
+          color: #fff;
+          margin-bottom: 7px;
+          padding-top: 3px;
+          padding-bottom: 3px;
+          font-size: 12px;
+          line-height: 16px; }
+          .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .filter__container .form-select:invalid {
+            color: rgba(255, 255, 255, 0.4); }
+        .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .filter__container .input-group {
+          margin-bottom: 7px; }
+          .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .filter__container .input-group .form-control {
+            background: #19264B;
+            border-radius: 4px;
+            min-height: 30px;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 16px;
+            color: #fff;
+            border-color: transparent; }
+            .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .filter__container .input-group .form-control::placeholder {
+              color: rgba(255, 255, 255, 0.4); }
+          .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .filter__container .input-group .input-group-text {
+            background: transparent;
+            border-color: transparent;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 16px;
+            text-align: center;
+            color: #FFFFFF;
+            padding-left: 5px;
+            padding-right: 5px; }
+        .deposit-page__content #mainContent > .tab-pane#history-section #historyTabContent .tab-pane .filter__container .btn-warning {
+          background: #FDBB2C;
+          border-radius: 4px;
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 16px;
+          text-align: center;
+          color: #000000;
+          min-height: 30px;
+          width: 100%; }
+    .deposit-page__content #mainContent > .tab-pane .form__reminder {
+      border-top: 1px solid rgba(255, 255, 255, 0.13);
+      padding: 6px 0;
+      margin-top: 40px; }
+      .deposit-page__content #mainContent > .tab-pane .form__reminder__title {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 19px;
+        color: #FFFFFF;
+        margin-bottom: 15px; }
+      .deposit-page__content #mainContent > .tab-pane .form__reminder p {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 15px; }
+    .deposit-page__content #mainContent > .tab-pane .form__action .btn {
+      width: 100%;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 22px;
+      text-align: center;
+      min-height: 50px;
+      display: flex;
+      place-content: center;
+      place-items: center;
+      margin-bottom: 5px; }
+      .deposit-page__content #mainContent > .tab-pane .form__action .btn-warning {
+        background: #FDBB2C;
+        border-radius: 4px; }
+      .deposit-page__content #mainContent > .tab-pane .form__action .btn-link {
+        color: #FFFFFF;
+        text-decoration: none; }
+      .deposit-page__content #mainContent > .tab-pane .form__action .btn:focus {
+        box-shadow: none; }
+    .deposit-page__content #mainContent > .tab-pane .form__container {
+      margin-bottom: 25px;
+      position: relative; }
+      .deposit-page__content #mainContent > .tab-pane .form__container .error {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        color: #FF1A1A;
+        margin-bottom: 5px;
+        display: block; }
+        .deposit-page__content #mainContent > .tab-pane .form__container .error#transfer_to-error, .deposit-page__content #mainContent > .tab-pane .form__container .error#transfer_from-error, .deposit-page__content #mainContent > .tab-pane .form__container .error#select_bank-error {
+          position: absolute;
+          bottom: -25px;
+          left: 0; }
+      .deposit-page__content #mainContent > .tab-pane .form__container .help-text {
+        font-weight: 400;
+        font-size: 11px;
+        line-height: 16px;
+        color: #FDBB2C; }
+      .deposit-page__content #mainContent > .tab-pane .form__container .input-group {
+        padding: 5px 5px 5px 0;
+        min-height: 50px;
+        position: relative; }
+        .deposit-page__content #mainContent > .tab-pane .form__container .input-group .form-control {
+          min-height: initial;
+          border: none; }
+        .deposit-page__content #mainContent > .tab-pane .form__container .input-group .error#amount_SGD-error {
+          position: absolute;
+          bottom: -25px;
+          left: 0; }
+        .deposit-page__content #mainContent > .tab-pane .form__container .input-group .btn-outline-warning {
+          background: rgba(253, 187, 44, 0.3);
+          border-radius: 4px;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 19px;
+          text-align: center;
+          color: #FDBB2C;
+          min-width: 50px;
+          border: none; }
+      .deposit-page__content #mainContent > .tab-pane .form__container__network_content {
+        margin-top: 17px; }
+        .deposit-page__content #mainContent > .tab-pane .form__container__network_content__help {
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 16px;
+          color: #FFFFFF;
+          margin-bottom: 17px; }
+        .deposit-page__content #mainContent > .tab-pane .form__container__network_content__address {
+          background: #222C43;
+          border-radius: 4px;
+          padding: 10px 13px; }
+          .deposit-page__content #mainContent > .tab-pane .form__container__network_content__address__title {
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 19px;
+            color: #FFFFFF; }
+          .deposit-page__content #mainContent > .tab-pane .form__container__network_content__address .input-group {
+            background: #000B26;
+            border-radius: 3px !important;
+            margin-top: 10px; }
+            .deposit-page__content #mainContent > .tab-pane .form__container__network_content__address .input-group .form-control {
+              min-height: 40px; }
+            .deposit-page__content #mainContent > .tab-pane .form__container__network_content__address .input-group .input-group-text {
+              padding-right: 11px; }
+              .deposit-page__content #mainContent > .tab-pane .form__container__network_content__address .input-group .input-group-text img {
+                width: 16px; }
+          .deposit-page__content #mainContent > .tab-pane .form__container__network_content__address .qr-code-img {
+            text-align: center; }
+            .deposit-page__content #mainContent > .tab-pane .form__container__network_content__address .qr-code-img img {
+              max-width: 140px; }
+          .deposit-page__content #mainContent > .tab-pane .form__container__network_content__address .btn-save-qr-code {
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 19px;
+            text-align: center;
+            color: #000000;
+            background: #FDBB2C;
+            border-radius: 4px;
+            min-height: 40px;
+            display: flex;
+            place-content: center;
+            place-items: center;
+            display: flex;
+            place-content: center;
+            place-items: center;
+            max-width: 130px;
+            margin: auto;
+            margin-top: 5px; }
+          .deposit-page__content #mainContent > .tab-pane .form__container__network_content__address .description {
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 16px;
+            text-align: center;
+            color: #FFFFFF;
+            margin-top: 15px; }
+      .deposit-page__content #mainContent > .tab-pane .form__container .form-radio {
+        place-content: flex-start;
+        place-items: center;
+        gap: 10px !important; }
+        .deposit-page__content #mainContent > .tab-pane .form__container .form-radio .btn-check:checked + .form-radio__label .btn {
+          border: 1px solid #FDBB2C;
+          border-radius: 4px;
+          background-color: rgba(255, 255, 255, 0.13);
+          box-shadow: none;
+          color: #FFFFFF; }
+          .deposit-page__content #mainContent > .tab-pane .form__container .form-radio .btn-check:checked + .form-radio__label .btn img {
+            opacity: 1; }
+        .deposit-page__content #mainContent > .tab-pane .form__container .form-radio__label .btn {
+          padding: 5px;
+          min-height: 35px !important;
+          min-width: 70px; }
+          .deposit-page__content #mainContent > .tab-pane .form__container .form-radio__label .btn img {
+            max-height: 25px;
+            opacity: 0.3;
+            transition: 0.3s; }
+        .deposit-page__content #mainContent > .tab-pane .form__container .form-radio__label .title {
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 16px;
+          text-align: center;
+          color: #FFFFFF;
+          margin-top: 5px; }
+      .deposit-page__content #mainContent > .tab-pane .form__container .select_bank_content {
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 4px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+        color: #FFFFFF;
+        margin-top: 10px; }
+        .deposit-page__content #mainContent > .tab-pane .form__container .select_bank_content__title {
+          background: #222C43;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 19px;
+          text-align: center;
+          color: #FFFFFF;
+          padding: 10px; }
+        .deposit-page__content #mainContent > .tab-pane .form__container .select_bank_content__content {
+          padding: 0 15px;
+          margin: 12px 0;
+          place-items: flex-start; }
+          .deposit-page__content #mainContent > .tab-pane .form__container .select_bank_content__content .copy-input {
+            background: transparent;
+            border: none;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 19px;
+            color: #FFFFFF;
+            padding: 0; }
+      .deposit-page__content #mainContent > .tab-pane .form__container .form-choose {
+        border: 1px dashed #FFFFFF;
+        border-radius: 4px;
+        padding: 20px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+        text-align: center;
+        color: #FFFFFF;
+        display: block; }
+        .deposit-page__content #mainContent > .tab-pane .form__container .form-choose img {
+          margin-bottom: 10px; }
+      .deposit-page__content #mainContent > .tab-pane .form__container .btn-group {
+        width: 100%;
+        display: flex;
+        gap: 8px; }
+        .deposit-page__content #mainContent > .tab-pane .form__container .btn-group .btn-check:checked + .btn {
+          border: 1px solid #FDBB2C;
+          border-radius: 4px;
+          background-color: rgba(255, 255, 255, 0.13);
+          box-shadow: none; }
+        .deposit-page__content #mainContent > .tab-pane .form__container .btn-group .btn {
+          border: 1px solid rgba(255, 255, 255, 0.13);
+          border-radius: 4px;
+          min-height: 40px;
+          display: flex;
+          place-content: center;
+          place-items: center; }
+      .deposit-page__content #mainContent > .tab-pane .form__container .form-label {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+        color: #FFFFFF; }
+      .deposit-page__content #mainContent > .tab-pane .form__container .select2-container {
+        position: initial !important;
+        display: block;
+        width: 100% !important; }
+        .deposit-page__content #mainContent > .tab-pane .form__container .select2-container .select2-dropdown {
+          background: #222C43;
+          border-radius: 4px;
+          width: 100% !important;
+          z-index: 1;
+          position: initial;
+          border: none; }
+          .deposit-page__content #mainContent > .tab-pane .form__container .select2-container .select2-dropdown .select2-results__options {
+            max-height: 250px;
+            padding: 12px; }
+            .deposit-page__content #mainContent > .tab-pane .form__container .select2-container .select2-dropdown .select2-results__options .select2-results__option--selectable.select2-results__option--highlighted {
+              background: transparent !important;
+              color: #fff; }
+            .deposit-page__content #mainContent > .tab-pane .form__container .select2-container .select2-dropdown .select2-results__options .select2-results__option--selectable.select2-results__option--selected {
+              background: transparent !important;
+              color: #FDBB2C !important; }
+        .deposit-page__content #mainContent > .tab-pane .form__container .select2-container .selection {
+          margin-bottom: 10px; }
+          .deposit-page__content #mainContent > .tab-pane .form__container .select2-container .selection .select2-selection {
+            border: 1px solid rgba(255, 255, 255, 0.13);
+            background-color: transparent;
+            border-radius: 4px;
+            min-height: 50px;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 19px;
+            color: #FDBB2C;
+            position: relative; }
+            .deposit-page__content #mainContent > .tab-pane .form__container .select2-container .selection .select2-selection__rendered {
+              height: 100%;
+              display: flex;
+              place-content: flex-start;
+              place-items: center;
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 19px;
+              color: #FDBB2C; }
+            .deposit-page__content #mainContent > .tab-pane .form__container .select2-container .selection .select2-selection__placeholder {
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 19px;
+              color: rgba(255, 255, 255, 0.4); }
+            .deposit-page__content #mainContent > .tab-pane .form__container .select2-container .selection .select2-selection__arrow {
+              display: flex;
+              place-items: center;
+              height: 100%;
+              width: 40px; }
+      .deposit-page__content #mainContent > .tab-pane .form__container .form-select,
+      .deposit-page__content #mainContent > .tab-pane .form__container .form-control {
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        background-color: transparent;
+        border-radius: 4px;
+        min-height: 50px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+        color: #FDBB2C;
+        margin-bottom: 10px; }
+        .deposit-page__content #mainContent > .tab-pane .form__container .form-select::placeholder,
+        .deposit-page__content #mainContent > .tab-pane .form__container .form-control::placeholder {
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 19px;
+          color: rgba(255, 255, 255, 0.4); }
+        .deposit-page__content #mainContent > .tab-pane .form__container .form-select:disabled,
+        .deposit-page__content #mainContent > .tab-pane .form__container .form-control:disabled {
+          background: rgba(255, 255, 255, 0.13);
+          border-color: transparent; }
+      .deposit-page__content #mainContent > .tab-pane .form__container .input-group {
+        margin-bottom: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 4px; }
+        .deposit-page__content #mainContent > .tab-pane .form__container .input-group .form-control {
+          margin-bottom: 0; }
+          .deposit-page__content #mainContent > .tab-pane .form__container .input-group .form-control:disabled {
+            background: transparent;
+            border-color: transparent; }
+        .deposit-page__content #mainContent > .tab-pane .form__container .input-group-text {
+          background: transparent;
+          border: none;
+          padding-right: 20px; }
+          .deposit-page__content #mainContent > .tab-pane .form__container .input-group-text img {
+            width: 10px; }
+      .deposit-page__content #mainContent > .tab-pane .form__container .form-select:invalid {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+        color: rgba(255, 255, 255, 0.4); }
+      .deposit-page__content #mainContent > .tab-pane .form__container .form-suggest {
+        display: flex;
+        gap: 6px;
+        place-content: flex-start;
+        place-items: center;
+        flex-wrap: wrap; }
+        .deposit-page__content #mainContent > .tab-pane .form__container .form-suggest .btn {
+          min-width: 50px;
+          min-height: 30px;
+          background: rgba(255, 255, 255, 0.13);
+          border-radius: 5px;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 19px;
+          text-align: center;
+          color: #FFFFFF;
+          border: none; }
+          .deposit-page__content #mainContent > .tab-pane .form__container .form-suggest .btn:focus {
+            box-shadow: none;
+            background: #FDBB2C;
+            color: #000000; }
+    .deposit-page__content #mainContent > .tab-pane .deposit-content #depositMainTab {
+      background: rgba(255, 255, 255, 0.13);
+      border-radius: 4px;
+      border-bottom: none;
+      place-content: space-between;
+      place-items: center;
+      padding: 5px; }
+      .deposit-page__content #mainContent > .tab-pane .deposit-content #depositMainTab .nav-item {
+        flex: 1 0 0%; }
+        .deposit-page__content #mainContent > .tab-pane .deposit-content #depositMainTab .nav-item .nav-link {
+          width: 100%;
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 16px;
+          text-align: center;
+          color: rgba(255, 255, 255, 0.5);
+          padding: 0px 1px;
+          min-height: 34px; }
+          .deposit-page__content #mainContent > .tab-pane .deposit-content #depositMainTab .nav-item .nav-link.active {
+            background: #FDBB2C;
+            border-radius: 2px;
+            color: #000000;
+            border-color: transparent; }
+          .deposit-page__content #mainContent > .tab-pane .deposit-content #depositMainTab .nav-item .nav-link:focus, .deposit-page__content #mainContent > .tab-pane .deposit-content #depositMainTab .nav-item .nav-link:hover {
+            border-color: transparent; }
+    .deposit-page__content #mainContent > .tab-pane .deposit-content #depositMainContent {
+      padding: 20px 0; }
+    .deposit-page__content #mainContent > .tab-pane .main-wallet {
+      background-image: url(../images/main-wallet-bg-1.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      border-radius: 12px;
+      position: relative;
+      margin-bottom: 20px;
+      overflow: hidden; }
+      .deposit-page__content #mainContent > .tab-pane .main-wallet__top {
+        padding: 20px 15px;
+        display: flex;
+        place-content: space-between;
+        place-items: center; }
+        .deposit-page__content #mainContent > .tab-pane .main-wallet__top__title {
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 16px;
+          color: rgba(255, 255, 255, 0.6); }
+        .deposit-page__content #mainContent > .tab-pane .main-wallet__top__currency {
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 27px;
+          color: #FFFFFF; }
+        .deposit-page__content #mainContent > .tab-pane .main-wallet__top__action .btn {
+          background: rgba(255, 255, 255, 0.3);
+          border: none;
+          border-radius: 4px;
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 16px;
+          min-height: 30px;
+          text-align: center;
+          color: #FFFFFF; }
+      .deposit-page__content #mainContent > .tab-pane .main-wallet__footer {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 8px 15px;
+        display: flex;
+        place-content: space-between;
+        place-items: center; }
+        .deposit-page__content #mainContent > .tab-pane .main-wallet__footer__currency {
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 16px;
+          color: #FFFFFF; }
+        .deposit-page__content #mainContent > .tab-pane .main-wallet__footer__description {
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 16px;
+          color: #FFFFFF; }
+
+#selectPromotionModal .modal-dialog .modal-content {
+  padding: 0;
+  padding-top: 15px; }
+  #selectPromotionModal .modal-dialog .modal-content .modal-title {
+    padding-top: 10px;
+    padding-bottom: 25px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    color: #FDBB2C; }
+  #selectPromotionModal .modal-dialog .modal-content .modal-footer {
+    border-top: none;
+    background: rgba(16, 55, 83, 0.9);
+    box-shadow: 0px -7px 34px 10px #103753;
+    -webkit-box-shadow: 0px -7px 34px 10px #103753;
+    -moz-box-shadow: 0px -7px 34px 10px #103753;
+    padding-top: 0; }
+    #selectPromotionModal .modal-dialog .modal-content .modal-footer .btn {
+      min-height: 50px;
+      display: flex;
+      place-content: center;
+      place-items: center;
+      width: 100%;
+      background: #FDBB2C;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 22px;
+      text-align: center;
+      color: #000000; }
+  #selectPromotionModal .modal-dialog .modal-content .modal-body {
+    padding: 0 15px; }
+    #selectPromotionModal .modal-dialog .modal-content .modal-body .promotion-modal .action {
+      margin-top: 20px; }
+      #selectPromotionModal .modal-dialog .modal-content .modal-body .promotion-modal .action .btn {
+        min-height: 50px;
+        display: flex;
+        place-content: center;
+        place-items: center;
+        width: 100%;
+        background: #FDBB2C;
+        border-radius: 4px;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 22px;
+        text-align: center;
+        color: #000000; }
+    #selectPromotionModal .modal-dialog .modal-content .modal-body .promotion-modal__items__item {
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 4px;
+      display: flex;
+      place-content: space-between;
+      place-items: center;
+      padding: 10px 13px;
+      margin-bottom: 15px;
+      position: relative; }
+      #selectPromotionModal .modal-dialog .modal-content .modal-body .promotion-modal__items__item .checkmark {
+        height: 17px;
+        width: 17px;
+        min-height: 17px;
+        min-width: 17px;
+        background-color: transparent;
+        border: 2px solid #FFFFFF;
+        border-radius: 50%;
+        position: relative; }
+        #selectPromotionModal .modal-dialog .modal-content .modal-body .promotion-modal__items__item .checkmark::after {
+          content: "";
+          position: absolute;
+          left: 2px;
+          top: 2px;
+          right: 0;
+          bottom: 0;
+          width: 9px;
+          height: 9px;
+          background: #FDBB2C;
+          border-radius: 50%;
+          display: none; }
+      #selectPromotionModal .modal-dialog .modal-content .modal-body .promotion-modal__items__item input:checked ~ .checkmark:after {
+        display: block; }
+      #selectPromotionModal .modal-dialog .modal-content .modal-body .promotion-modal__items__item input:checked ~ .selected-bg {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        background: rgba(255, 255, 255, 0.13); }
+      #selectPromotionModal .modal-dialog .modal-content .modal-body .promotion-modal__items__item__content {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+        color: #FDBB2C;
+        width: 100%; }
+        #selectPromotionModal .modal-dialog .modal-content .modal-body .promotion-modal__items__item__content .title {
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 19px;
+          color: #FFFFFF; }
+        #selectPromotionModal .modal-dialog .modal-content .modal-body .promotion-modal__items__item__content .description {
+          margin-top: 12px; }
+
+#gameBalanceModal .close-button {
+  padding-bottom: 10px; }
+
+#gameBalanceModal .game-balance-content {
+  overflow-y: auto; }
+  #gameBalanceModal .game-balance-content__item {
+    display: flex;
+    place-content: space-between;
+    place-items: center;
+    margin-bottom: 20px; }
+    #gameBalanceModal .game-balance-content__item .title {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 19px;
+      color: #FFFFFF;
+      min-width: 40%; }
+    #gameBalanceModal .game-balance-content__item .currency {
+      min-width: 100px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 19px;
+      text-align: center;
+      color: #FFFFFF; }
+    #gameBalanceModal .game-balance-content__item .action {
+      min-width: 80px; }
+      #gameBalanceModal .game-balance-content__item .action .btn {
+        background: #FDBB2C;
+        border-radius: 4px;
+        min-height: 30px;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: center;
+        color: #000000; }

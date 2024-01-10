@@ -1,0 +1,477 @@
+.category-page__content__container__tab {
+  margin-top: 20px; }
+  .category-page__content__container__tab__nav {
+    display: flex;
+    border-radius: 8px;
+    overflow: hidden; }
+    .category-page__content__container__tab__nav .btn-nav {
+      background: #194284;
+      box-shadow: -4px 0px 4px rgba(0, 0, 0, 0.25);
+      transform: matrix(-1, 0, 0, 1, 0, 0);
+      border: none;
+      width: 30px; }
+      .category-page__content__container__tab__nav .btn-nav img {
+        max-width: 10px;
+        margin-top: -3px; }
+    .category-page__content__container__tab__nav .nav {
+      flex-wrap: nowrap;
+      overflow: auto;
+      padding: 2px 0;
+      border-bottom: none;
+      background: #131D39;
+      width: 100%;
+      gap: 2px;
+      -ms-overflow-style: none;
+      scrollbar-width: none; }
+      .category-page__content__container__tab__nav .nav::-webkit-scrollbar {
+        display: none; }
+      .category-page__content__container__tab__nav .nav-item .nav-link {
+        min-width: 60px;
+        height: 100%;
+        padding: 5px 0; }
+        .category-page__content__container__tab__nav .nav-item .nav-link img {
+          opacity: 0.5;
+          max-width: 50px;
+          max-height: 24px; }
+        .category-page__content__container__tab__nav .nav-item .nav-link.active {
+          background-color: transparent;
+          border-color: transparent; }
+          .category-page__content__container__tab__nav .nav-item .nav-link.active img {
+            opacity: 1; }
+  .category-page__content__container__tab .tab-content {
+    margin-top: 15px;
+    background: #131D39;
+    border: 1.5px solid #194284;
+    border-radius: 8px;
+    min-height: 200px; }
+    .category-page__content__container__tab .tab-content .tab4d-container__title {
+      display: flex;
+      place-content: space-between;
+      place-items: center;
+      padding: 10px 15px;
+      background: #19264B;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 22px;
+      color: #FFFFFF;
+      text-align: right; }
+      .category-page__content__container__tab .tab-content .tab4d-container__title .date {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+        text-align: right;
+        color: rgba(255, 255, 255, 0.4);
+        margin-top: 5px; }
+      .category-page__content__container__tab .tab-content .tab4d-container__title img {
+        width: 40px; }
+    .category-page__content__container__tab .tab-content .tab4d-container__subtitle {
+      background: #19264B;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 22px;
+      text-align: center;
+      color: #FFFFFF;
+      padding: 10px 0; }
+    .category-page__content__container__tab .tab-content .tab4d-container__content {
+      display: flex;
+      place-content: space-around;
+      place-items: center;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 19px;
+      text-align: center;
+      color: #FFFFFF;
+      padding: 10px 0; }
+      .category-page__content__container__tab .tab-content .tab4d-container__content.text-warning {
+        color: #FDBB2C; }
+    .category-page__content__container__tab .tab-content .tab4d-container__contenttext {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 19px;
+      text-align: center;
+      color: #FFFFFF; }
+      .category-page__content__container__tab .tab-content .tab4d-container__contenttext div {
+        padding-top: 10px;
+        padding-bottom: 10px; }
+
+.category-page__content__container__lucky_number {
+  background-image: url(../images/4d-bg.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 8px;
+  overflow: hidden;
+  min-height: 125px;
+  margin-top: 30px;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  gap: 7px;
+  flex-direction: column;
+  padding: 5px; }
+  .category-page__content__container__lucky_number__title {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 14px;
+    text-align: center;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.6); }
+  .category-page__content__container__lucky_number__number {
+    background: rgba(0, 0, 0, 0.55);
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    text-align: center;
+    color: #5A81C4;
+    padding: 0px 15px; }
+    .category-page__content__container__lucky_number__number img {
+      margin-left: 5px; }
+  .category-page__content__container__lucky_number__bet_now .btn {
+    height: 26px;
+    display: flex;
+    place-content: center;
+    place-items: center;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #000000; }
+  .category-page__content__container__lucky_number__payout .btn {
+    height: 26px;
+    display: flex;
+    place-content: center;
+    place-items: center;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    text-decoration-line: underline;
+    color: #0089FF; }
+    .category-page__content__container__lucky_number__payout .btn:focus {
+      box-shadow: none; }
+
+.category-page__content__container__special_odds__content {
+  display: flex;
+  place-content: flex-start;
+  gap: 10px;
+  overflow-y: auto;
+  padding-bottom: 10px; }
+  .category-page__content__container__special_odds__content__item {
+    background: #131D39;
+    border-radius: 8px;
+    padding: 0;
+    width: 120px;
+    text-align: center;
+    position: relative;
+    overflow: hidden; }
+    .category-page__content__container__special_odds__content__item__label {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 10px;
+      line-height: 14px;
+      text-align: center;
+      color: #FDBB2C;
+      padding: 3px;
+      background: rgba(253, 187, 44, 0.35);
+      border-radius: 0px 0px 12px 12px; }
+    .category-page__content__container__special_odds__content__item__img {
+      margin: 0; }
+    .category-page__content__container__special_odds__content__item__title {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 13px;
+      text-align: center;
+      color: #FFFFFF;
+      padding: 12px; }
+
+.category-page__content__container__games_lobby__content {
+  margin-left: -8px;
+  margin-right: -8px;
+  padding-top: 30px; }
+  .category-page__content__container__games_lobby__content__item {
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-bottom: 20px; }
+    .category-page__content__container__games_lobby__content__item__title {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 19px;
+      text-align: center;
+      color: #FFFFFF;
+      margin-bottom: 10px; }
+    .category-page__content__container__games_lobby__content__item__img {
+      height: 126px;
+      display: block;
+      text-align: center;
+      background-image: url(../images/games-lobby-1.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      display: flex;
+      flex-direction: column;
+      place-content: center;
+      place-items: center; }
+      .category-page__content__container__games_lobby__content__item__img__icon {
+        margin-top: -40px;
+        max-width: 95px;
+        max-height: 95px; }
+      .category-page__content__container__games_lobby__content__item__img__logo {
+        max-width: 90px;
+        max-height: 25px; }
+        .category-page__content__container__games_lobby__content__item__img__logo.mh-14px {
+          max-height: 14px; }
+    .category-page__content__container__games_lobby__content__item__content {
+      display: block;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      place-content: center;
+      place-items: center;
+      background: #131D39;
+      border-radius: 8px;
+      padding: 15px 12px; }
+      .category-page__content__container__games_lobby__content__item__content__icon {
+        max-width: 95px;
+        max-height: 95px; }
+      .category-page__content__container__games_lobby__content__item__content__title {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 19px;
+        text-align: center;
+        color: #FFFFFF;
+        margin-top: 5px; }
+    .category-page__content__container__games_lobby__content__item:nth-child(even) .category-page__content__container__games_lobby__content__item__img {
+      background-image: url(../images/games-lobby-2.svg); }
+
+.category-page__content__container__hot_games__content {
+  display: flex;
+  place-content: flex-start;
+  gap: 10px;
+  overflow-y: auto;
+  padding-bottom: 10px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding: 0 15px; }
+  .category-page__content__container__hot_games__content::-webkit-scrollbar {
+    display: none; }
+  .category-page__content__container__hot_games__content__item {
+    background: #131D39;
+    border-radius: 8px;
+    padding: 0 15px;
+    min-width: 100px;
+    text-align: center;
+    position: relative; }
+    .category-page__content__container__hot_games__content__item__label {
+      font-weight: 600;
+      font-size: 10px;
+      line-height: 14px;
+      text-align: center;
+      border-radius: 0px 0px 6px 6px;
+      padding: 3px; }
+      .category-page__content__container__hot_games__content__item__label.success {
+        background: rgba(73, 185, 2, 0.3);
+        color: #49B902; }
+      .category-page__content__container__hot_games__content__item__label.danger {
+        background: rgba(203, 19, 47, 0.3);
+        color: #CB132F; }
+    .category-page__content__container__hot_games__content__item__img {
+      margin: 8px 0;
+      max-height: 72px; }
+    .category-page__content__container__hot_games__content__item__title {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 13px;
+      text-align: center;
+      color: #FFFFFF;
+      padding-bottom: 10px; }
+    .category-page__content__container__hot_games__content__item .action {
+      padding: 10px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      border: 2px solid #FDBB2C;
+      backdrop-filter: blur(4px);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      place-content: center;
+      place-items: center;
+      gap: 10px;
+      transition: all 0.2s;
+      opacity: 0;
+      z-index: -1; }
+      .category-page__content__container__hot_games__content__item .action .btn {
+        width: 100%;
+        height: 30px;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: center;
+        display: flex;
+        place-content: center;
+        place-items: center;
+        min-width: auto;
+        padding: 0; }
+    .category-page__content__container__hot_games__content__item.active .action {
+      opacity: 1;
+      z-index: 1; }
+
+.category-page__content__top {
+  background: #131D39;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
+  border-radius: 0px 0px 26px 26px; }
+  .category-page__content__top__navbar {
+    display: flex;
+    place-content: space-between;
+    place-items: flex-start;
+    margin-top: 20px;
+    text-align: center;
+    border-bottom: none;
+    gap: 1px;
+    padding-bottom: 12px;
+    padding-left: 15px;
+    padding-right: 15px; }
+    .category-page__content__top__navbar__item__img {
+      background: #131D39;
+      border-radius: 18px;
+      width: 60px;
+      height: 60px;
+      border: 2px solid rgba(25, 66, 132, 0.3);
+      box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.4);
+      display: flex;
+      place-content: center;
+      place-items: center; }
+      .category-page__content__top__navbar__item__img img {
+        max-height: 34px; }
+        .category-page__content__top__navbar__item__img img.active {
+          display: none; }
+      @media only screen and (max-width: 370px) {
+        .category-page__content__top__navbar__item__img {
+          width: 55px;
+          height: 55px; } }
+    .category-page__content__top__navbar__item__text {
+      font-weight: 400;
+      font-size: 10px;
+      line-height: 14px;
+      text-align: center;
+      color: #FFFFFF;
+      margin-top: 5px; }
+    .category-page__content__top__navbar__item.active {
+      pointer-events: none; }
+      .category-page__content__top__navbar__item.active .category-page__content__top__navbar__item__img {
+        background: rgba(252, 162, 13, 0.24);
+        border: 2px solid #FDBB2C; }
+        .category-page__content__top__navbar__item.active .category-page__content__top__navbar__item__img img {
+          display: none; }
+          .category-page__content__top__navbar__item.active .category-page__content__top__navbar__item__img img.active {
+            display: initial; }
+  .category-page__content__top .top-slider {
+    margin-bottom: 20px !important;
+    padding: 20px 15px;
+    min-height: 140px; }
+    .category-page__content__top .top-slider .slick-slide {
+      border-radius: 20px; }
+    .category-page__content__top .top-slider .slick-slide img {
+      width: 100%; }
+    .category-page__content__top .top-slider .slick-dots {
+      width: auto;
+      display: flex;
+      place-content: center;
+      place-items: center;
+      left: 0;
+      right: 0;
+      bottom: -15px; }
+    .category-page__content__top .top-slider .slick-dots li {
+      margin: 0 2px;
+      width: 6px; }
+    .category-page__content__top .top-slider .slick-dots li button {
+      width: 6px; }
+    .category-page__content__top .top-slider .slick-dots li button::before {
+      background-color: #707070;
+      content: '';
+      width: 7px;
+      height: 7px;
+      opacity: 1;
+      border-radius: 50%; }
+    .category-page__content__top .top-slider .slick-dots li.slick-active,
+    .category-page__content__top .top-slider .slick-dots li.slick-active button {
+      width: 27px; }
+    .category-page__content__top .top-slider .slick-dots li.slick-active button::before {
+      width: 27px;
+      border-radius: 10px;
+      background-color: #fff; }
+    .category-page__content__top .top-slider .no-overflow {
+      overflow: hidden; }
+    .category-page__content__top .top-slider .slick-slider {
+      overflow: hidden; }
+
+#payoutTableModal .modal-dialog .modal-content {
+  height: 80vh;
+  padding: 15px; }
+  #payoutTableModal .modal-dialog .modal-content .close-button {
+    text-align: center;
+    padding-bottom: 5px; }
+  #payoutTableModal .modal-dialog .modal-content .content {
+    overflow-x: auto; }
+    #payoutTableModal .modal-dialog .modal-content .content table {
+      margin: 15px 0;
+      border-radius: 5px;
+      overflow: hidden; }
+      #payoutTableModal .modal-dialog .modal-content .content table thead tr th {
+        font-weight: 600;
+        font-size: 10px;
+        line-height: 14px;
+        color: #FDBB2C;
+        background: #19264B;
+        text-align: center;
+        vertical-align: middle;
+        border-bottom: none;
+        box-shadow: none;
+        padding-top: 10px;
+        padding-bottom: 10px; }
+      #payoutTableModal .modal-dialog .modal-content .content table tbody {
+        border-top: none; }
+        #payoutTableModal .modal-dialog .modal-content .content table tbody tr td {
+          font-weight: 400;
+          font-size: 10px;
+          line-height: 12px;
+          color: #FFFFFF;
+          background: rgba(255, 255, 255, 0.1);
+          border-color: transparent;
+          text-align: center;
+          vertical-align: middle;
+          padding-top: 10px;
+          padding-bottom: 10px; }
+        #payoutTableModal .modal-dialog .modal-content .content table tbody tr:nth-child(even) td {
+          background: rgba(255, 255, 255, 0.15); }
+    #payoutTableModal .modal-dialog .modal-content .content__title {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 19px;
+      color: #FDBB2C;
+      padding: 15px 0; }
+    #payoutTableModal .modal-dialog .modal-content .content__subtitle {
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 16px;
+      text-decoration-line: underline;
+      color: #FFFFFF;
+      padding: 10px 0; }
+    #payoutTableModal .modal-dialog .modal-content .content__description {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      color: #FFFFFF; }
+    #payoutTableModal .modal-dialog .modal-content .content__subdescription {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      color: #FDBB2C;
+      padding-left: 15px; }
+      #payoutTableModal .modal-dialog .modal-content .content__subdescription ul {
+        padding-left: 15px; }

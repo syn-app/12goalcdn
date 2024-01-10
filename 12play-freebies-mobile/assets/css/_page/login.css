@@ -1,0 +1,206 @@
+.login-page {
+  background-image: url(../images/login/login-bg.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding: 0; }
+  .login-page__content .nav-tabs {
+    border-bottom: 0;
+    margin-bottom: 25px; }
+    .login-page__content .nav-tabs .nav-item .nav-link {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 27px;
+      color: rgba(255, 255, 255, 0.5);
+      padding: 0 30px 0 0; }
+      .login-page__content .nav-tabs .nav-item .nav-link.active {
+        color: #FDBB2C;
+        background: transparent;
+        border-color: transparent; }
+  .login-page__content .tab-content .login__form .download-app {
+    margin-top: 33px;
+    border: 2px solid #194284;
+    border-radius: 4px;
+    gap: 0;
+    place-content: flex-start;
+    display: flex;
+    place-items: center;
+    align-items: stretch; }
+    .login-page__content .tab-content .login__form .download-app__logo {
+      padding: 7px 0 7px 11px; }
+    .login-page__content .tab-content .login__form .download-app__content {
+      padding: 7px 0 7px 10px;
+      width: 100%; }
+      .login-page__content .tab-content .login__form .download-app__content__title {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 19px;
+        color: #FFFFFF; }
+      .login-page__content .tab-content .login__form .download-app__content__description {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        color: rgba(255, 255, 255, 0.7); }
+    .login-page__content .tab-content .login__form .download-app__download {
+      min-width: 50px;
+      min-height: 50px;
+      background: #194284;
+      display: flex;
+      place-content: center;
+      place-items: center; }
+  .login-page__content .tab-content .login__form .forget_password {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+    text-decoration-line: underline;
+    color: #0089FF; }
+  .login-page__content .tab-content .login__form .btn-login {
+    margin-top: 20px;
+    background: #FDBB2C;
+    border-radius: 4px;
+    min-height: 50px;
+    width: 100%;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    text-transform: capitalize;
+    color: #000000;
+    display: flex;
+    place-content: center;
+    place-items: center; }
+  .login-page__content .tab-content .login__form .input-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column; }
+    .login-page__content .tab-content .login__form .input-group .form-control {
+      background: rgba(255, 255, 255, 0.13);
+      border-radius: 4px;
+      min-height: 50px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 19px;
+      color: #FFFFFF;
+      border: none;
+      padding: 16px 13px;
+      width: 100%; }
+      .login-page__content .tab-content .login__form .input-group .form-control::placeholder {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+        color: #FFFFFF; }
+    .login-page__content .tab-content .login__form .input-group .form-text {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px; }
+      .login-page__content .tab-content .login__form .input-group .form-text.warning {
+        color: #FDBB2C; }
+      .login-page__content .tab-content .login__form .input-group .form-text.danger {
+        color: #FF1A1A; }
+      .login-page__content .tab-content .login__form .input-group .form-text ul {
+        margin-bottom: 0; }
+    .login-page__content .tab-content .login__form .input-group .error {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      margin-top: 4px;
+      color: #FF1A1A; }
+  .login-page__content .tab-content .login__form .form-check .form-check-input {
+    margin-top: 0;
+    background-color: transparent;
+    border: 1px solid #fff; }
+  .login-page__logo {
+    padding-top: 47px;
+    padding-bottom: 37px; }
+    .login-page__logo img {
+      max-width: 120px; }
+  .login-page__navbar {
+    position: relative;
+    background: transparent !important;
+    box-shadow: none !important; }
+    .login-page__navbar .dropdown .dropdown-toggle {
+      background: rgba(255, 255, 255, 0.13);
+      border-radius: 4px;
+      border: none;
+      width: 70px;
+      height: 30px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 19px;
+      text-align: center;
+      color: #FFFFFF; }
+      .login-page__navbar .dropdown .dropdown-toggle img {
+        max-width: 18px; }
+      .login-page__navbar .dropdown .dropdown-toggle:focus {
+        box-shadow: none; }
+    .login-page__navbar .dropdown .dropdown-menu {
+      background: rgba(255, 255, 255, 0.13);
+      border-radius: 0px 0px 4px 4px;
+      right: 0;
+      margin-top: 0;
+      border: none;
+      width: 70px;
+      min-width: initial;
+      padding: 0; }
+      .login-page__navbar .dropdown .dropdown-menu li .dropdown-item {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+        text-align: center;
+        color: #FFFFFF;
+        height: 30px;
+        padding-left: 6px; }
+        .login-page__navbar .dropdown .dropdown-menu li .dropdown-item img {
+          max-width: 18px; }
+
+#forgetPasswordModal .modal-dialog .modal-content {
+  padding: 25px; }
+  #forgetPasswordModal .modal-dialog .modal-content .modal-header {
+    border-bottom: 0;
+    padding-top: 0;
+    padding-right: 0; }
+    #forgetPasswordModal .modal-dialog .modal-content .modal-header button {
+      background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+      opacity: 1; }
+  #forgetPasswordModal .modal-dialog .modal-content .modal-body .title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    color: #FDBB2C;
+    margin-bottom: 20px; }
+  #forgetPasswordModal .modal-dialog .modal-content .modal-body .btn-login {
+    min-height: 40px;
+    width: 50%;
+    margin: auto;
+    margin-top: 10px; }
+  #forgetPasswordModal .modal-dialog .modal-content .modal-body .input-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column; }
+    #forgetPasswordModal .modal-dialog .modal-content .modal-body .input-group .error {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      margin-top: 4px;
+      color: #FF1A1A; }
+    #forgetPasswordModal .modal-dialog .modal-content .modal-body .input-group .form-control {
+      background: rgba(255, 255, 255, 0.13);
+      border-radius: 4px;
+      min-height: 45px;
+      padding: 10px 13px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 19px;
+      color: #FFFFFF;
+      border: none;
+      padding: 16px 13px;
+      width: 100%; }
+      #forgetPasswordModal .modal-dialog .modal-content .modal-body .input-group .form-control::placeholder {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+        color: #FFFFFF; }

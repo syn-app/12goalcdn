@@ -1,0 +1,179 @@
+.campaign-bonanza {
+  background: #f2f2f2; }
+  .campaign-bonanza__content__items {
+    background: #FFFFFF;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 15px; }
+    .campaign-bonanza__content__items__img {
+      position: relative; }
+      .campaign-bonanza__content__items__img img {
+        width: 100%; }
+      .campaign-bonanza__content__items__img__content {
+        position: absolute;
+        left: 20px;
+        top: 0;
+        bottom: 0;
+        display: flex;
+        place-content: center;
+        place-items: flex-start;
+        flex-direction: column;
+        gap: 5px; }
+        .campaign-bonanza__content__items__img__content__title {
+          font-family: 'Aldo the Apache';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 28px;
+          line-height: 28px;
+          background: linear-gradient(180deg, #8C9BC6 0%, #7E85A3 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          text-fill-color: transparent; }
+        .campaign-bonanza__content__items__img__content__subtitle {
+          font-weight: 300;
+          font-size: 14px;
+          line-height: 16px;
+          color: #606E95; }
+    .campaign-bonanza__content__items__content {
+      background: #fff;
+      padding: 15px;
+      display: flex;
+      place-content: space-between;
+      place-items: center; }
+      .campaign-bonanza__content__items__content__title {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 16px;
+        color: #000000; }
+      .campaign-bonanza__content__items__content__learn-more {
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 5px; }
+
+.campaign-bonanza-detail {
+  background: #EBEEF6;
+  padding-top: 50px; }
+  .campaign-bonanza-detail .campaign-bonanza-card {
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 15px; }
+  .campaign-bonanza-detail__top {
+    position: relative; }
+    .campaign-bonanza-detail__top__img {
+      width: 100%; }
+    .campaign-bonanza-detail__top__content {
+      position: absolute;
+      top: 15px;
+      left: 0;
+      right: 0;
+      text-align: center; }
+      .campaign-bonanza-detail__top__content__title {
+        font-family: 'Aldo the Apache';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 48px;
+        line-height: 40px;
+        /* or 83% */
+        text-align: center;
+        background: linear-gradient(180deg, #8C9BC6 0%, #7E85A3 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        margin-bottom: 5px; }
+      .campaign-bonanza-detail__top__content__subtitle {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 24px;
+        text-align: center;
+        color: #606E95; }
+  .campaign-bonanza-detail__content {
+    padding: 15px; }
+    .campaign-bonanza-detail__content__amount__top {
+      position: relative; }
+      .campaign-bonanza-detail__content__amount__top__label {
+        background: #597EF7;
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 0px 5px 5px 0px;
+        padding: 5px 15px;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        /* identical to box height, or 133% */
+        text-align: center;
+        color: #FFFFFF;
+        /* Inside auto layout */
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+        margin-left: -15px;
+        display: inline-block; }
+      .campaign-bonanza-detail__content__amount__top__price {
+        font-weight: 500;
+        font-size: 25px;
+        line-height: 14px;
+        color: #000000;
+        margin: 15px 0; }
+      .campaign-bonanza-detail__content__amount__top img {
+        position: absolute;
+        right: 0;
+        top: 0; }
+    .campaign-bonanza-detail__content__amount__bottom {
+      padding-top: 10px;
+      border-top: 2px solid #EAEAEA;
+      text-align: right;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 18px;
+      text-align: right;
+      color: #000000; }
+    .campaign-bonanza-detail__content__items {
+      margin: 15px -5px; }
+      .campaign-bonanza-detail__content__items__item {
+        text-align: center;
+        margin-bottom: 10px;
+        padding-left: 5px;
+        padding-right: 5px; }
+        .campaign-bonanza-detail__content__items__item .campaign-bonanza-card img {
+          margin: auto;
+          margin-bottom: 10px; }
+        .campaign-bonanza-detail__content__items__item .campaign-bonanza-card__title {
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 18px;
+          text-align: center;
+          color: #000000;
+          margin-bottom: 10px; }
+        .campaign-bonanza-detail__content__items__item .campaign-bonanza-card__sub {
+          font-weight: 300;
+          font-size: 14px;
+          line-height: 18px;
+          text-align: center;
+          color: #000000; }
+        .campaign-bonanza-detail__content__items__item .campaign-bonanza-card__amount {
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 22px;
+          text-align: center;
+          color: #4E7FFF; }
+        .campaign-bonanza-detail__content__items__item .campaign-bonanza-card .btn {
+          min-width: 125px;
+          background: #597EF7;
+          box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+          border-radius: 20px;
+          padding-top: 2px;
+          padding-bottom: 2px;
+          margin-top: 15px; }
+    .campaign-bonanza-detail__content__terms__title {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+      text-align: center;
+      color: #000000;
+      margin-bottom: 20px; }
+    .campaign-bonanza-detail__content__terms__items {
+      list-style: decimal;
+      padding-left: 15px; }
+      .campaign-bonanza-detail__content__terms__items li {
+        padding-bottom: 15px; }

@@ -1,0 +1,197 @@
+.transfer {
+  background-color: #f2f2f2; }
+  .transfer__content {
+    padding-left: 0;
+    padding-right: 0; }
+    .transfer__content__wallet {
+      background: #FFFFFF;
+      padding: 15px; }
+      .transfer__content__wallet__title {
+        display: flex;
+        place-content: space-between;
+        place-items: center;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #EEEEEE;
+        margin-bottom: 15px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 14px;
+        color: #000000; }
+        .transfer__content__wallet__title a {
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 14px;
+          color: #597EF7; }
+      .transfer__content__wallet__main {
+        display: flex;
+        place-content: space-around;
+        place-items: center;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #EEEEEE;
+        text-align: center;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+        color: #333333; }
+        .transfer__content__wallet__main > div {
+          width: 50%;
+          position: relative; }
+          .transfer__content__wallet__main > div:first-child::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            height: 20px;
+            background-color: #eee;
+            margin: auto; }
+          .transfer__content__wallet__main > div p {
+            margin-bottom: 0;
+            margin-top: 5px;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 14px;
+            text-align: center;
+            color: #597EF7; }
+      .transfer__content__wallet__content {
+        text-align: center;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+        text-align: center;
+        color: #333333; }
+        .transfer__content__wallet__content .row {
+          border-bottom: 1px solid #EEEEEE;
+          padding-bottom: 15px;
+          padding-top: 15px;
+          margin-left: 0px;
+          margin-right: 0px; }
+          .transfer__content__wallet__content .row .item {
+            display: flex;
+            flex-direction: column;
+            place-content: flex-end;
+            place-items: center;
+            position: relative; }
+            .transfer__content__wallet__content .row .item::after {
+              content: "";
+              position: absolute;
+              right: 0;
+              top: 0;
+              bottom: 0;
+              width: 1px;
+              height: 20px;
+              background-color: #eee;
+              margin: auto; }
+            .transfer__content__wallet__content .row .item:last-child::after {
+              display: none; }
+            .transfer__content__wallet__content .row .item > div {
+              margin-bottom: 5px; }
+            .transfer__content__wallet__content .row .item span {
+              font-weight: 300;
+              font-size: 12px;
+              line-height: 14px;
+              text-align: center;
+              color: #A5A9B3; }
+      .transfer__content__wallet__expand {
+        font-size: 12px;
+        line-height: 14px;
+        text-align: center;
+        color: #A5A9B3;
+        padding-top: 15px; }
+    .transfer__content__auto-switch {
+      background: #FFFFFF;
+      margin-top: 15px;
+      padding: 15px;
+      display: flex;
+      place-content: space-between;
+      place-items: center;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 20px;
+      color: #000000; }
+      .transfer__content__auto-switch .form-check {
+        display: flex;
+        font-weight: 300;
+        font-size: 11px;
+        line-height: 14px;
+        color: #A5A9B3;
+        padding-left: 0;
+        display: flex;
+        place-items: center;
+        margin-bottom: 0; }
+        .transfer__content__auto-switch .form-check label {
+          padding-right: 5px; }
+        .transfer__content__auto-switch .form-check .form-check-input {
+          width: 52px;
+          height: 30px;
+          border-radius: 20px;
+          background-color: #EAECF4;
+          border-color: #EAECF4;
+          background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+          border: none;
+          margin: 0; }
+          .transfer__content__auto-switch .form-check .form-check-input:checked {
+            background-color: #597EF7;
+            border-color: #597EF7; }
+    .transfer__content__auto-switch-off {
+      background: #FFFFFF;
+      margin-top: 15px;
+      padding: 15px; }
+      .transfer__content__auto-switch-off__main {
+        display: flex;
+        place-content: space-around;
+        place-items: center;
+        border-bottom: 2px solid #EEEEEE;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 14px;
+        color: #000000;
+        margin-bottom: 10px;
+        padding-bottom: 15px; }
+      .transfer__content__auto-switch-off__transfer {
+        font-style: normal;
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 14px;
+        color: #A5A9B3;
+        padding-bottom: 15px; }
+      .transfer__content__auto-switch-off__input .form-control {
+        background: #FFFFFF;
+        border: 1px solid #A5A9B3;
+        box-sizing: border-box;
+        border-radius: 10px !important;
+        min-height: 40px; }
+        .transfer__content__auto-switch-off__input .form-control::placeholder {
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 14px;
+          color: #A5A9B3; }
+      .transfer__content__auto-switch-off__input .input-group-text {
+        background: #fff;
+        border: none; }
+        .transfer__content__auto-switch-off__input .input-group-text.left {
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 14px;
+          color: #000000; }
+        .transfer__content__auto-switch-off__input .input-group-text.right {
+          font-weight: 300;
+          font-size: 14px;
+          line-height: 14px;
+          color: #000000; }
+          .transfer__content__auto-switch-off__input .input-group-text.right img {
+            margin-right: 5px; }
+    .transfer__content__action {
+      padding: 15px; }
+      .transfer__content__action button {
+        min-height: 50px;
+        width: 100%;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 16px;
+        text-align: center;
+        color: #FFFFFF; }

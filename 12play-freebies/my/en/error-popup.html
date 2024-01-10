@@ -1,0 +1,87 @@
+<div class="modal fade" id="error-global-modal" role="dialog" data-theme="a" style="background-color: rgb(0 0 0 / 0.5);">
+    <div class="modal-dialog modal modal-dialog-centered gift-modal-dialog">
+        <div class="modal-content errorpopup-content">
+            <div class="modal-body">
+
+                <div> <img src="images/warning.png" style="width: 10%;">
+                </div>
+
+                <div class="modal-dialog-center error-event-modal mt-2">
+                    <div class="error-title">ERROR MESSAGE</div>
+                    <div class="error-msg">An error occured while processing XML file</div>
+                    <div class="okay-btn">OK</div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .errorpopup-content {
+        background-image: url(images/error-bg.png);
+    }
+    
+    .error-title {
+        padding: 13px 0;
+        font-size: 18px;
+        font-weight: 700;
+    }
+    
+    .error-msg {
+        padding-bottom: 24px;
+        font-size: 16px
+    }
+    
+    .errorpopup-content {
+        background-repeat: no-repeat;
+        background-size: 100%;
+        height: 235px;
+        background-color: transparent;
+        background-position: center center;
+        border-radius: 20px;
+        border: unset!important;
+    }
+    
+    #error-global-modal .modal-dialog {
+        max-width: 440px;
+        width: 100%;
+    }
+    
+    .errorpopup-content .modal-body {
+        padding: 0!important;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+    .error-event-modal {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: white;
+    }
+    
+    .okay-btn {
+        background: transparent linear-gradient(180deg, #C8C8C8 0%, #646464 100%) 0% 0% no-repeat padding-box;
+        padding: 3px 31px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    $(document).ready(function() {
+        $('#error-global-modal').show();
+        $('#error-global-modal').addClass('show');
+        $(".okay-btn").click(function() {
+            $('#error-global-modal').hide();
+            $('#error-global-modal').removeClass('show');
+        });
+
+    });
+</script>

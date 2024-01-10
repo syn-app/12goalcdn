@@ -1,0 +1,119 @@
+.profile {
+  background-color: #F2F2F2; }
+  .profile__content {
+    padding: 0; }
+    .profile__content form {
+      background: #FFFFFF;
+      padding: 15px;
+      margin-bottom: 30px; }
+      .profile__content form .items {
+        margin-bottom: 15px; }
+        .profile__content form .items .avatar {
+          border-bottom: 1px solid #EEEEEE;
+          padding-bottom: 15px; }
+          .profile__content form .items .avatar > div {
+            position: relative;
+            display: table; }
+            .profile__content form .items .avatar > div::after {
+              content: "";
+              position: absolute;
+              right: 0;
+              bottom: 0;
+              width: 20px;
+              height: 20px;
+              background-image: url(../images/profile/avatarEdit.png);
+              background-repeat: no-repeat; }
+            .profile__content form .items .avatar > div img {
+              width: 65px;
+              height: 65px;
+              object-fit: cover; }
+        .profile__content form .items label {
+          font-weight: 300;
+          font-size: 14px;
+          line-height: 14px;
+          color: #000000; }
+        .profile__content form .items .form-control {
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 14px;
+          color: #000000;
+          border-radius: 0 !important;
+          border: none;
+          border-bottom: 1px solid #EEEEEE;
+          padding: 0px 0 15px; }
+          .profile__content form .items .form-control:focus {
+            box-shadow: none; }
+          .profile__content form .items .form-control::placeholder {
+            font-weight: 300;
+            font-size: 12px;
+            line-height: 14px;
+            color: #CED4D9; }
+          .profile__content form .items .form-control:read-only {
+            background: transparent; }
+        .profile__content form .items .input-group-text {
+          background: transparent;
+          border: none;
+          border-radius: 0 !important;
+          border-bottom: 1px solid #EEEEEE;
+          padding-top: 0; }
+    .profile__content > .description {
+      padding: 0 15px;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+      text-align: center;
+      color: #6C7C9D; }
+  .profile .modal .modal-content {
+    min-height: 350px !important;
+    height: 40vh !important;
+    position: relative; }
+    .profile .modal .modal-content .select-profile-picture-modal__items {
+      display: flex;
+      place-content: space-between;
+      place-items: center;
+      flex-wrap: wrap;
+      padding: 30px 0; }
+      .profile .modal .modal-content .select-profile-picture-modal__items__item {
+        width: 25%;
+        text-align: center;
+        padding-bottom: 15px;
+        position: relative; }
+        .profile .modal .modal-content .select-profile-picture-modal__items__item img {
+          width: 65px;
+          height: 65px;
+          object-fit: cover;
+          border-radius: 50%; }
+        .profile .modal .modal-content .select-profile-picture-modal__items__item .checkmark {
+          width: 16px;
+          height: 16px;
+          background-image: url(../images/profile/check.png);
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+          position: absolute;
+          right: 15px;
+          bottom: 15px;
+          display: none; }
+        .profile .modal .modal-content .select-profile-picture-modal__items__item input:checked ~ .checkmark {
+          display: block; }
+        .profile .modal .modal-content .select-profile-picture-modal__items__item input:checked ~ img {
+          border: 2px solid #597EF7; }
+    .profile .modal .modal-content .select-profile-picture-modal .action {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid #F2F2F2; }
+      .profile .modal .modal-content .select-profile-picture-modal .action .btn {
+        display: flex;
+        place-content: center;
+        place-items: center; }
+        .profile .modal .modal-content .select-profile-picture-modal .action .btn:focus {
+          box-shadow: none; }
+        .profile .modal .modal-content .select-profile-picture-modal .action .btn-select {
+          min-height: 40px; }
+        .profile .modal .modal-content .select-profile-picture-modal .action .btn-cancel {
+          min-height: 60px;
+          border-top: 10px solid #F2F2F2; }

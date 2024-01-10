@@ -1,0 +1,79 @@
+.thank-you-page {
+  background-image: url(../images/thank-you-bg.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  background-attachment: fixed; }
+  .thank-you-page__content {
+    padding: 70px 38px;
+    display: flex;
+    place-content: center;
+    place-items: center;
+    flex-direction: column; }
+    .thank-you-page__content__title {
+      font-weight: 900;
+      font-size: 20px;
+      line-height: 27px;
+      text-align: center;
+      color: #FDBB2C;
+      margin-bottom: 15px; }
+    .thank-you-page__content__description {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 19px;
+      text-align: center;
+      color: #FFFFFF;
+      margin-bottom: 20px; }
+    .thank-you-page__content__username {
+      background: rgba(255, 255, 255, 0.13);
+      border-radius: 4px;
+      margin-bottom: 10px;
+      width: 100%;
+      min-height: 45px;
+      display: flex;
+      place-content: center;
+      place-items: center;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 19px;
+      text-align: center;
+      color: #FDBB2C; }
+    .thank-you-page__content__action {
+      width: 100%; }
+      .thank-you-page__content__action .btn {
+        margin-top: 10px; }
+        .thank-you-page__content__action .btn-warning {
+          background: #FDBB2C;
+          border-radius: 4px;
+          min-height: 45px;
+          font-weight: 700;
+          font-size: 16px;
+          line-height: 22px;
+          text-align: center;
+          color: #000000;
+          display: flex;
+          place-content: center;
+          place-items: center;
+          width: 100%; }
+        .thank-you-page__content__action .btn-link {
+          font-weight: 700;
+          font-size: 16px;
+          line-height: 22px;
+          text-align: center;
+          color: #FFFFFF;
+          text-decoration: none;
+          width: 100%; }
+    .thank-you-page__content__help {
+      padding-top: 60px;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      text-align: center;
+      color: #FFFFFF; }
+      .thank-you-page__content__help a {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: center;
+        text-decoration-line: underline;
+        color: #0089FF; }

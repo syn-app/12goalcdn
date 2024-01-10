@@ -1,0 +1,224 @@
+.betting-record {
+  background-color: #f2f2f2;
+  position: relative;
+  transition: .3s; }
+  .betting-record.backdrop .betting-record__content::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(133, 133, 133, 0.5); }
+  .betting-record .nav-expand {
+    display: flex;
+    place-content: flex-start;
+    place-items: center;
+    padding: 5px 15px 10px;
+    gap: 15px;
+    width: 100%;
+    flex-wrap: wrap; }
+    .betting-record .nav-expand__description {
+      display: flex;
+      place-content: space-between;
+      place-items: center;
+      font-size: 12px;
+      line-height: 12px;
+      color: #000000;
+      width: 100%; }
+    .betting-record .nav-expand .dropdown {
+      position: initial; }
+      .betting-record .nav-expand .dropdown > .btn {
+        background: #F7F8FC;
+        border-radius: 20px;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 16px;
+        text-align: center;
+        color: #7E8796;
+        border: none;
+        padding: 10px 20px; }
+        .betting-record .nav-expand .dropdown > .btn.show::after {
+          transform: rotate(180deg); }
+        .betting-record .nav-expand .dropdown > .btn:focus {
+          box-shadow: none; }
+      .betting-record .nav-expand .dropdown .dropdown-menu.show {
+        top: calc(100% - 5px);
+        margin: 0;
+        border: none;
+        border-radius: 0;
+        left: 0;
+        right: 0;
+        padding: 15px;
+        padding-bottom: 0;
+        display: flex;
+        place-content: flex-start;
+        flex-wrap: wrap;
+        gap: 10px; }
+        .betting-record .nav-expand .dropdown .dropdown-menu.show .description {
+          font-weight: 300;
+          font-size: 12px;
+          line-height: 16px;
+          color: #A5A9B3;
+          width: 100%; }
+        .betting-record .nav-expand .dropdown .dropdown-menu.show .btn {
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 14px;
+          text-align: center;
+          color: #A5A9B3;
+          padding: 2px 5px;
+          width: 22%;
+          min-width: auto;
+          max-width: 22%;
+          word-break: break-word;
+          display: flex;
+          place-content: center;
+          place-items: center;
+          min-height: 35px; }
+          .betting-record .nav-expand .dropdown .dropdown-menu.show .btn-outline-secondary {
+            border-color: #A5A9B3; }
+            .betting-record .nav-expand .dropdown .dropdown-menu.show .btn-outline-secondary:hover, .betting-record .nav-expand .dropdown .dropdown-menu.show .btn-outline-secondary:active {
+              background-color: #597EF7;
+              border-color: #597EF7;
+              color: #FFFFFF;
+              box-shadow: none; }
+          .betting-record .nav-expand .dropdown .dropdown-menu.show .btn.active {
+            background-color: #597EF7;
+            border-color: #597EF7;
+            color: #FFFFFF; }
+        .betting-record .nav-expand .dropdown .dropdown-menu.show.w-auto {
+          place-content: flex-start; }
+          .betting-record .nav-expand .dropdown .dropdown-menu.show.w-auto .btn {
+            width: auto;
+            min-width: 80px;
+            max-width: initial; }
+        .betting-record .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate {
+          width: 100%; }
+          .betting-record .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate > div {
+            margin-left: 0;
+            margin-right: 0;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 16px;
+            color: #000000;
+            place-items: center;
+            margin-top: 5px;
+            padding: 0; }
+            .betting-record .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate > div:first-child {
+              border-bottom: 2px solid #EEEEEE; }
+            .betting-record .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate > div .form-control {
+              border: none;
+              text-align: right; }
+              .betting-record .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate > div .form-control[readonly] {
+                background-color: transparent; }
+            .betting-record .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate > div.action {
+              margin-left: -15px !important;
+              margin-right: -15px !important;
+              display: flex;
+              place-content: space-between;
+              place-items: center;
+              margin-top: 5px; }
+              .betting-record .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate > div.action .btn {
+                min-height: 50px;
+                width: 50%;
+                max-width: 50%;
+                border-radius: 0; }
+                .betting-record .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate > div.action .btn-cancel {
+                  background-color: #E9F6FF;
+                  color: #597EF7; }
+                .betting-record .nav-expand .dropdown .dropdown-menu.show #collapseCustomDate > div.action .btn-confirm {
+                  background-color: #597EF7;
+                  color: #fff; }
+  .betting-record__content {
+    padding-left: 15px;
+    padding-right: 15px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    place-content: center;
+    place-items: center;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center; }
+    .betting-record__content__add-btn {
+      background: #FFFFFF;
+      border-radius: 20px;
+      padding: 30px;
+      width: 100%;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 19px;
+      text-align: center;
+      color: #A1A2A7; }
+    .betting-record__content__description {
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 16px;
+      text-align: center;
+      color: #A1A2A7; }
+    .betting-record__content.betting-record-items {
+      padding: 110px 15px 50px 15px;
+      position: initial;
+      width: 100%;
+      flex-direction: column; }
+      .betting-record__content.betting-record-items > .title {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 12px;
+        color: #000000;
+        text-align: left;
+        width: 100%; }
+      .betting-record__content.betting-record-items .items {
+        width: 100%;
+        display: flex;
+        place-items: center;
+        gap: 12px;
+        padding: 15px;
+        background: #FFFFFF;
+        text-align: left; }
+        .betting-record__content.betting-record-items .items__content {
+          width: 100%; }
+          .betting-record__content.betting-record-items .items__content__title {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 16px;
+            color: #000000;
+            border-bottom: 1px solid #000000;
+            padding-bottom: 8px; }
+          .betting-record__content.betting-record-items .items__content__info {
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 16px;
+            color: #000000;
+            border-left: 2px solid #7696FF;
+            margin: 8px 0;
+            padding-left: 15px; }
+          .betting-record__content.betting-record-items .items__content__subtitle {
+            display: flex;
+            place-content: space-between;
+            place-items: center;
+            border-bottom: 1px solid #000000;
+            padding-bottom: 6px;
+            margin-bottom: 8px;
+            font-weight: 300;
+            font-size: 12px;
+            line-height: 16px;
+            color: #000000; }
+          .betting-record__content.betting-record-items .items__content__description {
+            font-weight: 300;
+            font-size: 12px;
+            line-height: 16px;
+            color: #A5A9B3;
+            display: flex;
+            place-content: space-between;
+            place-items: center; }
+  .betting-record .withdrawal__content__bank-account__title {
+    display: flex;
+    place-content: space-between;
+    place-items: center; }

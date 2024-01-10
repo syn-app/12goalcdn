@@ -1,0 +1,318 @@
+<div class="sticky-navbar">
+    <div class="container" id="header-content">
+        
+
+    </div>
+</div>
+<div class="sticky-secondary-navbar">
+    <div class="container navbar-wrap" id="navBarMenu"> 
+    </div>
+    <style>
+        .menu-flag {
+            position: absolute;
+            width: 40px;
+            top: -8px;
+        }
+        .navbar-wrap .navbar-title .dota-title-wrap {
+            width: 100px;
+            height: 30px
+        }
+
+        .navbar-wrap #predictionBtn.dota-title {
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-position: top;
+            display: none;
+        }
+
+        .navbar-wrap .navbar-title .dota-title-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain
+        }
+
+        .sticky-secondary-navbar .navbar-wrap .dota-title.active,
+        .sticky-secondary-navbar .navbar-wrap .dota-title:hover {
+            background-image: url('https://93hdy12py.cloudcdnetw.com/12pv2/images/minigames/anniversary2021/nav-hover-effect.png');
+        }
+    </style>
+</div>
+<style>
+    .sticky-secondary-navbar .navbar-wrap .euro-title.active,
+    .sticky-secondary-navbar .navbar-wrap .euro-title:hover {
+        background-image: url("https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/images/12euro/euro/euro-title-logo-bg.png");
+    }
+
+    .rewardIcon {
+        height: 54px;
+        width: 54px;
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+
+    .rewardIcon:hover {
+        background-image: url(images/12reward/12p-reward-header-icon-hover.png) !important;
+    }
+
+    .sticky-secondary-navbar .navbar-wrap .lottery-title.active,
+    .sticky-secondary-navbar .navbar-wrap .lottery-title:hover {
+        background-image: url("https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/images/12lottery-mask.png");
+    }
+
+
+</style>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/js/theme-mode.js"></script>
+<script type="text/javascript">
+    function getDateNow() {
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+        var yyyy = today.getFullYear();
+        var hour = today.getHours();
+        var min = today.getMinutes();
+        var sec = today.getSeconds();
+        if (dd < 10) {
+            dd = '0' + dd
+        }
+        if (mm < 10) {
+            mm = '0' + mm
+        }
+        if (hour < 10) {
+            hour = '0' + hour
+        }
+        if (min < 10) {
+            min = '0' + min
+        }
+        if (sec < 10) {
+            sec = '0' + sec
+        }
+        return dd + '/' + mm + '/' + yyyy + ' ' + hour + ':' + min + ':' + sec;
+    }
+
+    function closeDropdown() {
+        $(".dropdown-content").removeClass("show-dropdown");
+    }
+
+    function renderLightMode() {
+        $(".vip-button > img").attr("src", "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/images/vip-button-light.png");
+
+        $(".color-mode-switch > img").attr("src", "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/images/light-mode.png");
+        $(".color-mode-switch-dark").removeClass("color-mode-switch-dark").addClass("color-mode-switch-light");
+    }
+
+    function renderDarkMode() {
+        $(".vip-button > img").attr("src", "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/images/vip-button-dark.png");
+
+        $(".color-mode-switch > img").attr("src", "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/images/dark-mode.png");
+        $(".color-mode-switch-light").removeClass("color-mode-switch-light").addClass("color-mode-switch-dark");
+    }
+
+    var walletBalance = 90;
+    var gameBalance = 0;
+    var gameMaintenance = false;
+    $(".game-img-wrap").click(function () {
+        gameTransferPopup();
+    });
+
+    function gameTransferPopup() {
+        if (gameMaintenance == true) {
+            window.location.href=`${SITE_DOMAIN}/sg/gameTransferPopup-maintenance.html`
+        }
+        else if (walletBalance == 0) {
+            window.location.href=`${SITE_DOMAIN}/sg/gameTransferPopup-nocredit.html`
+
+        }
+        else if (gameBalance == 0) {
+            $("#gameTransferModal .gameModalText> span").text("SGD " + walletBalance.toFixed(2));
+            window.location.href=`${SITE_DOMAIN}/sg/gameTransferPopup-transfercredit.html`
+
+        }
+    }
+    $(document).ready(function () {
+        $(".rotate,#countryFlag").click(function () {
+            $(".rotate").toggleClass("down");
+            if ($(".rotate").hasClass("down")) {
+                $("#countryOption").show();
+            } else {
+                $("#countryOption").hide();
+            }
+        });
+        const headerContent = `<div class="navbar-brand-logo" onclick="window.location.href='${SITE_DOMAIN}/sg/index.html?lang=english'">
+            <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/images/logo.png" alt="12Play Online Casino Singapore Logo" />
+        </div>`;
+        $("#header-content").append(headerContent);
+
+        const navMenu = `<a id="homeBtn" class="navbar-title" href='${SITE_DOMAIN}/sg/index.html?lang=english'>
+            <div class="title-txt">Home</div>
+        </a>
+        <a id="esportsBtn" class="navbar-title dropdown-btn" href='${SITE_DOMAIN}/sg/esports.html?lang=english'>
+            <div class="title-txt">ESPORTS</div>
+        </a>
+        <a id="sportsBtn" class="navbar-title dropdown-btn" href='${SITE_DOMAIN}/sg/sports.html?lang=english'>
+            <div class="title-txt">SPORTS</div>
+        </a>
+        <a id="liveCasinoBtn" class="navbar-title dropdown-btn" href='${SITE_DOMAIN}/sg/livecasino.html?lang=english'>
+            <div class="title-txt">LIVE CASINO</div>
+        </a>
+        <a id="slotsBtn" class="navbar-title dropdown-btn" href='${SITE_DOMAIN}/sg/slots.html?lang=english'>
+            <div class="title-txt">SLOTS</div>
+        </a>
+        <a id="arcadeBtn" class="navbar-title dropdown-btn" href='${SITE_DOMAIN}/sg/arcade.html?lang=english'>
+            <div class="title-txt">ARCADE</div>
+        </a>
+        <a id="4dBtn" class="navbar-title" href='${SITE_DOMAIN}/sg/4d.html?lang=english'>
+            <div class="title-txt">4D</div>
+        </a>
+        <div class="navbar-title" style="position: relative;">
+            <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/images/icon/icon-hot.png" alt="Hot Icon" class="menu-flag">
+            <nav class="navigation">
+                <ul>
+                  <li><div class="title-txt d-flex">12EVENTS<span class="down-caret"></span> </div>
+                    <ul class="dropdown" style="background-image: url(https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/images/12ranking/dropdown.png);">
+                      <li><a id="12goalBtn" onclick="window.location.href = window.location.href">12GOAL</a></li>
+                      <li><a id="12lottertBtn" href='${SITE_DOMAIN}/sg/fortune-spin.html?lang=english'>12LOTTERY</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+        </div>
+        <a id="promoBtn" class="navbar-title" href='${SITE_DOMAIN}/sg/promotion.html?lang=english'>
+            <div class="title-txt">PROMOTION</div>
+        </a>
+        <a id="vip-button" class="navbar-title" href='${SITE_DOMAIN}/sg/vip.html?lang=english'>
+            <div class="title-txt">VIP</div>
+        </a>
+        <div class="navbar-title">
+            <a id="language">
+                <div class="lang-btn">中文</div>
+            </a>
+        </div>`
+        $("#navBarMenu").append(navMenu);
+        $("#language").click(function() {
+            if (siteLang === 'en') {
+            window.location.href = `../chs/12goal.html?userData=${encodeURIComponent(localStorage.getItem(USER_KEY) || '')}&timestamp=${localStorage.getItem(KEY_TS)}`
+            } else {
+            window.location.href = `../en/12goal.html?userData=${encodeURIComponent(localStorage.getItem(USER_KEY) || '')}&timestamp=${localStorage.getItem(KEY_TS)}`
+            }
+        });
+        $("#gameTransferPopup").load("gameTransferPopup.html");
+
+        //prevent form resubmission 
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+
+        if (localStorage['12p_login'] == 'true') {
+            $(".before-login").hide();
+            $(".after-login").show();
+        } else {
+            $(".after-login").hide();
+
+        }
+        $(".login-btn").click(function () {
+            $(".login-container").show();
+        });
+
+        $(".login-close").click(function () {
+            $(".login-container").hide();
+        });
+
+        $(".login-container").click(function (e) {
+            // if the target of the click isn't the container nor a descendant of the container
+            if (!$(".login-box").is(e.target) && $(".login-box").has(e.target).length === 0)
+                $(".login-container").hide();
+        });
+
+        $("#fr_login").submit(function () {
+            localStorage['12p_login'] = 'true';
+            localStorage['12p_username'] = $("#txtUsername").val();
+            localStorage['12p_inbox'] = 3;
+        });
+
+        setInterval(function () {
+            var now = getDateNow();
+            $('#currentTimestamp').html(now + " (GMT+8)");
+        }, 1000);
+
+        $(".header-playername>span").text(localStorage['12p_username']);
+
+        // switch night mode / light mode text on sidebar
+        if (localStorage["12pMode"] == "light") {
+            renderLightMode();
+        } else {
+            renderDarkMode();
+        }
+
+        $(".color-mode-switch > img").click(function () {
+            if ($(this).hasClass("color-mode-switch-dark")) {
+                // switch to light mode
+                renderLightMode();
+
+                var mode = "light";
+                localStorage['12pMode'] = mode;
+                document.documentElement.setAttribute("data-theme", localStorage['12pMode']);
+
+            } else if ($(this).hasClass("color-mode-switch-light")) {
+                // switch to dark mode
+                renderDarkMode();
+
+                var mode = "dark";
+                localStorage['12pMode'] = mode;
+                document.documentElement.setAttribute("data-theme", localStorage['12pMode']);
+            }
+        });
+        // show esports dropdown content when hover
+        $("#esportsBtn, #esportDropdownContent").hover(
+            function () {
+                $("#esportDropdownContent.dropdown-content").addClass("show-dropdown");
+            },
+            function () {
+                closeDropdown();
+            }
+        );
+
+        // show sports dropdown content when hover
+        $("#sportsBtn, #sportsDropdownContent").hover(
+            function () {
+                $("#sportsDropdownContent.dropdown-content").addClass("show-dropdown");
+            },
+            function () {
+                closeDropdown();
+            }
+        );
+
+        // show live casino dropdown content when hover
+        $("#liveCasinoBtn, #liveCasinoDropdownContent").hover(
+            function () {
+                $("#liveCasinoDropdownContent.dropdown-content").addClass("show-dropdown");
+            },
+            function () {
+                closeDropdown();
+            }
+        );
+
+        // show slots dropdown content when hover
+        $("#slotsBtn, #slotsDropdownContent").hover(
+            function () {
+                $("#slotsDropdownContent.dropdown-content").addClass("show-dropdown");
+            },
+            function () {
+                closeDropdown();
+            }
+        );
+
+        // show arcade dropdown content when hover
+        $("#arcadeBtn, #arcadeDropdownContent").hover(
+            function () {
+                $("#arcadeDropdownContent.dropdown-content").addClass("show-dropdown");
+            },
+            function () {
+                closeDropdown();
+            }
+        );
+
+
+
+    });
+</script>
