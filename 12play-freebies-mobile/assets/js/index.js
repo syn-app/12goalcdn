@@ -6,12 +6,12 @@ var SITE_COUNTRY = "MY";
 var SITE_DOMAIN = "";
 var listQuestion = [];
 
-loadHowToPlay = () => {
+loadHowToPlay = (site) => {
   const currencyUnit = SITE_COUNTRY === "MY" ? 'MYR' : 'SGD';
   const currencyUnitCN = SITE_COUNTRY === "MY" ? '马币' : '新币';
 
-  const howToPlayEn = `<strong>How To Play</strong><ol> <li>12Play is proud to present to you its most exciting new feature in recent times - it’s all-new 12Goal event!</li> <li>Playing a 12Goal event by answering 4 questions based on one match, with 3 or more possible answers and you will win a cash prize! </li> <li>All you need to do is submit your answers for all 4 questions according to the result you think will happen for a match. </li> <li>1 correct answer will get 1 points. </li> <li>Wrong answer will not deduct points. </li><li>Accumulate your points and compete on our Leaderboard for the Top 50 to win the Final Grand Prize! </li></ol><strong>Prizes</strong><ol><li>If you answer correctly to all 4 questions you will get a ${currencyUnit} 30.</li><li>If you answer correctly to 3 questions you will get a ${currencyUnit} 8.</li><li>Final Grand Prize may refer to our Leaderboard.</li></ol>`;
-  const howToPlayZh = `<strong>竞猜玩法：</strong><ol><li>12PLAY 最新游戏功能已上线：12Goal 有奖竞猜！ </li><li>12Goal有奖竞猜会依据每场指定球赛准备四道题目（每道题目至少会有三个选项），参与竞猜即有机会获取现金奖！</li><li>您只需要提交您对这四道题目的猜测结果，每答对一题并可获取一分。答错并不会扣取您的累积分。</li><li>积分榜累积分最高的五十位参赛者就能赢得12Goal有奖竞猜的终极大奖！ </li></ol><strong>竞猜奖金：</strong><ol><li>答对一场球赛的四道题目将可获得现金奖${currencyUnitCN} 30. </li><li>答对一场球赛的三道题目将可获得现金奖${currencyUnitCN} 8。 </li><li>12Goal有奖竞猜终极大奖可前往积分榜页面查阅。 </li></ol>`;
+  const howToPlayEn = `<strong>How To Play</strong><ol> <li>12Play is proud to present to you its most exciting new feature in recent times - it’s all-new 12Goal event!</li> <li>Playing a 12Goal event by answering 4 questions based on one match, with 3 or more possible answers and you will win a cash prize! </li> <li>All you need to do is submit your answers for all 4 questions according to the result you think will happen for a match. </li> <li>1 correct answer will get 1 points. </li> <li>Wrong answer will not deduct points. </li><li>Accumulate your points and compete on our Leaderboard for the Top 50 to win the Final Grand Prize! </li></ol><strong>Prizes</strong><ol><li>If you answer correctly to all 4 questions you will get a ${currencyUnit} ${site.fourCorrectsPrize}.</li><li>If you answer correctly to 3 questions you will get a ${currencyUnit} ${site.threeCorrectsPrize}.</li><li>Final Grand Prize may refer to our Leaderboard.</li></ol>`;
+  const howToPlayZh = `<strong>竞猜玩法：</strong><ol><li>12PLAY 最新游戏功能已上线：12Goal 有奖竞猜！ </li><li>12Goal有奖竞猜会依据每场指定球赛准备四道题目（每道题目至少会有三个选项），参与竞猜即有机会获取现金奖！</li><li>您只需要提交您对这四道题目的猜测结果，每答对一题并可获取一分。答错并不会扣取您的累积分。</li><li>积分榜累积分最高的五十位参赛者就能赢得12Goal有奖竞猜的终极大奖！ </li></ol><strong>竞猜奖金：</strong><ol><li>答对一场球赛的四道题目将可获得现金奖${currencyUnitCN} ${site.fourCorrectsPrize}. </li><li>答对一场球赛的三道题目将可获得现金奖${currencyUnitCN} ${site.threeCorrectsPrize}。 </li><li>12Goal有奖竞猜终极大奖可前往积分榜页面查阅。 </li></ol>`;
 
 
   if (localStorage.getItem('preferred_language') === 'en') {
@@ -48,7 +48,6 @@ getSiteDomain = async () => {
   //   }
   // }
 
-  loadHowToPlay();
   $('.currencyText').text(SITE_COUNTRY === 'MY' ? 'MYR' : 'SGD');
 }
 
@@ -226,15 +225,25 @@ fetchSiteInfo = () => {
         const maxPrize = `${res.currency} ${new Intl.NumberFormat("en-US").format(res.prizePool)}`;
         $("#maxPrize").html("").append(maxPrize);
       }
-      $('#tcContent').append(getTC(new Date(res.startTime), new Date(res.endTime), res.exchange, res.maxTicket))
+      if (res.fourCorrectsPrize) {
+        $('.4correct').text(res.fourCorrectsPrize);
+      }
+      if (res.threeCorrectsPrize) {
+        $('.3correct').text(res.threeCorrectsPrize);
+      }
+      $('#tcContent').append(getTC(res));
+      loadHowToPlay(res);
     });
 };
 
-getTC = (startTime, endTime, currencyRate, maxTicket) => {
+getTC = (site) => {
+  const currencyRate = site.exchange;
+  const maxTicket = site.maxTicket;
   const startTimeFormat = new Intl.DateTimeFormat("en-GB", {
     dateStyle: "medium",
     timeStyle: "medium",
-  }).format(new Date(startTime.setHours(0, 0, 0)));
+  }).format(new Date(new Date(site.startTime).setHours(0, 0, 0)));
+  const endTime = new Date(any.endTime);
   const endTimeFormat = new Intl.DateTimeFormat("en-GB", {
     dateStyle: "medium",
     timeStyle: "medium",
@@ -249,8 +258,8 @@ getTC = (startTime, endTime, currencyRate, maxTicket) => {
   }).format(new Date(payoffDate.setHours(18, 0, 0))).replace("at", "");
   const currencyUnit = SITE_COUNTRY === "MY" ? 'MYR' : 'SGD';
   const currencyUnitCN = SITE_COUNTRY === "MY" ? '马币' : '新币';
-  const tCEn = `<strong>How To Start</strong> <ol> <li>All members are required to deposit a minimum ${currencyUnit} 30 in order to get a ticket to participate in our 12Goal event. </li> <li>Every ${currencyUnit} 30 gets 1 ticket. Maximum tickets obtained by a member is capped at ${maxTicket}. </li> <li>With the tickets obtained, members will be able to participate in the event by answering the questions based on matches. </li> <li>1 ticket required to participate in 1 Match. </li> <li>Cut off time to answer the questions is 10 min before the match start. </li> <li>If the match gets postponed, abandoned, or not completed then the ticket will be voided. </li> <li>All answers in the event are based on the results 90 minutes plus injury time. </li> <li>Multi accounting is not allowed. If you enter a event with more than one account then all your entries will be disqualified. </li> <li>Entry to the event is limited to one per user, IP address, electronic device, household, residential address, telephone number, email address and any public environments where computers; and IP addresses are shared such as, but not limited to: universities, schools, libraries and workplaces. In conclusion, only one entry is allowed per one individual. </li> <li> All 12Play General Terms &amp; Conditions apply. </li> <li> 12Play reserves the right to amend, change or terminate this event at any time for all players without prior notice. </li> </ol> <strong>Prize Payout:</strong> <ol> <li>If you answer correctly to all 4 questions you will get a ${currencyUnit} 30 after the match is settled. </li> <li>If you answer correctly to 3 questions you will get a ${currencyUnit} 8 after the match is settled.</li> <li>The Top 50 Winners will be selected based on the highest point gained on the leaderboard during the event period. </li> <li>In the event of two or more members having the same point tally, the winner will be selected based on the earliest question submission time and date.</li> <li>The total number of points will be tallied from ${startTimeFormat} - ${endTimeFormat}. </li> <li>Winners will have their prizes credited automatically by the system.</li> <li>The pay-off date for the leaderboard is on the ${payoffDateFormat}.</li> <li>All prizes come with a 1x turnover requirement. </li><li>All prizes will be paid in ${currencyUnit} currency. USD will be converted into ${currencyUnit} based on the exchange rate of ${currencyRate}.</li></ol>`
-  const tcZh = `<strong>竞猜详情:</strong><ol><li>每位玩家只需在活动期间最低存款${currencyUnitCN} 30即可获取一场12Goal有奖竞猜的票卷。</li><li>每存款${currencyUnitCN} 30将获取一张票卷，每位玩家最高可获取${maxTicket}张票卷。</li><li>获取票卷后，玩家便能用其票卷来回答每一场球赛所提问的四道问题.</li><li>每一场球赛只需一张票卷来参与竞猜。</li><li>每场球赛的竞猜必须在该球赛开赛前的十分钟进行。</li><li>如该球赛延迟，中途取消或者开赛前取消，该票卷将会作废</li><li>所有赛果将依据90分钟正赛及伤及补时阶段为准。</li><li>每位玩家只限以一个账户参与竞猜，如发现玩家使用超过一个账户参与此活动，所有相关账户的票卷将会作废。</li><li>以上限制包括每个家庭地址、IP地址、电子邮件地址、电话号码、信用卡或借记卡和/或电子支付帐户或共享电脑（例如学校、公共图书馆或工作场所）只允许一个账户参与活动</li><li> 须符合12PLAY的条款与条件。</li><li> 12PLAY将保留随时取消此竞猜活动的权利，适用于所有玩家或个人玩家。</li></ol><strong>奖金支付：</strong><ol><li>答对一场球赛的四道题目将在球赛结束后获得现金奖${currencyUnitCN} 30. </li><li>答对一场球赛的三道题目将在球赛结束后获得现金奖${currencyUnitCN} 8.</li><li>12Goal有奖竞猜终极大奖将由积分榜首五十位玩家赢取！</li><li>如两位或以上的玩家最终累积分相同，越早提交第一张票卷的玩家最终积分榜排名将会越高.</li><li>所有分数将计算于${startTimeFormat}至${endTimeFormat}</li><li>所有活动奖金将由系统自动存入玩家账户。</li><li>12Goal有奖竞猜终极大奖的奖金将于${payoffDateFormat}发放。</li><li>所有奖金只需一倍投注量即可提款。</li><li>所有奖金将以${currencyUnitCN}结算。美金将根据汇率${currencyRate}转换成${currencyUnitCN}。
+  const tCEn = `<strong>How To Start</strong> <ol> <li>All members are required to deposit a minimum ${currencyUnit} ${site.depositAmountPerTicket} in order to get a ticket to participate in our 12Goal event. </li> <li>Every ${currencyUnit} ${site.depositAmountPerTicket} gets 1 ticket. Maximum tickets obtained by a member is capped at ${maxTicket}. </li> <li>With the tickets obtained, members will be able to participate in the event by answering the questions based on matches. </li> <li>1 ticket required to participate in 1 Match. </li> <li>Cut off time to answer the questions is 10 min before the match start. </li> <li>If the match gets postponed, abandoned, or not completed then the ticket will be voided. </li> <li>All answers in the event are based on the results 90 minutes plus injury time. </li> <li>Multi accounting is not allowed. If you enter a event with more than one account then all your entries will be disqualified. </li> <li>Entry to the event is limited to one per user, IP address, electronic device, household, residential address, telephone number, email address and any public environments where computers; and IP addresses are shared such as, but not limited to: universities, schools, libraries and workplaces. In conclusion, only one entry is allowed per one individual. </li> <li> All 12Play General Terms &amp; Conditions apply. </li> <li> 12Play reserves the right to amend, change or terminate this event at any time for all players without prior notice. </li> </ol> <strong>Prize Payout:</strong> <ol> <li>If you answer correctly to all 4 questions you will get a ${currencyUnit} ${site.fourCorrectsPrize} after the match is settled. </li> <li>If you answer correctly to 3 questions you will get a ${currencyUnit} ${site.threeCorrectsPrize} after the match is settled.</li> <li>The Top 50 Winners will be selected based on the highest point gained on the leaderboard during the event period. </li> <li>In the event of two or more members having the same point tally, the winner will be selected based on the earliest question submission time and date.</li> <li>The total number of points will be tallied from ${startTimeFormat} - ${endTimeFormat}. </li> <li>Winners will have their prizes credited automatically by the system.</li> <li>The pay-off date for the leaderboard is on the ${payoffDateFormat}.</li> <li>All prizes come with a 1x turnover requirement. </li><li>All prizes will be paid in ${currencyUnit} currency. USD will be converted into ${currencyUnit} based on the exchange rate of ${currencyRate}.</li></ol>`
+  const tcZh = `<strong>竞猜详情:</strong><ol><li>每位玩家只需在活动期间最低存款${currencyUnitCN} ${site.depositAmountPerTicket}即可获取一场12Goal有奖竞猜的票卷。</li><li>每存款${currencyUnitCN} ${site.depositAmountPerTicket}将获取一张票卷，每位玩家最高可获取${maxTicket}张票卷。</li><li>获取票卷后，玩家便能用其票卷来回答每一场球赛所提问的四道问题.</li><li>每一场球赛只需一张票卷来参与竞猜。</li><li>每场球赛的竞猜必须在该球赛开赛前的十分钟进行。</li><li>如该球赛延迟，中途取消或者开赛前取消，该票卷将会作废</li><li>所有赛果将依据90分钟正赛及伤及补时阶段为准。</li><li>每位玩家只限以一个账户参与竞猜，如发现玩家使用超过一个账户参与此活动，所有相关账户的票卷将会作废。</li><li>以上限制包括每个家庭地址、IP地址、电子邮件地址、电话号码、信用卡或借记卡和/或电子支付帐户或共享电脑（例如学校、公共图书馆或工作场所）只允许一个账户参与活动</li><li> 须符合12PLAY的条款与条件。</li><li> 12PLAY将保留随时取消此竞猜活动的权利，适用于所有玩家或个人玩家。</li></ol><strong>奖金支付：</strong><ol><li>答对一场球赛的四道题目将在球赛结束后获得现金奖${currencyUnitCN} ${site.fourCorrectsPrize}. </li><li>答对一场球赛的三道题目将在球赛结束后获得现金奖${currencyUnitCN} ${site.threeCorrectsPrize}.</li><li>12Goal有奖竞猜终极大奖将由积分榜首五十位玩家赢取！</li><li>如两位或以上的玩家最终累积分相同，越早提交第一张票卷的玩家最终积分榜排名将会越高.</li><li>所有分数将计算于${startTimeFormat}至${endTimeFormat}</li><li>所有活动奖金将由系统自动存入玩家账户。</li><li>12Goal有奖竞猜终极大奖的奖金将于${payoffDateFormat}发放。</li><li>所有奖金只需一倍投注量即可提款。</li><li>所有奖金将以${currencyUnitCN}结算。美金将根据汇率${currencyRate}转换成${currencyUnitCN}。
   </li></ol>`;
   if (localStorage.getItem('preferred_language') === 'en') {
     return tCEn;
@@ -276,12 +285,8 @@ getUserData = () => {
 };
 
 fetchCurrentQuiz = () => {
-  const now = new Date().toISOString();
-  const endDate = new Date(
-    new Date().setDate(new Date().getDate() + 2),
-  ).toISOString();
   fetch(
-    `${API_URL}/12goalapi/freebies-game?startTime=${now}&endTime=${endDate}&country=${SITE_COUNTRY}&sortName=MatchDate&ascend=true&t=${new Date().getTime()}`,
+    `${API_URL}/12goalapi/freebies-game?country=${SITE_COUNTRY}&sortName=MatchDate&ascend=true&t=${new Date().getTime()}`,
     getRequestHeaders(),
   )
     .then((response) => response.json())
