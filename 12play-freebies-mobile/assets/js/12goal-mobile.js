@@ -53,7 +53,7 @@ getSiteDomain = async () => {
 
 setSiteBarMenu = () => {
   const domain = `${SITE_DOMAIN}/${SITE_COUNTRY.toLowerCase()}/`;
-  const textClass = localStorage["preferred_language"] === "en"? "" : "lang-cn-bold";
+  const textClass = localStorage["preferred_language"] === "en" ? "" : "lang-cn-bold";
   const menu = `
 <a href='${domain}fortune-spin.html'" class="">
   <div class="sidebarFunctionIcon">
@@ -217,25 +217,6 @@ getRequestHeaders = (additonalHeaders) => {
   };
 };
 
-fetchSiteInfo = () => {
-  fetch(`${API_URL}/12goalapi/site-info/detail-by-name?siteName=${SITE_COUNTRY === "MY" ? '12M' : '12S'}&t=${new Date().getTime()}`, getRequestHeaders())
-    .then((response) => response.json())
-    .then((res) => {
-      if (res.currency && res.prizePool) {
-        const maxPrize = `${res.currency} ${new Intl.NumberFormat("en-US").format(res.prizePool)}`;
-        $("#maxPrize").html("").append(maxPrize);
-      }
-      if (res.fourCorrectsPrize) {
-        $('.4correct').text(res.fourCorrectsPrize);
-      }
-      if (res.threeCorrectsPrize) {
-        $('.3correct').text(res.threeCorrectsPrize);
-      }
-      $('#tcContent').append(getTC(res));
-      loadHowToPlay(res);
-    });
-};
-
 getTC = (site) => {
   const currencyRate = site.exchange;
   const maxTicket = site.maxTicket;
@@ -243,7 +224,7 @@ getTC = (site) => {
     dateStyle: "medium",
     timeStyle: "medium",
   }).format(new Date(new Date(site.startTime).setHours(0, 0, 0)));
-  const endTime = new Date(any.endTime);
+  const endTime = new Date(site.endTime);
   const endTimeFormat = new Intl.DateTimeFormat("en-GB", {
     dateStyle: "medium",
     timeStyle: "medium",
@@ -369,7 +350,7 @@ fetchCurrentQuiz = () => {
         var freebiesGameId = "";
         var answerOfQuestion1 = [];
         $(".predictBtn").click(function () {
-          var balance = $("#ticketBalance").text();
+          var balance = $(".ticket-balance").text();
           let matchTitle = $(this).parent().find(".quizTitle").text();
           let freebiesGame = currentQuiz.find((x) => x.match === matchTitle);
           if (balance == 0 && !freebiesGame.isPlayed) {
@@ -548,8 +529,8 @@ fetchCurrentQuiz = () => {
         })
           .then((response) => response.json())
           .then((res) => {
-            if (res.code) {
-              alert(`Error: ${res.code}`);
+            if (res.code && res.detail) {
+              showErrorModal(res);
             } else {
               location.reload();
             }
@@ -571,26 +552,6 @@ fetchCurrentQuiz = () => {
         `<div>${translator.translateForKey("home_page.No_Match")}</div>`,
       );
     });
-};
-
-claimedPrize = (freebiesGamePlayId) => {
-  const data = {
-    freebiesGamePlayId: +freebiesGamePlayId,
-  };
-  fetch(`${API_URL}/12goalapi/claimed-prize`, {
-    body: JSON.stringify(data),
-    method: "POST",
-    ...getRequestHeaders(),
-  })
-    .then((response) => response.json())
-    .then((res) => {
-      if (res.code) {
-        console.error(res);
-      } else {
-        location.reload();
-      }
-    })
-    .catch((err) => console.error(err));
 };
 
 fetchPrevQuiz = () => {
@@ -832,23 +793,6 @@ fetchPrevQuiz = () => {
     });
 };
 
-fetchUserRankReport = () => {
-  fetch(`${API_URL}/12goalapi/user/ranking-report?t=${new Date().getTime()}`, getRequestHeaders())
-    .then((response) => response.json())
-    .then((res) => {
-      $("#totalPoint").append(res.totalPoints);
-      $("#rankNo").append(res.rankNo);
-    });
-};
-
-fetchUserBalanceTickets = () => {
-  fetch(`${API_URL}/12goalapi/user/balance-tickets?t=${new Date().getTime()}`, getRequestHeaders())
-    .then((response) => response.json())
-    .then((res) => {
-      $("#ticketBalance").html(res.balanceTickets);
-    });
-};
-
 fetchLeaderBoardRanking = () => {
   fetch(
     `${API_URL}/12goalapi/user/top-50-ranking-report?country=${SITE_COUNTRY}&t=${new Date().getTime()}`, getRequestHeaders()
@@ -954,9 +898,7 @@ $(document).ready(async function () {
     $("#previous-tab").css("display", "none");
   }
 
-  fetchUserBalanceTickets();
   fetchCurrentQuiz();
-  fetchUserRankReport();
+  fetchUserGameReport().then(res => loadHowToPlay(res.site));
   fetchLeaderBoardRanking();
-  fetchSiteInfo();
 });

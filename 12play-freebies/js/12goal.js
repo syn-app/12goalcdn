@@ -1,6 +1,6 @@
 const USER_KEY = "userData";
 const KEY_TS = "timestamp";
-const API_URL = location.hostname === "127.0.0.1" ? "https://localhost:7293" : `${location.origin}`;
+const API_URL = location.hostname === "localhost" ? "https://localhost:7293" : `${location.origin}`;
 
 var SITE_COUNTRY = "MY";
 var SITE_DOMAIN = "";
@@ -84,24 +84,6 @@ getRequestHeaders = (additonalHeaders) => {
   };
 }
 
-fetchSiteInfo = () => {
-  fetch(`${API_URL}/12goalapi/site-info/detail-by-name?siteName=${SITE_COUNTRY === "MY" ? '12M' : '12S'}&t=${new Date().getTime()}`, getRequestHeaders())
-    .then((response) => response.json())
-    .then((res) => {
-      if (res.currency && res.prizePool) {
-        const maxPrize = `${res.currency} ${new Intl.NumberFormat('en-US').format(res.prizePool)}`;
-        $("#maxPrize").html("").append(maxPrize);
-      }
-      if (res.fourCorrectsPrize) {
-        $('.4correct').text(res.fourCorrectsPrize);
-      }
-      if (res.threeCorrectsPrize) {
-        $('.3correct').text(res.threeCorrectsPrize);
-      }
-      $('#tcContent').append(getTC(res));
-    })
-}
-
 getTC = (site) => {
   const currencyRate = site.exchange;
   const maxTicket = site.maxTicket;
@@ -109,7 +91,7 @@ getTC = (site) => {
     dateStyle: "medium",
     timeStyle: "medium",
   }).format(new Date(new Date(site.startTime).setHours(0, 0, 0)));
-  const endTime = new Date(any.endTime);
+  const endTime = new Date(site.endTime);
   const endTimeFormat = new Intl.DateTimeFormat("en-GB", {
     dateStyle: "medium",
     timeStyle: "medium",
@@ -158,6 +140,7 @@ getUserData = () => {
     localStorage.setItem(KEY_TS, timestamp);
   }
 };
+
 fetchCurrentQuiz = () => {
   fetch(`${API_URL}/12goalapi/freebies-game?country=${SITE_COUNTRY}&sortName=MatchDate&ascend=true&t=${new Date().getTime()}`, getRequestHeaders())
     .then((response) => response.json())
@@ -195,36 +178,45 @@ fetchCurrentQuiz = () => {
             }
             quiz =
               `
-                <div class="d-flex justify-content-between align-items-center  currentList">
-                    <div>
+                <div class="currentList">
+                  <div class="d-flex justify-content-between align-items-center">
                     <div class="d-flex timeleftRow">
-                    <div>${siteLang === 'en' ? 'Time Left' : '剩余时间'}: &nbsp;</div>
-                  
-                    <div class="clockdiv" data-date="` +
-              currentQuiz[key].dateTime +
-              `">
+                      <div>${siteLang === 'en' ? 'Time Left' : '剩余时间'}: &nbsp;</div>
                     
+                      <div class="clockdiv" data-date="` + currentQuiz[key].dateTime + `">
                         <span class="days"></span>
                         <div class="smalltext">${siteLang === 'en' ? 'D' : '天'}&nbsp;:&nbsp;</div>
-                 
+                  
                         <span class="hours"></span>
                         <div class="smalltext">${siteLang === 'en' ? 'H' : '小时'}&nbsp;:&nbsp; </div>
                   
                         <span class="minutes"></span>
                         <div class="smalltext">${siteLang === 'en' ? 'M' : '分钟'}&nbsp;:&nbsp; </div>
-               
+                
                         <span class="seconds"></span>
                         <div class="smalltext">${siteLang === 'en' ? 'S' : '秒'}&nbsp; </div>
-                   
-                </div>
-                </div>
-                        <div class="quizTitle">` +
-              currentQuiz[key].match +
-              `</div>
+                      </div>
                     </div>
-                    <div class="predictBtn status` +
-              currentQuiz[key].status +
-              `">${predictButtonText}</div>
+                    <div class="icon-info" data-toggle="modal" data-target="#multiplierInfoModal">
+                      <i class="fa fa-info-circle"></i>
+                      Info
+                    </div>
+                  </div>
+                  <div class="quizTitle">` + currentQuiz[key].match + `</div>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="multiplier">
+                      <div class="title">Multiplier</div>
+                      <div class="d-flex">
+                        <div class="icon"></div>
+                        <div class="d-flex selections">
+                          <div>x2</div>
+                          <div>x3</div>
+                          <div>x5</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="predictBtn status` + currentQuiz[key].status + `">${predictButtonText}</div>
+                  </div>
                 </div>
                 `;
           }
@@ -234,8 +226,8 @@ fetchCurrentQuiz = () => {
         var freebiesGameId = ""
         var answerOfQuestion1 = [];
         $(".predictBtn").click(function () {
-          var balance = $("#ticketbalance").text();
-          let matchTitle = $(this).parent().find(".quizTitle").text();
+          var balance = $(".ticket-balance").text();
+          let matchTitle = $(this).closest('.currentList').find(".quizTitle").text();
           let freebiesGame = currentQuiz.find((x) => x.match === matchTitle);
           if (balance == 0 && !freebiesGame.isPlayed) {
             $("#insufficientTicket").modal("show");
@@ -369,8 +361,8 @@ fetchCurrentQuiz = () => {
           })
             .then((response) => response.json())
             .then((res) => {
-              if (res.code) {
-                alert(`Error: ${res.code}`);
+              if (res.code && res.detail) {
+                showErrorModal(res);
               } else {
                 location.reload();
               }
@@ -395,26 +387,6 @@ fetchCurrentQuiz = () => {
       }
     });
 };
-
-claimedPrize = (freebiesGamePlayId) => {
-  const data = {
-    freebiesGamePlayId: +freebiesGamePlayId
-  };
-  fetch(`${API_URL}/12goalapi/claimed-prize`, {
-    body: JSON.stringify(data),
-    method: "POST",
-    ...getRequestHeaders()
-  })
-    .then((response) => response.json())
-    .then((res) => {
-      if (res.code) {
-        console.error(res);
-      } else {
-        location.reload();
-      }
-    })
-    .catch((err) => console.error(err));
-}
 
 fetchPrevQuiz = () => {
   fetch(`${API_URL}/12goalapi/freebies-game-play?t=${new Date().getTime()}`, getRequestHeaders())
@@ -599,27 +571,6 @@ fetchPrevQuiz = () => {
     });
 };
 
-fetchUserRankReport = () => {
-  fetch(`${API_URL}/12goalapi/user/ranking-report?t=${new Date().getTime()}`, getRequestHeaders())
-    .then((response) => response.json())
-    .then(res => {
-      if (siteLang === 'en') {
-        $(".pointbg").append(`Total Point : ${res.totalPoints}`);
-      } else {
-        $(".pointbg").append(`总积分: ${res.totalPoints}`);
-      }
-      $(".ranking").append(`${res.rankNo}`);
-    })
-}
-
-fetchUserBalanceTickets = () => {
-  fetch(`${API_URL}/12goalapi/user/balance-tickets?t=${new Date().getTime()}`, getRequestHeaders())
-    .then((response) => response.json())
-    .then(res => {
-      $("#ticketbalance").html(res.balanceTickets);
-    })
-}
-
 setupClockCountDown = () => {
   var clockdiv = document.getElementsByClassName("clockdiv");
   var countDownDate = new Array();
@@ -714,7 +665,7 @@ $(document).ready(async function () {
   getSiteLanguage();
   await getSiteDomain();
   const folder = siteLang === 'en' ? 'en' : 'chs';
-  const folderPath = location.hostname === "127.0.0.1" ? '' : 'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18';
+  const folderPath = location.hostname === "localhost" ? '' : 'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18';
   $("#header").load(`${folderPath}/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${folder}/header.html`, function () {
     $("#4dBtn").addClass("active"); //highlight the nav item
   });
@@ -733,9 +684,7 @@ $(document).ready(async function () {
   if (!userData) {
     $('#previous-tab').css('display', 'none');
   }
-  fetchUserRankReport();
-  fetchUserBalanceTickets();
+  fetchUserGameReport();
   fetchCurrentQuiz();
-  fetchSiteInfo();
   fetchPrevQuiz();
 });
