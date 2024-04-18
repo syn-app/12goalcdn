@@ -458,11 +458,6 @@ fetchPrevQuiz = () => {
                 <div class="quizTitle">` + prevQuiz[i].quizTitle + `</div>
               </div>
               <div>
-                <div class="d-flex justify-content-around align-items-center resultContainer">
-                  <div class='showAns'> ${siteLang === 'en' ? 'Show Answer' : '显示答案'} <i class="fa fa-chevron-down"></i></div>
-                  <button class="` + prevQuiz[i].quizClaimStatus + ` ${prevQuiz[i].quizPrize === 0 ? 'status9' : ''}"
-                    style="${prevQuiz[i].quizPrize === 0 ? 'display: none' : ''}" data-gameplayid=${prevQuiz[i].freebiesGamePlayId}>` + text + `</button>
-                </div>
                 <div class="quizResultRow">
                   <div class="quizResult d-flex">
                     <div class="` + prevQuiz[i].ansOneStatus + `"></div>
@@ -493,9 +488,12 @@ fetchPrevQuiz = () => {
                       <div class="prevA">` + prevQuiz[i].ansFourContent + `</div>
                     </div>
                   </div>
-                  <div class="d-flex justify-content-center py-2">
-                    <div class="hideAns">${siteLang === 'en' ? 'Hide Answer' : '收起'} <i class="fa fa-chevron-up"></i></div>
-                  </div>
+                </div>
+                <div class="d-flex justify-content-around align-items-center resultContainer">
+                  <div class='showAns'> ${siteLang === 'en' ? 'Show Answer' : '显示答案'} <i class="fa fa-chevron-down"></i></div>
+                  <div class="hideAns" style="display: none">${siteLang === 'en' ? 'Hide Answer' : '收起'} <i class="fa fa-chevron-up"></i></div>
+                  <button class="` + prevQuiz[i].quizClaimStatus + ` ${prevQuiz[i].quizPrize === 0 ? 'status9' : ''}"
+                    style="${prevQuiz[i].quizPrize === 0 ? 'display: none' : ''}" data-gameplayid=${prevQuiz[i].freebiesGamePlayId}>` + text + `</button>
                 </div>
               </div>
             </div>        
@@ -503,20 +501,15 @@ fetchPrevQuiz = () => {
 
         $(".list-wrapper").append(previous_quiz);
         $(".showAns").click(function () {
-          // $(".quizResultRow").hide();
-          // $(".showAns").show();
           $(this).hide();
-          $(this).parent(".resultContainer").siblings(".quizResultRow").show();
+          $(this).siblings(".hideAns").show();
+          $(this).parent(".resultContainer").siblings(".quizResultRow").slideDown();
         });
 
         $(".hideAns").click(function () {
-          $(this)
-            .parent()
-            .parent()
-            .siblings(".resultContainer")
-            .find(".showAns")
-            .show();
-          $(this).parent().parent().hide();
+          $(this).hide();
+          $(this).siblings(".showAns").show();
+          $(this).parent(".resultContainer").siblings(".quizResultRow").slideUp();
         });
       }
       $(".unclaimed").click(function () {
@@ -613,26 +606,17 @@ fetchLeaderBoardRanking = () => {
       let ranking_leaderboard;
       for (var i = 0; i < leaderboard_ranking.length; i++) {
         let name = leaderboard_ranking[i].name;
-
-        ranking_leaderboard =
-          `
-            <div class=" t-body">
-            <div>` +
-          [i + 1] +
-          `</div>
-            <div>` +
-          name +
-          `</div>
-            <div>` +
-          leaderboard_ranking[i].points +
-          `</div>
-            <div>` +
-          leaderboard_ranking[i].prize +
-          `</div>
+        ranking_leaderboard = `
+          <div class="d-flex rank-item">
+            <div class="rank">` + [i + 1] + `</div>
+            <div>
+              <div class="name">${name}</div>
+              <div class="points">Total points: ${leaderboard_ranking[i].points}</div>
             </div>
-            `;
+            <div class="prize">USD ` + leaderboard_ranking[i].prize + `</div>
+          </div>`;
 
-        $(".tbodyRow").append(ranking_leaderboard);
+        $(".leaderboardList").append(ranking_leaderboard);
       }
     });
 };

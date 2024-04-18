@@ -336,16 +336,7 @@
                                                 </div>
                                             </div>
                                             <div class="tab-pane" id="leaderboard" role="tabpanel">
-                                                <div class="t-table">
-                                                    <div class=" t-header">
-                                                        <div>排名</div>
-                                                        <div>用户名</div>
-                                                        <div>总积分</div>
-                                                        <div>奖金(USD)</div>
-                                                    </div>
-                                                    <div class="tbodyRow">
-                                                    </div>
-                                                </div>
+                                                <div class="leaderboardList"></div>
                                             </div>
                                             <div class="tab-pane" id="promotion" role="tabpanel">
 
@@ -499,9 +490,9 @@
 <script id="12gcommon"></script>
 <script id="12goaljs"></script>
 <script type="text/javascript">
-    document.getElementById('12gcss').href = location.hostname === "localhost" ?
-        '/12play-freebies/css/12goal.css' :
-        'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/css/12goal.min.css';
+    if (location.hostname === "localhost") {
+        document.getElementById('12gcss').href = '/12play-freebies/css/12goal.css';
+    }
     document.getElementById('12gcommon').src = location.hostname === "localhost" ?
         '/12play-freebies/js/12gcommon.js' :
         'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/js/12gcommon.min.js';

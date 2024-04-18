@@ -863,12 +863,82 @@ iframe {
     font-size: 12px;
 }
 
-.tbodyRow {
-    background-image: url(../images/worldcup/leaderboard-bg.png?ref=wc2022);
-    background-size: 100% 100%;
+#leaderboard {
+    background-color: rgb(245, 244, 244);
+}
+
+.leaderboardList {
     overflow-x: hidden;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
     height: 385px;
+    padding: 10px 5px 15px;
+}
+
+.leaderboardList .rank-item .rank {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #888888;
+}
+
+.leaderboardList .rank-item:nth-child(1) .rank,
+.leaderboardList .rank-item:nth-child(2) .rank,
+.leaderboardList .rank-item:nth-child(3) .rank {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: transparent;
+}
+
+.leaderboardList .rank-item:nth-child(1) .rank {
+    background-image: url(../images/12goal/gold.png);
+}
+
+.leaderboardList .rank-item:nth-child(2) .rank {
+    background-image: url(../images/12goal/silver.png);
+}
+
+.leaderboardList .rank-item:nth-child(3) .rank {
+    background-image: url(../images/12goal/bronze.png);
+}
+
+.leaderboardList .rank-item {
+    border: 1px solid #EEE;
+    box-shadow: 1px 3px 4px rgb(0 0 0 / 25%);
+    padding: 10px 20px;
+    border-radius: 10px;
+    align-items: center;
+    background-color: white;
+}
+
+.leaderboardList .rank-item div:nth-child(2) {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.leaderboardList .rank-item .name {
+    font-weight: bold;
+    font-size: 18px;
+    padding-left: 20px;
+}
+
+.leaderboardList .rank-item .points {
+    color: #888888;
+    font-size: 15px;
+    padding-left: 20px;
+}
+
+.leaderboardList .rank-item .prize {
+    color: rgb(18, 203, 89);
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .t-body {
