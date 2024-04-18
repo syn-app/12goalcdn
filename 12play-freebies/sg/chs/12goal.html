@@ -121,7 +121,7 @@
                                             <i class="fa fa-info-circle"></i>
                                             详情
                                         </div>
-                                        <div class="modal fade infoModal" id="goalRushInfoModal" tabindex="-1"
+                                        <div class="modal fade notiModal" id="goalRushInfoModal" tabindex="-1"
                                             role="dialog" aria-hidden="true" data-backdrop="static"
                                             data-keyboard="false">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -226,7 +226,7 @@
                                                                     style="width: 40%;">
                                                             </div>
                                                             <div class="currentQuizRow"></div>
-                                                            <div class="modal fade infoModal" id="multiplierInfoModal"
+                                                            <div class="modal fade notiModal" id="multiplierInfoModal"
                                                                 tabindex="-1" role="dialog" aria-hidden="true"
                                                                 data-backdrop="static" data-keyboard="false">
                                                                 <div class="modal-dialog modal-dialog-centered"
@@ -447,7 +447,30 @@
             </div>
         </div>
 
-        <div class="modal fade infoModal" id="errorModal" tabindex="-1" role="dialog" aria-hidden="true"
+        <div class="modal fade prizeModal" id="multiplierBetConfirmModal" tabindex="-1" role="dialog" aria-hidden="true"
+            data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="modalTitle">Multiplier Bet</div>
+                        <div class="py-4">
+                            You have requested a <strong>x<span class="multiplier-val"></span> multiplier</strong> for
+                            this
+                            match. After confirmation, your multiplier bet cannot be canceled or reduced.
+                            <br><br>
+                            Click <span>"Confirm"</span> to proceed
+                            <br><br>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="greyBtn" data-dismiss="modal">Cancel</div>
+                            <div class="redBtn confirmBtn" data-dismiss="modal">Confirm</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade notiModal" id="errorModal" tabindex="-1" role="dialog" aria-hidden="true"
             data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -455,7 +478,7 @@
                         <h6 class="modal-title">Error</h6>
                     </div>
                     <div class="modal-body">
-                        <div class="error-text" style="text-align: center; color: #dc3545;"></div>
+                        <div class="error-text"></div>
                         <br>
                         <div class="d-flex justify-content-center">
                             <div class="redBtn" data-dismiss="modal">OK</div>

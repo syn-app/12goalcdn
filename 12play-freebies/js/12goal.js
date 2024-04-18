@@ -151,12 +151,14 @@ fetchCurrentQuiz = () => {
           freebiesGameId: item.id,
           match: `${item.localTeamName} vs ${item.visitorTeamName}`,
           dateTime: item.matchDate,
-          // TODO: check status in server side
-          status: new Date().getTime() >= new Date(new Date(item.matchDate).getTime() - 10 * 60000) ? 9 : 0,
+          status: item.predictTimeValid ? 0 : 9,
           option1: item.localTeamName,
           option2: siteLang === 'en' ? 'Draw' : '平手',
           option3: item.visitorTeamName,
-          isPlayed: item.isPlayed
+          gamePlayId: item.gamePlayId,
+          multipliers: item.multipliers,
+          predictTimeValid: item.predictTimeValid,
+          gamePlayMultiplier: item.gamePlayMultiplier,
         };
         currentQuiz.push(quiz);
       });
@@ -172,9 +174,9 @@ fetchCurrentQuiz = () => {
           if (currentQuiz.hasOwnProperty(key)) {
             let predictButtonText = '';
             if (currentQuiz[key].status === 9) {
-              predictButtonText = currentQuiz[key].isPlayed ? `${siteLang === 'en' ? 'Predicted' : '已竞猜'}` : `${siteLang === 'en' ? 'Predict' : '竞猜'}`
+              predictButtonText = currentQuiz[key].gamePlayId ? `${siteLang === 'en' ? 'Predicted' : '已竞猜'}` : `${siteLang === 'en' ? 'Predict' : '竞猜'}`
             } else {
-              predictButtonText = currentQuiz[key].isPlayed ? `${siteLang === 'en' ? 'Edit' : '更改答案'}` : `${siteLang === 'en' ? 'Predict' : '竞猜'}`
+              predictButtonText = currentQuiz[key].gamePlayId ? `${siteLang === 'en' ? 'Edit' : '更改答案'}` : `${siteLang === 'en' ? 'Predict' : '竞猜'}`
             }
             quiz =
               `
@@ -208,14 +210,17 @@ fetchCurrentQuiz = () => {
                       <div class="title">Multiplier</div>
                       <div class="d-flex">
                         <div class="icon"></div>
-                        <div class="d-flex selections">
-                          <div>x2</div>
-                          <div>x3</div>
-                          <div>x5</div>
+                        <div class="d-flex selections ${!currentQuiz[key].predictTimeValid || currentQuiz[key].gamePlayMultiplier ? 'disabled' : ''}">
+                          <div class="${currentQuiz[key].multipliers?.includes(2) ? 'selectable' : ''} ${currentQuiz[key].gamePlayMultiplier === 2 ? 'selected' : ''}"
+                            data-gameid="${currentQuiz[key].freebiesGameId}" data-gameplayid="${currentQuiz[key].gamePlayId}" data-multiplier="2">x2</div>
+                          <div class="${currentQuiz[key].multipliers?.includes(3) ? 'selectable' : ''} ${currentQuiz[key].gamePlayMultiplier === 3 ? 'selected' : ''}"
+                            data-gameid="${currentQuiz[key].freebiesGameId}" data-gameplayid="${currentQuiz[key].gamePlayId}" data-multiplier="3">x3</div>
+                          <div class="${currentQuiz[key].multipliers?.includes(5) ? 'selectable' : ''} ${currentQuiz[key].gamePlayMultiplier === 5 ? 'selected' : ''}"
+                            data-gameid="${currentQuiz[key].freebiesGameId}" data-gameplayid="${currentQuiz[key].gamePlayId}" data-multiplier="5">x5</div>
                         </div>
                       </div>
                     </div>
-                    <div class="predictBtn status` + currentQuiz[key].status + `">${predictButtonText}</div>
+                    <div class="predictBtn status` + currentQuiz[key].status + `" data-gameid=${currentQuiz[key].freebiesGameId}>${predictButtonText}</div>
                   </div>
                 </div>
                 `;
@@ -225,11 +230,22 @@ fetchCurrentQuiz = () => {
         setupClockCountDown();
         var freebiesGameId = ""
         var answerOfQuestion1 = [];
+        $('.multiplier .selections:not(.disabled) .selectable').click(function () {
+          if (!$(this).data('gameplayid')) {
+            showErrorModal({ title: 'Reminder', detail: 'You have to make your prediction before multiplying your bet.' });
+          } else {
+            let multiplier = $(this).data('multiplier');
+            let gamePlayId = $(this).data('gameplayid');
+            $('#multiplierBetConfirmModal').data('gameplayid', gamePlayId);
+            $('#multiplierBetConfirmModal').data('multiplier', multiplier);
+            $('#multiplierBetConfirmModal').modal('show');
+            $('#multiplierBetConfirmModal .multiplier-val').text(multiplier);
+          }
+        });
         $(".predictBtn").click(function () {
           var balance = $(".ticket-balance").text();
-          let matchTitle = $(this).closest('.currentList').find(".quizTitle").text();
-          let freebiesGame = currentQuiz.find((x) => x.match === matchTitle);
-          if (balance == 0 && !freebiesGame.isPlayed) {
+          let freebiesGame = currentQuiz.find((x) => x.freebiesGameId === $(this).data('gameid'));
+          if (balance == 0 && !freebiesGame.gamePlayId) {
             $("#insufficientTicket").modal("show");
             const lang = siteLang === 'en' ? 'english' : 'simplified';
             $("#depositNow").click(function () {
@@ -322,6 +338,7 @@ fetchCurrentQuiz = () => {
                 });
               })
 
+            let matchTitle = $(this).closest('.currentList').find(".quizTitle").text();
             $("#quizTitle").html("").append(matchTitle);
             $(".bg").hide();
             $("#predictCurrentContainer").show();
@@ -396,8 +413,8 @@ fetchPrevQuiz = () => {
         freebiesGamePlayId: item.freebiesGamePlayId,
         quizTitle: `${item.localTeamName} vs ${item.visitorTeamName}`,
         quizTime: new Intl.DateTimeFormat("en-us", {
-          dateStyle: "medium",
-          timeStyle: "medium",
+          dateStyle: "full",
+          timeStyle: "short",
         }).format(new Date(item.matchTime)),
         quizJoin: "", //TODO: Get Data,
         quizClaimStatus: item.quizClaimStatus,
@@ -431,100 +448,63 @@ fetchPrevQuiz = () => {
         } else {
           text = "";
         }
-        previous_quiz =
-          `
-                <div class="list-item">
-                <div class="d-flex justify-content-between align-items-center prevList">
-                    <div>
-                        <div class="d-flex align-items-center">
-                            <div class="wonAmt ${prevQuiz[i].quizPrize === 0 ? 'amt0' : ''}">${siteLang === 'en' ? "Won" : '赢得'} ${prevQuiz[i].country === 'MY' ? 'MYR' : 'SGD'} ` +
-          prevQuiz[i].quizPrize +
-          `</div >
-                            <div class="prizeTime">` +
-          prevQuiz[i].quizTime +
-          `</div>
-                        </div>
-                        <div class="quizTitle">` +
-          prevQuiz[i].quizTitle +
-          `</div>
-                    </div>
-                    <button class="` +
-          prevQuiz[i].quizClaimStatus +
-          ` ${prevQuiz[i].quizPrize === 0 ? 'status9' : ''}" style="${prevQuiz[i].quizPrize === 0 ? 'display: none' : ''}">` +
-          text +
-          `</button>
+        previous_quiz = `
+          <div class="list-item">
+            <div class="prevList">
+              <div class="d-flex align-items-center">
+                <div class="wonAmt ${prevQuiz[i].quizPrize === 0 ? 'amt0' : ''}">${siteLang === 'en' ? "Won" : '赢得'} ${prevQuiz[i].country === 'MY' ? 'MYR' : 'SGD'} ` + prevQuiz[i].quizPrize + `</div >
+                  <div class="prizeTime">` + prevQuiz[i].quizTime + `</div>
                 </div>
-                <div>
-                <div class="d-flex justify-content-center resultContainer"><div class='showAns'> ${siteLang === 'en' ? 'Show Answer' : '显示答案'}</div></div>
+                <div class="quizTitle">` + prevQuiz[i].quizTitle + `</div>
+              </div>
+              <div>
+                <div class="d-flex justify-content-around align-items-center resultContainer">
+                  <div class='showAns'> ${siteLang === 'en' ? 'Show Answer' : '显示答案'} <i class="fa fa-chevron-down"></i></div>
+                  <button class="` + prevQuiz[i].quizClaimStatus + ` ${prevQuiz[i].quizPrize === 0 ? 'status9' : ''}"
+                    style="${prevQuiz[i].quizPrize === 0 ? 'display: none' : ''}" data-gameplayid=${prevQuiz[i].freebiesGamePlayId}>` + text + `</button>
+                </div>
                 <div class="quizResultRow">
-                <div class="quizResult d-flex">
-                        <div class="` +
-          prevQuiz[i].ansOneStatus +
-          `"></div>
-                        <div>
-                            <div class="prevQ">` +
-          prevQuiz[i].quesOne +
-          `</div>
-                            <div class="prevA">` +
-          prevQuiz[i].ansOneContent +
-          `</div>
-                        </div>
-                </div>
-                <div class="quizResult d-flex">
-                    <div class="` +
-          prevQuiz[i].ansTwoStatus +
-          `"></div>
+                  <div class="quizResult d-flex">
+                    <div class="` + prevQuiz[i].ansOneStatus + `"></div>
                     <div>
-                        <div class="prevQ">` +
-          prevQuiz[i].quesTwo +
-          `</div>
-                        <div class="prevA">` +
-          prevQuiz[i].ansTwoContent +
-          `</div>
-                        </div>
-            </div>
-
-            <div class="quizResult d-flex">
-            <div class="` +
-          prevQuiz[i].ansThreeStatus +
-          `"></div>
-            <div>
-                <div class="prevQ">` +
-          prevQuiz[i].quesThree +
-          `</div>
-                <div class="prevA">` +
-          prevQuiz[i].ansThreeContent +
-          `</div>
-                </div>
-            </div>
-
-            <div class="quizResult d-flex">
-            <div class="` +
-          prevQuiz[i].ansFourStatus +
-          `"></div>
-            <div>
-                <div class="prevQ"> ` +
-          prevQuiz[i].quesFour +
-          `</div>
-                <div class="prevA">` +
-          prevQuiz[i].ansFourContent +
-          `</div>
-                </div>
-            </div>
-                        <div class="d-flex justify-content-center py-2"><div class="hideAns">${siteLang === 'en' ? 'Hide Answer' : '收起'}</div></div>
-                        
-
-                        </div>
+                      <div class="prevQ">` + prevQuiz[i].quesOne + `</div>
+                      <div class="prevA">` + prevQuiz[i].ansOneContent + `</div>
                     </div>
-                        </div>
-                    
+                  </div>
+                  <div class="quizResult d-flex">
+                    <div class="` + prevQuiz[i].ansTwoStatus + `"></div>
+                    <div>
+                      <div class="prevQ">` + prevQuiz[i].quesTwo + `</div>
+                      <div class="prevA">` + prevQuiz[i].ansTwoContent + `</div>
                     </div>
-                        `;
+                  </div>
+
+                  <div class="quizResult d-flex">
+                    <div class="` + prevQuiz[i].ansThreeStatus + `"></div>
+                    <div>
+                      <div class="prevQ">` + prevQuiz[i].quesThree + `</div>
+                      <div class="prevA">` + prevQuiz[i].ansThreeContent + `</div>
+                    </div>
+                  </div>
+                  <div class="quizResult d-flex">
+                    <div class="` + prevQuiz[i].ansFourStatus + `"></div>
+                    <div>
+                      <div class="prevQ"> ` + prevQuiz[i].quesFour + `</div>
+                      <div class="prevA">` + prevQuiz[i].ansFourContent + `</div>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-center py-2">
+                    <div class="hideAns">${siteLang === 'en' ? 'Hide Answer' : '收起'} <i class="fa fa-chevron-up"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>        
+          </div>`;
 
         $(".list-wrapper").append(previous_quiz);
         $(".showAns").click(function () {
-          $(".quizResultRow").hide();
-          $(".showAns").show();
+          // $(".quizResultRow").hide();
+          // $(".showAns").show();
           $(this).hide();
           $(this).parent(".resultContainer").siblings(".quizResultRow").show();
         });
@@ -536,19 +516,15 @@ fetchPrevQuiz = () => {
             .siblings(".resultContainer")
             .find(".showAns")
             .show();
-          // $(this).hide()
           $(this).parent().parent().hide();
         });
       }
       $(".unclaimed").click(function () {
-        let matchTitle = $(this).parent().find(".quizTitle").text();
-        $("#claimPrevPrize").data("matchTitle", matchTitle);
+        $("#claimPrevPrize").data("gameplayid", $(this).data('gameplayid'));
         $("#claimPrevPrize").modal("show");
       });
       $("#claimPrevPrize .confirmClaim").on("click", function (event) {
-        let matchTitle = $("#claimPrevPrize").data("matchTitle");
-        let game = prevQuiz.find(x => x.quizTitle === matchTitle);
-        claimedPrize(game.freebiesGamePlayId);
+        claimedPrize($("#claimPrevPrize").data("gameplayid"));
         $("#claimPrevPrize").modal("hide");
       });
       var items = $(".list-wrapper .list-item");

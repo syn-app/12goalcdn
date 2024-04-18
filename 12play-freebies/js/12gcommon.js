@@ -27,8 +27,9 @@ fetchUserGameReport = () => {
         $('.goal-rush-container').hide();
       }
 
-      const remainingMatches = res.totalMatches - res.totalMatchPredicted;
+      const totalMatches = res.totalRemainingMatches + res.totalMatchPredicted;
       const windowOffset = res.totalMatchPredicted === 0 ? 0 : Math.floor((res.totalMatchPredicted - 1) / 10);
+      const remainingMatches = totalMatches - windowOffset * 10;
       const goalRushItems = Array(remainingMatches > 10 ? 10 : remainingMatches).fill(0).reduce((prev, curr, index) => {
         let str = `${prev}`;
         const matchNo = windowOffset * 10 + index + 1;
@@ -109,9 +110,25 @@ claimCheckInPrize = () => {
     .catch((err) => console.error(err));
 }
 
+setGameMultiplier = (req) => {
+  fetch(`${API_URL}/12goalapi/freebies-game-play/set-game-multiplier`, {
+    body: JSON.stringify(req),
+    method: "POST",
+    ...getRequestHeaders()
+  })
+    .then((response) => response.json())
+    .then((res) => {
+      if (res.code && res.detail) {
+        showErrorModal(res);
+      } else {
+        location.reload();
+      }
+    })
+}
+
 showErrorModal = (err) => {
   $('#errorModal').modal('show');
-  $('#errorModal .modal-title').text(`Error: ${err.code}`);
+  $('#errorModal .modal-title').text(err.title ? err.title : err.code ? `Error: ${err.code}` : 'Error');
   $('#errorModal .error-text').text(err.detail);
 }
 
@@ -125,4 +142,10 @@ $(document).ready(function () {
       }
     }
   });
+
+  $('#multiplierBetConfirmModal .confirmBtn').click(function () {
+    let multiplier = $('#multiplierBetConfirmModal').data('multiplier');
+    let gamePlayId = $('#multiplierBetConfirmModal').data('gameplayid');
+    setGameMultiplier({ gamePlayId, multiplier });
+  })
 });

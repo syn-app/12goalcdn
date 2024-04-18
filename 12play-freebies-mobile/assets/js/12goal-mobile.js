@@ -286,7 +286,7 @@ fetchCurrentQuiz = () => {
           option1: item.localTeamName,
           option2: `${translator.translateForKey("predict_page.answer1_2")}`,
           option3: item.visitorTeamName,
-          isPlayed: item.isPlayed,
+          gamePlayId: item.gamePlayId,
         };
         currentQuiz.push(quiz);
       });
@@ -299,11 +299,11 @@ fetchCurrentQuiz = () => {
           if (currentQuiz.hasOwnProperty(key)) {
             let predictButtonText = "";
             if (currentQuiz[key].status === 9) {
-              predictButtonText = currentQuiz[key].isPlayed
+              predictButtonText = currentQuiz[key].gamePlayId
                 ? `${translator.translateForKey("home_page.Predicted")}`
                 : `${translator.translateForKey("home_page.Predict")}`;
             } else {
-              predictButtonText = currentQuiz[key].isPlayed
+              predictButtonText = currentQuiz[key].gamePlayId
                 ? `${translator.translateForKey("home_page.Edit")}`
                 : `${translator.translateForKey("home_page.Predict")}`;
             }
@@ -353,7 +353,7 @@ fetchCurrentQuiz = () => {
           var balance = $(".ticket-balance").text();
           let matchTitle = $(this).parent().find(".quizTitle").text();
           let freebiesGame = currentQuiz.find((x) => x.match === matchTitle);
-          if (balance == 0 && !freebiesGame.isPlayed) {
+          if (balance == 0 && !freebiesGame.gamePlayId) {
             $("#insufficientTicket").modal("show");
             const lang = localStorage.getItem('preferred_language') === 'en' ? 'english' : 'simplified';
             $("#depositNow").click(function () {
