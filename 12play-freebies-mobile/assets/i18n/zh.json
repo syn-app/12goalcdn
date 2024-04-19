@@ -41,7 +41,10 @@
     "Won": "赢得",
     "Win": "赢",
     "No_Match": "目前没有赛事，请明天继续关注！",
-    "": ""  
+    "goalRushMatch": "场",
+    "goalRushClaimNow": "立即领取",
+    "btnInfoLabel": "详情",
+    "multiplierLabel": "翻倍"
   },
   "predict_page": {
     "title": "Senegal vs Netherlands",
@@ -59,7 +62,7 @@
     "confirm_description2": "请点击“确认”以提交您的答案。",
     "": "",
     "": "",
-    "": ""  
+    "": ""
   },
   "Out_of_Tickets": "竞猜票卷不足！",
   "0_ticket_found": "票卷剩余0张！",

@@ -1,3 +1,5 @@
+var DATE_TIME_LOCALE = "en-US";
+
 fetchUserGameReport = () => {
   return fetch(`${API_URL}/12goalapi/user/game-report?siteName=${SITE_COUNTRY === "MY" ? '12M' : '12S'}&t=${new Date().getTime()}`, getRequestHeaders())
     .then((response) => response.json())
@@ -46,7 +48,7 @@ fetchUserGameReport = () => {
         str += `
           <div class="goal-rush-item ${res.totalMatchPredicted + 1 === matchNo ? 'active' : ''}">
             <div class="goal-rush-claim-status ${claimStatus}"></div>
-            ${matchNo} match
+            ${matchNo} ${translator.translateForKey("home_page.goalRushMatch")}
           </div>
         `;
         return str;
@@ -54,7 +56,7 @@ fetchUserGameReport = () => {
 
       $('.goal-rush-matches').append(`${goalRushItems}
         <div class="goal-rush-claim-btn redAction ${res.canClaimCheckInPrize ? '' : 'disabled'}"
-          onclick="claimCheckInPrize()">Claim Now</div>
+          onclick="claimCheckInPrize()">${translator.translateForKey("home_page.goalRushClaimNow")}</div>
       `);
 
       return res;

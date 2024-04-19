@@ -46,9 +46,6 @@ englishQuestion = [
 ];
 
 getSiteDomain = async () => {
-  SITE_COUNTRY = location.pathname.startsWith('/my') ? 'MY' : 'SG';
-  SITE_DOMAIN = window.location.origin;
-
   // let country = location.pathname.startsWith('/my') ? 'MY' : 'SG';
   // const response = await fetch(`${API_URL}/12goalapi/user/http-referral?country=${country}&t=${new Date().getTime()}`, getRequestHeaders());
   // const res = await response.json();
@@ -87,17 +84,17 @@ getRequestHeaders = (additonalHeaders) => {
 getTC = (site) => {
   const currencyRate = site.exchange;
   const maxTicket = site.maxTicket;
-  const startTimeFormat = new Intl.DateTimeFormat("en-GB", {
+  const startTimeFormat = new Intl.DateTimeFormat(DATE_TIME_LOCALE, {
     dateStyle: "medium",
     timeStyle: "medium",
   }).format(new Date(new Date(site.startTime).setHours(0, 0, 0)));
   const endTime = new Date(site.endTime);
-  const endTimeFormat = new Intl.DateTimeFormat("en-GB", {
+  const endTimeFormat = new Intl.DateTimeFormat(DATE_TIME_LOCALE, {
     dateStyle: "medium",
     timeStyle: "medium",
   }).format(new Date(endTime.setHours(23, 59, 0)));
   const payoffDate = new Date(endTime.setDate(endTime.getDate() + 1));
-  const payoffDateFormat = new Intl.DateTimeFormat("en-GB", {
+  const payoffDateFormat = new Intl.DateTimeFormat(DATE_TIME_LOCALE, {
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -116,13 +113,30 @@ getTC = (site) => {
   }
 }
 
-getSiteLanguage = () => {
+var translator;
+getSiteLanguage = async () => {
+  SITE_COUNTRY = location.pathname.startsWith('/my') ? 'MY' : 'SG';
+  SITE_DOMAIN = window.location.origin;
   const href = location.href;
   if (href.includes('chs')) {
     siteLang = 'cn';
   } else {
     siteLang = 'en';
   }
+  DATE_TIME_LOCALE = siteLang === 'cn' ? 'zh-CN' : 'en-US';
+  const transLang = siteLang === 'cn' ? 'zh' : "en";
+  localStorage.setItem("preferred_language", transLang);
+  translator = new Translator({
+    defaultLanguage: transLang,
+    detectLanguage: true,
+    selector: "[data-i18n]",
+    debug: false,
+    registerGlobally: "__",
+    persist: true,
+    persistKey: "preferred_language",
+    filesLocation: location.hostname === "localhost" ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/i18n",
+  });
+  await translator.fetch([transLang]);
 }
 
 getUserData = () => {
@@ -201,13 +215,13 @@ fetchCurrentQuiz = () => {
                     </div>
                     <div class="icon-info" data-toggle="modal" data-target="#multiplierInfoModal">
                       <i class="fa fa-info-circle"></i>
-                      Info
+                      ${translator.translateForKey("home_page.btnInfoLabel")}
                     </div>
                   </div>
                   <div class="quizTitle">` + currentQuiz[key].match + `</div>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="multiplier">
-                      <div class="title">Multiplier</div>
+                      <div class="title">${translator.translateForKey("home_page.multiplierLabel")}</div>
                       <div class="d-flex">
                         <div class="icon"></div>
                         <div class="d-flex selections ${!currentQuiz[key].predictTimeValid || currentQuiz[key].gamePlayMultiplier ? 'disabled' : ''}">
@@ -412,8 +426,8 @@ fetchPrevQuiz = () => {
       let prevQuiz = res.map((item) => ({
         freebiesGamePlayId: item.freebiesGamePlayId,
         quizTitle: `${item.localTeamName} vs ${item.visitorTeamName}`,
-        quizTime: new Intl.DateTimeFormat("en-us", {
-          dateStyle: "full",
+        quizTime: new Intl.DateTimeFormat(DATE_TIME_LOCALE, {
+          dateStyle: "long",
           timeStyle: "short",
         }).format(new Date(item.matchTime)),
         quizJoin: "", //TODO: Get Data,
@@ -611,7 +625,7 @@ fetchLeaderBoardRanking = () => {
             <div class="rank">` + [i + 1] + `</div>
             <div>
               <div class="name">${name}</div>
-              <div class="points">Total points: ${leaderboard_ranking[i].points}</div>
+              <div class="points">${translator.translateForKey('home_page.Total_Points')}: ${leaderboard_ranking[i].points}</div>
             </div>
             <div class="prize">USD ` + leaderboard_ranking[i].prize + `</div>
           </div>`;
@@ -622,8 +636,8 @@ fetchLeaderBoardRanking = () => {
 };
 
 $(document).ready(async function () {
-  getSiteLanguage();
-  await getSiteDomain();
+  await getSiteLanguage();
+  // await getSiteDomain();
   const folder = siteLang === 'en' ? 'en' : 'chs';
   const folderPath = location.hostname === "localhost" ? '' : 'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18';
   $("#header").load(`${folderPath}/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${folder}/header.html`, function () {

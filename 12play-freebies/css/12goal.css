@@ -248,7 +248,7 @@ iframe {
     height: 60px;
     padding: 8px;
     background-image: url(../images/12goal/rank-icon-bg.png);
-    background-size: contain;
+    background-size: 90%;
     background-repeat: no-repeat;
     background-position: center;
     z-index: 2;

@@ -41,7 +41,10 @@
     "Won": "Won",
     "Win": "Win",
     "No_Match": "There are no matches currently. Stay tuned for tomorrow!",
-    "": ""  
+    "goalRushMatch": "match",
+    "goalRushClaimNow": "Claim Now",
+    "btnInfoLabel": "Info",
+    "multiplierLabel": "Multiplier"
   },
   "predict_page": {
     "title": "Senegal vs Netherlands",
@@ -59,7 +62,7 @@
     "confirm_description2": "Click “Confirm” to proceed.",
     "": "",
     "": "",
-    "": ""  
+    "": ""
   },
   "Out_of_Tickets": "Out of Tickets !",
   "0_ticket_found": "0 ticket found.",

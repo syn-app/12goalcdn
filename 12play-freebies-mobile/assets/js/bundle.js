@@ -1,6 +1,3 @@
-
-// Translator
-
 const LANGUAGES = {
   EN: "en",
   ZH: "zh",
@@ -14,7 +11,7 @@ var translator = new Translator({
   registerGlobally: "__",
   persist: true,
   persistKey: "preferred_language",
-  filesLocation: "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/i18n",
+  filesLocation: location.hostname === "localhost" ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/i18n",
 });
 
 const PREFERED_REGION = 'preferred_region';
@@ -27,6 +24,7 @@ translator.fetch([LANGUAGES.EN, LANGUAGES.ZH]).then(() => {
   translator.translatePageTo(_get_language);
   changeLanguageColor();
   initialize();
+  DATE_TIME_LOCALE = _get_language === 'zh' ? 'zh-CN' : 'en-US';
 });
 
 /**
@@ -74,7 +72,7 @@ $(".universal__content__language").on("click", function (e) {
 $('.universal .play-now a').on("click", function (e) {
   e.preventDefault();
   const slick_current_select = $('#selectLanguage .slick-list .slick-track .slick-current .title');
-  if(slick_current_select.length > 0) {
+  if (slick_current_select.length > 0) {
     const slick_current_select_title = slick_current_select.data('i18n')
     const accept_languages = ['universal_page.Malaysia', 'universal_page.Singapore']
     if (accept_languages.includes(slick_current_select_title)) {
@@ -86,7 +84,7 @@ $('.universal .play-now a').on("click", function (e) {
 })
 
 
-$('#mySidenav #collapseCountry .collapse__item').on('click', function() {
+$('#mySidenav #collapseCountry .collapse__item').on('click', function () {
   const select_region = $(this).data("region");
   localStorage.setItem(PREFERED_REGION, select_region);
   changeLanguageColor();
@@ -97,22 +95,22 @@ $('#mySidenav #collapseCountry .collapse__item').on('click', function() {
   }
 })
 
-function changeLanguageColor () {
+function changeLanguageColor() {
   const _get_region = localStorage.getItem(PREFERED_REGION) || 'Singapore';
-  $('.choose-language').each(function (){
+  $('.choose-language').each(function () {
     const get_attr_lang = $(this).data('language').toLowerCase();
     const get_attr_region = $(this).data('region');
-    if(_get_language == get_attr_lang && _get_region == get_attr_region) {
+    if (_get_language == get_attr_lang && _get_region == get_attr_region) {
       $(this).addClass('text-primary');
     }
   })
 
   const current_country = translator.translateForKey('menu.Uwin33_' + _get_region, _get_language);
   $('#mySidenav .current-country').text(current_country);
-  
-  $('#mySidenav #collapseCountry .collapse__item').each(function (){
+
+  $('#mySidenav #collapseCountry .collapse__item').each(function () {
     const get_attr_region = $(this).data('region');
-    if(_get_region == get_attr_region) {
+    if (_get_region == get_attr_region) {
       $(this).addClass('active');
     } else {
       $(this).removeClass('active');
@@ -147,7 +145,7 @@ function changeLanguageColor () {
  * 
  */
 
-function initialize () {
+function initialize() {
 
   const predictConfirmModalElm = $("#predictConfirmModal");
   if (predictConfirmModalElm.length > 0) {
@@ -159,8 +157,7 @@ function initialize () {
     var outOfTicketsModal = new bootstrap.Modal(outOfTicketsModalElm, {});
   }
 
-  if (typeof $("#predictForm").validate === 'function')
-  {
+  if (typeof $("#predictForm").validate === 'function') {
     $("#predictForm").validate({
       rules: {
         // answer1: "required",
@@ -169,13 +166,13 @@ function initialize () {
         // answer4: "required",
       },
       messages: {
-      //   amount_SGD: {
-      //     required: translator.translateForKey('deposit_page.Amount_SGD_required', _get_language),
-      //     min: translator.translateForKey('deposit_page.Amount_SGD_required_min', _get_language)
-      //   },
-      //   select_bank: translator.translateForKey('deposit_page.Please_select_one', _get_language),
+        //   amount_SGD: {
+        //     required: translator.translateForKey('deposit_page.Amount_SGD_required', _get_language),
+        //     min: translator.translateForKey('deposit_page.Amount_SGD_required_min', _get_language)
+        //   },
+        //   select_bank: translator.translateForKey('deposit_page.Please_select_one', _get_language),
       },
-      submitHandler: function(form) {
+      submitHandler: function (form) {
         console.log('==-=-', form)
         predictConfirmModal.show()
         // window.location.href = '/thank-you.html'
@@ -185,17 +182,17 @@ function initialize () {
     });
   }
 
-  $('#predictForm input').on('change', function() {
+  $('#predictForm input').on('change', function () {
     const predictForm = $("#predictForm").serializeArray();
     if (predictForm.length === 4) {
-      $('#predictForm .btn-submit').prop('disabled', false);  
+      $('#predictForm .btn-submit').prop('disabled', false);
     } else {
       $('#predictForm .btn-submit').prop('disabled', 'disabled');
     }
   });
 
 
-  $('#goal-home-ticket-balance-tab').on('click', function(e) {
+  $('#goal-home-ticket-balance-tab').on('click', function (e) {
     e.preventDefault();
     e.stopPropagation();
     outOfTicketsModal.show();
@@ -206,9 +203,4 @@ function initialize () {
     fetchPrevQuiz();
   })
 
-  console.log('initialize')
-
 }
-
-
-console.log("--- index.jsaaa");

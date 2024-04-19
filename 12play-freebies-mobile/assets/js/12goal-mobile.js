@@ -220,17 +220,17 @@ getRequestHeaders = (additonalHeaders) => {
 getTC = (site) => {
   const currencyRate = site.exchange;
   const maxTicket = site.maxTicket;
-  const startTimeFormat = new Intl.DateTimeFormat("en-GB", {
+  const startTimeFormat = new Intl.DateTimeFormat(DATE_TIME_LOCALE, {
     dateStyle: "medium",
     timeStyle: "medium",
   }).format(new Date(new Date(site.startTime).setHours(0, 0, 0)));
   const endTime = new Date(site.endTime);
-  const endTimeFormat = new Intl.DateTimeFormat("en-GB", {
+  const endTimeFormat = new Intl.DateTimeFormat(DATE_TIME_LOCALE, {
     dateStyle: "medium",
     timeStyle: "medium",
   }).format(new Date(endTime.setHours(23, 59, 0)));
   const payoffDate = new Date(endTime.setDate(endTime.getDate() + 1));
-  const payoffDateFormat = new Intl.DateTimeFormat("en-GB", {
+  const payoffDateFormat = new Intl.DateTimeFormat(DATE_TIME_LOCALE, {
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -579,8 +579,8 @@ fetchPrevQuiz = () => {
       let prevQuiz = res.map((item) => ({
         freebiesGamePlayId: item.freebiesGamePlayId,
         quizTitle: `${item.localTeamName} vs ${item.visitorTeamName}`,
-        quizTime: new Intl.DateTimeFormat("en-us", {
-          dateStyle: "medium",
+        quizTime: new Intl.DateTimeFormat(DATE_TIME_LOCALE, {
+          dateStyle: "long",
           timeStyle: "medium",
         }).format(new Date(item.matchTime)),
         quizJoin: "", //TODO: Get Data,
