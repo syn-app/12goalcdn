@@ -1,9 +1,3 @@
-const USER_KEY = "userData";
-const KEY_TS = "timestamp";
-const API_URL = location.hostname === "localhost" ? "https://localhost:7293" : `${location.origin}`;
-
-var SITE_COUNTRY = "MY";
-var SITE_DOMAIN = "";
 let siteLang = '';
 let listQuestion = [];
 
@@ -134,7 +128,7 @@ getSiteLanguage = async () => {
     registerGlobally: "__",
     persist: true,
     persistKey: "preferred_language",
-    filesLocation: location.hostname === "localhost" ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/i18n",
+    filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/i18n",
   });
   await translator.fetch([transLang]);
 }
@@ -582,7 +576,7 @@ $(document).ready(async function () {
   await getSiteLanguage();
   // await getSiteDomain();
   const folder = siteLang === 'en' ? 'en' : 'chs';
-  const folderPath = location.hostname === "localhost" ? '' : 'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18';
+  const folderPath = IS_DEV ? '' : 'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18';
   $("#header").load(`${folderPath}/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${folder}/header.html`, function () {
     $("#4dBtn").addClass("active"); //highlight the nav item
   });

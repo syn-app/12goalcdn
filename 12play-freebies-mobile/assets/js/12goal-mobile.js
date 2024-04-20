@@ -1,9 +1,3 @@
-const USER_KEY = "userData";
-const KEY_TS = "timestamp";
-const API_URL = location.hostname === "localhost" ? "https://localhost:7293" : `${location.origin}`;
-
-var SITE_COUNTRY = "MY";
-var SITE_DOMAIN = "";
 var listQuestion = [];
 
 loadHowToPlay = (site) => {

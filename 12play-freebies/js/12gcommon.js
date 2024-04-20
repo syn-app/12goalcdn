@@ -3,7 +3,13 @@ var LANGUAGES = {
   EN: "en",
   ZH: "zh",
 };
-var SITE_COUNTRY;
+
+var USER_KEY = "userData";
+var KEY_TS = "timestamp";
+var API_URL = IS_DEV ? `${location.protocol}//${location.hostname}:5500` : `${location.origin}`;
+
+var SITE_COUNTRY = "MY";
+var SITE_DOMAIN = "";
 
 var translator = new Translator({
   defaultLanguage: "en",
@@ -13,7 +19,7 @@ var translator = new Translator({
   registerGlobally: "__",
   persist: true,
   persistKey: "preferred_language",
-  filesLocation: location.hostname === "localhost" ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/i18n",
+  filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/i18n",
 });
 
 var PREFERED_REGION = 'preferred_region';

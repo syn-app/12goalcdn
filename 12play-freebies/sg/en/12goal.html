@@ -520,17 +520,20 @@
 <script
     src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/library/translator.min.js"
     defer></script>
+<script>
+    var IS_DEV = +location.port > 800;
+</script>
 <script id="12gcommon"></script>
 <script id="12goaljs"></script>
 <script type="text/javascript">
-    if (location.hostname === "localhost") {
+    if (IS_DEV) {
         document.getElementById('12gcommoncss').href = '/12play-freebies/css/12gcommon.css';
         document.getElementById('12gcss').href = '/12play-freebies/css/12goal.css';
     }
-    document.getElementById('12gcommon').src = location.hostname === "localhost" ?
+    document.getElementById('12gcommon').src = IS_DEV ?
         '/12play-freebies/js/12gcommon.js' :
         'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/js/12gcommon.min.js';
-    document.getElementById('12goaljs').src = location.hostname === "localhost" ?
+    document.getElementById('12goaljs').src = IS_DEV ?
         '/12play-freebies/js/12goal.js' :
         'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/js/12goal.min.js';
 </script>
