@@ -31,6 +31,8 @@
         href="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/css/footer.min.css" />
     <link type="text/css" rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/css/style.min.css" />
+    <link id="12gcommoncss" type="text/css" rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/css/12gcommon.min.css" />
     <link id="12gcss" type="text/css" rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/css/12goal.min.css" />
     <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
@@ -433,18 +435,16 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <div class="modalTitle">Multiplier Bet</div>
+                    <div class="modalTitle">翻倍投注</div>
                     <div class="py-4">
-                        You have requested a <strong>x<span class="multiplier-val"></span> multiplier</strong> for
-                        this
-                        match. After confirmation, your multiplier bet cannot be canceled or reduced.
+                        您已请求将此次比赛的投注倍数提高至<strong>x<span class='multiplier-val'></span></strong>倍。确认后,您将无法取消或减少倍数。
                         <br><br>
-                        Click <span>"Confirm"</span> to proceed
+                        点击“确认”以继续
                         <br><br>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <div class="greyBtn" data-dismiss="modal">Cancel</div>
-                        <div class="redBtn confirmBtn" data-dismiss="modal">Confirm</div>
+                        <div class="greyBtn" data-dismiss="modal">取消</div>
+                        <div class="redBtn confirmBtn" data-dismiss="modal">确认</div>
                     </div>
                 </div>
             </div>
@@ -484,6 +484,7 @@
 <script id="12goaljs"></script>
 <script type="text/javascript">
     if (location.hostname === "localhost") {
+        document.getElementById('12gcommoncss').href = '/12play-freebies/css/12gcommon.css';
         document.getElementById('12gcss').href = '/12play-freebies/css/12goal.css';
     }
     document.getElementById('12gcommon').src = location.hostname === "localhost" ?

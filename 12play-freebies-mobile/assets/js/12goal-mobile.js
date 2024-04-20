@@ -1,6 +1,6 @@
 const USER_KEY = "userData";
 const KEY_TS = "timestamp";
-const API_URL = location.hostname === "127.0.0.1" ? "https://localhost:7293" : `${location.origin}`;
+const API_URL = location.hostname === "localhost" ? "https://localhost:7293" : `${location.origin}`;
 
 var SITE_COUNTRY = "MY";
 var SITE_DOMAIN = "";
@@ -278,15 +278,14 @@ fetchCurrentQuiz = () => {
           freebiesGameId: item.id,
           match: `${item.localTeamName} vs ${item.visitorTeamName}`,
           dateTime: item.matchDate,
-          status:
-            new Date().getTime() >=
-              new Date(new Date(item.matchDate).getTime() - 10 * 60000)
-              ? 9
-              : 0,
+          status: item.predictTimeValid ? 0 : 9,
           option1: item.localTeamName,
           option2: `${translator.translateForKey("predict_page.answer1_2")}`,
           option3: item.visitorTeamName,
           gamePlayId: item.gamePlayId,
+          multipliers: item.multipliers,
+          predictTimeValid: item.predictTimeValid,
+          gamePlayMultiplier: item.gamePlayMultiplier,
         };
         currentQuiz.push(quiz);
       });
@@ -309,39 +308,48 @@ fetchCurrentQuiz = () => {
             }
             let quiz =
               `
-            <div class="match__item aos-init aos-animate" data-aos="fade-up">
-            <div class="match__item__time">
-              <div class="clockdiv" data-date="` +
-              currentQuiz[key].dateTime +
-              `">
-              <span style="margin-right: 5px">` +
-              `${translator.translateForKey("home_page.Time_left")}` +
-              `</span>
-              <span class="days"></span>
-                          <div class="smalltext">` +
-              `${translator.translateForKey("home_page.Day")}` +
-              `&nbsp;:&nbsp;</div>
-                   
-                          <span class="hours"></span>
-                          <div class="smalltext">` +
-              `${translator.translateForKey("home_page.Hour")}` +
-              `&nbsp;:&nbsp; </div>
-                    
-                          <span class="minutes"></span>
-                          <div class="smalltext">` +
-              `${translator.translateForKey("home_page.Minutes")}` +
-              `&nbsp;:&nbsp; </div>
-                 
-                          <span class="seconds"></span>
-                          <div class="smalltext">` +
-              `${translator.translateForKey("home_page.Seconds")}` +
-              `&nbsp; </div>
+            <div class="currentList">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex timeleftRow">
+                  <div>${translator.translateForKey("home_page.Time_left")}: &nbsp;</div>
+                
+                  <div class="clockdiv" data-date="` + currentQuiz[key].dateTime + `">
+                    <span class="days"></span>
+                    <div class="smalltext">${translator.translateForKey("home_page.Day")}&nbsp;:&nbsp;</div>
+              
+                    <span class="hours"></span>
+                    <div class="smalltext">${translator.translateForKey("home_page.Hour")}&nbsp;:&nbsp; </div>
+              
+                    <span class="minutes"></span>
+                    <div class="smalltext">${translator.translateForKey("home_page.Minutes")}&nbsp;:&nbsp; </div>
+            
+                    <span class="seconds"></span>
+                    <div class="smalltext">${translator.translateForKey("home_page.Seconds")}&nbsp; </div>
+                  </div>
+                </div>
+                <div class="icon-info" data-bs-toggle="modal" data-bs-target="#multiplierInfoModal">
+                  <i class="fa fa-info-circle"></i>
+                  ${translator.translateForKey("home_page.btnInfoLabel")}
+                </div>
               </div>
-            </div>
-            <div class="match__item__title">
-              <span class="quizTitle" style="text-align: left">${currentQuiz[key].match}</span>
-              <a class="btn btn-danger predictBtn ${currentQuiz[key].status === 9 ? 'disable-btn' : ''}" style="color: white">${predictButtonText}</a>
-            </div>
+              <div class="quizTitle">` + currentQuiz[key].match + `</div>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="multiplier">
+                  <div class="title">${translator.translateForKey("home_page.multiplierLabel")}</div>
+                  <div class="d-flex">
+                    <div class="icon"></div>
+                    <div class="d-flex selections ${!currentQuiz[key].predictTimeValid || currentQuiz[key].gamePlayMultiplier ? 'disabled' : ''}">
+                      <div class="${currentQuiz[key].multipliers?.includes(2) ? 'selectable' : ''} ${currentQuiz[key].gamePlayMultiplier === 2 ? 'selected' : ''}"
+                        data-gameid="${currentQuiz[key].freebiesGameId}" data-gameplayid="${currentQuiz[key].gamePlayId}" data-multiplier="2">x2</div>
+                      <div class="${currentQuiz[key].multipliers?.includes(3) ? 'selectable' : ''} ${currentQuiz[key].gamePlayMultiplier === 3 ? 'selected' : ''}"
+                        data-gameid="${currentQuiz[key].freebiesGameId}" data-gameplayid="${currentQuiz[key].gamePlayId}" data-multiplier="3">x3</div>
+                      <div class="${currentQuiz[key].multipliers?.includes(5) ? 'selectable' : ''} ${currentQuiz[key].gamePlayMultiplier === 5 ? 'selected' : ''}"
+                        data-gameid="${currentQuiz[key].freebiesGameId}" data-gameplayid="${currentQuiz[key].gamePlayId}" data-multiplier="5">x5</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="btn btn-danger predictBtn ${currentQuiz[key].status === 9 ? 'disable-btn' : ''}" data-gameid=${currentQuiz[key].freebiesGameId}>${predictButtonText}</div>
+              </div>
             </div>`;
             $(".match").append(quiz);
           }
@@ -349,19 +357,12 @@ fetchCurrentQuiz = () => {
         setupClockCountdown();
         var freebiesGameId = "";
         var answerOfQuestion1 = [];
+        registerMultiplierClickEvent();
         $(".predictBtn").click(function () {
           var balance = $(".ticket-balance").text();
-          let matchTitle = $(this).parent().find(".quizTitle").text();
-          let freebiesGame = currentQuiz.find((x) => x.match === matchTitle);
+          let freebiesGame = currentQuiz.find((x) => x.freebiesGameId === $(this).data('gameid'));
           if (balance == 0 && !freebiesGame.gamePlayId) {
             $("#insufficientTicket").modal("show");
-            const lang = localStorage.getItem('preferred_language') === 'en' ? 'english' : 'simplified';
-            $("#depositNow").click(function () {
-              window.location.href = `${SITE_DOMAIN}/${SITE_COUNTRY.toLowerCase()}/mydeposit.html?lang=${lang}`
-            });
-            $("#loginRegister").click(function () {
-              window.location.href = `${SITE_DOMAIN}/${SITE_COUNTRY.toLowerCase()}/?lang=${lang}`
-            });
           } else {
             window.scrollTo(0, 0);
             $("#predictSubmit").removeClass("active");
@@ -489,6 +490,7 @@ fetchCurrentQuiz = () => {
                 });
               });
 
+            let matchTitle = $(this).closest('.currentList').find(".quizTitle").text();
             $(".title").append(matchTitle);
             $("#mainView").hide();
             $("#predictCurrentContainer").show();
@@ -555,7 +557,7 @@ fetchCurrentQuiz = () => {
 };
 
 fetchPrevQuiz = () => {
-  listQuestion = [
+  const listQuestion = [
     {
       content: `${translator.translateForKey("predict_page.question1")}`,
       options: [],
@@ -581,7 +583,7 @@ fetchPrevQuiz = () => {
         quizTitle: `${item.localTeamName} vs ${item.visitorTeamName}`,
         quizTime: new Intl.DateTimeFormat(DATE_TIME_LOCALE, {
           dateStyle: "long",
-          timeStyle: "medium",
+          timeStyle: "short",
         }).format(new Date(item.matchTime)),
         quizJoin: "", //TODO: Get Data,
         quizClaimStatus: item.quizClaimStatus,
@@ -589,19 +591,19 @@ fetchPrevQuiz = () => {
         quesOne: listQuestion[0].content,
         ansOne: item.answerOne,
         ansOneContent: item.answerOne === 0 ? item.localTeamName : item.answerOne === 1 ? `${translator.translateForKey("predict_page.answer1_2")}` : item.visitorTeamName,
-        ansOneStatus: item.answerOneStatus,
+        ansOneStatus: item.answerOneStatus.toLowerCase(),
         quesTwo: listQuestion[1].content,
         ansTwo: item.answerTwo,
         ansTwoContent: listQuestion[1].options[item.answerTwo],
-        ansTwoStatus: item.answerTwoStatus,
+        ansTwoStatus: item.answerTwoStatus.toLowerCase(),
         quesThree: listQuestion[2].content,
         ansThree: item.answerThree,
         ansThreeContent: listQuestion[2].options[item.answerThree],
-        ansThreeStatus: item.answerThreeStatus,
+        ansThreeStatus: item.answerThreeStatus.toLowerCase(),
         quesFour: listQuestion[3].content,
         ansFour: item.answerFour,
         ansFourContent: listQuestion[3].options[item.answerFour],
-        ansFourStatus: item.answerFourStatus,
+        ansFourStatus: item.answerFourStatus.toLowerCase(),
         country: item.country
       }));
       let previous_quiz;
@@ -615,152 +617,59 @@ fetchPrevQuiz = () => {
         } else {
           text = "";
         }
-        previous_quiz = `<div class="matchs__items aos-init aos-animate" data-aos="fade-up">
-        <div class="matchs__items__top">
-          <div class="matchs__items__top__info">
-            <div
-              class="matchs__items__top__info__currency ${prevQuiz[i].quizPrize === 0 ? "warning" : "success"
-          }"
-            >
-            ${translator.translateForKey("home_page.Won")} ${prevQuiz[i].country === "MY" ? "MYR" : "SGD"
-          } ${prevQuiz[i].quizPrize}
-            </div>
-            <div class="matchs__items__top__info__time">
-              ${prevQuiz[i].quizTime}
-            </div>
-          </div>
+        previous_quiz = `
+          <div class="list-item aos-init aos-animate" data-aos="fade-up">
+            <div class="prevList">
+              <div class="d-flex align-items-center">
+                <div class="wonAmt ${prevQuiz[i].quizPrize === 0 ? 'amt0' : ''}">${translator.translateForKey("home_page.Won")} ${prevQuiz[i].country === 'MY' ? 'MYR' : 'SGD'} ` + prevQuiz[i].quizPrize + `</div >
+                  <div class="prizeTime">` + prevQuiz[i].quizTime + `</div>
+                </div>
+                <div class="quizTitle">` + prevQuiz[i].quizTitle + `</div>
+              </div>
+              <div>
+                <div class="quizResultRow">
+                  <div class="quizResult d-flex">
+                    <div class="` + prevQuiz[i].ansOneStatus + `"></div>
+                    <div>
+                      <div class="prevQ">` + prevQuiz[i].quesOne + `</div>
+                      <div class="prevA">` + prevQuiz[i].ansOneContent + `</div>
+                    </div>
+                  </div>
+                  <div class="quizResult d-flex">
+                    <div class="` + prevQuiz[i].ansTwoStatus + `"></div>
+                    <div>
+                      <div class="prevQ">` + prevQuiz[i].quesTwo + `</div>
+                      <div class="prevA">` + prevQuiz[i].ansTwoContent + `</div>
+                    </div>
+                  </div>
 
-          <div class="matchs__items__top__vs">
-            <span class="matchTitle">${prevQuiz[i].quizTitle}</span>
-            <button
-              class="btn btn-danger ${status}"
-              data-bs-toggle="modal"
-              ${text === translator.translateForKey("home_page.Claimed") ? "disabled" : ""}
-              data-bs-target="#claimConfirmModal"
-              style="${prevQuiz[i].quizPrize === 0 ? "display: none" : ""}"
-            >${text}</button>
-          </div>
-        </div>
-
-        <div class="collapse" id="collapse${i}">
-          <ul class="matchs-questions">
-            <li class="matchs-questions-item">
-              <img src=${prevQuiz[i].ansOneStatus === "Wrong"
-            ? "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/icons/close.svg"
-            : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/icons/check.svg"
-          } />
-              <div class="matchs-questions-item__content" style="text-align: left">
-                <div
-                  class="matchs-questions-item__content__question"
-                >
-                ${translator.translateForKey(
-            "predict_page.question1",
-          )}
+                  <div class="quizResult d-flex">
+                    <div class="` + prevQuiz[i].ansThreeStatus + `"></div>
+                    <div>
+                      <div class="prevQ">` + prevQuiz[i].quesThree + `</div>
+                      <div class="prevA">` + prevQuiz[i].ansThreeContent + `</div>
+                    </div>
+                  </div>
+                  <div class="quizResult d-flex">
+                    <div class="` + prevQuiz[i].ansFourStatus + `"></div>
+                    <div>
+                      <div class="prevQ"> ` + prevQuiz[i].quesFour + `</div>
+                      <div class="prevA">` + prevQuiz[i].ansFourContent + `</div>
+                    </div>
+                  </div>
                 </div>
-                <div
-                  class="matchs-questions-item__content__answer"
-                >
-                  ${prevQuiz[i].ansOneContent}
+                <div class="d-flex justify-content-around align-items-center resultContainer">
+                  <div class='showAns'> ${translator.translateForKey("home_page.Show_Answer")} <i class="fa fa-chevron-down"></i></div>
+                  <div class="hideAns" style="display: none">${translator.translateForKey("home_page.Hide_Answer")} <i class="fa fa-chevron-up"></i></div>
+                  <button class="btn btn-danger ${status}"" ${text === translator.translateForKey("home_page.Claimed") ? "disabled" : ""} data-bs-toggle="modal" data-bs-target="#claimConfirmModal"
+                    style="${prevQuiz[i].quizPrize === 0 ? 'display: none' : ''}" data-gameplayid=${prevQuiz[i].freebiesGamePlayId}>` + text + `</button>
                 </div>
               </div>
-            </li>
-            <li class="matchs-questions-item">
-              <img src=${prevQuiz[i].ansTwoStatus === "Wrong"
-            ? "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/icons/close.svg"
-            : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/icons/check.svg"
-          } />
-              <div class="matchs-questions-item__content" style="text-align: left">
-                <div
-                  class="matchs-questions-item__content__question"
-                >
-                ${translator.translateForKey("predict_page.question2")}
-                </div>
-                <div
-                  class="matchs-questions-item__content__answer"
-                >
-                ${prevQuiz[i].ansTwoContent}
-                </div>
-              </div>
-            </li>
-            <li class="matchs-questions-item">
-              <img src=${prevQuiz[i].ansThreeStatus === "Wrong"
-            ? "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/icons/close.svg"
-            : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/icons/check.svg"
-          } />
-              <div class="matchs-questions-item__content" style="text-align: left">
-                <div
-                  class="matchs-questions-item__content__question"
-                >
-                ${translator.translateForKey(
-            "predict_page.question3",
-          )}</div>
-                <div
-                  class="matchs-questions-item__content__answer"
-                >
-                ${prevQuiz[i].ansThreeContent}
-                </div>
-              </div>
-            </li>
-            <li class="matchs-questions-item">
-              <img src=${prevQuiz[i].ansFourStatus === "Wrong"
-            ? "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/icons/close.svg"
-            : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/icons/check.svg"
-          } />
-              <div class="matchs-questions-item__content" style="text-align: left">
-                <div
-                  class="matchs-questions-item__content__question"
-                >
-                ${translator.translateForKey(
-            "predict_page.question4",
-          )}
-                </div>
-                <div
-                  class="matchs-questions-item__content__answer"
-                >
-                ${prevQuiz[i].ansFourContent}
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <button
-          class="btn btn-showhide"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapse${i}"
-          aria-expanded="false"
-          aria-controls="collapse${i}"
-        >
-          <span
-            class="show-answer"
-          >${translator.translateForKey("home_page.Show_Answer")}
-          </span>
-          <span
-            class="hide-answer"
-          >
-          ${translator.translateForKey("home_page.Hide_Answer")}</span>
-        </button>
-      </div>`;
+            </div>        
+          </div>`;
 
         $(".matchs").append(previous_quiz);
-        $(".showAns").click(function () {
-          $(".quizResultRow").hide();
-          $(".showAns").show();
-          $(this).hide();
-          $(this).parent(".resultContainer").siblings(".quizResultRow").show();
-        });
-
-        $(".hideAns").click(function () {
-          $(this)
-            .parent()
-            .parent()
-            .siblings(".resultContainer")
-            .find(".showAns")
-            .show();
-          // $(this).hide()
-          $(this).parent().parent().hide();
-        });
+        registerPrevQuizToggleEvent();
       }
       $(".unclaimed").click(function () {
         let matchTitle = $(this).parent().find(".matchTitle").text();
@@ -790,33 +699,6 @@ fetchPrevQuiz = () => {
           items.hide().slice(showFrom, showTo).show();
         },
       });
-    });
-};
-
-fetchLeaderBoardRanking = () => {
-  fetch(
-    `${API_URL}/12goalapi/user/top-50-ranking-report?country=${SITE_COUNTRY}&t=${new Date().getTime()}`, getRequestHeaders()
-  )
-    .then((response) => response.json())
-    .then((res) => {
-      let leaderboard_ranking = res.map((item) => ({
-        name: item.accountCode,
-        points: item.totalPoints,
-        prize: item.prize,
-      }));
-      let ranking_leaderboard;
-      for (var i = 0; i < leaderboard_ranking.length; i++) {
-        let name = leaderboard_ranking[i].name;
-        ranking_leaderboard = `<tr>
-          <td>${i + 1}</td>
-          <td>${name}</td>
-          <td>${leaderboard_ranking[i].points}</td>
-          <td>${leaderboard_ranking[i].prize}</td>
-          </tr>
-          `;
-
-        $("#leader-board-ranking").append(ranking_leaderboard);
-      }
     });
 };
 
@@ -873,7 +755,6 @@ setupClockCountdown = () => {
 }
 
 $(document).ready(async function () {
-
   $("#openbtn").click(function () {
     $("#mySideBar").css("transform", "translate(0px, 0px)");
     $("#overlay").css("display", "block");

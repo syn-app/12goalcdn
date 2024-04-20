@@ -34,6 +34,8 @@
         href="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/css/footer.min.css" />
     <link type="text/css" rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/css/style.min.css" />
+    <link id="12gcommoncss" type="text/css" rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/css/12gcommon.min.css" />
     <link id="12gcss" type="text/css" rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/css/12goal.min.css" />
     <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
@@ -522,6 +524,7 @@
 <script id="12goaljs"></script>
 <script type="text/javascript">
     if (location.hostname === "localhost") {
+        document.getElementById('12gcommoncss').href = '/12play-freebies/css/12gcommon.css';
         document.getElementById('12gcss').href = '/12play-freebies/css/12goal.css';
     }
     document.getElementById('12gcommon').src = location.hostname === "localhost" ?

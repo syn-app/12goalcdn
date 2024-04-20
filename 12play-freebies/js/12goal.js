@@ -244,30 +244,12 @@ fetchCurrentQuiz = () => {
         setupClockCountDown();
         var freebiesGameId = ""
         var answerOfQuestion1 = [];
-        $('.multiplier .selections:not(.disabled) .selectable').click(function () {
-          if (!$(this).data('gameplayid')) {
-            showErrorModal({ title: 'Reminder', detail: 'You have to make your prediction before multiplying your bet.' });
-          } else {
-            let multiplier = $(this).data('multiplier');
-            let gamePlayId = $(this).data('gameplayid');
-            $('#multiplierBetConfirmModal').data('gameplayid', gamePlayId);
-            $('#multiplierBetConfirmModal').data('multiplier', multiplier);
-            $('#multiplierBetConfirmModal').modal('show');
-            $('#multiplierBetConfirmModal .multiplier-val').text(multiplier);
-          }
-        });
+        registerMultiplierClickEvent();
         $(".predictBtn").click(function () {
           var balance = $(".ticket-balance").text();
           let freebiesGame = currentQuiz.find((x) => x.freebiesGameId === $(this).data('gameid'));
           if (balance == 0 && !freebiesGame.gamePlayId) {
             $("#insufficientTicket").modal("show");
-            const lang = siteLang === 'en' ? 'english' : 'simplified';
-            $("#depositNow").click(function () {
-              window.location.href = `${SITE_DOMAIN}/${SITE_COUNTRY.toLowerCase()}/mydeposit.html?lang=${lang}`
-            });
-            $("#loginRegister, .loginRegister").click(function () {
-              window.location.href = `${SITE_DOMAIN}/${SITE_COUNTRY.toLowerCase()}/?lang=${lang}`
-            });
           } else {
             window.scrollTo(0, 0);
             $("#predictSubmit").removeClass("active");
@@ -514,17 +496,7 @@ fetchPrevQuiz = () => {
           </div>`;
 
         $(".list-wrapper").append(previous_quiz);
-        $(".showAns").click(function () {
-          $(this).hide();
-          $(this).siblings(".hideAns").show();
-          $(this).parent(".resultContainer").siblings(".quizResultRow").slideDown();
-        });
-
-        $(".hideAns").click(function () {
-          $(this).hide();
-          $(this).siblings(".showAns").show();
-          $(this).parent(".resultContainer").siblings(".quizResultRow").slideUp();
-        });
+        registerPrevQuizToggleEvent();
       }
       $(".unclaimed").click(function () {
         $("#claimPrevPrize").data("gameplayid", $(this).data('gameplayid'));
@@ -605,35 +577,6 @@ setupClockCountDown = () => {
   countdownFunction();
   setInterval(countdownFunction, 1000);
 }
-
-fetchLeaderBoardRanking = () => {
-  fetch(
-    `${API_URL}/12goalapi/user/top-50-ranking-report?country=${SITE_COUNTRY}&t=${new Date().getTime()}`, getRequestHeaders()
-  )
-    .then((response) => response.json())
-    .then((res) => {
-      let leaderboard_ranking = res.map((item) => ({
-        name: item.accountCode,
-        points: item.totalPoints,
-        prize: item.prize,
-      }));
-      let ranking_leaderboard;
-      for (var i = 0; i < leaderboard_ranking.length; i++) {
-        let name = leaderboard_ranking[i].name;
-        ranking_leaderboard = `
-          <div class="d-flex rank-item">
-            <div class="rank">` + [i + 1] + `</div>
-            <div>
-              <div class="name">${name}</div>
-              <div class="points">${translator.translateForKey('home_page.Total_Points')}: ${leaderboard_ranking[i].points}</div>
-            </div>
-            <div class="prize">USD ` + leaderboard_ranking[i].prize + `</div>
-          </div>`;
-
-        $(".leaderboardList").append(ranking_leaderboard);
-      }
-    });
-};
 
 $(document).ready(async function () {
   await getSiteLanguage();

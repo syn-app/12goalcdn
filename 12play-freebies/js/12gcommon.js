@@ -1,4 +1,25 @@
 var DATE_TIME_LOCALE = "en-US";
+var LANGUAGES = {
+  EN: "en",
+  ZH: "zh",
+};
+var SITE_COUNTRY;
+
+var translator = new Translator({
+  defaultLanguage: "en",
+  detectLanguage: true,
+  selector: "[data-i18n]",
+  debug: false,
+  registerGlobally: "__",
+  persist: true,
+  persistKey: "preferred_language",
+  filesLocation: location.hostname === "localhost" ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/i18n",
+});
+
+var PREFERED_REGION = 'preferred_region';
+const _get_translator_config = translator.config.persistKey || "preferred_language";
+var _get_language = localStorage.getItem(_get_translator_config) || LANGUAGES.EN;
+var _get_region = localStorage.getItem(PREFERED_REGION) || 'Singapore';
 
 fetchUserGameReport = () => {
   return fetch(`${API_URL}/12goalapi/user/game-report?siteName=${SITE_COUNTRY === "MY" ? '12M' : '12S'}&t=${new Date().getTime()}`, getRequestHeaders())
@@ -23,7 +44,7 @@ fetchUserGameReport = () => {
       $('#tcContent').append(getTC(site));
 
       // Goal rush
-      if (site.checkInChallengeEnabled) {
+      if (site.checkInChallengeEnabled && res.checkInPerMatches > 0) {
         $('.goal-rush-container').show();
       } else {
         $('.goal-rush-container').hide();
@@ -55,7 +76,7 @@ fetchUserGameReport = () => {
       }, '');
 
       $('.goal-rush-matches').append(`${goalRushItems}
-        <div class="goal-rush-claim-btn redAction ${res.canClaimCheckInPrize ? '' : 'disabled'}"
+        <div class="goal-rush-claim-btn btn-danger redAction  ${res.canClaimCheckInPrize ? '' : 'disabled'}"
           onclick="claimCheckInPrize()">${translator.translateForKey("home_page.goalRushClaimNow")}</div>
       `);
 
@@ -128,6 +149,67 @@ setGameMultiplier = (req) => {
     })
 }
 
+fetchLeaderBoardRanking = () => {
+  fetch(
+    `${API_URL}/12goalapi/user/top-50-ranking-report?country=${SITE_COUNTRY}&t=${new Date().getTime()}`, getRequestHeaders()
+  )
+    .then((response) => response.json())
+    .then((res) => {
+      let leaderboard_ranking = res.map((item) => ({
+        name: item.accountCode,
+        points: item.totalPoints,
+        prize: item.prize,
+      }));
+      let ranking_leaderboard;
+      for (var i = 0; i < leaderboard_ranking.length; i++) {
+        let name = leaderboard_ranking[i].name;
+        ranking_leaderboard = `
+          <div class="d-flex rank-item">
+            <div class="rank">` + [i + 1] + `</div>
+            <div>
+              <div class="name">${name}</div>
+              <div class="points">${translator.translateForKey('home_page.Total_Points')}: ${leaderboard_ranking[i].points}</div>
+            </div>
+            <div class="prize">USD ` + leaderboard_ranking[i].prize + `</div>
+          </div>`;
+
+        $(".leaderboardList").append(ranking_leaderboard);
+      }
+    });
+};
+
+function registerMultiplierClickEvent() {
+  $('.multiplier .selections:not(.disabled) .selectable').click(function () {
+    if (!$(this).data('gameplayid')) {
+      showErrorModal({
+        title: translator.translateForKey("home_page.reminder"),
+        detail: translator.translateForKey("home_page.multiplierPredictFirst")
+      });
+    } else {
+      let multiplier = $(this).data('multiplier');
+      let gamePlayId = $(this).data('gameplayid');
+      $('#multiplierBetConfirmModal').data('gameplayid', gamePlayId);
+      $('#multiplierBetConfirmModal').data('multiplier', multiplier);
+      $('#multiplierBetConfirmModal').modal('show');
+      $('#multiplierBetConfirmModal .multiplier-val').text(multiplier);
+    }
+  });
+}
+
+function registerPrevQuizToggleEvent() {
+  $(".showAns").click(function () {
+    $(this).hide();
+    $(this).siblings(".hideAns").show();
+    $(this).parent(".resultContainer").siblings(".quizResultRow").slideDown();
+  });
+
+  $(".hideAns").click(function () {
+    $(this).hide();
+    $(this).siblings(".showAns").show();
+    $(this).parent(".resultContainer").siblings(".quizResultRow").slideUp();
+  });
+}
+
 showErrorModal = (err) => {
   $('#errorModal').modal('show');
   $('#errorModal .modal-title').text(err.title ? err.title : err.code ? `Error: ${err.code}` : 'Error');
@@ -135,8 +217,8 @@ showErrorModal = (err) => {
 }
 
 $(document).ready(function () {
-  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-    const target = $(e.target).attr("href");
+  $('a[data-toggle="tab"], button[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+    const target = $(e.target).attr("href") || $(e.target).attr("data-bs-target");
     if ((target === '#livescore')) {
       const iframe = $('#livescore').find('iframe');
       if (iframe.data('src')) {
@@ -146,8 +228,20 @@ $(document).ready(function () {
   });
 
   $('#multiplierBetConfirmModal .confirmBtn').click(function () {
-    let multiplier = $('#multiplierBetConfirmModal').data('multiplier');
-    let gamePlayId = $('#multiplierBetConfirmModal').data('gameplayid');
-    setGameMultiplier({ gamePlayId, multiplier });
+    if ($(".ticket-balance").text() == 0) {
+      $("#insufficientTicket").modal("show");
+    } else {
+      let multiplier = $('#multiplierBetConfirmModal').data('multiplier');
+      let gamePlayId = $('#multiplierBetConfirmModal').data('gameplayid');
+      setGameMultiplier({ gamePlayId, multiplier });
+    }
   })
+
+  const lang = localStorage.getItem('preferred_language') === 'en' ? 'english' : 'simplified';
+  $("#depositNow").click(function () {
+    window.location.href = `${SITE_DOMAIN}/${SITE_COUNTRY.toLowerCase()}/mydeposit.html?lang=${lang}`
+  });
+  $("#loginRegister").click(function () {
+    window.location.href = `${SITE_DOMAIN}/${SITE_COUNTRY.toLowerCase()}/?lang=${lang}`
+  });
 });

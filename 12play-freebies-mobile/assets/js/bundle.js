@@ -1,30 +1,11 @@
-const LANGUAGES = {
-  EN: "en",
-  ZH: "zh",
-};
-
-var translator = new Translator({
-  defaultLanguage: "en",
-  detectLanguage: true,
-  selector: "[data-i18n]",
-  debug: false,
-  registerGlobally: "__",
-  persist: true,
-  persistKey: "preferred_language",
-  filesLocation: location.hostname === "localhost" ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/i18n",
-});
-
-const PREFERED_REGION = 'preferred_region';
-const _get_translator_config = translator.config.persistKey || "preferred_language";
-const _get_language = localStorage.getItem(_get_translator_config) || LANGUAGES.EN;
-const _get_region = localStorage.getItem(PREFERED_REGION) || 'Singapore';
-
-translator.fetch([LANGUAGES.EN, LANGUAGES.ZH]).then(() => {
-  // -> Translations are ready...
-  translator.translatePageTo(_get_language);
-  changeLanguageColor();
-  initialize();
-  DATE_TIME_LOCALE = _get_language === 'zh' ? 'zh-CN' : 'en-US';
+setTimeout(() => {
+  translator.fetch([LANGUAGES.EN, LANGUAGES.ZH]).then(() => {
+    // -> Translations are ready...
+    translator.translatePageTo(_get_language);
+    changeLanguageColor();
+    initialize();
+    DATE_TIME_LOCALE = _get_language === 'zh' ? 'zh-CN' : 'en-US';
+  });
 });
 
 /**
@@ -202,5 +183,4 @@ function initialize() {
     setSiteBarMenu();
     fetchPrevQuiz();
   })
-
 }
