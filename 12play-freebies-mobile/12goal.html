@@ -660,8 +660,7 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/jquery.simplePagination.js'></script>
   <!-- Translator -->
   <script
-    src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/library/translator.min.js"
-    defer></script>
+    src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/library/translator.min.js"></script>
   <!-- Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -673,13 +672,11 @@
   <!-- CUSTOM -->
   <script
     src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/js/vendor.min.js"></script>
-  <script>
-    var IS_DEV = +location.port > 800;
-  </script>
   <script id="12gcommon"></script>
   <script id="12gbundle"></script>
   <script id="12goaljs"></script>
   <script type="text/javascript">
+    var IS_DEV = +location.port > 99;
     if (IS_DEV) {
       $('link[href$="12gcommon.min.css"]').prop('href', '/12play-freebies/css/12gcommon.css');
       $('link[href$="index.min.css"]').prop('href', '/12play-freebies-mobile/assets/css/index.css');

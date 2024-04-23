@@ -28,6 +28,7 @@
     line-height: 18px;
     margin: 0 10px;
     text-align: center;
+    text-wrap: nowrap;
 }
 
 
@@ -84,9 +85,11 @@
     color: #9c9c9c;
     padding: 10px 15px;
     border-radius: 6px;
+    width: 80px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    text-align: center;
 }
 
 .goal-rush-matches .goal-rush-item.active {

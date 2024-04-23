@@ -1110,7 +1110,7 @@ a {
   font-weight: 900;
   font-size: 16px;
   line-height: 16px;
-  color: #FF8A00;
+  color: white;
   text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
@@ -1118,7 +1118,7 @@ a {
   font-weight: 900;
   font-size: 28px;
   line-height: 20px;
-  color: #FF8A00;
+  color: white;
   text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
@@ -1341,7 +1341,7 @@ iframe {
   color: white;
   font-size: 12px;
   background-image: url(../images/modal-bg.png);
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   border-radius: 10px;
   outline: none;
@@ -1412,6 +1412,7 @@ iframe {
 .goal-rush-matches .goal-rush-item {
   padding: 6px 10px;
   font-size: 13px;
+  width: 75px;
 }
 
 .goal-rush-claim-status {

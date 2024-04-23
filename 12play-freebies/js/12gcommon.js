@@ -57,7 +57,8 @@ fetchUserGameReport = () => {
       }
 
       const totalMatches = res.totalRemainingMatches + res.totalMatchPredicted;
-      const windowOffset = res.totalMatchPredicted === 0 ? 0 : Math.floor((res.totalMatchPredicted - 1) / 10);
+      // const windowOffset = res.totalMatchPredicted === 0 ? 0 : Math.floor((res.totalMatchPredicted - 1) / 10);
+      const windowOffset = res.checkInRewardClaimed === 0 ? 0 : Math.floor((res.checkInRewardClaimed - 1) / 2);
       const remainingMatches = totalMatches - windowOffset * 10;
       const goalRushItems = Array(remainingMatches > 10 ? 10 : remainingMatches).fill(0).reduce((prev, curr, index) => {
         let str = `${prev}`;
@@ -75,7 +76,7 @@ fetchUserGameReport = () => {
         str += `
           <div class="goal-rush-item ${res.totalMatchPredicted + 1 === matchNo ? 'active' : ''}">
             <div class="goal-rush-claim-status ${claimStatus}"></div>
-            ${matchNo} ${translator.translateForKey("home_page.goalRushMatch")}
+            ${index + 1} ${translator.translateForKey("home_page.goalRushMatch")}
           </div>
         `;
         return str;
@@ -114,6 +115,8 @@ var goalRushPrizeModalShownCount = 0;
 $('#goalRushPrizeModal').on('hidden.bs.modal', function (e) {
   if (goalRushPrizeModalShownCount > 0) {
     setTimeout(() => $('#goalRushPrizeModal').modal('show'), 300);
+  } else {
+    location.reload();
   }
   goalRushPrizeModalShownCount--;
 });

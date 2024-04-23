@@ -349,7 +349,8 @@ iframe {
 }
 
 .subNav .nav-link {
-    width: 100px;
+    width: auto;
+    margin-right: 30px;
     font-size: 14px;
 }
 

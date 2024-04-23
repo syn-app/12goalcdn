@@ -518,14 +518,11 @@
     src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/plugins/bootstrap-4.4.1/js/bootstrap.min.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/jquery.simplePagination.js'></script>
 <script
-    src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/library/translator.min.js"
-    defer></script>
-<script>
-    var IS_DEV = +location.port > 800;
-</script>
+    src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/library/translator.min.js"></script>
 <script id="12gcommon"></script>
 <script id="12goaljs"></script>
 <script type="text/javascript">
+    var IS_DEV = +location.port > 99;
     if (IS_DEV) {
         document.getElementById('12gcommoncss').href = '/12play-freebies/css/12gcommon.css';
         document.getElementById('12gcss').href = '/12play-freebies/css/12goal.css';
