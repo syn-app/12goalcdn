@@ -58,17 +58,17 @@ fetchUserGameReport = () => {
 
       const totalMatches = res.totalRemainingMatches + res.totalMatchPredicted;
       // const windowOffset = res.totalMatchPredicted === 0 ? 0 : Math.floor((res.totalMatchPredicted - 1) / 10);
-      const windowOffset = res.checkInRewardClaimed === 0 ? 0 : Math.floor((res.checkInRewardClaimed - 1) / 2);
+      const windowOffset = res.checkInRewardClaimed === 0 ? 0 : Math.floor(res.checkInRewardClaimed / 2);
       const remainingMatches = totalMatches - windowOffset * 10;
       const goalRushItems = Array(remainingMatches > 10 ? 10 : remainingMatches).fill(0).reduce((prev, curr, index) => {
         let str = `${prev}`;
         const matchNo = windowOffset * 10 + index + 1;
         let claimStatus = '';
         if ((index + 1) % res.checkInPerMatches === 0) {
-          if (res.canClaimCheckInPrize || res.totalMatchPredicted < matchNo) {
-            claimStatus = 'reward';
-          } else {
+          if (res.checkInRewardClaimed * res.checkInPerMatches >= matchNo) {
             claimStatus = 'checked';
+          } else {
+            claimStatus = 'reward';
           }
         } else if (res.totalMatchPredicted >= matchNo) {
           claimStatus = 'checked';
