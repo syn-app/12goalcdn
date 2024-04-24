@@ -1400,11 +1400,6 @@ iframe {
   background-color: rgb(240, 240, 240);
 }
 
-.goal-rush-matches {
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
 .goal-rush-claim-btn {
   padding: 18px 0;
 }
@@ -1412,7 +1407,7 @@ iframe {
 .goal-rush-matches .goal-rush-item {
   padding: 6px 10px;
   font-size: 13px;
-  width: 75px;
+  min-width: 75px;
 }
 
 .goal-rush-claim-status {
