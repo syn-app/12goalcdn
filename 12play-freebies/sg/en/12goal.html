@@ -474,22 +474,36 @@
 <script
     src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/plugins/bootstrap-4.4.1/js/bootstrap.min.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/jquery.simplePagination.js'></script>
-<script
-    src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/library/translator.min.js"></script>
-<script id="12gcommon"></script>
-<script id="12goaljs"></script>
 <script type="text/javascript">
     var IS_DEV = +location.port > 99;
     if (IS_DEV) {
         document.getElementById('12gcommoncss').href = '/12play-freebies/css/12gcommon.css';
         document.getElementById('12gcss').href = '/12play-freebies/css/12goal.css';
     }
-    document.getElementById('12gcommon').src = IS_DEV ?
-        '/12play-freebies/js/12gcommon.js' :
-        'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/js/12gcommon.min.js';
-    document.getElementById('12goaljs').src = IS_DEV ?
-        '/12play-freebies/js/12goal.js' :
-        'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/js/12goal.min.js';
+
+    (function () {
+        let bundles = ['https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/library/translator.min.js'];
+        bundles = bundles.concat(IS_DEV ? [
+            '/12play-freebies/js/12gcommon.js',
+            '/12play-freebies/js/12goal.js'
+        ] : [
+            'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/js/12gcommon.min.js',
+            'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/js/12goal.min.js'
+        ]);
+        var injectLibFromStack = function () {
+            if (bundles.length > 0) {
+                var nextLib = bundles.shift();
+                var headTag = document.getElementsByTagName('head')[0];
+                var scriptTag = document.createElement('script');
+                scriptTag.src = nextLib;
+                scriptTag.onload = function (e) {
+                    injectLibFromStack();
+                };
+                headTag.appendChild(scriptTag);
+            }
+        }
+        injectLibFromStack();
+    })();
 </script>
 <script>
     $(document).ready(function () { });
