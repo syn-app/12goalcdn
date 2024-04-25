@@ -492,8 +492,9 @@
 
 .leaderboardList .rank-item .points {
     color: #888888;
-    font-size: 15px;
+    font-size: 14px;
     padding-left: 20px;
+    margin-top: 3px;
 }
 
 .leaderboardList .rank-item .prize {

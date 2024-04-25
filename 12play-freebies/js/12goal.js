@@ -595,7 +595,7 @@ $(document).ready(async function () {
   if (!userData) {
     $('#previous-tab').css('display', 'none');
   }
-  fetchUserGameReport();
+  fetchUserGameReport().then(res => loadHowToPlay(res));
   fetchCurrentQuiz();
   fetchPrevQuiz();
 });

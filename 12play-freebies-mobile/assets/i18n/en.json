@@ -63,7 +63,8 @@
     "multiplierConfirmContent": "You have requested a <strong>x<span class='multiplier-val'></span></strong> multiplier for this match. After confirmation, your multiplier bet cannot be canceled or reduced.",
     "multiplierConfirmProceed": "Click “Confirm” to proceed.",
     "reminder": "Reminder",
-    "multiplierPredictFirst": "You have to make your prediction before multiplying your bet."
+    "multiplierPredictFirst": "You have to make your prediction before multiplying your bet.",
+    "USD": "USD"
   },
   "predict_page": {
     "title": "Senegal vs Netherlands",

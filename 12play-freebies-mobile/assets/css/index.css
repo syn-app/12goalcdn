@@ -1203,11 +1203,12 @@ a {
 
 .home__content #myHomeTabContent>.tab-pane#goal-home #myHomeGoalTabContent>.tab-pane#goal-home-current #accordionHome .accordion-item .accordion-collapse .accordion-body {
   font-weight: 500;
-  font-size: 12px;
-  line-height: 13px;
+  font-size: 14px;
+  line-height: 18px;
   text-align: left;
-  color: #9D9D9D;
+  color: #828282;
   padding: 10px 0 0;
+  font-weight: 400;
 }
 
 .predict {

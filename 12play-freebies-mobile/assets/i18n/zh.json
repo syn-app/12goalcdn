@@ -63,7 +63,8 @@
     "multiplierConfirmContent": "您已请求将此次比赛的投注倍数提高至<strong>x<span class='multiplier-val'></span></strong>倍。确认后,您将无法取消或减少倍数。",
     "multiplierConfirmProceed": "点击“确认”以继续",
     "reminder": "提醒",
-    "multiplierPredictFirst": "您必须在加倍您的赌注之前进行预测"
+    "multiplierPredictFirst": "您必须在加倍您的赌注之前进行预测",
+    "USD": "美金"
   },
   "predict_page": {
     "title": "Senegal vs Netherlands",
