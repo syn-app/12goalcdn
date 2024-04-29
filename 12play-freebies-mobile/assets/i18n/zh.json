@@ -64,7 +64,8 @@
     "multiplierConfirmProceed": "点击“确认”以继续",
     "reminder": "提醒",
     "multiplierPredictFirst": "您必须在加倍您的赌注之前进行预测",
-    "USD": "美金"
+    "USD": "美金",
+    "Error": "错误"
   },
   "predict_page": {
     "title": "Senegal vs Netherlands",

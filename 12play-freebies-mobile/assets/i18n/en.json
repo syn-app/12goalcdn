@@ -64,7 +64,8 @@
     "multiplierConfirmProceed": "Click “Confirm” to proceed.",
     "reminder": "Reminder",
     "multiplierPredictFirst": "You have to make your prediction before multiplying your bet.",
-    "USD": "USD"
+    "USD": "USD",
+    "Error": "Error"
   },
   "predict_page": {
     "title": "Senegal vs Netherlands",

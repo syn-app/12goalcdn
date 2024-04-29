@@ -1,7 +1,6 @@
 var listQuestion = [];
 
 getSiteDomain = async () => {
-  SITE_COUNTRY = location.pathname.startsWith('/my') ? 'MY' : 'SG';
   SITE_DOMAIN = window.location.origin;
 
   // let country = location.pathname.startsWith('/my') ? 'MY' : 'SG';
@@ -396,70 +395,12 @@ fetchPrevQuiz = () => {
         ansFour: item.answerFour,
         ansFourContent: listQuestion[3].options[item.answerFour],
         ansFourStatus: item.answerFourStatus.toLowerCase(),
-        country: item.country
+        country: item.country,
+        multiplier: item.multiplier
       }));
       let previous_quiz;
       for (var i = 0; i < prevQuiz.length; i++) {
-        let status = prevQuiz[i].quizClaimStatus;
-        let text;
-        if (status == "unclaimed") {
-          text = `${translator.translateForKey("home_page.Claim_Now")}`;
-        } else if (status == "claimed") {
-          text = `${translator.translateForKey("home_page.Claimed")}`;
-        } else {
-          text = "";
-        }
-        previous_quiz = `
-          <div class="list-item aos-init aos-animate" data-aos="fade-up">
-            <div class="prevList">
-              <div class="d-flex align-items-center">
-                <div class="wonAmt ${prevQuiz[i].quizPrize === 0 ? 'amt0' : ''}">${translator.translateForKey("home_page.Won")} ${prevQuiz[i].country === 'MY' ? 'MYR' : 'SGD'} ` + prevQuiz[i].quizPrize + `</div >
-                  <div class="prizeTime">` + prevQuiz[i].quizTime + `</div>
-                </div>
-                <div class="quizTitle">` + prevQuiz[i].quizTitle + `</div>
-              </div>
-              <div>
-                <div class="quizResultRow">
-                  <div class="quizResult d-flex">
-                    <div class="` + prevQuiz[i].ansOneStatus + `"></div>
-                    <div>
-                      <div class="prevQ">` + prevQuiz[i].quesOne + `</div>
-                      <div class="prevA">` + prevQuiz[i].ansOneContent + `</div>
-                    </div>
-                  </div>
-                  <div class="quizResult d-flex">
-                    <div class="` + prevQuiz[i].ansTwoStatus + `"></div>
-                    <div>
-                      <div class="prevQ">` + prevQuiz[i].quesTwo + `</div>
-                      <div class="prevA">` + prevQuiz[i].ansTwoContent + `</div>
-                    </div>
-                  </div>
-
-                  <div class="quizResult d-flex">
-                    <div class="` + prevQuiz[i].ansThreeStatus + `"></div>
-                    <div>
-                      <div class="prevQ">` + prevQuiz[i].quesThree + `</div>
-                      <div class="prevA">` + prevQuiz[i].ansThreeContent + `</div>
-                    </div>
-                  </div>
-                  <div class="quizResult d-flex">
-                    <div class="` + prevQuiz[i].ansFourStatus + `"></div>
-                    <div>
-                      <div class="prevQ"> ` + prevQuiz[i].quesFour + `</div>
-                      <div class="prevA">` + prevQuiz[i].ansFourContent + `</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="d-flex justify-content-around align-items-center resultContainer">
-                  <div class='showAns'> ${translator.translateForKey("home_page.Show_Answer")} <i class="fa fa-chevron-down"></i></div>
-                  <div class="hideAns" style="display: none">${translator.translateForKey("home_page.Hide_Answer")} <i class="fa fa-chevron-up"></i></div>
-                  <button class="btn btn-danger ${status}"" ${text === translator.translateForKey("home_page.Claimed") ? "disabled" : ""} data-bs-toggle="modal" data-bs-target="#claimConfirmModal"
-                    style="${prevQuiz[i].quizPrize === 0 ? 'display: none' : ''}" data-gameplayid=${prevQuiz[i].freebiesGamePlayId}>` + text + `</button>
-                </div>
-              </div>
-            </div>        
-          </div>`;
-
+        previous_quiz = getPreviousQuizHtml(prevQuiz[i]);
         $(".matchs").append(previous_quiz);
         registerPrevQuizToggleEvent();
       }

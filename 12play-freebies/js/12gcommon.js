@@ -8,7 +8,12 @@ var USER_KEY = "userData";
 var KEY_TS = "timestamp";
 var API_URL = IS_DEV ? `${location.protocol}//${location.hostname}:5500` : `${location.origin}`;
 
-var SITE_COUNTRY = "MY";
+var SITE_COUNTRY = location.pathname.includes('/my') ? 'MY' : 'SG';
+const urlParams = new URLSearchParams(window.location.search);
+country = urlParams.get('country');
+if (country) {
+  SITE_COUNTRY = country.toUpperCase();
+}
 var SITE_DOMAIN = "";
 var currencyEn = {
   MYR: 'MYR',
@@ -166,6 +171,70 @@ setGameMultiplier = (req) => {
         location.reload();
       }
     })
+}
+
+getPreviousQuizHtml = (prevQuiz) => {
+  let status = prevQuiz.quizClaimStatus;
+  let text;
+  if (status == "unclaimed") {
+    text = `${translator.translateForKey("home_page.Claim_Now")}`;
+  } else if (status == "claimed") {
+    text = `${translator.translateForKey("home_page.Claimed")}`;
+  } else {
+    text = "";
+  }
+  return `
+    <div class="list-item aos-init aos-animate" data-aos="fade-up">
+      <div class="prevList">
+        <div class="d-flex align-items-center">
+          <div class="wonAmt ${prevQuiz.quizPrize === 0 ? 'amt0' : ''}">
+            ${translator.translateForKey("home_page.Won")} ${prevQuiz.country === 'MY' ? 'MYR' : 'SGD'} ${prevQuiz.quizPrize}
+            <div class="selected-multiplier">${translator.translateForKey("home_page.multiplierLabel")}: ${prevQuiz.multiplier ? ('x' + prevQuiz.multiplier) : '-'}</div>
+          </div>
+          <div class="prizeTime">` + prevQuiz.quizTime + `</div>
+        </div>
+        <div class="quizTitle">` + prevQuiz.quizTitle + `</div>
+      </div>
+      <div>
+        <div class="quizResultRow">
+          <div class="quizResult d-flex">
+            <div class="` + prevQuiz.ansOneStatus + `"></div>
+            <div>
+              <div class="prevQ">` + prevQuiz.quesOne + `</div>
+              <div class="prevA">` + prevQuiz.ansOneContent + `</div>
+            </div>
+          </div>
+          <div class="quizResult d-flex">
+            <div class="` + prevQuiz.ansTwoStatus + `"></div>
+            <div>
+              <div class="prevQ">` + prevQuiz.quesTwo + `</div>
+              <div class="prevA">` + prevQuiz.ansTwoContent + `</div>
+            </div>
+          </div>
+
+          <div class="quizResult d-flex">
+            <div class="` + prevQuiz.ansThreeStatus + `"></div>
+            <div>
+              <div class="prevQ">` + prevQuiz.quesThree + `</div>
+              <div class="prevA">` + prevQuiz.ansThreeContent + `</div>
+            </div>
+          </div>
+          <div class="quizResult d-flex">
+            <div class="` + prevQuiz.ansFourStatus + `"></div>
+            <div>
+              <div class="prevQ"> ` + prevQuiz.quesFour + `</div>
+              <div class="prevA">` + prevQuiz.ansFourContent + `</div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-around align-items-center resultContainer">
+          <div class='showAns'> ${translator.translateForKey("home_page.Show_Answer")} <i class="fa fa-chevron-down"></i></div>
+          <div class="hideAns" style="display: none">${translator.translateForKey("home_page.Hide_Answer")} <i class="fa fa-chevron-up"></i></div>
+          <button class="btn btn-danger ${status} ${prevQuiz.quizPrize === 0 ? 'status9' : ''}" ${text === translator.translateForKey("home_page.Claimed") ? "disabled" : ""} data-bs-toggle="modal" data-bs-target="#claimConfirmModal"
+            style="${prevQuiz.quizPrize === 0 ? 'display: none' : ''}" data-gameplayid=${prevQuiz.freebiesGamePlayId}>` + text + `</button>
+        </div>
+      </div>
+    </div>`;
 }
 
 fetchLeaderBoardRanking = () => {
@@ -397,7 +466,8 @@ function registerPrevQuizToggleEvent() {
 
 showErrorModal = (err) => {
   $('#errorModal').modal('show');
-  $('#errorModal .modal-title').text(err.title ? err.title : err.code ? `Error: ${err.code}` : 'Error');
+  const errorLabel = translator.translateForKey("home_page.Error");
+  $('#errorModal .modal-title').text(err.title ? err.title : err.code ? `${errorLabel}: ${err.code}` : errorLabel);
   $('#errorModal .error-text').text(err.detail);
 }
 

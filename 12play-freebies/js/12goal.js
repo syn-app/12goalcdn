@@ -109,7 +109,6 @@ getTC = (site) => {
 
 var translator;
 getSiteLanguage = async () => {
-  SITE_COUNTRY = location.pathname.startsWith('/my') ? 'MY' : 'SG';
   SITE_DOMAIN = window.location.origin;
   const href = location.href;
   if (href.includes('chs')) {
@@ -425,70 +424,12 @@ fetchPrevQuiz = () => {
         ansFour: item.answerFour,
         ansFourContent: listQuestion[3].options[item.answerFour],
         ansFourStatus: item.answerFourStatus.toLowerCase(),
-        country: item.country
+        country: item.country,
+        multiplier: item.multiplier
       }));
       let previous_quiz;
       for (var i = 0; i < prevQuiz.length; i++) {
-        let status = prevQuiz[i].quizClaimStatus;
-        let text;
-        if (status == "unclaimed") {
-          text = siteLang === 'en' ? "Claim Now" : "立即领取";
-        } else if (status == "claimed") {
-          text = siteLang === 'en' ? "Claimed" : '已领取';
-        } else {
-          text = "";
-        }
-        previous_quiz = `
-          <div class="list-item">
-            <div class="prevList">
-              <div class="d-flex align-items-center">
-                <div class="wonAmt ${prevQuiz[i].quizPrize === 0 ? 'amt0' : ''}">${siteLang === 'en' ? "Won" : '赢得'} ${prevQuiz[i].country === 'MY' ? 'MYR' : 'SGD'} ` + prevQuiz[i].quizPrize + `</div >
-                  <div class="prizeTime">` + prevQuiz[i].quizTime + `</div>
-                </div>
-                <div class="quizTitle">` + prevQuiz[i].quizTitle + `</div>
-              </div>
-              <div>
-                <div class="quizResultRow">
-                  <div class="quizResult d-flex">
-                    <div class="` + prevQuiz[i].ansOneStatus + `"></div>
-                    <div>
-                      <div class="prevQ">` + prevQuiz[i].quesOne + `</div>
-                      <div class="prevA">` + prevQuiz[i].ansOneContent + `</div>
-                    </div>
-                  </div>
-                  <div class="quizResult d-flex">
-                    <div class="` + prevQuiz[i].ansTwoStatus + `"></div>
-                    <div>
-                      <div class="prevQ">` + prevQuiz[i].quesTwo + `</div>
-                      <div class="prevA">` + prevQuiz[i].ansTwoContent + `</div>
-                    </div>
-                  </div>
-
-                  <div class="quizResult d-flex">
-                    <div class="` + prevQuiz[i].ansThreeStatus + `"></div>
-                    <div>
-                      <div class="prevQ">` + prevQuiz[i].quesThree + `</div>
-                      <div class="prevA">` + prevQuiz[i].ansThreeContent + `</div>
-                    </div>
-                  </div>
-                  <div class="quizResult d-flex">
-                    <div class="` + prevQuiz[i].ansFourStatus + `"></div>
-                    <div>
-                      <div class="prevQ"> ` + prevQuiz[i].quesFour + `</div>
-                      <div class="prevA">` + prevQuiz[i].ansFourContent + `</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="d-flex justify-content-around align-items-center resultContainer">
-                  <div class='showAns'> ${siteLang === 'en' ? 'Show Answer' : '显示答案'} <i class="fa fa-chevron-down"></i></div>
-                  <div class="hideAns" style="display: none">${siteLang === 'en' ? 'Hide Answer' : '收起'} <i class="fa fa-chevron-up"></i></div>
-                  <button class="` + prevQuiz[i].quizClaimStatus + ` ${prevQuiz[i].quizPrize === 0 ? 'status9' : ''}"
-                    style="${prevQuiz[i].quizPrize === 0 ? 'display: none' : ''}" data-gameplayid=${prevQuiz[i].freebiesGamePlayId}>` + text + `</button>
-                </div>
-              </div>
-            </div>        
-          </div>`;
-
+        previous_quiz = getPreviousQuizHtml(prevQuiz[i]);
         $(".list-wrapper").append(previous_quiz);
         registerPrevQuizToggleEvent();
       }
