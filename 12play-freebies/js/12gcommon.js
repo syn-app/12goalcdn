@@ -441,9 +441,11 @@ function registerMultiplierClickEvent() {
       });
     } else {
       let multiplier = $(this).data('multiplier');
+      let currentMultiplier = $(this).data('currentmultiplier');
       let gamePlayId = $(this).data('gameplayid');
       $('#multiplierBetConfirmModal').data('gameplayid', gamePlayId);
       $('#multiplierBetConfirmModal').data('multiplier', multiplier);
+      $('#multiplierBetConfirmModal').data('currentmultiplier', currentMultiplier);
       $('#multiplierBetConfirmModal').modal('show');
       $('#multiplierBetConfirmModal .multiplier-val').text(multiplier);
     }
@@ -483,10 +485,18 @@ $(document).ready(function () {
   });
 
   $('#multiplierBetConfirmModal .confirmBtn').click(function () {
-    if ($(".ticket-balance").text() == 0) {
+    let multiplier = +$('#multiplierBetConfirmModal').data('multiplier');
+    const currentMultiplier = +$('#multiplierBetConfirmModal').data('currentmultiplier');
+    const balance = +$(".ticket-balance").text();
+    const ticketsRequired = multiplier - (currentMultiplier || 1);
+    if (balance <= 0) {
       $("#insufficientTicket").modal("show");
+    } else if (ticketsRequired > balance) {
+      showErrorModal({
+        title: translator.translateForKey("home_page.Error"),
+        detail: `${translator.translateForKey("home_page.requiredTicketError")}${ticketsRequired}`
+      });
     } else {
-      let multiplier = $('#multiplierBetConfirmModal').data('multiplier');
       let gamePlayId = $('#multiplierBetConfirmModal').data('gameplayid');
       setGameMultiplier({ gamePlayId, multiplier });
     }

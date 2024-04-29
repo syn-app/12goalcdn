@@ -65,7 +65,8 @@
     "reminder": "Reminder",
     "multiplierPredictFirst": "You have to make your prediction before multiplying your bet.",
     "USD": "USD",
-    "Error": "Error"
+    "Error": "Error",
+    "requiredTicketError": "You do not have enough ticket to play. Require: "
   },
   "predict_page": {
     "title": "Senegal vs Netherlands",

@@ -97,6 +97,7 @@ fetchCurrentQuiz = () => {
                 ? `${translator.translateForKey("home_page.Edit")}`
                 : `${translator.translateForKey("home_page.Predict")}`;
             }
+            const gpmul = +currentQuiz[key].gamePlayMultiplier;
             let quiz =
               `
             <div class="currentList">
@@ -129,13 +130,13 @@ fetchCurrentQuiz = () => {
                   <div class="title">${translator.translateForKey("home_page.multiplierLabel")}</div>
                   <div class="d-flex">
                     <div class="icon"></div>
-                    <div class="d-flex selections ${!currentQuiz[key].predictTimeValid || currentQuiz[key].gamePlayMultiplier ? 'disabled' : ''}">
-                      <div class="${currentQuiz[key].multipliers?.includes(2) ? 'selectable' : ''} ${currentQuiz[key].gamePlayMultiplier === 2 ? 'selected' : ''}"
-                        data-gameid="${currentQuiz[key].freebiesGameId}" data-gameplayid="${currentQuiz[key].gamePlayId}" data-multiplier="2">x2</div>
-                      <div class="${currentQuiz[key].multipliers?.includes(3) ? 'selectable' : ''} ${currentQuiz[key].gamePlayMultiplier === 3 ? 'selected' : ''}"
-                        data-gameid="${currentQuiz[key].freebiesGameId}" data-gameplayid="${currentQuiz[key].gamePlayId}" data-multiplier="3">x3</div>
-                      <div class="${currentQuiz[key].multipliers?.includes(5) ? 'selectable' : ''} ${currentQuiz[key].gamePlayMultiplier === 5 ? 'selected' : ''}"
-                        data-gameid="${currentQuiz[key].freebiesGameId}" data-gameplayid="${currentQuiz[key].gamePlayId}" data-multiplier="5">x5</div>
+                    <div class="d-flex selections ${!currentQuiz[key].predictTimeValid ? 'disabled' : ''}">
+                      <div class="${currentQuiz[key].multipliers?.includes(2) && gpmul < 2 ? 'selectable' : ''} ${gpmul === 2 ? 'selected' : ''}"
+                        data-gameid="${currentQuiz[key].freebiesGameId}" data-gameplayid="${currentQuiz[key].gamePlayId}" data-multiplier="2" data-currentmultiplier="${gpmul}">x2</div>
+                      <div class="${currentQuiz[key].multipliers?.includes(3) && gpmul < 3 ? 'selectable' : ''} ${gpmul === 3 ? 'selected' : ''}"
+                        data-gameid="${currentQuiz[key].freebiesGameId}" data-gameplayid="${currentQuiz[key].gamePlayId}" data-multiplier="3" data-currentmultiplier="${gpmul}">x3</div>
+                      <div class="${currentQuiz[key].multipliers?.includes(5) && gpmul < 5 ? 'selectable' : ''} ${gpmul === 5 ? 'selected' : ''}"
+                        data-gameid="${currentQuiz[key].freebiesGameId}" data-gameplayid="${currentQuiz[key].gamePlayId}" data-multiplier="5" data-currentmultiplier="${gpmul}">x5</div>
                     </div>
                   </div>
                 </div>
