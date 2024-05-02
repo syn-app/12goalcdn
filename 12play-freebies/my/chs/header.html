@@ -5,12 +5,15 @@
 </div>
 <div class="login-container">
     <div class="login-box">
-        <div class="login-logo pb-3"><img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/images/logo.png" alt="12Play Online Casino Malaysia Logo"></div>
+        <div class="login-logo pb-3"><img
+                src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.0/12play-freebies/images/logo.png"
+                alt="12Play Online Casino Malaysia Logo"></div>
         <form id="fr_login" method="post">
             <div class="form-group login-form-group pb-2">
                 <label class="col-sm-12 control-label">账户名</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" value="" id="txtUsername" name="txtUsername" maxlength="100" required>
+                    <input type="text" class="form-control" value="" id="txtUsername" name="txtUsername" maxlength="100"
+                        required>
                     <div class="warning-msg" id="login_username_msg"></div>
                 </div>
             </div>
@@ -64,8 +67,9 @@
 
         .sticky-secondary-navbar .navbar-wrap .dota-title.active,
         .sticky-secondary-navbar .navbar-wrap .dota-title:hover {
-            background-image: url('https://93hdy12py.cloudcdnetw.com/12pv2/https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/images/minigames/anniversary2021/nav-hover-effect.png');
+            background-image: url('https://93hdy12py.cloudcdnetw.com/12pv2/https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.0/12play-freebies/images/minigames/anniversary2021/nav-hover-effect.png');
         }
+
         .menu-flag {
             position: absolute;
             width: 40px;
@@ -76,12 +80,12 @@
 <style>
     .sticky-secondary-navbar .navbar-wrap .lottery-title.active,
     .sticky-secondary-navbar .navbar-wrap .lottery-title:hover {
-        background-image: url("https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/images/12lottery-mask.png");
+        background-image: url("https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.0/12play-freebies/images/12lottery-mask.png");
     }
 
     .sticky-secondary-navbar .navbar-wrap .euro-title.active,
     .sticky-secondary-navbar .navbar-wrap .euro-title:hover {
-        background-image: url("https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/images/12euro/euro/euro-title-logo-bg.png");
+        background-image: url("https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.0/12play-freebies/images/12euro/euro/euro-title-logo-bg.png");
     }
 
     .rewardIcon {
@@ -92,14 +96,12 @@
     }
 
     .rewardIcon:hover {
-        background-image: url(https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/images/12reward/12p-reward-header-icon-hover.png) !important;
+        background-image: url(https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.0/12play-freebies/images/12reward/12p-reward-header-icon-hover.png) !important;
     }
-
-   
-
 </style>
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/js/theme-mode.js"></script>
+<script type="text/javascript"
+    src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.0/12play-freebies/js/theme-mode.js"></script>
 <script type="text/javascript">
     function getDateNow() {
         var today = new Date();
@@ -132,16 +134,16 @@
     }
 
     function renderLightMode() {
-        $(".vip-button > img").attr("src", "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/images/vip-button-light.png");
+        $(".vip-button > img").attr("src", "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.0/12play-freebies/images/vip-button-light.png");
 
-        $(".color-mode-switch > img").attr("src", "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/images/light-mode.png");
+        $(".color-mode-switch > img").attr("src", "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.0/12play-freebies/images/light-mode.png");
         $(".color-mode-switch-dark").removeClass("color-mode-switch-dark").addClass("color-mode-switch-light");
     }
 
     function renderDarkMode() {
-        $(".vip-button > img").attr("src", "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/images/vip-button-dark.png");
+        $(".vip-button > img").attr("src", "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.0/12play-freebies/images/vip-button-dark.png");
 
-        $(".color-mode-switch > img").attr("src", "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/images/dark-mode.png");
+        $(".color-mode-switch > img").attr("src", "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.0/12play-freebies/images/dark-mode.png");
         $(".color-mode-switch-light").removeClass("color-mode-switch-light").addClass("color-mode-switch-dark");
     }
 
@@ -154,15 +156,15 @@
 
     function gameTransferPopup() {
         if (gameMaintenance == true) {
-            window.location.href=`${SITE_DOMAIN}/my/gameTransferPopup-maintenance.html`
+            window.location.href = `${SITE_DOMAIN}/my/gameTransferPopup-maintenance.html`
         }
         else if (walletBalance == 0) {
-            window.location.href=`${SITE_DOMAIN}/my/gameTransferPopup-nocredit.html`
+            window.location.href = `${SITE_DOMAIN}/my/gameTransferPopup-nocredit.html`
 
         }
         else if (gameBalance == 0) {
             $("#gameTransferModal .gameModalText> span").text("MYR " + walletBalance.toFixed(2));
-            window.location.href=`${SITE_DOMAIN}/my/gameTransferPopup-transfercredit.html`
+            window.location.href = `${SITE_DOMAIN}/my/gameTransferPopup-transfercredit.html`
 
         }
     }
@@ -179,10 +181,10 @@
         $("#gameTransferPopup").load("gameTransferPopup.html");
 
         const headerContent = `<div class="navbar-brand-logo" onclick="window.location.href='${SITE_DOMAIN}/my/index.html?lang=simplified'">
-            <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/images/logo.png" alt="12Play Online Casino Malaysia Logo" />
+            <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.0/12play-freebies/images/logo.png" alt="12Play Online Casino Malaysia Logo" />
         </div>`;
         $("#header-content").append(headerContent);
-        
+
         const navMenu = `<a id="homeBtn" class="navbar-title" href='${SITE_DOMAIN}/my/index.html?lang=simplified'>
             <div class="title-txt">主页</div>
         </a>
@@ -205,11 +207,11 @@
             <div class="title-txt">4D博彩</div>
         </a>
         <div class="navbar-title" style="position: relative;">
-            <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/images/icon/icon-hot.png" alt="Hot Icon" class="menu-flag">
+            <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.0/12play-freebies/images/icon/icon-hot.png" alt="Hot Icon" class="menu-flag">
             <nav class="navigation">
                 <ul>
                   <li><div class="title-txt d-flex">12EVENTS<span class="down-caret"></span> </div>
-                    <ul class="dropdown" style="background-image: url(https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/images/12ranking/dropdown.png);">
+                    <ul class="dropdown" style="background-image: url(https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.0/12play-freebies/images/12ranking/dropdown.png);">
                       <li><a id="12goalBtn" onclick="window.location.href = window.location.href">12GOAL</a></li>
                       <li><a id="12lottertBtn" href='${SITE_DOMAIN}/my/fortune-spin.html?lang=simplified'>12LOTTERY</a></li>
                     </ul>
@@ -232,11 +234,11 @@
             </a>
         </div>`
         $("#navBarMenu").append(navMenu);
-        $("#language").click(function() {
+        $("#language").click(function () {
             if (siteLang === 'en') {
-            window.location.href = `../chs/12goal.html?userData=${encodeURIComponent(localStorage.getItem(USER_KEY) || '')}&timestamp=${localStorage.getItem(KEY_TS)}`
+                window.location.href = `../chs/12goal.html?userData=${encodeURIComponent(localStorage.getItem(USER_KEY) || '')}&timestamp=${localStorage.getItem(KEY_TS)}`
             } else {
-            window.location.href = `../en/12goal.html?userData=${encodeURIComponent(localStorage.getItem(USER_KEY) || '')}&timestamp=${localStorage.getItem(KEY_TS)}`
+                window.location.href = `../en/12goal.html?userData=${encodeURIComponent(localStorage.getItem(USER_KEY) || '')}&timestamp=${localStorage.getItem(KEY_TS)}`
             }
         });
         //prevent form resubmission 
