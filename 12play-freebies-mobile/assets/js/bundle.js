@@ -1,33 +1,14 @@
-
-// Translator
-
-const LANGUAGES = {
-  EN: "en",
-  ZH: "zh",
-};
-
-var translator = new Translator({
-  defaultLanguage: "en",
-  detectLanguage: true,
-  selector: "[data-i18n]",
-  debug: false,
-  registerGlobally: "__",
-  persist: true,
-  persistKey: "preferred_language",
-  filesLocation: "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/i18n",
-});
-
-const PREFERED_REGION = 'preferred_region';
-const _get_translator_config = translator.config.persistKey || "preferred_language";
-const _get_language = localStorage.getItem(_get_translator_config) || LANGUAGES.EN;
-const _get_region = localStorage.getItem(PREFERED_REGION) || 'Singapore';
-
-translator.fetch([LANGUAGES.EN, LANGUAGES.ZH]).then(() => {
-  // -> Translations are ready...
-  translator.translatePageTo(_get_language);
-  changeLanguageColor();
-  initialize();
-});
+$(document).ready(function () {
+  setTimeout(() => {
+    translator.fetch([LANGUAGES.EN, LANGUAGES.ZH]).then(() => {
+      // -> Translations are ready...
+      translator.translatePageTo(_get_language);
+      changeLanguageColor();
+      initialize();
+      DATE_TIME_LOCALE = _get_language === 'zh' ? 'zh-CN' : 'en-US';
+    });
+  });
+})
 
 /**
  * MENU SLIDE
@@ -74,7 +55,7 @@ $(".universal__content__language").on("click", function (e) {
 $('.universal .play-now a').on("click", function (e) {
   e.preventDefault();
   const slick_current_select = $('#selectLanguage .slick-list .slick-track .slick-current .title');
-  if(slick_current_select.length > 0) {
+  if (slick_current_select.length > 0) {
     const slick_current_select_title = slick_current_select.data('i18n')
     const accept_languages = ['universal_page.Malaysia', 'universal_page.Singapore']
     if (accept_languages.includes(slick_current_select_title)) {
@@ -86,7 +67,7 @@ $('.universal .play-now a').on("click", function (e) {
 })
 
 
-$('#mySidenav #collapseCountry .collapse__item').on('click', function() {
+$('#mySidenav #collapseCountry .collapse__item').on('click', function () {
   const select_region = $(this).data("region");
   localStorage.setItem(PREFERED_REGION, select_region);
   changeLanguageColor();
@@ -97,22 +78,22 @@ $('#mySidenav #collapseCountry .collapse__item').on('click', function() {
   }
 })
 
-function changeLanguageColor () {
+function changeLanguageColor() {
   const _get_region = localStorage.getItem(PREFERED_REGION) || 'Singapore';
-  $('.choose-language').each(function (){
+  $('.choose-language').each(function () {
     const get_attr_lang = $(this).data('language').toLowerCase();
     const get_attr_region = $(this).data('region');
-    if(_get_language == get_attr_lang && _get_region == get_attr_region) {
+    if (_get_language == get_attr_lang && _get_region == get_attr_region) {
       $(this).addClass('text-primary');
     }
   })
 
   const current_country = translator.translateForKey('menu.Uwin33_' + _get_region, _get_language);
   $('#mySidenav .current-country').text(current_country);
-  
-  $('#mySidenav #collapseCountry .collapse__item').each(function (){
+
+  $('#mySidenav #collapseCountry .collapse__item').each(function () {
     const get_attr_region = $(this).data('region');
-    if(_get_region == get_attr_region) {
+    if (_get_region == get_attr_region) {
       $(this).addClass('active');
     } else {
       $(this).removeClass('active');
@@ -139,15 +120,162 @@ function changeLanguageColor () {
 //   });
 // });
 
+setSiteBarMenu = () => {
+  const domain = `${SITE_DOMAIN}/${SITE_COUNTRY.toLowerCase()}/`;
+  const textClass = localStorage["preferred_language"] === "en" ? "" : "lang-cn-bold";
+  const menu = `
+<a href='${domain}fortune-spin.html'" class="">
+  <div class="sidebarFunctionIcon">
+    <img
+      src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/images/menu-icon/12_slot_menu_icon.png"
+      alt="Malaysia Casino Online Slot Menu Icon"
+      style="width: 58%"
+    />
+  </div>
+  <div class="sidebarFunctionText">
+    <span class="lang-bold ${textClass}" key="12slot">12Lottery</span>
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/images/menu-icon/new.png" alt="" class="menu-flag" style="height: 15px;">
+  </div>
+</a>
+<a href='${domain}goal12.html'" class="">
+  <div class="sidebarFunctionIcon">
+    <img
+      src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/images/menu-icon/12_goal_menu_icon.png"
+      alt="Malaysia Casino Online Slot Menu Icon"
+      style="width: 58%"
+    />
+  </div>
+  <div class="sidebarFunctionText">
+    <span class="lang-bold ${textClass}" key="12slot">12Goal</span>
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/images/menu-icon/new.png" alt="" class="menu-flag" style="height: 15px;">
+  </div>
+</a>
+<a href='${domain}index.html'">
+  <div class="sidebarFunctionIcon">
+    <img
+      class="ls-is-cached lazyloaded"
+      data-src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/images/menu-icon/home_menu_icon.png"
+      src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/images/menu-icon/home_menu_icon.png"
+    />
+  </div>
+  <div class="sidebarFunctionText">
+    <span class="lang-bold ${textClass}" key="sidebar-home">${translator.translateForKey("menu.home")}</span>
+  </div>
+</a>
+<a
+  class="sidebar-Login"
+  href='${domain}myprofile.html'"
+  style="display: none"
+>
+  <div class="sidebarFunctionIcon">
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/images/menu-icon/login_join_menu_icon.png" />
+  </div>
+  <div class="sidebarFunctionText">
+    <span class="lang-bold ${textClass}" key="sidebar-account">${translator.translateForKey("menu.account")}</span>
+  </div>
+</a>
+<a
+  class="sidebar-Login"
+  href='${domain}mydeposit.html'"
+  style="display: none"
+>
+  <div class="sidebarFunctionIcon">
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/images/menu-icon/wallet_menu_button.png" />
+  </div>
+  <div class="sidebarFunctionText">
+    <span class="lang-bold ${textClass}" key="sidebar-wallet">${translator.translateForKey("menu.wallet")}</span>
+  </div>
+</a>
+<a
+  class="sidebar-Login"
+  href='${domain}myinbox.html'"
+  style="display: none"
+>
+  <div class="sidebarFunctionIcon">
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/images/menu-icon/inbox_menu_button.png" />
+  </div>
+  <div class="sidebarFunctionText">
+    <span class="lang-bold ${textClass}" key="sidebar-inbox">${translator.translateForKey("menu.inbox")}</span>
+  </div>
+</a>
 
+<a href='${domain}promotion.html'">
+  <div class="sidebarFunctionIcon">
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/images/menu-icon/promo.png" />
+  </div>
+  <div class="sidebarFunctionText">
+    <span class="lang-bold ${textClass}" key="sidebar-promo">${translator.translateForKey("menu.promotion")}</span>
+  </div>
+</a>
+<a href='${domain}vip.html'">
+  <div class="sidebarFunctionIcon">
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/images/menu-icon/vip_menu_icon.png" />
+  </div>
+  <div class="sidebarFunctionText">
+    <span class="lang-bold ${textClass}" key="vip">VIP</span>
+  </div>
+</a>
+<a onclick="window.location = 'https://12playlive.com/${SITE_COUNTRY.toLowerCase()}/'">
+  <div class="sidebarFunctionIcon">
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/images/menu-icon/live-icon.png" />
+  </div>
+  <div class="sidebarFunctionText">
+    <span class="lang-bold ${textClass}" key="e-sport-live"
+      >${translator.translateForKey("menu.liveTv")}</span
+    >
+  </div>
+</a>
+<a href='${domain}download-app.html'">
+  <div class="sidebarFunctionIcon">
+    <img
+      src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/images/menu-icon/download_menu_icon.png"
+      alt="Malaysia Casino Online Slot Menu Icon"
+      style="width: 65%"
+    />
+  </div>
+  <div class="sidebarFunctionText">
+    <span class="lang-bold ${textClass}" key="sidebar-download"
+      >${translator.translateForKey("menu.downloadApp")}</span
+    >
+  </div>
+</a>
+<div class="regionChg">
+  <div class="sidebarFunctionIcon">
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/images/menu-icon/language_menu_icon.png" />
+  </div>
+  <div class="sidebarFunctionText">
+    <span class="lang-bold ${textClass}" key="sidebar-regionlang"
+      >${translator.translateForKey("menu.language")}</span
+    >
+  </div>
+</div>
+<a href='${domain}contact-us.html'">
+  <div class="sidebarFunctionIcon">
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/images/menu-icon/live_chat_menu_icon.png" />
+  </div>
+  <div class="sidebarFunctionText">
+    <span class="lang-bold ${textClass}" key="sidebar-contactus"
+      >${translator.translateForKey("menu.contactUs")}</span
+    >
+  </div>
+</a>
+<a href='${domain}blog.html'">
+  <div class="sidebarFunctionIcon">
+    <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/images/menu-icon/info_menu_icon.png" />
+  </div>
+  <div class="sidebarFunctionText">
+    <span class="lang-bold ${textClass}" key="sidebar-blog">${translator.translateForKey("menu.info")}</span>
+  </div>
+</a>
+`;
+  $("#sidebardiv").append(menu);
+  $("#regionOverlay").load(`https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/region-language.html`);
+  $(".regionChg").click(function () {
+    $("#regionChangeModal").show();
+  });
+};
 
-/**
- * 
- * INITIAL AFTER HAVE translator
- * 
- */
-
-function initialize () {
+function initialize() {
 
   const predictConfirmModalElm = $("#predictConfirmModal");
   if (predictConfirmModalElm.length > 0) {
@@ -159,8 +287,7 @@ function initialize () {
     var outOfTicketsModal = new bootstrap.Modal(outOfTicketsModalElm, {});
   }
 
-  if (typeof $("#predictForm").validate === 'function')
-  {
+  if (typeof $("#predictForm").validate === 'function') {
     $("#predictForm").validate({
       rules: {
         // answer1: "required",
@@ -169,13 +296,13 @@ function initialize () {
         // answer4: "required",
       },
       messages: {
-      //   amount_SGD: {
-      //     required: translator.translateForKey('deposit_page.Amount_SGD_required', _get_language),
-      //     min: translator.translateForKey('deposit_page.Amount_SGD_required_min', _get_language)
-      //   },
-      //   select_bank: translator.translateForKey('deposit_page.Please_select_one', _get_language),
+        //   amount_SGD: {
+        //     required: translator.translateForKey('deposit_page.Amount_SGD_required', _get_language),
+        //     min: translator.translateForKey('deposit_page.Amount_SGD_required_min', _get_language)
+        //   },
+        //   select_bank: translator.translateForKey('deposit_page.Please_select_one', _get_language),
       },
-      submitHandler: function(form) {
+      submitHandler: function (form) {
         console.log('==-=-', form)
         predictConfirmModal.show()
         // window.location.href = '/thank-you.html'
@@ -185,17 +312,17 @@ function initialize () {
     });
   }
 
-  $('#predictForm input').on('change', function() {
+  $('#predictForm input').on('change', function () {
     const predictForm = $("#predictForm").serializeArray();
     if (predictForm.length === 4) {
-      $('#predictForm .btn-submit').prop('disabled', false);  
+      $('#predictForm .btn-submit').prop('disabled', false);
     } else {
       $('#predictForm .btn-submit').prop('disabled', 'disabled');
     }
   });
 
 
-  $('#goal-home-ticket-balance-tab').on('click', function(e) {
+  $('#goal-home-ticket-balance-tab').on('click', function (e) {
     e.preventDefault();
     e.stopPropagation();
     outOfTicketsModal.show();
@@ -205,10 +332,4 @@ function initialize () {
     setSiteBarMenu();
     fetchPrevQuiz();
   })
-
-  console.log('initialize')
-
 }
-
-
-console.log("--- index.jsaaa");

@@ -24,12 +24,20 @@
     <link rel="alternate" href="https://www.12play15.com/my/chs/12goal.html" hreflang="zh-my">
     <link rel="alternate" href="https://www.12play20.com/sg/en/12goal.html" hreflang="en-sg">
     <link rel="alternate" href="https://www.12play20.com/sg/chs/12goal.html" hreflang="zh-sg">
-    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/plugins/bootstrap-4.4.1/css/bootstrap.min.css" />
-    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/css/general.min.css" />
-    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/css/header.min.css" />
-    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/css/footer.min.css" />
-    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/css/style.min.css" />
-    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/css/12goal.min.css" />
+    <link type="text/css" rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/plugins/bootstrap-4.4.1/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/css/general.min.css" />
+    <link type="text/css" rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/css/header.min.css" />
+    <link type="text/css" rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/css/footer.min.css" />
+    <link type="text/css" rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/css/style.min.css" />
+    <link id="12gcommoncss" type="text/css" rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/css/12gcommon.min.css" />
+    <link id="12gcss" type="text/css" rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/css/12goal.min.css" />
     <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
     <script type="application/ld+json">
         {
@@ -68,21 +76,37 @@
             <div class="container">
                 <!-- Tabs with Background on Card -->
                 <div class="card">
-                    <div class=" d-flex justify-content-between" style="background-color: #fff;">
+                    <div class=" d-flex justify-content-between nav-tabs-container">
                         <ul class="mainNav nav nav-tabs nav-tabs-neutral justify-content-start" role="tablist">
                             <li class="nav-item ">
                                 <a class="nav-link active" data-toggle="tab" href="#home1" role="tab">12GOAL</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#profile1" role="tab">LIVE SCORE</a>
+                                <a class="nav-link" data-toggle="tab" href="#livescore" role="tab">LIVE SCORE</a>
                             </li>
                         </ul>
                         <div class="d-flex">
-                            <div class="rankbg">
-                                <div class="ranking"></div>
-                                <div>RANK</div>
+                            <div class="rank-area">
+                                <div class="rankbg"></div>
+                                <div class="ranking-text">
+                                    <div>RANK</div>
+                                    <div class="ranking"></div>
+                                </div>
                             </div>
-                            <div class="pointbg"></div>
+                            <div class="d-flex pointbg">
+                                <div>
+                                    <div class="total-point">0</div>
+                                    Total Point
+                                </div>
+                                <div>
+                                    <div class="ticket-balance">0</div>
+                                    Ticket Balance
+                                </div>
+                                <div>
+                                    <div class="predicted-match">0</div>
+                                    Predicted Match
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="bannerbg">
@@ -95,15 +119,69 @@
                         <!-- Tab panes -->
                         <div class="tab-content text-center">
                             <div class="tab-pane active" id="home1" role="tabpanel">
+                                <div class="shadow p-3 mb-4 bg-white rounded goal-rush-container"
+                                    style="display: none;">
+                                    <div class="goal-rush-header d-flex">
+                                        <div class="goal-rush-title">Goal Rush Rewards</div>
+                                        <div class="icon-info" data-toggle="modal" data-target="#goalRushInfoModal">
+                                            <i class="fa fa-info-circle"></i>
+                                            Info
+                                        </div>
+                                        <div class="modal fade notiModal" id="goalRushInfoModal" tabindex="-1"
+                                            role="dialog" aria-hidden="true" data-backdrop="static"
+                                            data-keyboard="false">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h6 class="modal-title">How It Works?</h6>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div>
+                                                            <div>1) Predict every 5 matches in the 12goal event and get
+                                                                extra
+                                                                surprise rewards.</div>
+                                                            <br>
+                                                            <div>2) This bonus required a x1 turnover requirement.</div>
+                                                        </div>
+                                                        <br>
+                                                        <div class="d-flex justify-content-center">
+                                                            <div class="redBtn" data-dismiss="modal">Close</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="goal-rush-matches">
+                                        <div class="modal fade" id="goalRushPrizeModal" tabindex="-1" role="dialog"
+                                            aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-body">
+                                                        <div class="goal-rush-prize-icon"></div>
+                                                        <h5 class="title">Congratulations!</h5>
+                                                        <div class="text-center">
+                                                            Your surprise reward has been credited to your accounts.
+                                                        </div>
+                                                        <br>
+                                                        <div class="d-flex justify-content-center">
+                                                            <div class="redBtn" data-dismiss="modal">OK</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-3">
                                         <div class="rewardBg mb-4">
                                             <div>4 out of 4 correct</div>
-                                            <div>win <span>SGD</span> <span class="myrAmt"> 30</span></div>
+                                            <div>win <span>SGD</span> <span class="myrAmt 4correct"> 30</span></div>
                                         </div>
                                         <div class="rewardBg">
                                             <div>3 out of 4 correct</div>
-                                            <div>win <span>SGD</span> <span class="myrAmt"> 8</span></div>
+                                            <div>win <span>SGD</span> <span class="myrAmt 3correct"> 8</span></div>
                                         </div>
                                     </div>
                                     <div class="col-9 ">
@@ -111,123 +189,153 @@
                                             <ul class="subNav nav nav-tabs nav-tabs-neutral justify-content-start"
                                                 role="tablist">
                                                 <li class="nav-item">
-                                                    <a class="nav-link active" data-toggle="tab" id="current-tab" href="#current"
-                                                        role="tab">Current</a>
+                                                    <a class="nav-link active" data-toggle="tab" id="prediction-tab"
+                                                        href="#prediction" role="tab">Prediction</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="tab" id="previous-tab" href="#previous"
-                                                        role="tab">Previous</a>
+                                                    <a class="nav-link" data-toggle="tab" id="leaderboard-tab"
+                                                        href="#leaderboard" role="tab">Leaderboard</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" data-toggle="tab" id="leaderboard-tab" href="#leaderboard"
-                                                        role="tab">Leaderboard</a>
+                                                    <a class="nav-link" data-toggle="tab" id="promotion-tab"
+                                                        href="#promotion" role="tab">Promotion</a>
                                                 </li>
                                             </ul>
-                                            <div class="ticketBalance">
-                                                <div>Ticket Balance: </div>
-                                                <div id="ticketbalance">0</div>
-                                            </div>
                                         </div>
                                         <div class="tab-content text-center goalpanes">
-                                            <div class="tab-pane active" id="current" role="tabpanel">
-                                                <div class="tabWrapper">
-                                                    <div class="text-left py-3" style="color: #9D9D9D;">Official Partner
-                                                        of : <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/images/worldcup/logo.png" alt="World Cup Football Live Scores" style="width: 40%;">
+                                            <div class="tab-pane active" id="prediction" role="tabpanel">
+                                                <ul class="mainNav nav nav-tabs nav-tabs-neutral justify-content-start"
+                                                    role="tablist">
+                                                    <li class="nav-item ">
+                                                        <a class="nav-link active" data-toggle="tab" href="#current"
+                                                            role="tab">Current</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="tab" href="#previous"
+                                                            role="tab">Previous</a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tab-content text-center">
+                                                    <div class="tab-pane active" id="current" role="tabpanel">
+                                                        <div class="tabWrapper">
+                                                            <div class="text-left pb-3" style="color: #9D9D9D;">Official
+                                                                Partner
+                                                                of : <img
+                                                                    src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/images/worldcup/logo.png"
+                                                                    alt="World Cup Football Live Scores"
+                                                                    style="width: 40%;">
+                                                            </div>
+                                                            <div class="currentQuizRow"></div>
+                                                            <div class="modal fade notiModal" id="multiplierInfoModal"
+                                                                tabindex="-1" role="dialog" aria-hidden="true"
+                                                                data-backdrop="static" data-keyboard="false">
+                                                                <div class="modal-dialog modal-dialog-centered"
+                                                                    role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h6 class="modal-title">Multiplier Bet (How
+                                                                                It Works?)</h6>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <div>
+                                                                                <div>1) Boost your winnings and points
+                                                                                    by using an extra ticket.</div>
+                                                                                <br>
+                                                                                <div>2) Every x1 multiplier, an extra
+                                                                                    ticket is needed to increase the
+                                                                                    boost.</div>
+                                                                                <br>
+                                                                                <div>3) Once the multiplier bet is
+                                                                                    confirmed, it cannot be cancelled or
+                                                                                    reduced.</div>
+                                                                            </div>
+                                                                            <br>
+                                                                            <div class="d-flex justify-content-center">
+                                                                                <div class="redBtn"
+                                                                                    data-dismiss="modal">Close</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="accordion" role="tablist" aria-multiselectable="true"
+                                                            class="mt-3">
+                                                            <!-- Accordion Item 1 -->
+                                                            <div class="card mb-2">
+                                                                <div class="card-header" role="tab"
+                                                                    id="accordionHeadingOne">
+                                                                    <div class="col-12 no-padding accordion-head">
+                                                                        <a data-toggle="collapse"
+                                                                            data-parent="#accordion"
+                                                                            href="#accordionBodyOne"
+                                                                            aria-expanded="false"
+                                                                            aria-controls="accordionBodyOne"
+                                                                            class="collapsed ">
+                                                                            <i class="fa fa-angle-up"
+                                                                                aria-hidden="true"></i>
+                                                                            <div class="text-left">How To Play?</div>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div id="accordionBodyOne" class="collapse"
+                                                                    role="tabpanel"
+                                                                    aria-labelledby="accordionHeadingOne"
+                                                                    aria-expanded="false" data-parent="accordion">
+                                                                    <div class="card-block text-left pt-1"
+                                                                        id="howToPlay"></div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Accordion Item 2 -->
+                                                            <div class="card">
+                                                                <div class="card-header" role="tab"
+                                                                    id="accordionHeadingTwo">
+                                                                    <div class="col-12 no-padding accordion-head">
+                                                                        <a data-toggle="collapse"
+                                                                            data-parent="#accordion"
+                                                                            href="#accordionBodyTwo"
+                                                                            aria-expanded="false"
+                                                                            aria-controls="accordionBodyTwo"
+                                                                            class="collapsed ">
+                                                                            <i class="fa fa-angle-up"
+                                                                                aria-hidden="true"></i>
+                                                                            <div class="text-left">T&c’s</div>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div id="accordionBodyTwo" class="collapse"
+                                                                    role="tabpanel"
+                                                                    aria-labelledby="accordionHeadingTwo"
+                                                                    aria-expanded="false" data-parent="accordion">
+                                                                    <div class="card-block text-left pt-1 "
+                                                                        id="tcContent">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="currentQuizRow"></div>
+                                                    <div class="tab-pane" id="previous" role="tabpanel">
+                                                        <div class="text-left pb-3" style="color: #9D9D9D;">Your
+                                                            Predicted
+                                                            Matches:</div>
+                                                        <div class="list-wrapper"></div>
+                                                        <div id="pagination-container"></div>
+                                                    </div>
                                                 </div>
-                                                <div id="accordion" role="tablist" aria-multiselectable="true"
-                                                    class="mt-3">
-                                                    <!-- Accordion Item 1 -->
-                                                    <div class="card mb-2">
-                                                        <div class="card-header" role="tab" id="accordionHeadingOne">
-                                                            <div class="col-12 no-padding accordion-head">
-                                                                <a data-toggle="collapse" data-parent="#accordion"
-                                                                    href="#accordionBodyOne" aria-expanded="false"
-                                                                    aria-controls="accordionBodyOne" class="collapsed ">
-                                                                    <i class="fa fa-angle-up" aria-hidden="true"></i>
-                                                                    <div class="text-left">How To Play?</div>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div id="accordionBodyOne" class="collapse" role="tabpanel"
-                                                            aria-labelledby="accordionHeadingOne" aria-expanded="false"
-                                                            data-parent="accordion">
-                                                            <div class="card-block text-left pt-1">
-                                                                <strong>How To Play</strong>
-                                                                <ol class="tncList">
-                                                                    <li>12Play is proud to present to you its most
-                                                                        exciting new feature in recent times - it’s
-                                                                        all-new 12Goal event! </li>
-                                                                    <li>Playing a 12Goal event by answering 4 questions
-                                                                        based on one match, with 3 or more possible
-                                                                        answers and you will win a cash prize! </li>
-                                                                    <li>All you need to do is submit your answers for
-                                                                        all 4 questions according to the result you
-                                                                        think will happen for a match. </li>
-                                                                    <li>1 correct answer will get 1 points. </li>
-                                                                    <li>Wrong answer will not deduct points. </li>
-                                                                    <li>Accumulate your points and compete on our
-                                                                        Leaderboard for the Top 50 to win the Final
-                                                                        Grand Prize! </li>
-                                                                </ol>
-                                                                <strong>Prizes</strong>
-                                                                <ol class="tncList">
-                                                                    <li>If you answer correctly to all 4 questions you
-                                                                        will get a SGD 30.</li>
-                                                                    <li>If you answer correctly to 3 questions you will
-                                                                        get a SGD 8.</li>
-                                                                    <li>Final Grand Prize may refer to our Leaderboard.
-                                                                    </li>
-                                                                </ol>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Accordion Item 2 -->
-                                                    <div class="card">
-                                                        <div class="card-header" role="tab" id="accordionHeadingTwo">
-                                                            <div class="col-12 no-padding accordion-head">
-                                                                <a data-toggle="collapse" data-parent="#accordion"
-                                                                    href="#accordionBodyTwo" aria-expanded="false"
-                                                                    aria-controls="accordionBodyTwo" class="collapsed ">
-                                                                    <i class="fa fa-angle-up" aria-hidden="true"></i>
-                                                                    <div class="text-left">T&c’s</div>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div id="accordionBodyTwo" class="collapse" role="tabpanel"
-                                                            aria-labelledby="accordionHeadingTwo" aria-expanded="false"
-                                                            data-parent="accordion">
-                                                            <div class="card-block text-left pt-1 " id="tcContent">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane" id="previous" role="tabpanel">
-                                                <div class="text-left py-3" style="color: #9D9D9D;">Your Predicted
-                                                    Matches:</div>
-                                                <div class="list-wrapper"></div>
-                                                <div id="pagination-container"></div>
                                             </div>
                                             <div class="tab-pane" id="leaderboard" role="tabpanel">
-                                                <div class="t-table">
-                                                    <div class=" t-header">
-                                                        <div>Ranking</div>
-                                                        <div>Username</div>
-                                                        <div>Total Points</div>
-                                                        <div>Prize (USD)</div>
-                                                    </div>
-                                                    <div class="tbodyRow">
-                                                    </div>
-                                                </div>
+                                                <div class="leaderboardList"></div>
+                                            </div>
+                                            <div class="tab-pane" id="promotion" role="tabpanel">
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane" id="profile1" role="tabpanel">
-                                <iframe src="https://55widgets.com/widget?leagueid=&theme=light" frameborder="0"></iframe>
+                            <div class="tab-pane" id="livescore" role="tabpanel">
+                                <iframe src="" data-src="https://55widgets.com/widget?leagueid=&theme=light"
+                                    frameborder="0"></iframe>
                                 <br>
                                 <br>
                                 <p> I will be the leader of a company that ends up being worth billions of dollars,
@@ -275,57 +383,130 @@
         </div>
 
         <div class="modal fade prizeModal" id="currentPredictConfirm" tabindex="-1" role="dialog"
-        aria-labelledby="currentPredictConfirmLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="modalTitle">Confirm To Submit?</div>
-                    <div class="py-4">
-                        <div class="pb-2">You can still change your answer afterwards</div>
-                        <div>Click “Confirm” to submit.</div>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <div class="greyBtn" data-dismiss="modal">Cancel</div>
-                        <div class="redBtn confirmClaim" onclick="">Confirm</div>
+            aria-labelledby="currentPredictConfirmLabel" aria-hidden="true" data-backdrop="static"
+            data-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="modalTitle">Confirm To Submit?</div>
+                        <div class="py-4">
+                            <div class="pb-2">You can still change your answer afterwards</div>
+                            <div>Click “Confirm” to submit.</div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="greyBtn" data-dismiss="modal">Cancel</div>
+                            <div class="redBtn confirmClaim" onclick="">Confirm</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <div class="modal fade prizeModal" id="insufficientTicket" tabindex="-1" role="dialog"
-    aria-labelledby="currentPredictConfirmLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="modalTitle">Out of Tickets !</div>
-                <div class="py-4">
-                    <div class="pb-2">0 ticket found.</div>
-                    <div>Deposit and get a ticket now to start your game.</div>
+
+        <div class="modal fade prizeModal" id="insufficientTicket" tabindex="-1" role="dialog"
+            aria-labelledby="currentPredictConfirmLabel" aria-hidden="true" data-backdrop="static"
+            data-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="modalTitle">Out of Tickets !</div>
+                        <div class="py-4">
+                            <div class="pb-2">0 ticket found.</div>
+                            <div>Deposit and get a ticket now to start your game.</div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="greyBtn" data-dismiss="modal">Cancel</div>
+                            <div class="redBtn confirmClaim" id="depositNow">Deposit Now</div>
+                        </div>
+                        <div class="d-flex justify-content-center mt-3"><a id="loginRegister"
+                                style="text-decoration: underline;cursor: pointer;font-size: 14px; color: white;">Login/Register</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="d-flex justify-content-center">
-                    <div class="greyBtn" data-dismiss="modal">Cancel</div>
-                    <div class="redBtn confirmClaim" id="depositNow">Deposit Now</div>
-                </div>
-                <div class="d-flex justify-content-center mt-3"><a id="loginRegister" style="text-decoration: underline;cursor: pointer;font-size: 14px; color: white;" >Login/Register</a></div>
             </div>
         </div>
-    </div>
-</div>
+
+        <div class="modal fade prizeModal" id="multiplierBetConfirmModal" tabindex="-1" role="dialog" aria-hidden="true"
+            data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="modalTitle">Multiplier Bet</div>
+                        <div class="py-4">
+                            You have requested a <strong>x<span class="multiplier-val"></span> multiplier</strong> for
+                            this
+                            match. After confirmation, your multiplier bet cannot be canceled or reduced.
+                            <br><br>
+                            Click <span>"Confirm"</span> to proceed
+                            <br><br>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div class="greyBtn" data-dismiss="modal">Cancel</div>
+                            <div class="redBtn confirmBtn" data-dismiss="modal">Confirm</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade notiModal" id="errorModal" tabindex="-1" role="dialog" aria-hidden="true"
+            data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: rgb(60 34 34);">
+                        <h6 class="modal-title">Error</h6>
+                    </div>
+                    <div class="modal-body">
+                        <div class="error-text"></div>
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            <div class="redBtn" data-dismiss="modal">OK</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div id="footer"></div>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/js/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/js/jquery-3.4.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/plugins/bootstrap-4.4.1/js/bootstrap.min.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/plugins/bootstrap-4.4.1/js/bootstrap.min.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/jquery.simplePagination.js'></script>
-<script id="12goaljs"></script>
 <script type="text/javascript">
-   document.getElementById('12goaljs').src = 'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/js/12goal.min.js?';
+    var IS_DEV = +location.port > 99;
+    if (IS_DEV) {
+        document.getElementById('12gcommoncss').href = '/12play-freebies/css/12gcommon.css';
+        document.getElementById('12gcss').href = '/12play-freebies/css/12goal.css';
+    }
+
+    (function () {
+        let bundles = ['https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies-mobile/assets/library/translator.min.js'];
+        bundles = bundles.concat(IS_DEV ? [
+            '/12play-freebies/js/12gcommon.js',
+            '/12play-freebies/js/12goal.js'
+        ] : [
+            'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/js/12gcommon.min.js',
+            'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v0.18/12play-freebies/js/12goal.min.js'
+        ]);
+        var injectLibFromStack = function () {
+            if (bundles.length > 0) {
+                var nextLib = bundles.shift();
+                var headTag = document.getElementsByTagName('head')[0];
+                var scriptTag = document.createElement('script');
+                scriptTag.src = nextLib;
+                scriptTag.onload = function (e) {
+                    injectLibFromStack();
+                };
+                headTag.appendChild(scriptTag);
+            }
+        }
+        injectLibFromStack();
+    })();
 </script>
 <script>
-    $(document).ready(function () {});
+    $(document).ready(function () { });
 </script>
 
 </html>
