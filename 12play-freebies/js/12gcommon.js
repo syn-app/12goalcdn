@@ -34,7 +34,7 @@ var translator = new Translator({
   registerGlobally: "__",
   persist: true,
   persistKey: "preferred_language",
-  filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.0/12play-freebies-mobile/assets/i18n",
+  filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.1/12play-freebies-mobile/assets/i18n",
 });
 
 var PREFERED_REGION = 'preferred_region';
@@ -342,21 +342,21 @@ getTC = (site) => {
       <li>With the tickets obtained, members will be able to participate in the event by answering the questions based on matches.</li>
       <li>1 ticket required to participate in 1 Match</li>
       <li>Additional multiplier features are available to boost your points and bonus. For each x1 multiplier used, an extra ticket is deducted.</li>
-      <li>When you use a boost with a x2 multiplier, you will be deducted two extra tickets.</li>
+      <li>When you use a boost with a x2 multiplier, you will be deducted an additional ticket.</li>
       <li>
         Example you used a x2 multiplier in one of the matches and answered 3 questions correctly.
         <p>Calculation:</p>
         <strong>Prediction Bonus</strong>
-        <ol>
+        <ul>
           <li>Original Prediction Bonus: ${currencyUnit} ${site.threeCorrectsPrize}</li>
           <li>After x2 Multiplier: ${currencyUnit} ${site.threeCorrectsPrize} x 2 = ${currencyUnit} ${site.threeCorrectsPrize * 2}</li>
-        </ol>
+        </ul>
         <strong>Leaderboard Points</strong>
-        <ol>
+        <ul>
           <li>Original Points: 3 points</li>
           <li>After x2 Multiplier: 3 points x 2 = 6 Points</li>
           <li>Therefore, by utilizing the x2 multiplier, you will receive a ${currencyUnit} ${site.threeCorrectsPrize * 2} prediction bonus and earned 6 points on the leaderboard.</li>
-        </ol>
+        </ul>
       </li>
       <li>Once a multiplier bet is confirmed, it cannot be cancelled or reduced.</li>
       <li>Cut off time to answer the questions is 10 min before the match start.</li>
@@ -388,21 +388,21 @@ getTC = (site) => {
       <li>获取票卷后，玩家便能用其票卷来回答每一场球赛所提问的四道问题.</li>
       <li>每一场球赛只需一张票卷来参与竞猜。</li>
       <li>你也可以使用额外的倍增功能来增加您的奖金和分数。每使用一次x1倍增器, 将额外扣除一张票卷。</li>
-      <li>当您使用x2倍数时，您将额外扣除两张票卷。</li>
+      <li>当您使用x2倍数时，您将额外扣除一张票卷。</li>
       <li>
         例如: 当您在一场比赛中使用了x2倍增并正确回答了 3 个问题。
         <p>计算：</p>
         <strong>预测奖金</strong>
-        <ol>
+        <ul>
           <li>原始预测奖金：${currencyUnitCN} ${site.threeCorrectsPrize}</li>
           <li>经过x2倍增：${currencyUnitCN} ${site.threeCorrectsPrize} x 2 = ${currencyUnitCN} ${site.threeCorrectsPrize * 2}</li>
-        </ol>
+        </ul>
         <strong>排行榜积分</strong>
-        <ol>
+        <ul>
           <li>原始积分：3分</li>
           <li>经过x2倍增 : 3分 x 2 = 6分</li>
           <li>因此，通过利用x2倍增，您将获得${currencyUnitCN} ${site.threeCorrectsPrize * 2}的预测奖金，并在排行榜上获得6分。</li>
-        </ol>
+        </ul>
       </li>
       <li>一旦确认了倍数投注，就无法取消或减少。</li>
       <li>每场球赛的竞猜必须在该球赛开赛前的十分钟进行。</li>
