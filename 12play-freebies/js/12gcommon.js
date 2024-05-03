@@ -34,7 +34,7 @@ var translator = new Translator({
   registerGlobally: "__",
   persist: true,
   persistKey: "preferred_language",
-  filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.1/12play-freebies-mobile/assets/i18n",
+  filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.2/12play-freebies-mobile/assets/i18n",
 });
 
 var PREFERED_REGION = 'preferred_region';
@@ -347,12 +347,12 @@ getTC = (site) => {
         Example you used a x2 multiplier in one of the matches and answered 3 questions correctly.
         <p>Calculation:</p>
         <strong>Prediction Bonus</strong>
-        <ul>
+        <ul style="list-style-type: none;">
           <li>Original Prediction Bonus: ${currencyUnit} ${site.threeCorrectsPrize}</li>
           <li>After x2 Multiplier: ${currencyUnit} ${site.threeCorrectsPrize} x 2 = ${currencyUnit} ${site.threeCorrectsPrize * 2}</li>
         </ul>
         <strong>Leaderboard Points</strong>
-        <ul>
+        <ul style="list-style-type: none;">
           <li>Original Points: 3 points</li>
           <li>After x2 Multiplier: 3 points x 2 = 6 Points</li>
           <li>Therefore, by utilizing the x2 multiplier, you will receive a ${currencyUnit} ${site.threeCorrectsPrize * 2} prediction bonus and earned 6 points on the leaderboard.</li>
@@ -393,12 +393,12 @@ getTC = (site) => {
         例如: 当您在一场比赛中使用了x2倍增并正确回答了 3 个问题。
         <p>计算：</p>
         <strong>预测奖金</strong>
-        <ul>
+        <ul style="list-style-type: none;">
           <li>原始预测奖金：${currencyUnitCN} ${site.threeCorrectsPrize}</li>
           <li>经过x2倍增：${currencyUnitCN} ${site.threeCorrectsPrize} x 2 = ${currencyUnitCN} ${site.threeCorrectsPrize * 2}</li>
         </ul>
         <strong>排行榜积分</strong>
-        <ul>
+        <ul style="list-style-type: none;">
           <li>原始积分：3分</li>
           <li>经过x2倍增 : 3分 x 2 = 6分</li>
           <li>因此，通过利用x2倍增，您将获得${currencyUnitCN} ${site.threeCorrectsPrize * 2}的预测奖金，并在排行榜上获得6分。</li>
