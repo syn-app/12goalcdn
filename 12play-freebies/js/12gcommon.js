@@ -34,7 +34,7 @@ var translator = new Translator({
   registerGlobally: "__",
   persist: true,
   persistKey: "preferred_language",
-  filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.2/12play-freebies-mobile/assets/i18n",
+  filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.3/12play-freebies-mobile/assets/i18n",
 });
 
 var PREFERED_REGION = 'preferred_region';
@@ -384,7 +384,7 @@ getTC = (site) => {
     <strong>竞猜详情</strong>
     <ol>
       <li>所有会员必须存入至少${currencyUnitCN} ${site.depositAmountPerTicket}, 才能获得一场12Goal有奖竞猜活动的票卷。</li>
-      <li>每存入${currencyUnitCN} ${site.depositAmountPerTicket} 可获得1张票卷，每位会员最多可获得30张票卷。</li>
+      <li>每存入${currencyUnitCN} ${site.depositAmountPerTicket} 可获得1张票卷，每位会员最多可获得${maxTicket}张票卷。</li>
       <li>获取票卷后，玩家便能用其票卷来回答每一场球赛所提问的四道问题.</li>
       <li>每一场球赛只需一张票卷来参与竞猜。</li>
       <li>你也可以使用额外的倍增功能来增加您的奖金和分数。每使用一次x1倍增器, 将额外扣除一张票卷。</li>
