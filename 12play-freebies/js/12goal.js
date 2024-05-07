@@ -20,6 +20,25 @@ chineseQuestion = [
   },
 ];
 
+thaiQuestion = [
+  {
+    content: "本场赛事最终获胜队伍",
+    options: [],
+  },
+  {
+    content: "本场赛事第一张罚牌时间",
+    options: ["0-25", "26-50", "51-75", "76-90+", "没有罚牌"],
+  },
+  {
+    content: "比赛总进球数",
+    options: ["0", "1", "2", "3", "4+"],
+  },
+  {
+    content: "本场赛事总角球数",
+    options: ["0-6", "7-8", "9-10", "11-12", "13+"],
+  },
+];
+
 englishQuestion = [
   {
     content: "Who will win the match?",
@@ -39,31 +58,6 @@ englishQuestion = [
   },
 ];
 
-getSiteDomain = async () => {
-  // let country = location.pathname.startsWith('/my') ? 'MY' : 'SG';
-  // const response = await fetch(`${API_URL}/12goalapi/user/http-referral?country=${country}&t=${new Date().getTime()}`, getRequestHeaders());
-  // const res = await response.json();
-  // if (!res || !res.httpReferral) {
-  //   if (country === 'MY') {
-  //     let previousURL = 'https://www.12play15.com/my';
-  //     SITE_DOMAIN = new URL(previousURL).origin;
-  //     SITE_COUNTRY = "MY";
-  //   } else {
-  //     let previousURL = 'https://www.12play14.com/sg';
-  //     SITE_DOMAIN = new URL(previousURL).origin;
-  //     SITE_COUNTRY = "SG";
-  //   }
-  // } else {
-  //   let previousURL = res.httpReferral;
-  //   SITE_DOMAIN = new URL(previousURL).origin;
-  //   if (previousURL.includes("/my")) {
-  //     SITE_COUNTRY = "MY";
-  //   } else {
-  //     SITE_COUNTRY = "SG";
-  //   }
-  // }
-}
-
 getRequestHeaders = (additonalHeaders) => {
   return {
     headers: {
@@ -77,15 +71,16 @@ getRequestHeaders = (additonalHeaders) => {
 
 var translator;
 getSiteLanguage = async () => {
-  SITE_DOMAIN = window.location.origin;
   const href = location.href;
   if (href.includes('chs')) {
     siteLang = 'cn';
+  } else if (href.includes('th')) {
+    siteLang = 'th';
   } else {
     siteLang = 'en';
   }
-  DATE_TIME_LOCALE = siteLang === 'cn' ? 'zh-CN' : 'en-US';
-  const transLang = siteLang === 'cn' ? 'zh' : "en";
+  DATE_TIME_LOCALE = siteLang === 'cn' ? 'zh-CN' : siteLang === 'th' ? 'th-TH' : 'en-US';
+  const transLang = siteLang === 'cn' ? 'zh' : siteLang === 'th' ? 'th' : "en";
   localStorage.setItem("preferred_language", transLang);
   translator = new Translator({
     defaultLanguage: transLang,
@@ -484,8 +479,7 @@ setupClockCountDown = () => {
 
 $(document).ready(async function () {
   await getSiteLanguage();
-  // await getSiteDomain();
-  const folder = siteLang === 'en' ? 'en' : 'chs';
+  const folder = siteLang === 'en' ? 'en' : siteLang === 'cn' ? 'chs' : 'th';
   const folderPath = IS_DEV ? '' : 'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.2';
   $("#header").load(`${folderPath}/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${folder}/header.html`, function () {
     $("#4dBtn").addClass("active"); //highlight the nav item
@@ -496,8 +490,10 @@ $(document).ready(async function () {
   $("#stickySideBtn").load(`${folderPath}/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${folder}/sticky-side-button.html`);
   if (siteLang === 'en') {
     listQuestion = structuredClone(englishQuestion);
-  } else {
+  } else if (siteLang === 'cn') {
     listQuestion = structuredClone(chineseQuestion);
+  } else if (siteLang === 'th') {
+    listQuestion = structuredClone(thaiQuestion);
   }
   getUserData();
   fetchLeaderBoardRanking();

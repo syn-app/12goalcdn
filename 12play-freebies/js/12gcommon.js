@@ -2,19 +2,20 @@ var DATE_TIME_LOCALE = "en-US";
 var LANGUAGES = {
   EN: "en",
   ZH: "zh",
+  TH: "th",
 };
 
 var USER_KEY = "userData";
 var KEY_TS = "timestamp";
 var API_URL = IS_DEV ? `${location.protocol}//${location.hostname}:5500` : `${location.origin}`;
 
-var SITE_COUNTRY = location.pathname.includes('/my') ? 'MY' : 'SG';
+var SITE_COUNTRY = location.pathname.includes('/my') ? 'MY' : location.pathname.includes('/sg') ? 'SG' : 'TH';
 const urlParams = new URLSearchParams(window.location.search);
 country = urlParams.get('country');
 if (country) {
   SITE_COUNTRY = country.toUpperCase();
 }
-var SITE_DOMAIN = "";
+var SITE_DOMAIN = window.location.origin;
 var currencyEn = {
   MYR: 'MYR',
   SGD: 'SGD',
@@ -43,7 +44,8 @@ var _get_language = localStorage.getItem(_get_translator_config) || LANGUAGES.EN
 var _get_region = localStorage.getItem(PREFERED_REGION) || 'Singapore';
 
 fetchUserGameReport = () => {
-  return fetch(`${API_URL}/12goalapi/user/game-report?siteName=${SITE_COUNTRY === "MY" ? '12M' : '12S'}&t=${new Date().getTime()}`, getRequestHeaders())
+  const siteName = SITE_COUNTRY === "MY" ? '12M' : SITE_COUNTRY === "SG" ? '12S' : '12T';
+  return fetch(`${API_URL}/12goalapi/user/game-report?siteName=${siteName}&t=${new Date().getTime()}`, getRequestHeaders())
     .then((response) => response.json())
     .then(res => {
       $(".ranking").append(`${res.rankNo}`);
@@ -303,10 +305,28 @@ loadHowToPlay = (gameReport) => {
       <li>答对一场球赛的三道题目将可获得现金奖${currencyUnitCN} ${site.threeCorrectsPrize}。 </li>
       <li>12Goal有奖竞猜终极大奖可前往积分榜页面查阅。</li>
     </ol>`;
+  const howToPlayTh = `
+    <strong>วิธีการเล่น</strong>
+    <ol>
+      <li>Welcome to the Exciting 12Goal Event from 12PLAY!</li>
+      <li>Predict every ${gameReport.checkInPerMatches} matches to unlock bonus rewards for free.</li>
+      <li>Submit your answers based on your match result predictions.</li>
+      <li>Earn 1 point for each correct answer; incorrect answers do not result in point deductions.</li>
+      <li>Enjoy extra features that enhance your experience when you predict matches. You can choose to boost your bonus and points by using multipliers, but extra tickets will be deducted when you opt to use these features.</li>
+      <li>Accumulate points to climb the Leaderboard and secure your spot among the Top 50 players for a chance to win the Final Grand Prize!</li>
+    </ol>
+    <strong>Prizes</strong>
+    <ol>
+      <li>If you answer correctly to all 4 questions you will get a ${currencyUnit} ${site.fourCorrectsPrize}.</li>
+      <li>If you answer correctly to 3 questions you will get a ${currencyUnit} ${site.threeCorrectsPrize}.</li>
+      <li>Final Grand Prize may refer to our Leaderboard.</li>
+    </ol>`;
   if (localStorage.getItem('preferred_language') === 'en') {
     $('#howToPlay').append(howToPlayEn);
-  } else {
+  } else if (localStorage.getItem('preferred_language') === 'zh') {
     $('#howToPlay').append(howToPlayZh);
+  } else if (localStorage.getItem('preferred_language') === 'th') {
+    $('#howToPlay').append(howToPlayTh);
   }
 }
 
