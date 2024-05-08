@@ -133,20 +133,16 @@ fetchCurrentQuiz = () => {
         currentQuiz.push(quiz);
       });
       if (currentQuiz.length === 0) {
-        if (siteLang === 'en') {
-          $(".currentQuizRow").append(`<div>There are no matches currently. Stay tuned for tomorrow!</div>`);
-        } else {
-          $(".currentQuizRow").append(`<div>目前没有赛事，请明天继续关注！</div>`);
-        }
+        $(".currentQuizRow").append(`<div>${translator.translateForKey("home_page.No_Match")}</div>`);
       } else {
         let quiz;
         for (let key in currentQuiz) {
           if (currentQuiz.hasOwnProperty(key)) {
             let predictButtonText = '';
             if (currentQuiz[key].status === 9) {
-              predictButtonText = currentQuiz[key].gamePlayId ? `${siteLang === 'en' ? 'Predicted' : '已竞猜'}` : `${siteLang === 'en' ? 'Predict' : '竞猜'}`
+              predictButtonText = currentQuiz[key].gamePlayId ? translator.translateForKey("home_page.Predicted") : translator.translateForKey("home_page.Predict")
             } else {
-              predictButtonText = currentQuiz[key].gamePlayId ? `${siteLang === 'en' ? 'Edit' : '更改答案'}` : `${siteLang === 'en' ? 'Predict' : '竞猜'}`
+              predictButtonText = currentQuiz[key].gamePlayId ? translator.translateForKey("home_page.Edit") : translator.translateForKey("home_page.Predict")
             }
             const gpmul = +currentQuiz[key].gamePlayMultiplier;
             quiz =
@@ -154,20 +150,20 @@ fetchCurrentQuiz = () => {
                 <div class="currentList">
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="d-flex timeleftRow">
-                      <div>${siteLang === 'en' ? 'Time Left' : '剩余时间'}: &nbsp;</div>
+                      <div>${translator.translateForKey("home_page.Time_left")}: &nbsp;</div>
                     
                       <div class="clockdiv" data-date="` + currentQuiz[key].dateTime + `">
                         <span class="days"></span>
-                        <div class="smalltext">${siteLang === 'en' ? 'D' : '天'}&nbsp;:&nbsp;</div>
+                        <div class="smalltext">${translator.translateForKey("home_page.Day")}&nbsp;:&nbsp;</div>
                   
                         <span class="hours"></span>
-                        <div class="smalltext">${siteLang === 'en' ? 'H' : '小时'}&nbsp;:&nbsp; </div>
+                        <div class="smalltext">${translator.translateForKey("home_page.Hour")}&nbsp;:&nbsp; </div>
                   
                         <span class="minutes"></span>
-                        <div class="smalltext">${siteLang === 'en' ? 'M' : '分钟'}&nbsp;:&nbsp; </div>
+                        <div class="smalltext">${translator.translateForKey("home_page.Minutes")}&nbsp;:&nbsp; </div>
                 
                         <span class="seconds"></span>
-                        <div class="smalltext">${siteLang === 'en' ? 'S' : '秒'}&nbsp; </div>
+                        <div class="smalltext">${translator.translateForKey("home_page.Seconds")}&nbsp; </div>
                       </div>
                     </div>
                     <div class="icon-info" data-toggle="modal" data-target="#multiplierInfoModal">
@@ -349,12 +345,9 @@ fetchCurrentQuiz = () => {
           $("#predictCurrentContainer").hide();
         });
       }
-    }).catch(() => {
-      if (siteLang === 'en') {
-        $(".currentQuizRow").append(`<div>There are no matches currently. Stay tuned for tomorrow!</div>`);
-      } else {
-        $(".currentQuizRow").append(`<div>目前没有赛事，请明天继续关注！</div>`);
-      }
+    }).catch((e) => {
+      $(".currentQuizRow").append(`<div>${translator.translateForKey("home_page.No_Match")}</div>`);
+      console.error(e);
     });
 };
 

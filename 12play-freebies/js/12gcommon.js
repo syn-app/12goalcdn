@@ -61,6 +61,9 @@ fetchUserGameReport = () => {
       $('.predicted-match').text(res.totalMatchPredicted);
 
       const site = res.site;
+      if (!site.id) {
+        alert("No event found for current time!");
+      }
       if (site.currency && site.prizePool) {
         const maxPrize = `${site.currency} ${new Intl.NumberFormat("en-US").format(site.prizePool)}`;
         $("#maxPrize").html("").append(maxPrize);
