@@ -22,6 +22,7 @@
               <div id="borderLeft"></div>
             </div>
             <div class="col-4 regionLang cn">简体中文</div>
+            <div class="col-4 regionLang th">ไทย</div>
           </div>
         </div>
       </div>
@@ -91,15 +92,28 @@
       $("#country").append(
         '<img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.2/12play-freebies-mobile/assets/images/country/my.png" style="width: 100%" />',
       );
-    } else {
+    } else if (SITE_COUNTRY === "SG") {
       $("#country").append(
         '<img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.2/12play-freebies-mobile/assets/images/country/sg.png" style="width: 100%" />',
       );
+    } else if (SITE_COUNTRY === "TH") {
+      $("#country").append(
+        '<img src="https://93hdy12py.cloudcdnetw.com/12pv2/images/country-flag/th.png" style="width: 100%" />',
+      );
+    }
+    if (SITE_COUNTRY === "MY" || SITE_COUNTRY === "SG") {
+      $(".regionLang.cn").show();
+      $(".regionLang.th").hide();
+    } else {
+      $(".regionLang.cn").hide();
+      $(".regionLang.th").show();
     }
     if (localStorage["preferred_language"] == LANGUAGES.EN) {
       $(".regionLang.en").addClass("active");
-    } else {
+    } else if (localStorage["preferred_language"] == LANGUAGES.CN) {
       $(".regionLang.cn").addClass("active");
+    } else {
+      $(".regionLang.th").addClass("active");
     }
     $(".en").on("click", function () {
       localStorage.setItem("preferred_language", LANGUAGES.EN);
@@ -107,6 +121,10 @@
     });
     $(".cn").on("click", function () {
       localStorage.setItem("preferred_language", LANGUAGES.ZH);
+      location.reload();
+    });
+    $(".th").on("click", function () {
+      localStorage.setItem("preferred_language", LANGUAGES.TH);
       location.reload();
     });
     $(".backBtn").click(function () {

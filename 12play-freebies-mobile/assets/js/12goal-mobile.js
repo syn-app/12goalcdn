@@ -478,7 +478,8 @@ $(document).ready(async function () {
     $("#officialPartner").css("margin-right", "0px");
   }
   getUserData();
-  $('.currencyText').text(SITE_COUNTRY === 'MY' ? 'MYR' : 'SGD');
+  const currency = SITE_COUNTRY === 'MY' ? 'MYR' : SITE_COUNTRY === 'SG' ? 'SGD' : translator.translateForKey("home_page.THB");
+  $('.currencyText').text(currency);
   const userData = localStorage.getItem(USER_KEY);
   if (!userData) {
     $("#previous-tab").css("display", "none");

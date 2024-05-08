@@ -22,19 +22,19 @@ chineseQuestion = [
 
 thaiQuestion = [
   {
-    content: "本场赛事最终获胜队伍",
+    content: "ใครจะชนะการแข่งขัน",
     options: [],
   },
   {
-    content: "本场赛事第一张罚牌时间",
-    options: ["0-25", "26-50", "51-75", "76-90+", "没有罚牌"],
+    content: "เวลาที่จองครั้งแรก (การ์ดสีเหลืองหรือแดง)?",
+    options: ["0-25", "26-50", "51-75", "76-90+", "ไม่มีการจอง"],
   },
   {
-    content: "比赛总进球数",
+    content: "จำนวนประตูทั้งหมด",
     options: ["0", "1", "2", "3", "4+"],
   },
   {
-    content: "本场赛事总角球数",
+    content: "ได้กี่มุมในแมตช์นี้",
     options: ["0-6", "7-8", "9-10", "11-12", "13+"],
   },
 ];
@@ -74,10 +74,10 @@ getSiteLanguage = async () => {
   const href = location.href;
   if (href.includes('chs')) {
     siteLang = 'cn';
-  } else if (href.includes('th')) {
-    siteLang = 'th';
-  } else {
+  } else if (href.includes('en')) {
     siteLang = 'en';
+  } else {
+    siteLang = 'th';
   }
   DATE_TIME_LOCALE = siteLang === 'cn' ? 'zh-CN' : siteLang === 'th' ? 'th-TH' : 'en-US';
   const transLang = siteLang === 'cn' ? 'zh' : siteLang === 'th' ? 'th' : "en";
@@ -123,7 +123,7 @@ fetchCurrentQuiz = () => {
           dateTime: item.matchDate,
           status: item.predictTimeValid ? 0 : 9,
           option1: item.localTeamName,
-          option2: siteLang === 'en' ? 'Draw' : '平手',
+          option2: translator.translateForKey("predict_page.answer1_2"),
           option3: item.visitorTeamName,
           gamePlayId: item.gamePlayId,
           multipliers: item.multipliers,
@@ -374,7 +374,7 @@ fetchPrevQuiz = () => {
         quizPrize: item.totalAmount,
         quesOne: listQuestion[0].content,
         ansOne: item.answerOne,
-        ansOneContent: item.answerOne === 0 ? item.localTeamName : item.answerOne === 1 ? `${siteLang === 'en' ? 'Draw' : '平手'}` : item.visitorTeamName,
+        ansOneContent: item.answerOne === 0 ? item.localTeamName : item.answerOne === 1 ? translator.translateForKey("predict_page.answer1_2") : item.visitorTeamName,
         ansOneStatus: item.answerOneStatus.toLowerCase(),
         quesTwo: listQuestion[1].content,
         ansTwo: item.answerTwo,

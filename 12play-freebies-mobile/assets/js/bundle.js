@@ -1,11 +1,11 @@
 $(document).ready(function () {
   setTimeout(() => {
-    translator.fetch([LANGUAGES.EN, LANGUAGES.ZH]).then(() => {
+    translator.fetch([LANGUAGES.EN, LANGUAGES.ZH, LANGUAGES.TH]).then(() => {
       // -> Translations are ready...
       translator.translatePageTo(_get_language);
       changeLanguageColor();
       initialize();
-      DATE_TIME_LOCALE = _get_language === 'zh' ? 'zh-CN' : 'en-US';
+      DATE_TIME_LOCALE = _get_language === 'zh' ? 'zh-CN' : _get_language === 'th' ? 'th-TH' : 'en-US';
     });
   });
 })
@@ -212,7 +212,7 @@ setSiteBarMenu = () => {
     <img src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.2/12play-freebies-mobile/assets/images/menu-icon/vip_menu_icon.png" />
   </div>
   <div class="sidebarFunctionText">
-    <span class="lang-bold ${textClass}" key="vip">VIP</span>
+    <span class="lang-bold ${textClass}" key="vip">${translator.translateForKey("menu.VIP")}</span>
   </div>
 </a>
 <a onclick="window.location = 'https://12playlive.com/${SITE_COUNTRY.toLowerCase()}/'">
@@ -269,7 +269,9 @@ setSiteBarMenu = () => {
 </a>
 `;
   $("#sidebardiv").append(menu);
-  $("#regionOverlay").load(`https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.2/12play-freebies-mobile/region-language.html`);
+  $("#regionOverlay").load(IS_DEV ?
+    '/12play-freebies-mobile/region-language.html' :
+    `https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.2/12play-freebies-mobile/region-language.html`);
   $(".regionChg").click(function () {
     $("#regionChangeModal").show();
   });

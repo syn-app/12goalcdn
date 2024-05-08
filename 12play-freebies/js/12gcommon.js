@@ -19,12 +19,19 @@ var SITE_DOMAIN = window.location.origin;
 var currencyEn = {
   MYR: 'MYR',
   SGD: 'SGD',
-  USD: 'USD'
+  USD: 'USD',
+  THB: 'THB'
 }
 var currencyCn = {
   MYR: '马币',
   SGD: '新币',
   USD: '美金'
+}
+var currencyTh = {
+  MYR: 'MYR',
+  SGD: 'SGD',
+  USD: 'USD',
+  THB: 'บาท'
 }
 
 var translator = new Translator({
@@ -190,7 +197,7 @@ getPreviousQuizHtml = (prevQuiz) => {
       <div class="prevList">
         <div class="d-flex align-items-center">
           <div class="wonAmt ${prevQuiz.quizPrize === 0 ? 'amt0' : ''}">
-            ${translator.translateForKey("home_page.Won")} ${prevQuiz.country === 'MY' ? 'MYR' : 'SGD'} ${prevQuiz.quizPrize}
+            ${translator.translateForKey("home_page.Won")} ${prevQuiz.country === 'MY' ? 'MYR' : prevQuiz.country === 'SG' ? 'SGD' : translator.translateForKey("home_page.THB")} ${prevQuiz.quizPrize}
             <div class="selected-multiplier">${translator.translateForKey("home_page.multiplierLabel")}: ${prevQuiz.multiplier ? ('x' + prevQuiz.multiplier) : '-'}</div>
           </div>
           <div class="prizeTime">` + prevQuiz.quizTime + `</div>
@@ -272,6 +279,7 @@ loadHowToPlay = (gameReport) => {
   const site = gameReport.site;
   const currencyUnit = currencyEn[site.siteCurrency] ?? site.siteCurrency;
   const currencyUnitCN = currencyCn[site.siteCurrency] ?? site.siteCurrency;
+  const currencyUnitTH = currencyTh[site.siteCurrency] ?? site.siteCurrency;
 
   const howToPlayEn = `
     <strong>How To Play</strong>
@@ -306,20 +314,20 @@ loadHowToPlay = (gameReport) => {
       <li>12Goal有奖竞猜终极大奖可前往积分榜页面查阅。</li>
     </ol>`;
   const howToPlayTh = `
-    <strong>วิธีการเล่น</strong>
+    <strong>วิธีการเดิมพัน</strong>
     <ol>
-      <li>Welcome to the Exciting 12Goal Event from 12PLAY!</li>
-      <li>Predict every ${gameReport.checkInPerMatches} matches to unlock bonus rewards for free.</li>
-      <li>Submit your answers based on your match result predictions.</li>
-      <li>Earn 1 point for each correct answer; incorrect answers do not result in point deductions.</li>
-      <li>Enjoy extra features that enhance your experience when you predict matches. You can choose to boost your bonus and points by using multipliers, but extra tickets will be deducted when you opt to use these features.</li>
-      <li>Accumulate points to climb the Leaderboard and secure your spot among the Top 50 players for a chance to win the Final Grand Prize!</li>
+      <li>ยินดีต้อนรับสู่เกมส์การแข่งขันที่น่าตื่นเต้น 12Goal Event จาก 12PLAY</li>
+      <li>ทายผลถูกทุกๆ ${gameReport.checkInPerMatches} คู่ เพื่อปลดล็อครางวัลโบนัสพิเศษฟรี</li>
+      <li>ส่งคำตอบของคุณ โดยขึ้นอยู่กับการทายผลนัดการแข่งขันของคุณ</li>
+      <li>เมื่อทายผลที่ถูกต้องคุณจะได้รับ 1  คะแนน หากทายผิดจะไม่ได้รับคะแนน หรือลดคะแนน</li>
+      <li>เพลิดเพลินไปกับฟิวเจอร์พิเศษที่เพิ่มประสบการณ์อันน่าตื่นเต้นการทายผลของคุณ ด้วยคุณสามารถเพิ่มโบนัส และคะแนน โดยใช้ตัวคูณ เมื่อคุณใช้ฟิวเจอร์นี้ในการทายผล ตั๋วพิเศษของคุณจะถูกหักออกทันที</li>
+      <li>สะสมแต้มเพื่อไต่อันดับบนลีดเดอร์บอร์ดและรักษาอันดับของสมาชิกให้ติด 50  อันดับแรกของผู้ทายผลทั้งหมด เพื่อโอกาสได้รับเงินรางวัลใหญ่</li>
     </ol>
-    <strong>Prizes</strong>
+    <strong>รางวัล</strong>
     <ol>
-      <li>If you answer correctly to all 4 questions you will get a ${currencyUnit} ${site.fourCorrectsPrize}.</li>
-      <li>If you answer correctly to 3 questions you will get a ${currencyUnit} ${site.threeCorrectsPrize}.</li>
-      <li>Final Grand Prize may refer to our Leaderboard.</li>
+      <li>ถ้าสมาชิกทายผลถูกต้องทั้งหมด 4 คู่จะได้รับเงินรางวัล ${site.fourCorrectsPrize} ${currencyUnitTH}</li>
+      <li>ถ้าสมาชิกทายผลถูกต้อง 3 คู่  จะได้รับเงินรางวัล ${site.threeCorrectsPrize} ${currencyUnitTH}</li>
+      <li>รางวัลใหญ่สุดท้าย จะอ้างอิงตามลีดเดอร์บอร์ด</li>
     </ol>`;
   if (localStorage.getItem('preferred_language') === 'en') {
     $('#howToPlay').append(howToPlayEn);
@@ -352,8 +360,10 @@ getTC = (site) => {
   }).format(new Date(payoffDate.setHours(18, 0, 0))).replace("at", "");
   const currencyUnit = currencyEn[site.siteCurrency] ?? site.siteCurrency;
   const currencyUnitCN = currencyCn[site.siteCurrency] ?? site.siteCurrency;
+  const currencyUnitTH = currencyTh[site.siteCurrency] ?? site.siteCurrency;
   const prizePoolCurrency = currencyEn[site.currency] ?? site.currency;
   const prizePoolCurrencyCN = currencyCn[site.currency] ?? site.currency;
+  const prizePoolCurrencyTH = currencyTh[site.currency] ?? site.currency;
   const tCEn = `
     <strong>How To Start</strong>
     <ol>
@@ -399,7 +409,7 @@ getTC = (site) => {
       <li>The pay-off date for the leaderboard is on the ${payoffDateFormat}.</li>
       <li>All prizes come with a 1x turnover requirement. </li>
       <li>All prizes will be paid in ${currencyUnit} currency. ${prizePoolCurrency} will be converted into ${currencyUnit} based on the exchange rate of ${currencyRate}.</li>
-    </ol>`
+    </ol>`;
   const tcZh = `
     <strong>竞猜详情</strong>
     <ol>
@@ -445,8 +455,56 @@ getTC = (site) => {
       <li>所有奖金只需一倍投注量即可提款。</li>
       <li>所有奖金将以${currencyUnitCN}结算。${prizePoolCurrencyCN}将根据汇率${currencyRate}转换成${currencyUnitCN}。</li>
     </ol>`;
+  const tcTh = `
+    <strong>เดิมพันอย่างไร:</strong>
+    <ol>
+      <li>สมาชิกทุกคนต้องฝากเงินอย่างน้อย ${site.depositAmountPerTicket} ${currencyUnitTH}เพื่อรับตั๋วสำหรับการเข้าร่วมทายผล 12Goal Event</li>
+      <li>ทุกๆการฝากเงิน ${site.depositAmountPerTicket} ${currencyUnitTH} สมาชิกจะได้รับตั๋ว 1 ใบ และสูงสุดไม่เกิน ${maxTicket} ใบ</li>
+      <li>เมื่อได้ตั๋วแล้วสมาชิกสามารถเข้าร่วมกิจกรรมการทายผลบอล โดยขึ้นอยู่กับนัดการแข่งขันที่ทายผล</li>
+      <li>ตั๋ว 1 ใบ สามารถทายผลได้ 1  คู่</li>
+      <li>ในการใช้ฟีเชอร์ตัวคูณสำหรับเพิ่มคะแนน และโบนัสของคุณในแต่ละครั้ง ตั๋วของคุณจะถูกหักออกทันที</li>
+      <li>เมื่อคุณใช้ตัวคูณ x2  จะมีการหักตั๋วเพิ่มเป็น 2 ใบทันที</li>
+      <li>
+        ตัวอย่างเช่น คุณใช้ตัวคูณ x2 หนึ่งในนัดการแข่งขัน และทายผลถูกต้อง 3 คู่
+        <p>การคำนวณ:</p>
+        <strong>โบนัสการทายผล</strong>
+        <ul style="list-style-type: none;">
+          <li>โบนัสการทายผลปกติ : ${site.threeCorrectsPrize} ${currencyUnitTH}</li>
+          <li>เมื่อทายผล โดยใช้ตัวคูณ x2  :  ${site.threeCorrectsPrize} x 2 (${currencyUnitTH}) = ${site.threeCorrectsPrize * 2} ${currencyUnitTH}</li>
+        </ul>
+        <strong>คะแนนบนลีดเดอร์บอร์ด</strong>
+        <ul style="list-style-type: none;">
+          <li>คะแนนปกติ : 3 คะแนน</li>
+          <li>เมื่อทายผล โดยใช้ตัวคูณ x2 :  3 คะแนน x 2  = 6 คะแนน</li>
+          <li>ดังนั้น โดยการใช้ตัวคูณ x2 คุณจะได้รับโบนัสการทายผล${site.threeCorrectsPrize * 2} ${currencyUnitTH} พร้อมกับคะแนนอีก 6 คะแนน บนลีดเดอร์บอร์ด</li>
+        </ul>
+      </li>
+      <li>เมื่อการเดิมพันตัวคูณได้รับการยืนยันแล้ว จะไม่สามารถยกเลิก หรือลดเดิมพันได้</li>
+      <li>เวลาสิ้นสุดของการทายผลคือ 10 นาทีก่อนการแข่งขันแต่ละนัดจะเริ่มต้นขึ้น</li>
+      <li>หากการแข่งขันถูกเลื่อน ยกเลิก หรือแข่งไม่จบ สมาชิกจะได้ตั๋วการทายคืน</li>
+      <li>ผลการแข่งขันขึ้นอยู่กับการแข่งขันฟุตบอลเต็มเวลาปกติ 90 นาที (รวมถึงทดเวลาบาดเจ็บ แต่ไม่รวมช่วงต่อเวลาพิเศษ)</li>
+      <li>ไม่อนุญาติให้ใช้หลายบัญชี หากสมาชิกเข้าร่วมกิจกรรมมีมากกว่า 1 บัญชี การทายผลจะถูกตัดสิทธิ์รวมถึงเงินรางวัลจะถูกริบคืน</li>
+      <li>ในการเข้าร่วมกิจกรรจำกัดเพียงบุคคลคนเดียว ครอบครัว ที่อยู่ อีเมลแอดเดรส เบอร์โทรศัพท์ เลขที่บัญชีธนาคารเดียวกัน  ไม่สามารถใช้อุปกรณ์สื่อสารร่วมกันรวมถึง IP Address</li>
+      <li>เป็นไปตามข้อตกลงและเงื่อนไขของ 12Play</li>
+      <li>12Play ขอสงวนสิทธิ์ในการแก้ไข ยกเลิก ระงับ หรือยุติรางวัลใหญ่นี้ และ/หรือเปลี่ยนแปลงข้อกำหนดของรางวัลดังกล่าวได้ทุกเวลาโดยไม่จำเป็นต้องแจ้งให้ทราบล่วงหน้า</li>
+    </ol>
+
+    <strong>การจ่ายรางวัล:</strong>
+    <ol>
+      <li>เมื่อสมาชิกทายผลถูกทั้งหมด 4 คู่  สมาชิกจะได้รับ ${site.fourCorrectsPrize} ${currencyUnitTH} หลังจากการแข่งขันได้เสร็จสิ้นแล้ว</li>
+      <li>เมื่อสมาชิกทายผลถูกทั้งหมด 3 คู่  สมาชิกจะได้รับ ${site.threeCorrectsPrize} ${currencyUnitTH} หลังจากการแข่งขันได้เสร็จสิ้นแล้ว</li>
+      <li>ผู้ชนะ 50 อันดับแรกจะถูกคัดเลือกจากคะแนนสูงสุดที่ได้รับบนลีดเดอร์บอร์ดในช่วงระยะเวลากิจกรรม</li>
+      <li>ในกรณีที่สมาชิกสองคน หรือมากกว่าที่มีคะแนนเท่ากัน จะตัดสินจากผู้ที่มีจำนวนการชนะในการแข่งขัน และผู้ที่ได้ทำการวางเดิมพันทั้งก่อนเวลา และวันที่เร็วกว่าถือเป็นผู้ชนะ</li>
+      <li>จะมีการนับคะแนนรวมตั้งแต่ เวลา ${startTimeFormat} - ${endTimeFormat}</li>
+      <li>ผู้ชนะกิจกรรม ระบบจะปรับรางวัลจะเข้าสู่บัญชี โดยอัตโนมัติ </li>
+      <li>รางวัลสำหรับผู้ชนะบนลีดเดอร์บอร์ดจะได้รับในวันที่ ${payoffDateFormat} น</li>
+      <li>เงินรางวัลทั้งหมดจะต้องทำเทิร์นโอเวอร์ 1 เท่า ก่อนทำการแจ้งถอน</li>
+      <li>เงินรางวัลทั้งหมดจะทำการจ่ายเป็นสกุลเงิน${currencyUnitTH}  เงิน ${prizePoolCurrency}  จะทำการคำนวณเป็นเงิน${currencyUnitTH} ตามอัตราแลกเปลี่ยน ${currencyRate}</li>
+    </ol>`;
   if (localStorage.getItem('preferred_language') === 'en') {
     return tCEn;
+  } else if (localStorage.getItem('preferred_language') === 'th') {
+    return tcTh;
   } else {
     return tcZh;
   }
