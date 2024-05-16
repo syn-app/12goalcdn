@@ -66,7 +66,9 @@
     "THB": "THB",
     "Error": "Error",
     "OK": "OK",
-    "requiredTicketError": "You do not have enough ticket to play. Require: "
+    "requiredTicketError": "You do not have enough ticket to play. Require: ",
+    "moreInfo": "More Info",
+    "rulesRegulations": "Rules & Regulations"
   },
   "predict_page": {
     "title": "Senegal vs Netherlands",

@@ -1449,3 +1449,7 @@ iframe {
 .leaderboardList .rank-item {
   background-color: rgb(243, 245, 246);
 }
+
+#commonInfoModal .modal-dialog {
+  max-width: 90%;
+}

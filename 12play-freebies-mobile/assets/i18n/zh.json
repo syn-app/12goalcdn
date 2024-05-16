@@ -65,7 +65,9 @@
     "USD": "美金",
     "Error": "错误",
     "OK": "OK",
-    "requiredTicketError": "您没有足够的票卷来玩。需求："
+    "requiredTicketError": "您没有足够的票卷来玩。需求：",
+    "moreInfo": "更多详情",
+    "rulesRegulations": "条款与规则"
   },
   "predict_page": {
     "title": "Senegal vs Netherlands",

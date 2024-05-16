@@ -322,9 +322,8 @@
                 </button>
               </li>
               <li class="nav-item" role="presentation" id="promotion-tab">
-                <button class="nav-link" id="goal-home-promotion-tab" data-bs-toggle="tab"
-                  data-bs-target="#goal-home-promotion" type="button" role="tab" aria-controls="goal-home-promotion"
-                  aria-selected="false">
+                <button class="nav-link" id="goal-home-promotion-tab" data-bs-toggle="tab" data-bs-target="#promotion"
+                  type="button" role="tab" aria-controls="goal-home-promotion" aria-selected="false">
                   <span data-i18n="home_page.Promotion"></span>
                 </button>
               </li>
@@ -420,8 +419,7 @@
                 <div class="leaderboardList" data-aos="fade-up"></div>
               </div>
             </div>
-            <div class="tab-pane fade" id="goal-home-promotion" role="tabpanel"
-              aria-labelledby="goal-home-promotion-tab">
+            <div class="tab-pane fade" id="promotion" role="tabpanel" aria-labelledby="goal-home-promotion-tab">
 
             </div>
           </div>
@@ -585,6 +583,24 @@
         </div>
       </div>
     </div>
+
+    <div class="modal fade notiModal" id="commonInfoModal" tabindex="-1" role="dialog" aria-hidden="true"
+      data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h6 class="modal-title"></h6>
+          </div>
+          <div class="modal-body">
+            <div class="info-content"></div>
+            <br>
+            <div class="d-flex justify-content-center">
+              <div class="btn btn-danger" data-bs-dismiss="modal" data-i18n="home_page.btnClose"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
   <!--Predict Modal-->
   <section id="predictCurrentContainer" class="main predict">
@@ -670,6 +686,7 @@
   <script
     src="https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.2/12play-freebies-mobile/assets/js/vendor.min.js"></script>
   <script type="text/javascript">
+    var IS_MOBILE = true;
     var IS_DEV = +location.port > 99;
     if (IS_DEV) {
       $('link[href$="12gcommon.min.css"]').prop('href', '/12play-freebies/css/12gcommon.css');

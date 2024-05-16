@@ -547,6 +547,13 @@ function registerPrevQuizToggleEvent() {
   });
 }
 
+fetchPromoBanners = () => {
+  return fetch(`${API_URL}/12goalapi/promotion-banner?country=${SITE_COUNTRY}&language=${localStorage.getItem('preferred_language')}&t=${new Date().getTime()}`)
+    .then((response) => response.json());
+}
+
+isMobile = () => typeof IS_MOBILE !== 'undefined' && IS_MOBILE;
+
 showErrorModal = (err) => {
   $('#errorModal').modal('show');
   const errorLabel = translator.translateForKey("home_page.Error");
@@ -557,11 +564,37 @@ showErrorModal = (err) => {
 $(document).ready(function () {
   $('a[data-toggle="tab"], button[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
     const target = $(e.target).attr("href") || $(e.target).attr("data-bs-target");
-    if ((target === '#livescore')) {
+    if (target === '#livescore') {
       const iframe = $('#livescore').find('iframe');
       if (iframe.data('src')) {
         iframe.prop('src', iframe.data('src')).data('src', false);
       }
+    }
+
+    if (target === '#promotion') {
+      fetchPromoBanners().then(res => {
+        if (res.code && res.detail) {
+          showErrorModal(res);
+        } else {
+          let html = '';
+          res.items.forEach(item => {
+            html += `<div class="promo-item">
+              <img src="${isMobile() ? item.bannerFullUrlMobile : item.bannerFullUrlDesktop}">
+              <div class="more-info" data-bannerid="${item.id}">${translator.translateForKey("home_page.moreInfo")}</div>
+            </div>`;
+          })
+          $('#promotion').html(html);
+          $('.promo-item .more-info').click(function () {
+            let bannerId = $(this).data('bannerid');
+            let banner = res.items.find(item => item.id === bannerId);
+            if (banner) {
+              $('#commonInfoModal .modal-title').text(translator.translateForKey("home_page.rulesRegulations").toUpperCase());
+              $('#commonInfoModal .info-content').html(banner.content);
+              $('#commonInfoModal').modal('show');
+            }
+          })
+        }
+      });
     }
   });
 
