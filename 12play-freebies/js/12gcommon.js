@@ -42,13 +42,32 @@ var translator = new Translator({
   registerGlobally: "__",
   persist: true,
   persistKey: "preferred_language",
-  filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.2/12play-freebies-mobile/assets/i18n",
+  filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.5/12play-freebies-mobile/assets/i18n",
 });
 
 var PREFERED_REGION = 'preferred_region';
 const _get_translator_config = translator.config.persistKey || "preferred_language";
 var _get_language = localStorage.getItem(_get_translator_config) || LANGUAGES.EN;
 var _get_region = localStorage.getItem(PREFERED_REGION) || 'Singapore';
+
+if (SITE_COUNTRY === 'MY') {
+  window.smartlook || (function (d) {
+    var o = smartlook = function () { o.api.push(arguments) }, h = d.getElementsByTagName('head')[0];
+    var c = d.createElement('script'); o.api = new Array(); c.async = true; c.type = 'text/javascript';
+    c.charset = 'utf-8'; c.src = 'https://web-sdk.smartlook.com/recorder.js'; h.appendChild(c);
+  })(document);
+  smartlook('init', '1bf3bb9dd38bd07f1d9a24b6c25f7be94f379741', { region: 'eu' });
+}
+if (SITE_COUNTRY === 'SG') {
+  (function (h, o, t, j, a, r) {
+    h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+    h._hjSettings = { hjid: 2340885, hjsv: 6 };
+    a = o.getElementsByTagName('head')[0];
+    r = o.createElement('script'); r.async = 1;
+    r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+    a.appendChild(r);
+  })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+}
 
 fetchUserGameReport = () => {
   const siteName = SITE_COUNTRY === "MY" ? '12M' : SITE_COUNTRY === "SG" ? '12S' : '12T';
@@ -417,7 +436,7 @@ getTC = (site) => {
     <strong>竞猜详情</strong>
     <ol>
       <li>所有会员必须存入至少${currencyUnitCN} ${site.depositAmountPerTicket}, 才能获得一场12Goal有奖竞猜活动的票卷。</li>
-      <li>每存入${currencyUnitCN} ${site.depositAmountPerTicket} 可获得1张票卷，每位会员最多可获得30张票卷。</li>
+      <li>每存入${currencyUnitCN} ${site.depositAmountPerTicket} 可获得1张票卷，每位会员最多可获得${maxTicket}张票卷。</li>
       <li>获取票卷后，玩家便能用其票卷来回答每一场球赛所提问的四道问题.</li>
       <li>每一场球赛只需一张票卷来参与竞猜。</li>
       <li>你也可以使用额外的倍增功能来增加您的奖金和分数。每使用一次x1倍增器, 将额外扣除一张票卷。</li>

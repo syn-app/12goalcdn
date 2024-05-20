@@ -377,14 +377,11 @@ fetchPrevQuiz = () => {
         registerPrevQuizToggleEvent();
       }
       $(".unclaimed").click(function () {
-        let matchTitle = $(this).parent().find(".matchTitle").text();
-        $("#claimConfirmModal").data("matchTitle", matchTitle);
+        $("#claimConfirmModal").data("gameplayid", $(this).data("gameplayid"));
         $("#claimConfirmModal").modal("show");
       });
       $("#confirmClaimBtn").click(function () {
-        let matchTitle = $("#claimConfirmModal").data("matchTitle");
-        let game = prevQuiz.find((x) => x.quizTitle === matchTitle);
-        claimedPrize(game.freebiesGamePlayId);
+        claimedPrize($("#claimConfirmModal").data("gameplayid"));
         $("#claimConfirmModal").modal("hide");
       });
       var items = $(".list-wrapper .list-item");
