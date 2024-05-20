@@ -496,5 +496,7 @@ $(document).ready(async function () {
   }
   fetchUserGameReport().then(res => loadHowToPlay(res));
   fetchCurrentQuiz();
-  fetchPrevQuiz();
+  if (localStorage.getItem(USER_KEY)) {
+    fetchPrevQuiz();
+  }
 });
