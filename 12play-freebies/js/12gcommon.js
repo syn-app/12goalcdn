@@ -34,13 +34,32 @@ var translator = new Translator({
   registerGlobally: "__",
   persist: true,
   persistKey: "preferred_language",
-  filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.4/12play-freebies-mobile/assets/i18n",
+  filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.5/12play-freebies-mobile/assets/i18n",
 });
 
 var PREFERED_REGION = 'preferred_region';
 const _get_translator_config = translator.config.persistKey || "preferred_language";
 var _get_language = localStorage.getItem(_get_translator_config) || LANGUAGES.EN;
 var _get_region = localStorage.getItem(PREFERED_REGION) || 'Singapore';
+
+if (SITE_COUNTRY === 'MY') {
+  window.smartlook || (function (d) {
+    var o = smartlook = function () { o.api.push(arguments) }, h = d.getElementsByTagName('head')[0];
+    var c = d.createElement('script'); o.api = new Array(); c.async = true; c.type = 'text/javascript';
+    c.charset = 'utf-8'; c.src = 'https://web-sdk.smartlook.com/recorder.js'; h.appendChild(c);
+  })(document);
+  smartlook('init', '1bf3bb9dd38bd07f1d9a24b6c25f7be94f379741', { region: 'eu' });
+}
+if (SITE_COUNTRY === 'SG') {
+  (function (h, o, t, j, a, r) {
+    h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+    h._hjSettings = { hjid: 2340885, hjsv: 6 };
+    a = o.getElementsByTagName('head')[0];
+    r = o.createElement('script'); r.async = 1;
+    r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+    a.appendChild(r);
+  })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+}
 
 fetchUserGameReport = () => {
   return fetch(`${API_URL}/12goalapi/user/game-report?siteName=${SITE_COUNTRY === "MY" ? '12M' : '12S'}&t=${new Date().getTime()}`, getRequestHeaders())
