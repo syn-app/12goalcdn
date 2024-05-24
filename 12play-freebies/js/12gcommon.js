@@ -567,7 +567,7 @@ function registerPrevQuizToggleEvent() {
 }
 
 fetchPromoBanners = () => {
-  return fetch(`${API_URL}/12goalapi/promotion-banner?country=${SITE_COUNTRY}&language=${localStorage.getItem('preferred_language')}&t=${new Date().getTime()}`)
+  return fetch(`${API_URL}/12goalapi/promotion-banner?country=${SITE_COUNTRY}&language=${siteLang}&t=${new Date().getTime()}`)
     .then((response) => response.json());
 }
 
