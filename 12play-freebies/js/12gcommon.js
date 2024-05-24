@@ -567,7 +567,11 @@ function registerPrevQuizToggleEvent() {
 }
 
 fetchPromoBanners = () => {
-  return fetch(`${API_URL}/12goalapi/promotion-banner?country=${SITE_COUNTRY}&language=${siteLang}&t=${new Date().getTime()}`)
+  let lang = localStorage.getItem('preferred_language');
+  if (lang === 'zh') {
+    lang = 'cn';
+  }
+  return fetch(`${API_URL}/12goalapi/promotion-banner?country=${SITE_COUNTRY}&language=${lang}&t=${new Date().getTime()}`)
     .then((response) => response.json());
 }
 
@@ -602,7 +606,7 @@ $(document).ready(function () {
               <div class="more-info" data-bannerid="${item.id}">${translator.translateForKey("home_page.moreInfo")}</div>
             </div>`;
           })
-          $('#promotion').html(html);
+          $('.promotion-banners').html(html);
           $('.promo-item .more-info').click(function () {
             let bannerId = $(this).data('bannerid');
             let banner = res.items.find(item => item.id === bannerId);

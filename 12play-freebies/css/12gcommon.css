@@ -522,7 +522,7 @@
     text-align: left;
 }
 
-#promotion {
+.promotion-banners {
     padding: 16px;
     background-color: white;
     display: flex;
