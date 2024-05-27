@@ -20,6 +20,25 @@ chineseQuestion = [
   },
 ];
 
+thaiQuestion = [
+  {
+    content: "ใครจะชนะการแข่งขัน",
+    options: [],
+  },
+  {
+    content: "เวลาที่จองครั้งแรก (การ์ดสีเหลืองหรือแดง)?",
+    options: ["0-25", "26-50", "51-75", "76-90+", "ไม่มีการจอง"],
+  },
+  {
+    content: "จำนวนประตูทั้งหมด",
+    options: ["0", "1", "2", "3", "4+"],
+  },
+  {
+    content: "ได้กี่มุมในแมตช์นี้",
+    options: ["0-6", "7-8", "9-10", "11-12", "13+"],
+  },
+];
+
 englishQuestion = [
   {
     content: "Who will win the match?",
@@ -39,31 +58,6 @@ englishQuestion = [
   },
 ];
 
-getSiteDomain = async () => {
-  // let country = location.pathname.startsWith('/my') ? 'MY' : 'SG';
-  // const response = await fetch(`${API_URL}/12goalapi/user/http-referral?country=${country}&t=${new Date().getTime()}`, getRequestHeaders());
-  // const res = await response.json();
-  // if (!res || !res.httpReferral) {
-  //   if (country === 'MY') {
-  //     let previousURL = 'https://www.12play15.com/my';
-  //     SITE_DOMAIN = new URL(previousURL).origin;
-  //     SITE_COUNTRY = "MY";
-  //   } else {
-  //     let previousURL = 'https://www.12play14.com/sg';
-  //     SITE_DOMAIN = new URL(previousURL).origin;
-  //     SITE_COUNTRY = "SG";
-  //   }
-  // } else {
-  //   let previousURL = res.httpReferral;
-  //   SITE_DOMAIN = new URL(previousURL).origin;
-  //   if (previousURL.includes("/my")) {
-  //     SITE_COUNTRY = "MY";
-  //   } else {
-  //     SITE_COUNTRY = "SG";
-  //   }
-  // }
-}
-
 getRequestHeaders = (additonalHeaders) => {
   return {
     headers: {
@@ -77,15 +71,16 @@ getRequestHeaders = (additonalHeaders) => {
 
 var translator;
 getSiteLanguage = async () => {
-  SITE_DOMAIN = window.location.origin;
   const href = location.href;
   if (href.includes('chs')) {
     siteLang = 'cn';
-  } else {
+  } else if (href.includes('en')) {
     siteLang = 'en';
+  } else {
+    siteLang = 'th';
   }
-  DATE_TIME_LOCALE = siteLang === 'cn' ? 'zh-CN' : 'en-US';
-  const transLang = siteLang === 'cn' ? 'zh' : "en";
+  DATE_TIME_LOCALE = siteLang === 'cn' ? 'zh-CN' : siteLang === 'th' ? 'th-TH' : 'en-US';
+  const transLang = siteLang === 'cn' ? 'zh' : siteLang === 'th' ? 'th' : "en";
   localStorage.setItem("preferred_language", transLang);
   translator = new Translator({
     defaultLanguage: transLang,
@@ -128,7 +123,7 @@ fetchCurrentQuiz = () => {
           dateTime: item.matchDate,
           status: item.predictTimeValid ? 0 : 9,
           option1: item.localTeamName,
-          option2: siteLang === 'en' ? 'Draw' : '平手',
+          option2: translator.translateForKey("predict_page.answer1_2"),
           option3: item.visitorTeamName,
           gamePlayId: item.gamePlayId,
           multipliers: item.multipliers,
@@ -138,20 +133,16 @@ fetchCurrentQuiz = () => {
         currentQuiz.push(quiz);
       });
       if (currentQuiz.length === 0) {
-        if (siteLang === 'en') {
-          $(".currentQuizRow").append(`<div>There are no matches currently. Stay tuned for tomorrow!</div>`);
-        } else {
-          $(".currentQuizRow").append(`<div>目前没有赛事，请明天继续关注！</div>`);
-        }
+        $(".currentQuizRow").append(`<div>${translator.translateForKey("home_page.No_Match")}</div>`);
       } else {
         let quiz;
         for (let key in currentQuiz) {
           if (currentQuiz.hasOwnProperty(key)) {
             let predictButtonText = '';
             if (currentQuiz[key].status === 9) {
-              predictButtonText = currentQuiz[key].gamePlayId ? `${siteLang === 'en' ? 'Predicted' : '已竞猜'}` : `${siteLang === 'en' ? 'Predict' : '竞猜'}`
+              predictButtonText = currentQuiz[key].gamePlayId ? translator.translateForKey("home_page.Predicted") : translator.translateForKey("home_page.Predict")
             } else {
-              predictButtonText = currentQuiz[key].gamePlayId ? `${siteLang === 'en' ? 'Edit' : '更改答案'}` : `${siteLang === 'en' ? 'Predict' : '竞猜'}`
+              predictButtonText = currentQuiz[key].gamePlayId ? translator.translateForKey("home_page.Edit") : translator.translateForKey("home_page.Predict")
             }
             const gpmul = +currentQuiz[key].gamePlayMultiplier;
             quiz =
@@ -159,20 +150,20 @@ fetchCurrentQuiz = () => {
                 <div class="currentList">
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="d-flex timeleftRow">
-                      <div>${siteLang === 'en' ? 'Time Left' : '剩余时间'}: &nbsp;</div>
+                      <div>${translator.translateForKey("home_page.Time_left")}: &nbsp;</div>
                     
                       <div class="clockdiv" data-date="` + currentQuiz[key].dateTime + `">
                         <span class="days"></span>
-                        <div class="smalltext">${siteLang === 'en' ? 'D' : '天'}&nbsp;:&nbsp;</div>
+                        <div class="smalltext">${translator.translateForKey("home_page.Day")}&nbsp;:&nbsp;</div>
                   
                         <span class="hours"></span>
-                        <div class="smalltext">${siteLang === 'en' ? 'H' : '小时'}&nbsp;:&nbsp; </div>
+                        <div class="smalltext">${translator.translateForKey("home_page.Hour")}&nbsp;:&nbsp; </div>
                   
                         <span class="minutes"></span>
-                        <div class="smalltext">${siteLang === 'en' ? 'M' : '分钟'}&nbsp;:&nbsp; </div>
+                        <div class="smalltext">${translator.translateForKey("home_page.Minutes")}&nbsp;:&nbsp; </div>
                 
                         <span class="seconds"></span>
-                        <div class="smalltext">${siteLang === 'en' ? 'S' : '秒'}&nbsp; </div>
+                        <div class="smalltext">${translator.translateForKey("home_page.Seconds")}&nbsp; </div>
                       </div>
                     </div>
                     <div class="icon-info" data-toggle="modal" data-target="#multiplierInfoModal">
@@ -354,12 +345,9 @@ fetchCurrentQuiz = () => {
           $("#predictCurrentContainer").hide();
         });
       }
-    }).catch(() => {
-      if (siteLang === 'en') {
-        $(".currentQuizRow").append(`<div>There are no matches currently. Stay tuned for tomorrow!</div>`);
-      } else {
-        $(".currentQuizRow").append(`<div>目前没有赛事，请明天继续关注！</div>`);
-      }
+    }).catch((e) => {
+      $(".currentQuizRow").append(`<div>${translator.translateForKey("home_page.No_Match")}</div>`);
+      console.error(e);
     });
 };
 
@@ -379,7 +367,7 @@ fetchPrevQuiz = () => {
         quizPrize: item.totalAmount,
         quesOne: listQuestion[0].content,
         ansOne: item.answerOne,
-        ansOneContent: item.answerOne === 0 ? item.localTeamName : item.answerOne === 1 ? `${siteLang === 'en' ? 'Draw' : '平手'}` : item.visitorTeamName,
+        ansOneContent: item.answerOne === 0 ? item.localTeamName : item.answerOne === 1 ? translator.translateForKey("predict_page.answer1_2") : item.visitorTeamName,
         ansOneStatus: item.answerOneStatus.toLowerCase(),
         quesTwo: listQuestion[1].content,
         ansTwo: item.answerTwo,
@@ -484,8 +472,7 @@ setupClockCountDown = () => {
 
 $(document).ready(async function () {
   await getSiteLanguage();
-  // await getSiteDomain();
-  const folder = siteLang === 'en' ? 'en' : 'chs';
+  const folder = siteLang === 'en' ? 'en' : siteLang === 'cn' ? 'chs' : 'th';
   const folderPath = IS_DEV ? '' : 'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.5';
   $("#header").load(`${folderPath}/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${folder}/header.html`, function () {
     $("#4dBtn").addClass("active"); //highlight the nav item
@@ -496,8 +483,10 @@ $(document).ready(async function () {
   $("#stickySideBtn").load(`${folderPath}/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${folder}/sticky-side-button.html`);
   if (siteLang === 'en') {
     listQuestion = structuredClone(englishQuestion);
-  } else {
+  } else if (siteLang === 'cn') {
     listQuestion = structuredClone(chineseQuestion);
+  } else if (siteLang === 'th') {
+    listQuestion = structuredClone(thaiQuestion);
   }
   getUserData();
   fetchLeaderBoardRanking();
@@ -507,5 +496,7 @@ $(document).ready(async function () {
   }
   fetchUserGameReport().then(res => loadHowToPlay(res));
   fetchCurrentQuiz();
-  fetchPrevQuiz();
+  if (localStorage.getItem(USER_KEY)) {
+    fetchPrevQuiz();
+  }
 });

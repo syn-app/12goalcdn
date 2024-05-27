@@ -177,6 +177,10 @@
     color: #888888;
 }
 
+#commonInfoModal .modal-dialog {
+    max-width: 700px;
+}
+
 .goal-rush-prize-icon {
     background-image: url(../images/12goal/reward-claimed.png);
     width: 250px;
@@ -516,4 +520,35 @@
     line-height: 14px;
     font-weight: 100;
     text-align: left;
+}
+
+.promotion-banners {
+    padding: 16px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.promo-item {
+    position: relative;
+}
+
+.promo-item .more-info {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: #55555566;
+    backdrop-filter: blur(6px);
+    padding: 8px 16px;
+    color: white;
+    border-radius: 10px 0 10px 0;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.promo-item img {
+    width: 100%;
+    border-radius: 10px;
 }

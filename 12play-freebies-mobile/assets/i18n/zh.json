@@ -64,7 +64,10 @@
     "multiplierPredictFirst": "您必须在加倍您的赌注之前进行预测",
     "USD": "美金",
     "Error": "错误",
-    "requiredTicketError": "您没有足够的票卷来玩。需求："
+    "OK": "OK",
+    "requiredTicketError": "您没有足够的票卷来玩。需求：",
+    "moreInfo": "更多详情",
+    "rulesRegulations": "条款与规则"
   },
   "predict_page": {
     "title": "Senegal vs Netherlands",
@@ -100,6 +103,7 @@
     "contactUs": "联系我们",
     "info": "资讯",
     "language": "语言",
-    "liveChat": "24/7 客服"
+    "liveChat": "24/7 客服",
+    "VIP": "VIP"
   }
 }

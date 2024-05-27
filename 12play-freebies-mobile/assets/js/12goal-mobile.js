@@ -1,34 +1,5 @@
 var listQuestion = [];
 
-getSiteDomain = async () => {
-  SITE_DOMAIN = window.location.origin;
-
-  // let country = location.pathname.startsWith('/my') ? 'MY' : 'SG';
-  // const response = await fetch(`${API_URL}/12goalapi/user/http-referral?country=${country}&t=${new Date().getTime()}`, getRequestHeaders());
-  // const res = await response.json();
-  // if (!res || !res.httpReferral) {
-  //   if (country === 'MY') {
-  //     let previousURL = 'https://www.12play15.com/my';
-  //     SITE_DOMAIN = new URL(previousURL).origin;
-  //     SITE_COUNTRY = "MY";
-  //   } else {
-  //     let previousURL = 'https://www.12play14.com/sg';
-  //     SITE_DOMAIN = new URL(previousURL).origin;
-  //     SITE_COUNTRY = "SG";
-  //   }
-  // } else {
-  //   let previousURL = res.httpReferral;
-  //   SITE_DOMAIN = new URL(previousURL).origin;
-  //   if (previousURL.includes("/my")) {
-  //     SITE_COUNTRY = "MY";
-  //   } else {
-  //     SITE_COUNTRY = "SG";
-  //   }
-  // }
-
-  $('.currencyText').text(SITE_COUNTRY === 'MY' ? 'MYR' : 'SGD');
-}
-
 getRequestHeaders = (additonalHeaders) => {
   return {
     headers: {
@@ -504,7 +475,6 @@ $(document).ready(async function () {
     $("#officialPartner").css("margin-right", "0px");
   }
   getUserData();
-  await getSiteDomain();
   const userData = localStorage.getItem(USER_KEY);
   if (!userData) {
     $("#previous-tab").css("display", "none");

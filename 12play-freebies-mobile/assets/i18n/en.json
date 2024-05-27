@@ -63,8 +63,12 @@
     "reminder": "Reminder",
     "multiplierPredictFirst": "You have to make your prediction before multiplying your bet.",
     "USD": "USD",
+    "THB": "THB",
     "Error": "Error",
-    "requiredTicketError": "You do not have enough ticket to play. Require: "
+    "OK": "OK",
+    "requiredTicketError": "You do not have enough ticket to play. Require: ",
+    "moreInfo": "More Info",
+    "rulesRegulations": "Rules & Regulations"
   },
   "predict_page": {
     "title": "Senegal vs Netherlands",
@@ -79,10 +83,7 @@
     "Confirm": "Confirm",
     "confirm_title": "Confirm To Submit?",
     "confirm_description1": "You can still change your answer afterwards",
-    "confirm_description2": "Click “Confirm” to proceed.",
-    "": "",
-    "": "",
-    "": ""
+    "confirm_description2": "Click “Confirm” to proceed."
   },
   "Out_of_Tickets": "Out of Tickets !",
   "0_ticket_found": "0 ticket found.",
@@ -100,6 +101,7 @@
     "contactUs": "Contact Us",
     "info": "Info",
     "language": "Language",
-    "liveChat": "24/7 Live Chat"
+    "liveChat": "24/7 Live Chat",
+    "VIP": "VIP"
   }
 }

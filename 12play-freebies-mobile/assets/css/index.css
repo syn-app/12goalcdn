@@ -1079,6 +1079,10 @@ a {
   place-items: center;
   gap: 6px;
   margin-top: 30px;
+
+  @media screen and (max-width: 400px) {
+    flex-direction: column;
+  }
 }
 
 .home__content #myHomeTabContent>.tab-pane#goal-home #myHomeGoalTabContent>.tab-pane#goal-home-current .correct__item {
@@ -1096,6 +1100,10 @@ a {
   line-height: 20px;
   color: #FFFFFF;
   text-shadow: 0px 2px 4px #000000;
+
+  @media screen and (max-width: 400px) {
+    width: 100%;
+  }
 }
 
 .home__content #myHomeTabContent>.tab-pane#goal-home #myHomeGoalTabContent>.tab-pane#goal-home-current .correct__item span {
@@ -1448,4 +1456,8 @@ iframe {
 
 .leaderboardList .rank-item {
   background-color: rgb(243, 245, 246);
+}
+
+#commonInfoModal .modal-dialog {
+  max-width: 90%;
 }
