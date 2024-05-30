@@ -42,7 +42,7 @@ var translator = new Translator({
   registerGlobally: "__",
   persist: true,
   persistKey: "preferred_language",
-  filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.6/12play-freebies-mobile/assets/i18n",
+  filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.7/12play-freebies-mobile/assets/i18n",
 });
 
 var PREFERED_REGION = 'preferred_region';
@@ -492,12 +492,12 @@ getTC = (site) => {
         <strong>โบนัสการทายผล</strong>
         <ul style="list-style-type: none;">
           <li>โบนัสการทายผลปกติ : ${site.threeCorrectsPrize} ${currencyUnitTH}</li>
-          <li>เมื่อทายผล โดยใช้ตัวคูณ x2  :  ${site.threeCorrectsPrize} x 2 (${currencyUnitTH}) = ${site.threeCorrectsPrize * 2} ${currencyUnitTH}</li>
+          <li>เมื่อทายผล โดยใช้ตัวคูณ x2 : ${site.threeCorrectsPrize} x 2 = ${site.threeCorrectsPrize * 2} ${currencyUnitTH}</li>
         </ul>
         <strong>คะแนนบนลีดเดอร์บอร์ด</strong>
         <ul style="list-style-type: none;">
           <li>คะแนนปกติ : 3 คะแนน</li>
-          <li>เมื่อทายผล โดยใช้ตัวคูณ x2 :  3 คะแนน x 2  = 6 คะแนน</li>
+          <li>เมื่อทายผล โดยใช้ตัวคูณ x2 : 3 x 2  = 6 คะแนน</li>
           <li>ดังนั้น โดยการใช้ตัวคูณ x2 คุณจะได้รับโบนัสการทายผล${site.threeCorrectsPrize * 2} ${currencyUnitTH} พร้อมกับคะแนนอีก 6 คะแนน บนลีดเดอร์บอร์ด</li>
         </ul>
       </li>
@@ -506,7 +506,7 @@ getTC = (site) => {
       <li>หากการแข่งขันถูกเลื่อน ยกเลิก หรือแข่งไม่จบ สมาชิกจะได้ตั๋วการทายคืน</li>
       <li>ผลการแข่งขันขึ้นอยู่กับการแข่งขันฟุตบอลเต็มเวลาปกติ 90 นาที (รวมถึงทดเวลาบาดเจ็บ แต่ไม่รวมช่วงต่อเวลาพิเศษ)</li>
       <li>ไม่อนุญาติให้ใช้หลายบัญชี หากสมาชิกเข้าร่วมกิจกรรมมีมากกว่า 1 บัญชี การทายผลจะถูกตัดสิทธิ์รวมถึงเงินรางวัลจะถูกริบคืน</li>
-      <li>ในการเข้าร่วมกิจกรรจำกัดเพียงบุคคลคนเดียว ครอบครัว ที่อยู่ อีเมลแอดเดรส เบอร์โทรศัพท์ เลขที่บัญชีธนาคารเดียวกัน  ไม่สามารถใช้อุปกรณ์สื่อสารร่วมกันรวมถึง IP Address</li>
+      <li>ในการเข้าร่วมกิจกรรมจำกัดเพียงบุคคลคนเดียว ครอบครัว ที่อยู่ อีเมลแอดเดรส เบอร์โทรศัพท์ เลขที่บัญชีธนาคารเดียวกัน ไม่สามารถใช้อุปกรณ์สื่อสารร่วมกันรวมถึง IP Address</li>
       <li>เป็นไปตามข้อตกลงและเงื่อนไขของ 12Play</li>
       <li>12Play ขอสงวนสิทธิ์ในการแก้ไข ยกเลิก ระงับ หรือยุติรางวัลใหญ่นี้ และ/หรือเปลี่ยนแปลงข้อกำหนดของรางวัลดังกล่าวได้ทุกเวลาโดยไม่จำเป็นต้องแจ้งให้ทราบล่วงหน้า</li>
     </ol>
@@ -521,7 +521,7 @@ getTC = (site) => {
       <li>ผู้ชนะกิจกรรม ระบบจะปรับรางวัลจะเข้าสู่บัญชี โดยอัตโนมัติ </li>
       <li>รางวัลสำหรับผู้ชนะบนลีดเดอร์บอร์ดจะได้รับในวันที่ ${payoffDateFormat} น</li>
       <li>เงินรางวัลทั้งหมดจะต้องทำเทิร์นโอเวอร์ 1 เท่า ก่อนทำการแจ้งถอน</li>
-      <li>เงินรางวัลทั้งหมดจะทำการจ่ายเป็นสกุลเงิน${currencyUnitTH}  เงิน ${prizePoolCurrency}  จะทำการคำนวณเป็นเงิน${currencyUnitTH} ตามอัตราแลกเปลี่ยน ${currencyRate}</li>
+      <li>เงินรางวัลทั้งหมดจะทำการจ่ายเป็นสกุลเงิน${currencyUnitTH}  เงิน ${prizePoolCurrencyTH}  จะทำการคำนวณเป็นเงิน${currencyUnitTH} ตามอัตราแลกเปลี่ยน ${currencyRate}</li>
     </ol>`;
   if (localStorage.getItem('preferred_language') === 'en') {
     return tCEn;
