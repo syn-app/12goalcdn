@@ -3,13 +3,14 @@ var LANGUAGES = {
   EN: "en",
   ZH: "zh",
   TH: "th",
+  VN: "vn",
 };
 
 var USER_KEY = "userData";
 var KEY_TS = "timestamp";
 var API_URL = IS_DEV ? `${location.protocol}//${location.hostname}:5500` : `${location.origin}`;
 
-var SITE_COUNTRY = location.pathname.includes('/my') ? 'MY' : location.pathname.includes('/sg') ? 'SG' : 'TH';
+var SITE_COUNTRY = location.pathname.includes('/my') ? 'MY' : location.pathname.includes('/sg') ? 'SG' : location.pathname.includes('/vn') ? 'VN' : 'TH';
 const urlParams = new URLSearchParams(window.location.search);
 country = urlParams.get('country');
 if (country) {
@@ -20,7 +21,8 @@ var currencyEn = {
   MYR: 'MYR',
   SGD: 'SGD',
   USD: 'USD',
-  THB: 'THB'
+  THB: 'THB',
+  VND: 'VND',
 }
 var currencyCn = {
   MYR: '马币',
@@ -32,6 +34,12 @@ var currencyTh = {
   SGD: 'SGD',
   USD: 'USD',
   THB: 'บาท'
+}
+var currencyVn = {
+  MYR: 'MYR',
+  SGD: 'SGD',
+  USD: 'USD',
+  VND: 'VNĐ',
 }
 
 var translator = new Translator({
@@ -70,7 +78,7 @@ if (SITE_COUNTRY === 'SG') {
 }
 
 fetchUserGameReport = () => {
-  const siteName = SITE_COUNTRY === "MY" ? '12M' : SITE_COUNTRY === "SG" ? '12S' : '12T';
+  const siteName = SITE_COUNTRY === "MY" ? '12M' : SITE_COUNTRY === "SG" ? '12S' : SITE_COUNTRY === "VN" ? '12V' : '12T';
   return fetch(`${API_URL}/12goalapi/user/game-report?siteName=${siteName}&t=${new Date().getTime()}`, getRequestHeaders())
     .then((response) => response.json())
     .then(res => {
@@ -83,15 +91,16 @@ fetchUserGameReport = () => {
       if (!site.id) {
         alert("No event found for current time!");
       }
+      const formatter = new Intl.NumberFormat(DATE_TIME_LOCALE);
       if (site.currency && site.prizePool) {
-        const maxPrize = `${site.currency} ${new Intl.NumberFormat("en-US").format(site.prizePool)}`;
+        const maxPrize = `${site.currency} ${formatter.format(site.prizePool)}`;
         $("#maxPrize").html("").append(maxPrize);
       }
       if (site.fourCorrectsPrize) {
-        $('.4correct').text(site.fourCorrectsPrize);
+        $('.4correct').text(formatter.format(site.fourCorrectsPrize));
       }
       if (site.threeCorrectsPrize) {
-        $('.3correct').text(site.threeCorrectsPrize);
+        $('.3correct').text(formatter.format(site.threeCorrectsPrize));
       }
       $('#tcContent').append(getTC(site));
 
@@ -214,12 +223,13 @@ getPreviousQuizHtml = (prevQuiz) => {
   } else {
     text = "";
   }
+  const formatter = new Intl.NumberFormat(DATE_TIME_LOCALE);
   return `
     <div class="list-item aos-init aos-animate" data-aos="fade-up">
       <div class="prevList">
         <div class="d-flex align-items-center">
           <div class="wonAmt ${prevQuiz.quizPrize === 0 ? 'amt0' : ''}">
-            ${translator.translateForKey("home_page.Won")} ${prevQuiz.country === 'MY' ? 'MYR' : prevQuiz.country === 'SG' ? 'SGD' : translator.translateForKey("home_page.THB")} ${prevQuiz.quizPrize}
+            ${translator.translateForKey("home_page.Won")} ${prevQuiz.country === 'MY' ? 'MYR' : prevQuiz.country === 'SG' ? 'SGD' : prevQuiz.country === 'TH' ? translator.translateForKey("home_page.THB") : ''} ${formatter.format(prevQuiz.quizPrize)} ${prevQuiz.country === 'VN' ? translator.translateForKey("home_page.VND") : ''}
             <div class="selected-multiplier">${translator.translateForKey("home_page.multiplierLabel")}: ${prevQuiz.multiplier ? ('x' + prevQuiz.multiplier) : '-'}</div>
           </div>
           <div class="prizeTime">` + prevQuiz.quizTime + `</div>
@@ -302,6 +312,8 @@ loadHowToPlay = (gameReport) => {
   const currencyUnit = currencyEn[site.siteCurrency] ?? site.siteCurrency;
   const currencyUnitCN = currencyCn[site.siteCurrency] ?? site.siteCurrency;
   const currencyUnitTH = currencyTh[site.siteCurrency] ?? site.siteCurrency;
+  const currencyUnitVN = currencyVn[site.siteCurrency] ?? site.siteCurrency;
+  const formatter = new Intl.NumberFormat(DATE_TIME_LOCALE);
 
   const howToPlayEn = `
     <strong>How To Play</strong>
@@ -351,12 +363,30 @@ loadHowToPlay = (gameReport) => {
       <li>ถ้าสมาชิกทายผลถูกต้อง 3 คู่  จะได้รับเงินรางวัล ${site.threeCorrectsPrize} ${currencyUnitTH}</li>
       <li>รางวัลใหญ่สุดท้าย จะอ้างอิงตามลีดเดอร์บอร์ด</li>
     </ol>`;
+  const howToPlayVn = `
+    <strong>Luật Chơi</strong>
+    <ol>
+      <li>Chào mừng bạn đến với sự kiện hấp dẫn 12Goal của 12PLAY!</li>
+      <li>Dự đoán kết quả ${gameReport.checkInPerMatches} trận đấu để mở khóa phần thưởng miễn phí.</li>
+      <li>Gửi câu trả lời dự đoán kết quả trận đấu của bạn.</li>
+      <li>Với mỗi câu trả lời chính xác bạn sẽ nhận được 1 điểm; câu trả lời sai không bị trừ điểm.</li>
+      <li>Bạn có thể sử dụng các tính năng bổ sung để giúp nâng cao trải nghiệm khi bạn dự đoán kết quả trận đấu. Bạn có thể chọn tăng phần thưởng và điểm của mình bằng cách sử dụng hệ số nhân, tuy nhiên, khi sử dụng các tính năng này, bạn sẽ bị trừ vé tham dự.</li>
+      <li>Tích lũy điểm để leo lên Bảng xếp hạng và đảm bảo vị trí trong Top 50 người chơi để có cơ hội giành Giải thưởng Đặc biệt Cuối cùng!</li>
+    </ol>
+    <strong>Giải thưởng</strong>
+    <ol>
+      <li>Nếu bạn trả lời chính xác tất cả 4 câu hỏi, bạn sẽ nhận được ${formatter.format(site.fourCorrectsPrize)} ${currencyUnitVN}.</li>
+      <li>Nếu bạn trả lời chính xác 3 câu hỏi, bạn sẽ nhận được ${formatter.format(site.threeCorrectsPrize)} ${currencyUnitVN}.</li>
+      <li>Giải thưởng Đặc biệt Cuối cùng có thể tham khảo Bảng xếp hạng của chúng tôi.</li>
+    </ol>`;
   if (localStorage.getItem('preferred_language') === 'en') {
     $('#howToPlay').append(howToPlayEn);
   } else if (localStorage.getItem('preferred_language') === 'zh') {
     $('#howToPlay').append(howToPlayZh);
   } else if (localStorage.getItem('preferred_language') === 'th') {
     $('#howToPlay').append(howToPlayTh);
+  } else if (localStorage.getItem('preferred_language') === 'vn') {
+    $('#howToPlay').append(howToPlayVn);
   }
 }
 
@@ -383,9 +413,12 @@ getTC = (site) => {
   const currencyUnit = currencyEn[site.siteCurrency] ?? site.siteCurrency;
   const currencyUnitCN = currencyCn[site.siteCurrency] ?? site.siteCurrency;
   const currencyUnitTH = currencyTh[site.siteCurrency] ?? site.siteCurrency;
+  const currencyUnitVN = currencyVn[site.siteCurrency] ?? site.siteCurrency;
   const prizePoolCurrency = currencyEn[site.currency] ?? site.currency;
   const prizePoolCurrencyCN = currencyCn[site.currency] ?? site.currency;
   const prizePoolCurrencyTH = currencyTh[site.currency] ?? site.currency;
+  const prizePoolCurrencyVN = currencyVn[site.currency] ?? site.currency;
+  const formatter = new Intl.NumberFormat(DATE_TIME_LOCALE);
   const tCEn = `
     <strong>How To Start</strong>
     <ol>
@@ -523,12 +556,60 @@ getTC = (site) => {
       <li>เงินรางวัลทั้งหมดจะต้องทำเทิร์นโอเวอร์ 1 เท่า ก่อนทำการแจ้งถอน</li>
       <li>เงินรางวัลทั้งหมดจะทำการจ่ายเป็นสกุลเงิน${currencyUnitTH}  เงิน ${prizePoolCurrencyTH}  จะทำการคำนวณเป็นเงิน${currencyUnitTH} ตามอัตราแลกเปลี่ยน ${currencyRate}</li>
     </ol>`;
+  const tcVn = `
+    <strong>Cách Tham Gia</strong>
+    <ol>
+      <li>Tất cả các thành viên tham gia phải nạp tối thiểu ${formatter.format(site.depositAmountPerTicket)} ${currencyUnitVN} để nhận vé tham dự sự kiện 12Goal của chúng tôi.</li>
+      <li>Với mỗi khoản nạp ${formatter.format(site.depositAmountPerTicket)} ${currencyUnitVN} bạn sẽ nhận được 1 vé tham gia, có tối đa ${maxTicket} vé cho mỗi thành viên.</li>
+      <li>Với vé nhận được, các thành viên có thể tham gia sự kiện bằng cách trả lời các câu hỏi dựa trên các trận đấu.</li>
+      <li>1 vé sẽ được sử dụng để tham gia 1 trận đấu.</li>
+      <li>Các tính năng hệ số nhân bổ sung có thể được sử dụng để tăng điểm và phần thưởng của bạn. Với mỗi hệ số nhân x1 được sử dụng, bạn sẽ bị trừ 1 vé tham gia.</li>
+      <li>Khi bạn sử dụng hệ số nhân x2, bạn sẽ bị trừ thêm một vé.</li>
+      <li>
+        Ví dụ, bạn sử dụng hệ số nhân x2 trong một trận đấu và trả lời đúng 3 câu hỏi.
+        <p>Cách Tính:</p>
+        <strong>Phần Thưởng Dự Đoán</strong>
+        <ul style="list-style-type: none;">
+          <li>Phần Thưởng Dự Đoán Ban Đầu: ${formatter.format(site.threeCorrectsPrize)} ${currencyUnitVN}.</li>
+          <li>Sau Khi Sử Dụng Hệ Số Nhân x2: ${formatter.format(site.threeCorrectsPrize)} ${currencyUnitVN} x 2 = ${formatter.format(site.threeCorrectsPrize * 2)} ${currencyUnitVN}</li>
+        </ul>
+        <strong>Điểm Bảng Xếp Hạng</strong>
+        <ul style="list-style-type: none;">
+          <li>Điểm ban đầu: 3 điểm</li>
+          <li>Sau khi sử dụng hệ số nhân x2: 3 điểm x 2 = 6 điểm</li>
+          <li>Vì vậy, bằng cách sử dụng hệ số nhân x2, bạn sẽ nhận được phần thưởng dự đoán ${formatter.format(site.threeCorrectsPrize * 2)} ${currencyUnitVN} và kiếm được 6 điểm trên bảng xếp hạng.</li>
+        </ul>
+      </li>
+      <li>Khi hệ số nhân đặt cược được xác nhận, bạn không thể hủy hoặc giảm hệ số nhân.</li>
+      <li>Thời hạn để trả lời câu hỏi là 10 phút trước khi trận đấu bắt đầu.</li>
+      <li>Nếu trận đấu bị hoãn, bị huỷ hoặc không hoàn thành thì vé tham dự sẽ bị hủy.</li>
+      <li>Tất cả câu trả lời trong sự kiện đều dựa trên kết quả thi đấu trong 90 phút thi đấu chính thức cộng với thời gian bù giờ.</li>
+      <li>Nghiêm cấm sử dụng nhiều tài khoản. Nếu bạn tham gia sự kiện bằng nhiều hơn một tài khoản thì tất cả các lượt tham gia của bạn sẽ bị hủy.</li>
+      <li>Chương trình giới hạn tham gia là một người dùng, một địa chỉ IP, một thiết bị điện tử, một hộ gia đình, một địa chỉ cư trú, một số điện thoại, một địa chỉ email và bất kỳ môi trường công cộng nào có máy tính; và địa chỉ IP được chia sẻ, nhưng không giới hạn như: các trường đại học, trường học, thư viện và nơi làm việc. Nói tóm lại, chỉ cho phép một lượt tham gia cho một cá nhân.</li>
+      <li>Tất cả Điều khoản & Điều kiện chung của 12Play đều được áp dụng.</li>
+      <li>12Play có quyền sửa đổi, thay đổi hoặc chấm dứt sự kiện này bất kỳ lúc nào đối với tất cả người chơi mà không cần thông báo trước.</li>
+    </ol>
+
+    <strong>Thanh Toán Giải Thưởng:</strong>
+    <ol>
+      <li>Nếu bạn trả lời chính xác tất cả 4 câu hỏi, bạn sẽ nhận được ${formatter.format(site.fourCorrectsPrize)} ${currencyUnitVN} sau khi trận đấu kết thúc.</li>
+      <li>Nếu bạn trả lời chính xác 3 câu hỏi, bạn sẽ nhận được ${formatter.format(site.threeCorrectsPrize)} ${currencyUnitVN} sau khi trận đấu kết thúc.</li>
+      <li>Top 50 người chơi chiến thắng sẽ được chọn dựa theo số điểm cao nhất trên bảng xếp hạng trong thời gian diễn ra sự kiện.</li>
+      <li>Trong trường hợp hai hoặc nhiều thành viên có cùng điểm, người chiến thắng sẽ được chọn dựa trên thời gian và ngày gửi câu hỏi sớm nhất.</li>
+      <li>Tổng số điểm sẽ được tính từ ${startTimeFormat} - ${endTimeFormat}.</li>
+      <li>Giải thưởng sẽ được hệ thống tự động trao cho người chiến thắng.</li>
+      <li>Ngày thanh toán cho bảng xếp hạng là vào ngày ${payoffDateFormat}.</li>
+      <li>Tất cả các giải thưởng đều có yêu vòng cược x1.</li>
+      <li>Tất cả các giải thưởng sẽ được thanh toán bằng ${currencyUnitVN}. ${prizePoolCurrencyVN} sẽ được quy đổi sang ${currencyUnitVN} theo tỷ giá hối đoái là ${currencyRate}.</li>
+    </ol>`;
   if (localStorage.getItem('preferred_language') === 'en') {
     return tCEn;
+  } else if (localStorage.getItem('preferred_language') === 'zh') {
+    return tcZh;
   } else if (localStorage.getItem('preferred_language') === 'th') {
     return tcTh;
-  } else {
-    return tcZh;
+  } else if (localStorage.getItem('preferred_language') === 'vn') {
+    return tcVn;
   }
 }
 
@@ -600,7 +681,7 @@ $(document).ready(function () {
           showErrorModal(res);
         } else {
           let html = '';
-          res.items.forEach(item => {
+          res.items?.forEach(item => {
             html += `<div class="promo-item">
               <img src="${isMobile() ? item.bannerFullUrlMobile : item.bannerFullUrlDesktop}">
               <div class="more-info" data-bannerid="${item.id}">${translator.translateForKey("home_page.moreInfo")}</div>
@@ -639,7 +720,10 @@ $(document).ready(function () {
     }
   })
 
-  const lang = localStorage.getItem('preferred_language') === 'en' ? 'english' : 'simplified';
+  const lang = localStorage.getItem('preferred_language') === 'zh' ? 'simplified' :
+    localStorage.getItem('preferred_language') === 'th' ? 'thai' :
+      localStorage.getItem('preferred_language') === 'vn' ? 'viet' :
+        'english';
   $("#depositNow").click(function () {
     window.location.href = `${SITE_DOMAIN}/${SITE_COUNTRY.toLowerCase()}/mydeposit.html?lang=${lang}`
   });

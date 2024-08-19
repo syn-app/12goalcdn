@@ -39,6 +39,25 @@ thaiQuestion = [
   },
 ];
 
+vietQuestion = [
+  {
+    content: "Đội nào sẽ thắng?",
+    options: [],
+  },
+  {
+    content: "Thời gian đặt cược thẻ Vàng/thẻ Đỏ đầu tiên?",
+    options: ["0-25", "26-50", "51-75", "76-90+", "Chưa đặt cược"],
+  },
+  {
+    content: "Tổng số bàn thắng là bao nhiêu?",
+    options: ["0", "1", "2", "3", "4+"],
+  },
+  {
+    content: "Có bao nhiêu quả phạt góc trong trận đấu?",
+    options: ["0-6", "7-8", "9-10", "11-12", "13+"],
+  },
+];
+
 englishQuestion = [
   {
     content: "Who will win the match?",
@@ -72,15 +91,17 @@ getRequestHeaders = (additonalHeaders) => {
 var translator;
 getSiteLanguage = async () => {
   const href = location.href;
-  if (href.includes('chs')) {
+  if (href.includes('/chs')) {
     siteLang = 'cn';
-  } else if (href.includes('en')) {
-    siteLang = 'en';
-  } else {
+  } else if (href.includes('/th/th')) {
     siteLang = 'th';
+  } else if (href.includes('/vn/vn')) {
+    siteLang = 'vn';
+  } else {
+    siteLang = 'en';
   }
-  DATE_TIME_LOCALE = siteLang === 'cn' ? 'zh-CN' : siteLang === 'th' ? 'th-TH' : 'en-US';
-  const transLang = siteLang === 'cn' ? 'zh' : siteLang === 'th' ? 'th' : "en";
+  DATE_TIME_LOCALE = siteLang === 'cn' ? 'zh-CN' : siteLang === 'th' ? 'th-TH' : siteLang === 'vn' ? 'vi-VN' : 'en-US';
+  const transLang = siteLang === 'cn' ? 'zh' : siteLang === 'th' ? 'th' : siteLang === 'vn' ? 'vn' : "en";
   localStorage.setItem("preferred_language", transLang);
   translator = new Translator({
     defaultLanguage: transLang,
@@ -472,7 +493,7 @@ setupClockCountDown = () => {
 
 $(document).ready(async function () {
   await getSiteLanguage();
-  const folder = siteLang === 'en' ? 'en' : siteLang === 'cn' ? 'chs' : 'th';
+  const folder = siteLang === 'cn' ? 'chs' : siteLang;
   const folderPath = IS_DEV ? '' : 'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.7';
   $("#header").load(`${folderPath}/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${folder}/header.html`, function () {
     $("#4dBtn").addClass("active"); //highlight the nav item
@@ -487,7 +508,10 @@ $(document).ready(async function () {
     listQuestion = structuredClone(chineseQuestion);
   } else if (siteLang === 'th') {
     listQuestion = structuredClone(thaiQuestion);
+  } else if (siteLang === 'vn') {
+    listQuestion = structuredClone(vietQuestion);
   }
+
   getUserData();
   fetchLeaderBoardRanking();
   const userData = localStorage.getItem(USER_KEY);
