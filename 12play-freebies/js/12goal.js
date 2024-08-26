@@ -310,7 +310,7 @@ fetchCurrentQuiz = () => {
 
             let matchTitle = $(this).closest('.currentList').find(".quizTitle").text();
             $("#quizTitle").html("").append(matchTitle);
-            $(".bg").hide();
+            $(".main-bg").hide();
             $("#predictCurrentContainer").show();
           }
         });
@@ -362,7 +362,7 @@ fetchCurrentQuiz = () => {
             });
         });
         $(".backModal").click(function () {
-          $(".bg").show();
+          $(".main-bg").show();
           $("#predictCurrentContainer").hide();
         });
       }
