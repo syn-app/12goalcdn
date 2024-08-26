@@ -92,11 +92,12 @@ iframe {
 
 .nav-tabs .nav-link:hover {
     color: rgba(0, 0, 0, 0.5);
-
 }
 
-.bg {
+.main-bg {
     background-image: url(../images/worldcup/bg.png);
+    background-position: center;
+    background-size: cover;
 }
 
 .card {

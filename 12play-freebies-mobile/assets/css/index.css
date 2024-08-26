@@ -1079,6 +1079,7 @@ a {
   place-items: center;
   gap: 6px;
   margin-top: 30px;
+  align-items: stretch;
 
   @media screen and (max-width: 400px) {
     flex-direction: column;
@@ -1089,7 +1090,7 @@ a {
   border-radius: 6px;
   background-image: url(../images/12goal/side-info-mobile.png);
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: left;
   background-size: cover;
   width: 50%;
   min-height: 75px;

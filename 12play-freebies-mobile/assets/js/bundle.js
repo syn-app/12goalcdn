@@ -1,11 +1,11 @@
 $(document).ready(function () {
   setTimeout(() => {
-    translator.fetch([LANGUAGES.EN, LANGUAGES.ZH, LANGUAGES.TH]).then(() => {
+    translator.fetch([LANGUAGES.EN, LANGUAGES.ZH, LANGUAGES.TH, LANGUAGES.VN]).then(() => {
       // -> Translations are ready...
       translator.translatePageTo(_get_language);
       changeLanguageColor();
       initialize();
-      DATE_TIME_LOCALE = _get_language === 'zh' ? 'zh-CN' : _get_language === 'th' ? 'th-TH' : 'en-US';
+      DATE_TIME_LOCALE = _get_language === 'cn' ? 'zh-CN' : _get_language === 'th' ? 'th-TH' : _get_language === 'vn' ? 'vi-VN' : 'en-US';
     });
   });
 })
@@ -335,8 +335,12 @@ function initialize() {
   })
 
   setTimeout(() => {
-    const currency = SITE_COUNTRY === 'MY' ? 'MYR' : SITE_COUNTRY === 'SG' ? 'SGD' : translator.translateForKey("home_page.THB");
-    if (SITE_COUNTRY === 'TH' && localStorage["preferred_language"] === 'th') {
+    const currency = SITE_COUNTRY === 'MY' ? 'MYR' :
+      SITE_COUNTRY === 'SG' ? 'SGD' :
+        SITE_COUNTRY === 'VN' ? translator.translateForKey("home_page.VND") :
+          translator.translateForKey("home_page.THB");
+    if ((SITE_COUNTRY === 'TH' && localStorage["preferred_language"] === 'th') ||
+      (SITE_COUNTRY === 'VN' && localStorage["preferred_language"] === 'vn')) {
       $('.currencyTextAfter').text(currency);
     } else {
       $('.currencyText').text(currency);
