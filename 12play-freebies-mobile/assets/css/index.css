@@ -685,16 +685,16 @@ a {
 }
 
 .home__content #myHomeTabContent>.tab-pane#goal-home .top-home {
-  min-height: 160px;
+  min-height: 210px;
   display: flex;
   flex-direction: column;
   place-content: flex-end;
   place-items: center;
   padding-bottom: 11px;
-  background-image: url(../images/12goal/12goal-euro-home-landing.jpg);
+  background-image: url(../images/12goal/euro-mobile-home-landing.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: top;
   font-weight: 800;
   font-size: 16px;
   line-height: 17px;
@@ -1088,18 +1088,18 @@ a {
 
 .home__content #myHomeTabContent>.tab-pane#goal-home #myHomeGoalTabContent>.tab-pane#goal-home-current .correct__item {
   border-radius: 6px;
-  background-image: url(../images/12goal/side-info-mobile.png);
+  background-image: url(../images/12goal/side-info-mobile-2.png);
   background-repeat: no-repeat;
   background-position: left;
   background-size: cover;
   width: 50%;
   min-height: 75px;
   padding: 16px;
-  padding-left: 22px;
+  padding-left: 90px;
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
-  color: #FFFFFF;
+  color: #000000;
   text-shadow: 0px 2px 4px #000000;
 
   @media screen and (max-width: 400px) {
@@ -1107,11 +1107,14 @@ a {
   }
 }
 
+.home__content #myHomeTabContent>.tab-pane#goal-home #myHomeGoalTabContent>.tab-pane#goal-home-current .correct__item.a3_out_of_4 {
+  background-image: url(../images/12goal/side-info-mobile-1.png);
+}
+
 .home__content #myHomeTabContent>.tab-pane#goal-home #myHomeGoalTabContent>.tab-pane#goal-home-current .correct__item span {
   font-weight: 900;
   font-size: 16px;
   line-height: 16px;
-  color: white;
   text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
@@ -1119,7 +1122,6 @@ a {
   font-weight: 900;
   font-size: 28px;
   line-height: 20px;
-  color: white;
   text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
