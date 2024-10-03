@@ -111,7 +111,7 @@ getSiteLanguage = async () => {
     registerGlobally: "__",
     persist: true,
     persistKey: "preferred_language",
-    filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.10/12play-freebies-mobile/assets/i18n",
+    filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.11/12play-freebies-mobile/assets/i18n",
   });
   await translator.fetch([transLang]);
 }
@@ -494,14 +494,14 @@ setupClockCountDown = () => {
 $(document).ready(async function () {
   await getSiteLanguage();
   const folder = siteLang === 'cn' ? 'chs' : siteLang;
-  const folderPath = IS_DEV ? '' : 'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.10';
+  const folderPath = IS_DEV ? '' : 'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.11';
   $("#header").load(`${folderPath}/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${folder}/header.html`, function () {
     $("#4dBtn").addClass("active"); //highlight the nav item
   });
   $("#footer").load(`${folderPath}/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${folder}/footer.html`, function () {
     // $("#4dFooterBtn").addClass("active"); //highlight the nav item
   });
-  $("#stickySideBtn").load(`${folderPath}/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${folder}/sticky-side-button.html`);
+
   if (siteLang === 'en') {
     listQuestion = structuredClone(englishQuestion);
   } else if (siteLang === 'cn') {
