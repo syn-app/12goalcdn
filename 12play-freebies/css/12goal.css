@@ -19,10 +19,11 @@
 }
 
 .mainNav .nav-link.active {
-    background: #980000;
-    border-radius: 16.5px;
+    background: #cb0000;
+    border-radius: 5px;
     color: white !important;
     padding: 5px 15px;
+    font-weight: bold;
 }
 
 .tab-pane .mainNav {
@@ -33,7 +34,7 @@
 .tab-pane .mainNav .nav-link,
 .tab-pane .mainNav .nav-link:hover {
     width: auto;
-    border-radius: 16.5px;
+    border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.5) !important;
     padding: 5px 15px;
     font-size: 14px;
@@ -41,7 +42,7 @@
 
 .tab-pane .mainNav .nav-link.active,
 .tab-pane .mainNav .nav-link.active:hover {
-    border-color: #980000 !important;
+    border-color: #cb0000 !important;
     font-weight: 900;
 }
 
@@ -52,7 +53,7 @@ iframe {
 
 .bannerbg {
     background-image: url(../images/12goal/euro-desktop.jpg);
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
@@ -65,6 +66,7 @@ iframe {
     text-shadow: 0px 4px 4px #000000;
     line-height: 31px;
     position: relative;
+    border-radius: 0 0 8px 8px;
 }
 
 .bannerbg div {
@@ -78,7 +80,7 @@ iframe {
 
 .nav-link {
     padding: 0;
-    color: rgba(0, 0, 0, 0.5);
+    color: #525252;
     width: 130px;
 
 
@@ -334,7 +336,7 @@ iframe {
 }
 
 .redBg {
-    background: #980000;
+    background: #cb0000;
     border-radius: 8px 8px 0 0;
     color: white;
 }
@@ -463,9 +465,10 @@ iframe {
 }
 
 .rewardBg {
-    background-image: url(../images/12goal/side-info-desktop-1.png);
-    background-size: 100% 100%;
+    background-image: url(../images/12goal/side-info-desktop-2.jpg);
+    background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     width: 100%;
     height: 195px;
     color: black;
@@ -475,10 +478,12 @@ iframe {
     flex-direction: column;
     justify-content: flex-end;
     padding-bottom: 120px;
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 25%);
+    border-radius: 5px;
 }
 
 .rewardBg.mb-4 {
-    background-image: url(../images/12goal/side-info-desktop-2.png);
+    background-image: url(../images/12goal/side-info-desktop-1.jpg);
 }
 
 .rewardBg span {

@@ -50,7 +50,7 @@ var translator = new Translator({
   registerGlobally: "__",
   persist: true,
   persistKey: "preferred_language",
-  filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@v1.12/12play-freebies-mobile/assets/i18n",
+  filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@iframe/12play-freebies-mobile/assets/i18n",
 });
 
 var PREFERED_REGION = 'preferred_region';
@@ -78,26 +78,26 @@ if (SITE_COUNTRY === 'SG') {
 }
 
 // Live chat
-var __lc = {};
-__lc.license = SITE_COUNTRY === 'TH' ? 17363859 : SITE_COUNTRY === 'VN' ? 18442851 : 12231957;
-__lc.group = 1;
-__lc.chat_between_groups = false;
+// var __lc = {};
+// __lc.license = SITE_COUNTRY === 'TH' ? 17363859 : SITE_COUNTRY === 'VN' ? 18442851 : 12231957;
+// __lc.group = 1;
+// __lc.chat_between_groups = false;
 
-(function () {
-  var lc = document.createElement("script");
-  lc.type = "text/javascript";
-  lc.async = true;
-  lc.src =
-    ("https:" == document.location.protocol ? "https://" : "http://") +
-    "cdn.livechatinc.com/tracking.js";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(lc, s);
+// (function () {
+//   var lc = document.createElement("script");
+//   lc.type = "text/javascript";
+//   lc.async = true;
+//   lc.src =
+//     ("https:" == document.location.protocol ? "https://" : "http://") +
+//     "cdn.livechatinc.com/tracking.js";
+//   var s = document.getElementsByTagName("script")[0];
+//   s.parentNode.insertBefore(lc, s);
 
-})();
-var LC_API = LC_API || {};
-LC_API.on_chat_window_minimized = function () {
-  $('#chat-widget-container').css('display', 'none');
-};
+// })();
+// var LC_API = LC_API || {};
+// LC_API.on_chat_window_minimized = function () {
+//   $('#chat-widget-container').css('display', 'none');
+// };
 
 fetchUserGameReport = () => {
   const siteName = SITE_COUNTRY === "MY" ? '12M' : SITE_COUNTRY === "SG" ? '12S' : SITE_COUNTRY === "VN" ? '12V' : '12T';

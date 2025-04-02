@@ -552,3 +552,14 @@
     width: 100%;
     border-radius: 10px;
 }
+
+.header-container {
+    padding: 0;
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 100%;
+        min-width: 768px;
+    }
+}

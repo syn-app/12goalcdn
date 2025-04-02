@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 :root {
   --primary-color: #4E7FFF;
@@ -22,7 +22,7 @@ body {
   font-weight: 300;
   max-width: var(--max-with-mobile);
   margin: auto;
-  font-family: 'Archivo', sans-serif;
+  font-family: 'Inter', sans-serif;
   position: relative;
   background: #fff;
   color: var(--bs-body-color);
@@ -659,7 +659,7 @@ a {
   font-size: 13px;
   line-height: 16px;
   text-align: center;
-  color: rgba(0, 0, 0, 0.5);
+  color: #525252;
   border: none;
   border-radius: 0;
   width: 100%;
@@ -673,7 +673,7 @@ a {
   text-align: center;
   color: #FFFFFF;
   border: none;
-  background: linear-gradient(180deg, #86080C 0%, #86080C 100%);
+  background: #cb0000;
 }
 
 #goal-home {
@@ -718,7 +718,7 @@ a {
 
 .home__content #myHomeTabContent>.tab-pane#goal-home #myHomeGoalTab {
   border-bottom: none;
-  background: linear-gradient(180deg, #980000 0%, #6C0000 100%);
+  background: #cb0000;
   mix-blend-mode: normal;
   min-height: 43px;
 }
@@ -1087,8 +1087,7 @@ a {
 }
 
 .home__content #myHomeTabContent>.tab-pane#goal-home #myHomeGoalTabContent>.tab-pane#goal-home-current .correct__item {
-  border-radius: 6px;
-  background-image: url(../images/12goal/side-info-mobile-2.png);
+  background-image: url(../images/12goal/side-info-mobile-1.jpg);
   background-repeat: no-repeat;
   background-position: left;
   background-size: cover;
@@ -1101,7 +1100,8 @@ a {
   font-size: 16px;
   line-height: 20px;
   color: #000000;
-  text-shadow: 0px 2px 4px #000000;
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 25%);
+  border-radius: 5px;
 
   @media screen and (max-width: 488px) {
     width: 100%;
@@ -1109,21 +1109,19 @@ a {
 }
 
 .home__content #myHomeTabContent>.tab-pane#goal-home #myHomeGoalTabContent>.tab-pane#goal-home-current .correct__item.a3_out_of_4 {
-  background-image: url(../images/12goal/side-info-mobile-1.png);
+  background-image: url(../images/12goal/side-info-mobile-2.jpg);
 }
 
 .home__content #myHomeTabContent>.tab-pane#goal-home #myHomeGoalTabContent>.tab-pane#goal-home-current .correct__item span {
   font-weight: 900;
   font-size: 16px;
   line-height: 16px;
-  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .home__content #myHomeTabContent>.tab-pane#goal-home #myHomeGoalTabContent>.tab-pane#goal-home-current .correct__item span strong {
   font-weight: 900;
   font-size: 28px;
   line-height: 20px;
-  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .home__content #myHomeTabContent>.tab-pane#goal-home #myHomeGoalTabContent>.tab-pane#goal-home-current .match {
@@ -1407,6 +1405,7 @@ iframe {
 
 .goal-rush-claim-btn {
   padding: 18px 0;
+  border-radius: 5px;
 }
 
 .goal-rush-matches .goal-rush-item {
@@ -1438,18 +1437,18 @@ iframe {
 .sub-tabs .nav-link,
 .sub-tabs .nav-link:hover {
   width: auto;
-  border-radius: 16.5px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  border: 1px solid #525252;
   padding: 8px 15px;
   font-size: 14px;
-  color: rgba(0, 0, 0, 0.5);
+  color: #525252;
   cursor: pointer;
 }
 
 .sub-tabs .nav-link.active,
 .sub-tabs .nav-link.active:hover {
-  background: #980000;
-  border-color: #980000;
+  background: #cb0000;
+  border-color: #cb0000;
   color: white;
   font-weight: 600;
 }
