@@ -747,9 +747,11 @@ $(document).ready(function () {
       localStorage.getItem('preferred_language') === 'vn' ? 'viet' :
         'english';
   $("#depositNow").click(function () {
-    window.location.href = `${SITE_DOMAIN}/${SITE_COUNTRY.toLowerCase()}/mydeposit.html?lang=${lang}`
+    // window.location.href = `${SITE_DOMAIN}/${SITE_COUNTRY.toLowerCase()}/mydeposit.html?lang=${lang}`
+    parent.postMessage({ type: "deposit" }, "*");
   });
   $("#loginRegister").click(function () {
-    window.location.href = `${SITE_DOMAIN}/${SITE_COUNTRY.toLowerCase()}/?lang=${lang}`
+    // window.location.href = `${SITE_DOMAIN}/${SITE_COUNTRY.toLowerCase()}/?lang=${lang}`
+    parent.postMessage({ type: "auth", payload: "login" }, "*");
   });
 });
