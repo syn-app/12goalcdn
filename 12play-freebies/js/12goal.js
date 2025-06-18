@@ -90,19 +90,7 @@ getRequestHeaders = (additonalHeaders) => {
 
 var translator;
 getSiteLanguage = async () => {
-  const href = location.href;
-  if (href.includes('/chs')) {
-    siteLang = 'cn';
-  } else if (href.includes('/th/th')) {
-    siteLang = 'th';
-  } else if (href.includes('/vn/vn')) {
-    siteLang = 'vn';
-  } else {
-    siteLang = 'en';
-  }
-  DATE_TIME_LOCALE = siteLang === 'cn' ? 'zh-CN' : siteLang === 'th' ? 'th-TH' : siteLang === 'vn' ? 'vi-VN' : 'en-US';
-  const transLang = siteLang === 'cn' ? 'zh' : siteLang === 'th' ? 'th' : siteLang === 'vn' ? 'vn' : "en";
-  localStorage.setItem("preferred_language", transLang);
+  const transLang = localStorage.getItem('preferred_language');
   translator = new Translator({
     defaultLanguage: transLang,
     detectLanguage: true,
@@ -111,7 +99,7 @@ getSiteLanguage = async () => {
     registerGlobally: "__",
     persist: true,
     persistKey: "preferred_language",
-    filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@iframe/12play-freebies-mobile/assets/i18n",
+    filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@iframe1.0/12play-freebies-mobile/assets/i18n",
   });
   await translator.fetch([transLang]);
 }
@@ -494,7 +482,7 @@ setupClockCountDown = () => {
 $(document).ready(async function () {
   await getSiteLanguage();
   // const folder = siteLang === 'cn' ? 'chs' : siteLang;
-  // const folderPath = IS_DEV ? '' : 'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@iframe';
+  // const folderPath = IS_DEV ? '' : 'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@iframe1.0';
   // $("#header").load(`${folderPath}/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${folder}/header.html`, function () {
   //   $("#4dBtn").addClass("active"); //highlight the nav item
   // });

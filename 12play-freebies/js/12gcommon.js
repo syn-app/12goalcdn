@@ -42,6 +42,20 @@ var currencyVn = {
   VND: 'VNĐ',
 }
 
+const href = location.href;
+if (href.includes('/chs')) {
+  siteLang = 'cn';
+} else if (href.includes('/th/th')) {
+  siteLang = 'th';
+} else if (href.includes('/vn/vn')) {
+  siteLang = 'vn';
+} else {
+  siteLang = 'en';
+}
+DATE_TIME_LOCALE = siteLang === 'cn' ? 'zh-CN' : siteLang === 'th' ? 'th-TH' : siteLang === 'vn' ? 'vi-VN' : 'en-US';
+const transLang = siteLang === 'cn' ? 'zh' : siteLang === 'th' ? 'th' : siteLang === 'vn' ? 'vn' : "en";
+localStorage.setItem("preferred_language", transLang);
+
 var translator = new Translator({
   defaultLanguage: "en",
   detectLanguage: true,
@@ -50,7 +64,7 @@ var translator = new Translator({
   registerGlobally: "__",
   persist: true,
   persistKey: "preferred_language",
-  filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@iframe/12play-freebies-mobile/assets/i18n",
+  filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@iframe1.0/12play-freebies-mobile/assets/i18n",
 });
 
 var PREFERED_REGION = 'preferred_region';
