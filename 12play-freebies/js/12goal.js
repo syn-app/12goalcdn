@@ -99,7 +99,7 @@ getSiteLanguage = async () => {
     registerGlobally: "__",
     persist: true,
     persistKey: "preferred_language",
-    filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@iframe1.0/12play-freebies-mobile/assets/i18n",
+    filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@iframe1.1/12play-freebies-mobile/assets/i18n",
   });
   await translator.fetch([transLang]);
 }
@@ -482,7 +482,7 @@ setupClockCountDown = () => {
 $(document).ready(async function () {
   await getSiteLanguage();
   // const folder = siteLang === 'cn' ? 'chs' : siteLang;
-  // const folderPath = IS_DEV ? '' : 'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@iframe1.0';
+  // const folderPath = IS_DEV ? '' : 'https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@iframe1.1';
   // $("#header").load(`${folderPath}/12play-freebies/${SITE_COUNTRY.toLowerCase()}/${folder}/header.html`, function () {
   //   $("#4dBtn").addClass("active"); //highlight the nav item
   // });
