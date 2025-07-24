@@ -10,7 +10,8 @@ var USER_KEY = "userData";
 var KEY_TS = "timestamp";
 var API_URL = IS_DEV ? `${location.protocol}//${location.hostname}:5500` : `${location.origin}`;
 
-var SITE_COUNTRY = location.pathname.includes('/my') ? 'MY' : location.pathname.includes('/sg') ? 'SG' : location.pathname.includes('/vn') ? 'VN' : 'TH';
+var pathName = location.pathname?.toLowerCase() ?? '';
+var SITE_COUNTRY = pathName.includes('/my') ? 'MY' : pathName.includes('/sg') ? 'SG' : pathName.includes('/vn') ? 'VN' : 'TH';
 const urlParams = new URLSearchParams(window.location.search);
 country = urlParams.get('country');
 if (country) {
@@ -64,7 +65,7 @@ var translator = new Translator({
   registerGlobally: "__",
   persist: true,
   persistKey: "preferred_language",
-  filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@iframe1.1/12play-freebies-mobile/assets/i18n",
+  filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@iframe1.2/12play-freebies-mobile/assets/i18n",
 });
 
 var PREFERED_REGION = 'preferred_region';
