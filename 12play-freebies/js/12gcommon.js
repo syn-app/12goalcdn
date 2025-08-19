@@ -65,7 +65,7 @@ var translator = new Translator({
   registerGlobally: "__",
   persist: true,
   persistKey: "preferred_language",
-  filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@iframe1.2/12play-freebies-mobile/assets/i18n",
+  filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@iframe1.3/12play-freebies-mobile/assets/i18n",
 });
 
 var PREFERED_REGION = 'preferred_region';
@@ -356,7 +356,6 @@ loadHowToPlay = (gameReport) => {
     <strong>How To Play</strong>
     <ol>
       <li>Welcome to the Exciting 12Goal Event from 12PLAY!</li>
-      <li>Predict every ${gameReport.checkInPerMatches} matches to unlock bonus rewards for free.</li>
       <li>Submit your answers based on your match result predictions.</li>
       <li>Earn 1 point for each correct answer; incorrect answers do not result in point deductions.</li>
       <li>Enjoy extra features that enhance your experience when you predict matches. You can choose to boost your bonus and points by using multipliers, but extra tickets will be deducted when you opt to use these features.</li>
@@ -372,7 +371,6 @@ loadHowToPlay = (gameReport) => {
     <strong>竞猜玩法</strong>
     <ol>
       <li>欢迎参加来自12PLAY的12Goal 有奖竞猜活动！</li>
-      <li>预测每${gameReport.checkInPerMatches}场比赛，即可解锁额外免费的奖励。</li>
       <li>根据您对比赛结果的预测提交答案。</li>
       <li>每个正确答案获得1分, 错误答案不会扣除分数。</li>
       <li>在预测比赛时，您可以体验翻倍投注的额外功能。您可以选择使用倍增器来提升奖金和分数，但使用此功能会额外扣除票卷。</li>
@@ -388,7 +386,6 @@ loadHowToPlay = (gameReport) => {
     <strong>วิธีการเดิมพัน</strong>
     <ol>
       <li>ยินดีต้อนรับสู่เกมส์การแข่งขันที่น่าตื่นเต้น 12Goal Event จาก 12PLAY</li>
-      <li>ทายผลถูกทุกๆ ${gameReport.checkInPerMatches} คู่ เพื่อปลดล็อครางวัลโบนัสพิเศษฟรี</li>
       <li>ส่งคำตอบของคุณ โดยขึ้นอยู่กับการทายผลนัดการแข่งขันของคุณ</li>
       <li>เมื่อทายผลที่ถูกต้องคุณจะได้รับ 1  คะแนน หากทายผิดจะไม่ได้รับคะแนน หรือลดคะแนน</li>
       <li>เพลิดเพลินไปกับฟิวเจอร์พิเศษที่เพิ่มประสบการณ์อันน่าตื่นเต้นการทายผลของคุณ ด้วยคุณสามารถเพิ่มโบนัส และคะแนน โดยใช้ตัวคูณ เมื่อคุณใช้ฟิวเจอร์นี้ในการทายผล ตั๋วพิเศษของคุณจะถูกหักออกทันที</li>
@@ -404,7 +401,6 @@ loadHowToPlay = (gameReport) => {
     <strong>Luật Chơi</strong>
     <ol>
       <li>Chào mừng bạn đến với sự kiện hấp dẫn 12Goal của 12PLAY!</li>
-      <li>Dự đoán kết quả ${gameReport.checkInPerMatches} trận đấu để mở khóa phần thưởng miễn phí.</li>
       <li>Gửi câu trả lời dự đoán kết quả trận đấu của bạn.</li>
       <li>Với mỗi câu trả lời chính xác bạn sẽ nhận được 1 điểm; câu trả lời sai không bị trừ điểm.</li>
       <li>Bạn có thể sử dụng các tính năng bổ sung để giúp nâng cao trải nghiệm khi bạn dự đoán kết quả trận đấu. Bạn có thể chọn tăng phần thưởng và điểm của mình bằng cách sử dụng hệ số nhân, tuy nhiên, khi sử dụng các tính năng này, bạn sẽ bị trừ vé tham dự.</li>
