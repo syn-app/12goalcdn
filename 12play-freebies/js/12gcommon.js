@@ -43,7 +43,7 @@ var currencyVn = {
   VND: 'VNĐ',
 }
 var siteLang = '';
-const href = location.href;
+const href = location.href.toLowerCase();
 if (href.includes('/chs')) {
   siteLang = 'cn';
 } else if (href.includes('/th/th')) {
@@ -65,7 +65,7 @@ var translator = new Translator({
   registerGlobally: "__",
   persist: true,
   persistKey: "preferred_language",
-  filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@iframe1.4/12play-freebies-mobile/assets/i18n",
+  filesLocation: IS_DEV ? "/12play-freebies-mobile/assets/i18n" : "https://cdn.jsdelivr.net/gh/syn-app/12goalcdn@iframe1.5/12play-freebies-mobile/assets/i18n",
 });
 
 var PREFERED_REGION = 'preferred_region';
